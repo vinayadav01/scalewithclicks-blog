@@ -1,36 +1,36 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-import { remark } from 'remark';
-import html from 'remark-html';
-import remarkSlug from "remark-slug";
-import remarkToc from "remark-toc";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 
-export async function GET(req) {
-  const { searchParams } = new URL(req.url);
-  const slug = searchParams.get("slug");
+function getReadingTime(text) {
+  return Math.ceil(text.split(/\s+/).length / 200) + " min read";
+}
 
-  const filePath = path.join(
-    process.cwd(),
-    'content/blog',
-    `${slug}.md`
-  );
+export async function GET() {
+  const dir = path.join(process.cwd(), "content/blog");
 
-  if (!fs.existsSync(filePath)) {
-    return Response.json({ error: "Not found" }, { status: 404 });
+  if (!fs.existsSync(dir)) {
+    return Response.json([]);
   }
 
-  const file = fs.readFileSync(filePath, 'utf8');
-  const { data, content } = matter(file);
+  const files = fs.readdirSync(dir);
 
-  const processed = await remark()
-    .use(remarkSlug)
-    .use(remarkToc, { heading: "table of contents" })
-    .use(html)
-    .process(content);
+  const posts = files.map((filename) => {
+    const filePath = path.join(dir, filename);
+    const file = fs.readFileSync(filePath, "utf8");
+    const { data, content } = matter(file);
 
-  return Response.json({
-    data,
-    contentHtml: processed.toString()
+    return {
+      slug: filename.replace(".md", ""),
+      title: data.title,
+      date: data.date,
+      category: data.category || "General",
+      image: data.image,
+      readingTime: getReadingTime(content),
+    };
   });
+
+  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  return Response.json(posts);
 }
