@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* =========================
+   🎨 THEME (KEEP YOURS)
+========================= */
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -23,4 +27,171 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* =========================
+   🔥 BLOG CONTENT STYLING
+========================= */
+
+.blog-content {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #333;
+}
+
+.blog-content img {
+  width: 100%;
+  max-width: 700px;
+  border-radius: 12px;
+  margin: 25px auto;
+  display: block;
+}
+
+.blog-content h2 {
+  margin-top: 50px;
+  font-size: 28px;
+}
+
+.blog-content h3 {
+  margin-top: 30px;
+  font-size: 20px;
+}
+
+.blog-content p {
+  margin: 15px 0;
+  color: #444;
+}
+
+.blog-content ul {
+  margin: 15px 0;
+  padding-left: 20px;
+}
+
+.blog-content li {
+  margin-bottom: 8px;
+}
+
+/* =========================
+   📑 TOC SIDEBAR
+========================= */
+
+/* Hide TOC inside content */
+.blog-content nav {
+  display: none;
+}
+
+/* Sidebar */
+.toc-sidebar {
+  position: sticky;
+  top: 100px;
+  border-left: 2px solid #eee;
+  padding-left: 15px;
+  font-size: 14px;
+  background: #fafafa;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* Links */
+.toc-sidebar a {
+  display: block;
+  color: #666;
+  text-decoration: none;
+  margin: 8px 0;
+  line-height: 1.4;
+  transition: 0.2s;
+}
+
+.toc-sidebar a:hover {
+  color: #4f46e5;
+  transform: translateX(3px);
+}
+
+/* Nested */
+.toc-sidebar ul ul {
+  margin-left: 10px;
+  border-left: 1px solid #eee;
+  padding-left: 10px;
+}
+
+/* =========================
+   🧠 AUTHOR + CTA
+========================= */
+
+.author-card {
+  position: sticky;
+  top: 100px;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  background: #fff;
+}
+
+.cta-box {
+  position: sticky;
+  top: 260px;
+  padding: 20px;
+  background: #eef2ff;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.cta-box a {
+  display: inline-block;
+  margin-top: 10px;
+  background: #4f46e5;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+/* =========================
+   📊 PROGRESS BAR
+========================= */
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: #4f46e5;
+  width: 0%;
+  z-index: 999;
+}
+
+/* =========================
+   ✨ PREMIUM TOUCHES
+========================= */
+
+.blog-content strong {
+  color: #111;
+}
+
+.blog-content blockquote {
+  border-left: 4px solid #4f46e5;
+  padding-left: 15px;
+  color: #555;
+  margin: 20px 0;
+  font-style: italic;
+}
+
+/* =========================
+   📱 MOBILE OPTIMIZATION
+========================= */
+
+@media (max-width: 900px) {
+  .toc-sidebar {
+    display: none;
+  }
+
+  .author-card,
+  .cta-box {
+    position: static;
+  }
+
+  div[style*="gridTemplateColumns"] {
+    grid-template-columns: 1fr !important;
+  }
 }
