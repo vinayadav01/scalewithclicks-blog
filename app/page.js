@@ -54,19 +54,17 @@ export default function Home() {
             .replace(/\s+/g, "-");
 
           return (
-            <Link
+            <div
               key={post.slug}
-              href={`/blog/${post.slug}`}
-              style={{ textDecoration: "none", color: "inherit" }}
+              style={{
+                border: "1px solid #eee",
+                borderRadius: "12px",
+                overflow: "hidden",
+                background: "#fff",
+              }}
             >
-              <div
-                style={{
-                  border: "1px solid #eee",
-                  borderRadius: "12px",
-                  overflow: "hidden",
-                  background: "#fff",
-                }}
-              >
+              {/* IMAGE */}
+              <Link href={`/blog/${post.slug}`}>
                 {post.image && (
                   <img
                     src={post.image}
@@ -75,34 +73,42 @@ export default function Home() {
                       width: "100%",
                       height: "180px",
                       objectFit: "cover",
+                      cursor: "pointer",
                     }}
                   />
                 )}
+              </Link>
 
-                <div style={{ padding: "15px" }}>
-                  
-                  {/* CATEGORY */}
-                  <Link href={`/category/${categorySlug}`}>
-                    <p
-                      style={{
-                        fontSize: "12px",
-                        color: "#4f46e5",
-                        marginBottom: "5px",
-                        fontWeight: "500",
-                      }}
-                    >
-                      {post.category}
-                    </p>
-                  </Link>
-
-                  <h3>{post.title}</h3>
-
-                  <p style={{ fontSize: "13px", color: "#999" }}>
-                    {post.date}
+              <div style={{ padding: "15px" }}>
+                
+                {/* CATEGORY (separate link) */}
+                <Link href={`/category/${categorySlug}`}>
+                  <p
+                    style={{
+                      fontSize: "12px",
+                      color: "#4f46e5",
+                      marginBottom: "5px",
+                      fontWeight: "500",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {post.category}
                   </p>
-                </div>
+                </Link>
+
+                {/* TITLE */}
+                <Link href={`/blog/${post.slug}`}>
+                  <h3 style={{ cursor: "pointer" }}>
+                    {post.title}
+                  </h3>
+                </Link>
+
+                {/* DATE */}
+                <p style={{ fontSize: "13px", color: "#999" }}>
+                  {post.date}
+                </p>
               </div>
-            </Link>
+            </div>
           );
         })}
       </div>
