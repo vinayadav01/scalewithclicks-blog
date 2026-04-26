@@ -4,7 +4,7 @@ import matter from "gray-matter";
 import Link from "next/link";
 
 export default function Home() {
-  const dir = path.join(process.cwd(), "content/blog");
+  const dir = path.join(process.cwd(), "app/content/blog");
 
   if (!fs.existsSync(dir)) {
     return <div style={{ padding: "40px" }}>No blog posts found</div>;
