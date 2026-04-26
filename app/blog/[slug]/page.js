@@ -80,13 +80,6 @@ export default async function Post({ params }) {
             />
           )}
 
-          {/* CTA */}
-          <div className="cta-box">
-            <h4>Want more leads?</h4>
-            <p>Get proven strategies to scale your business.</p>
-            <a href="#">Get Started</a>
-          </div>
-
         </div>
       </div>
     </div>
