@@ -192,34 +192,7 @@ body {
 }
 
 /* =========================
-   🎯 CTA
-========================= */
-
-.cta-box {
-  position: sticky;
-  top: 200px;
-  padding: 20px;
-  background: #eef2ff;
-  border-radius: 12px;
-  text-align: center;
-  margin-top: 20px;
-}
-
-.cta-box a {
-  display: inline-block;
-  margin-top: 10px;
-  background: #4f46e5;
-  color: white;
-  padding: 10px 16px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: 0.2s;
-}
-
-.cta-box a:hover {
-  background: #3730a3;
-}
-
+ 
 /* =========================
    📊 PROGRESS BAR
 ========================= */
