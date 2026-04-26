@@ -73,8 +73,6 @@ But traffic alone doesn’t pay the bills.
 
 Driving traffic without a funnel is like pouring water into a leaking bucket.
 
-![Website Analytics](https://images.unsplash.com/photo-1556155092-8707de31f9c4)
-
 ### ✅ Fix:
 
 Build a simple funnel:
