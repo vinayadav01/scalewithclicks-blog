@@ -32,11 +32,11 @@ export default async function Post({ params }) {
 
   const slug = params.slug;
 
-  const filePath = path.join(
-    process.cwd(),
-    "content/blog",
-    `${slug}.md`
-  );
+ const filePath = path.join(
+  process.cwd(),
+  "app/content/blog",
+  `${slug}.md`
+);
 
   // 🚨 If file not found → show 404
   if (!fs.existsSync(filePath)) {
