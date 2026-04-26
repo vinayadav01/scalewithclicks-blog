@@ -56,7 +56,8 @@ export default async function Post({ params }) {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "1fr 260px",
+          gridTemplateColumns: "minmax(0, 1fr) 240px",
+          width: "100%",
           gap: "40px",
         }}
       >
