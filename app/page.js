@@ -82,10 +82,7 @@ export default function Home() {
                 <div style={{ padding: "15px" }}>
                   
                   {/* CATEGORY */}
-                  <Link
-                    href={`/category/${categorySlug}`}
-                    onClick={(e) => e.stopPropagation()}
-                  >
+                  <Link href={`/category/${categorySlug}`}>
                     <p
                       style={{
                         fontSize: "12px",
