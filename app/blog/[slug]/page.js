@@ -6,11 +6,13 @@ import html from "remark-html";
 import remarkSlug from "remark-slug";
 import remarkToc from "remark-toc";
 
-export default async function Post({ params }) {
-  // ✅ DEBUG (will show in terminal)
-  console.log("PARAMS:", params);
-
+export default async function Post(props) {
+  // ✅ FIX: properly resolve params
+  const params = await props.params;
   const slug = params?.slug;
+
+  console.log("PARAMS:", params);
+  console.log("SLUG:", slug);
 
   if (!slug) {
     return (
@@ -46,8 +48,6 @@ export default async function Post({ params }) {
     .use(html)
     .process(content);
 
-  const contentHtml = processed.toString();
-
   return (
     <div style={{ maxWidth: "800px", margin: "auto", padding: "40px 20px" }}>
       
@@ -71,7 +71,7 @@ export default async function Post({ params }) {
         />
       )}
 
-      <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
+      <div dangerouslySetInnerHTML={{ __html: processed.toString() }} />
     </div>
   );
 }
