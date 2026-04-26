@@ -5,19 +5,26 @@ import matter from "gray-matter";
 
 export default function Home() {
   const dir = path.join(process.cwd(), "content/blog");
-  const files = fs.readdirSync(dir);
 
-  const posts = files.map((file) => {
-    const slug = file.replace(".md", "");
-    const content = fs.readFileSync(path.join(dir, file), "utf8");
-    const { data } = matter(content);
+  let posts = [];
 
-    return { slug, ...data };
-  });
+  try {
+    const files = fs.readdirSync(dir);
+
+    posts = files.map((file) => {
+      const slug = file.replace(".md", "");
+      const content = fs.readFileSync(path.join(dir, file), "utf8");
+      const { data } = matter(content);
+
+      return { slug, ...data };
+    });
+  } catch (err) {
+    console.error("Error loading posts:", err);
+  }
 
   return (
     <div style={{ fontFamily: "Arial, sans-serif" }}>
-      
+
       {/* HERO */}
       <div style={{
         textAlign: "center",
@@ -76,6 +83,7 @@ export default function Home() {
 
       {/* POPUP */}
       <Popup />
+
     </div>
   );
 }
