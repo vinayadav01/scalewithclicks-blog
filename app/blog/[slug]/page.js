@@ -6,7 +6,23 @@ import html from "remark-html";
 import remarkSlug from "remark-slug";
 import remarkToc from "remark-toc";
 
-// ✅ Dynamic SEO title
+// ✅ REQUIRED for dynamic routes in production
+export const dynamicParams = true;
+
+// ✅ Generate all blog slugs at build time
+export async function generateStaticParams() {
+  const dir = path.join(process.cwd(), "content/blog");
+
+  if (!fs.existsSync(dir)) return [];
+
+  const files = fs.readdirSync(dir);
+
+  return files.map((file) => ({
+    slug: file.replace(".md", ""),
+  }));
+}
+
+// ✅ SEO metadata
 export async function generateMetadata({ params }) {
   const slug = params?.slug || "";
 
@@ -15,6 +31,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
+// ✅ MAIN PAGE
 export default async function Post({ params }) {
   const slug = params?.slug;
 
