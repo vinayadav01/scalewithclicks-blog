@@ -1,12 +1,5 @@
 "use client";
 
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-import { remark } from 'remark';
-import html from 'remark-html';
-import remarkSlug from "remark-slug";
-import remarkToc from "remark-toc";
 import { useEffect, useState } from "react";
 
 export default function Post({ params }) {
@@ -15,7 +8,6 @@ export default function Post({ params }) {
   const [data, setData] = useState({});
 
   useEffect(() => {
-    // READ FILE (client-safe workaround via dynamic import)
     async function loadPost() {
       const res = await fetch(`/api/post?slug=${params.slug}`);
       const json = await res.json();
@@ -40,6 +32,11 @@ export default function Post({ params }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [params.slug]);
 
+  // 🔥 Create category slug safely
+  const categorySlug = data.category
+    ? data.category.toLowerCase().replace(/\s+/g, "-")
+    : "general";
+
   return (
     <>
       {/* 🔥 PROGRESS BAR */}
@@ -50,20 +47,23 @@ export default function Post({ params }) {
 
       <div style={{ display: "flex", justifyContent: "center" }}>
         
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "220px 1fr 260px",
-          gap: "40px",
-          maxWidth: "1200px",
-          width: "100%",
-          padding: "40px 20px"
-        }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "220px 1fr 260px",
+            gap: "40px",
+            maxWidth: "1200px",
+            width: "100%",
+            padding: "40px 20px",
+          }}
+        >
 
           {/* LEFT: TOC */}
           <div className="toc-sidebar">
             <div
               dangerouslySetInnerHTML={{
-                __html: contentHtml.match(/<nav[\s\S]*<\/nav>/)?.[0] || ""
+                __html:
+                  contentHtml.match(/<nav[\s\S]*<\/nav>/)?.[0] || "",
               }}
             />
           </div>
@@ -71,14 +71,38 @@ export default function Post({ params }) {
           {/* CENTER: BLOG */}
           <div>
 
+            {/* 🔥 BREADCRUMBS */}
+            <div
+              style={{
+                fontSize: "14px",
+                marginBottom: "15px",
+                color: "#666",
+              }}
+            >
+              <a href="/" style={{ color: "#4f46e5" }}>
+                Home
+              </a>{" "}
+              →{" "}
+              <a
+                href={`/category/${categorySlug}`}
+                style={{ color: "#4f46e5" }}
+              >
+                {data.category || "General"}
+              </a>{" "}
+              → {data.title}
+            </div>
+
+            {/* TITLE */}
             <h1 style={{ fontSize: "38px", marginBottom: "10px" }}>
               {data.title}
             </h1>
 
+            {/* DATE */}
             <p style={{ color: "#777", marginBottom: "20px" }}>
               {data.date}
             </p>
 
+            {/* FEATURE IMAGE */}
             {data.image && (
               <img
                 src={data.image}
@@ -86,15 +110,19 @@ export default function Post({ params }) {
                 style={{
                   width: "100%",
                   borderRadius: "14px",
-                  marginBottom: "30px"
+                  marginBottom: "30px",
                 }}
               />
             )}
 
+            {/* BLOG CONTENT */}
             <div
               className="blog-content"
               dangerouslySetInnerHTML={{
-                __html: contentHtml.replace(/<nav[\s\S]*<\/nav>/, "")
+                __html: contentHtml.replace(
+                  /<nav[\s\S]*<\/nav>/,
+                  ""
+                ),
               }}
             />
 
@@ -103,6 +131,7 @@ export default function Post({ params }) {
           {/* RIGHT: AUTHOR + CTA */}
           <div>
 
+            {/* AUTHOR */}
             <div className="author-card">
               <h3>About the Author</h3>
               <p style={{ fontWeight: "bold", marginTop: "10px" }}>
@@ -113,6 +142,7 @@ export default function Post({ params }) {
               </p>
             </div>
 
+            {/* CTA */}
             <div className="cta-box">
               <h3>Get More Leads</h3>
               <p>Join our newsletter for proven strategies.</p>
