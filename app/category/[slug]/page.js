@@ -3,7 +3,13 @@ import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
 
-// 🔥 Generate static paths (SEO)
+// 🔥 SAFE slug generator
+function toSlug(value) {
+  if (typeof value !== "string") return "general";
+  return value.toLowerCase().trim().replace(/\s+/g, "-");
+}
+
+// 🔥 Generate static paths
 export async function generateStaticParams() {
   const dir = path.join(process.cwd(), "content/blog");
 
@@ -16,13 +22,7 @@ export async function generateStaticParams() {
     const fileContent = fs.readFileSync(filePath, "utf8");
     const { data } = matter(fileContent);
 
-    // ✅ SAFE category handling
-    const category =
-      typeof data.category === "string" && data.category.trim() !== ""
-        ? data.category
-        : "General";
-
-    return category.toLowerCase().replace(/\s+/g, "-");
+    return toSlug(data.category);
   });
 
   const unique = [...new Set(categories)];
@@ -30,9 +30,10 @@ export async function generateStaticParams() {
   return unique.map((slug) => ({ slug }));
 }
 
-// 🔥 SEO metadata
+// 🔥 SEO metadata (SAFE)
 export async function generateMetadata({ params }) {
-  const category = params.slug.replace(/-/g, " ");
+  const safeSlug = typeof params.slug === "string" ? params.slug : "general";
+  const category = safeSlug.replace(/-/g, " ");
 
   return {
     title: `${category} Blogs | Growth Insights`,
@@ -50,7 +51,8 @@ export default function CategoryPage({ params }) {
 
   const files = fs.readdirSync(dir);
 
-  const categorySlug = params.slug;
+  const categorySlug =
+    typeof params.slug === "string" ? params.slug : "general";
 
   const posts = files
     .map((file) => {
@@ -58,20 +60,14 @@ export default function CategoryPage({ params }) {
       const fileContent = fs.readFileSync(filePath, "utf8");
       const { data } = matter(fileContent);
 
-      // ✅ SAFE category
-      const category =
-        typeof data.category === "string" && data.category.trim() !== ""
-          ? data.category
-          : "General";
-
-      const slug = category.toLowerCase().replace(/\s+/g, "-");
+      const categorySlug = toSlug(data.category);
 
       return {
         slug: file.replace(".md", ""),
         title: data.title || "No title",
         image: data.image || "",
         date: data.date || "",
-        categorySlug: slug,
+        categorySlug,
       };
     })
     .filter((post) => post.categorySlug === categorySlug);
@@ -123,7 +119,7 @@ export default function CategoryPage({ params }) {
         ))}
       </div>
 
-      {/* EMPTY STATE */}
+      {/* EMPTY */}
       {posts.length === 0 && (
         <p style={{ marginTop: "30px", color: "#777" }}>
           No articles found in this category.
