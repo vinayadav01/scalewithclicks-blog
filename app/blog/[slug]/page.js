@@ -10,7 +10,9 @@ export default function Post({ params }) {
   useEffect(() => {
     async function loadPost() {
       try {
-        const res = await fetch(`/api/post?slug=${params.slug}`);
+       const res = await fetch(`/api/post?slug=${params.slug}`, {
+  cache: "no-store",
+});
         const json = await res.json();
 
         setData(json.data || {});
