@@ -53,7 +53,7 @@ export default function Home() {
     }
   }, [page]);
 
-  // 🎯 CATEGORY FILTER (client side)
+  // 🎯 CATEGORY FILTER
   const filteredPosts =
     category === "All"
       ? posts
@@ -75,7 +75,7 @@ export default function Home() {
         </p>
       </div>
 
-      {/* 🔥 FEATURED CATEGORIES */}
+      {/* 🔥 CATEGORY FILTER BUTTONS */}
       <div style={{ marginBottom: "30px" }}>
         {categories.map((cat) => (
           <button
@@ -105,50 +105,73 @@ export default function Home() {
           gap: "25px",
         }}
       >
-        {filteredPosts.map((post) => (
-          <Link
-            key={post.slug}
-            href={`/blog/${post.slug}`}
-            style={{ textDecoration: "none", color: "inherit" }}
-          >
-            <div
-              style={{
-                border: "1px solid #eee",
-                borderRadius: "12px",
-                overflow: "hidden",
-                background: "#fff",
-                transition: "0.2s",
-              }}
+        {filteredPosts.map((post) => {
+          const categorySlug = post.category
+            ?.toLowerCase()
+            .replace(/\s+/g, "-");
+
+          return (
+            <Link
+              key={post.slug}
+              href={`/blog/${post.slug}`}
+              style={{ textDecoration: "none", color: "inherit" }}
             >
-              {post.image && (
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  style={{
-                    width: "100%",
-                    height: "180px",
-                    objectFit: "cover",
-                  }}
-                />
-              )}
+              <div
+                style={{
+                  border: "1px solid #eee",
+                  borderRadius: "12px",
+                  overflow: "hidden",
+                  background: "#fff",
+                  transition: "0.2s",
+                }}
+              >
+                {/* IMAGE */}
+                {post.image && (
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    style={{
+                      width: "100%",
+                      height: "180px",
+                      objectFit: "cover",
+                    }}
+                  />
+                )}
 
-              <div style={{ padding: "15px" }}>
-                <p style={{ fontSize: "12px", color: "#888" }}>
-                  {post.category}
-                </p>
+                <div style={{ padding: "15px" }}>
 
-                <h3>{post.title}</h3>
+                  {/* 🔥 CATEGORY LINK (IMPORTANT SEO FIX) */}
+                  <Link
+                    href={`/category/${categorySlug}`}
+                    onClick={(e) => e.stopPropagation()} // prevent card click override
+                  >
+                    <p
+                      style={{
+                        fontSize: "12px",
+                        color: "#4f46e5",
+                        marginBottom: "5px",
+                        fontWeight: "500",
+                      }}
+                    >
+                      {post.category}
+                    </p>
+                  </Link>
 
-                <p style={{ fontSize: "13px", color: "#999" }}>
-                  {post.date} • {post.readingTime}
-                </p>
+                  {/* TITLE */}
+                  <h3>{post.title}</h3>
+
+                  {/* META */}
+                  <p style={{ fontSize: "13px", color: "#999" }}>
+                    {post.date} • {post.readingTime}
+                  </p>
+                </div>
               </div>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          );
+        })}
       </div>
 
-      {/* 🔄 LOADING */}
+      {/* LOADING */}
       {hasMore && (
         <p style={{ textAlign: "center", marginTop: "30px", color: "#666" }}>
           Loading more articles...
@@ -160,7 +183,6 @@ export default function Home() {
           You’ve reached the end 🚀
         </p>
       )}
-
     </div>
   );
 }
