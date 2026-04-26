@@ -1,72 +1,48 @@
-"use client";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import { remark } from "remark";
+import html from "remark-html";
+import remarkSlug from "remark-slug";
+import remarkToc from "remark-toc";
 
-import { useEffect, useState } from "react";
+export default async function Post({ params }) {
+  const filePath = path.join(
+    process.cwd(),
+    "content/blog",
+    `${params.slug}.md`
+  );
 
-export default function Post({ params }) {
-  const [data, setData] = useState({});
-  const [contentHtml, setContentHtml] = useState("");
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    async function loadPost() {
-      try {
-        const res = await fetch(`/api/post?slug=${params.slug}`, {
-          cache: "no-store",
-        });
-
-        // ❌ API failed
-        if (!res.ok) {
-          throw new Error("Post not found");
-        }
-
-        const json = await res.json();
-
-        setData(json.data || {});
-        setContentHtml(json.contentHtml || "");
-      } catch (err) {
-        console.error("Error loading post:", err);
-        setError("Post not found");
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    loadPost();
-  }, [params.slug]);
-
-  // 🔄 LOADING STATE
-  if (loading) {
+  if (!fs.existsSync(filePath)) {
     return (
       <div style={{ padding: "40px", textAlign: "center" }}>
-        Loading article...
+        Post not found
       </div>
     );
   }
 
-  // ❌ ERROR STATE
-  if (error || !data?.title) {
-    return (
-      <div style={{ padding: "40px", textAlign: "center" }}>
-        ❌ Post not found
-      </div>
-    );
-  }
+  const file = fs.readFileSync(filePath, "utf8");
+  const { data, content } = matter(file);
+
+  const processed = await remark()
+    .use(remarkSlug)
+    .use(remarkToc)
+    .use(html)
+    .process(content);
+
+  const contentHtml = processed.toString();
 
   return (
     <div style={{ maxWidth: "800px", margin: "auto", padding: "40px 20px" }}>
       
-      {/* TITLE */}
       <h1 style={{ fontSize: "36px", marginBottom: "10px" }}>
         {data.title}
       </h1>
 
-      {/* META */}
       <p style={{ color: "#777", marginBottom: "20px" }}>
-        {data.date || "No date"} • {data.author || "Vinay Yadav"}
+        {data.date} • {data.author || "Vinay Yadav"}
       </p>
 
-      {/* FEATURED IMAGE */}
       {data.image && (
         <img
           src={data.image}
@@ -79,9 +55,7 @@ export default function Post({ params }) {
         />
       )}
 
-      {/* CONTENT */}
       <div
-        className="blog-content"
         dangerouslySetInnerHTML={{ __html: contentHtml }}
       />
     </div>
