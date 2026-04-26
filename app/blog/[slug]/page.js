@@ -33,7 +33,10 @@ export default async function Post({ params }) {
   return (
     <div style={{ maxWidth: "800px", margin: "auto", padding: "40px" }}>
       <h1>{data.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: processed.toString() }} />
+    <div
+  className="blog-content"
+  dangerouslySetInnerHTML={{ __html: contentHtml }}
+/>
     </div>
   );
 }
