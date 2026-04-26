@@ -1,4 +1,4 @@
-import Popup from "@/app/components/Popup";
+import Popup from "./components/Popup";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
