@@ -1,26 +1,89 @@
 import fs from "fs";
 import path from "path";
+import matter from "gray-matter";
+import Link from "next/link";
 
 export const dynamic = "force-dynamic";
 
-export default function Page({ params }) {
-  const filePath = path.join(
-    process.cwd(),
-    "app/content/blog",
-    `${params.slug}.md`
-  );
+export default function Home() {
+  const dir = path.join(process.cwd(), "app/content/blog");
+
+  if (!fs.existsSync(dir)) {
+    return <div style={{ padding: "40px" }}>No blog posts found</div>;
+  }
+
+  const files = fs.readdirSync(dir);
+
+  const posts = files.map((filename) => {
+    const filePath = path.join(dir, filename);
+    const file = fs.readFileSync(filePath, "utf8");
+    const { data } = matter(file);
+
+    return {
+      slug: filename.replace(".md", ""),
+      title: data.title || "No title",
+      date: data.date || "",
+      image: data.image || "",
+      category: data.category || "General",
+    };
+  });
+
+  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
   return (
-    <pre>
-      {JSON.stringify(
-        {
-          slug: params.slug,
-          filePath,
-          exists: fs.existsSync(filePath),
-        },
-        null,
-        2
-      )}
-    </pre>
+    <div style={{ maxWidth: "1100px", margin: "auto", padding: "40px 20px" }}>
+      
+      <div style={{ textAlign: "center", marginBottom: "40px" }}>
+        <h1 style={{ fontSize: "42px" }}>Growth Insights</h1>
+        <p style={{ color: "#666" }}>
+          Proven strategies to grow your business
+        </p>
+      </div>
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          gap: "25px",
+        }}
+      >
+        {posts.map((post) => {
+          const categorySlug = post.category
+            ?.toLowerCase()
+            .replace(/\s+/g, "-");
+
+          return (
+            <div key={post.slug} style={{ border: "1px solid #eee", borderRadius: "12px" }}>
+              
+              <Link href={`/blog/${post.slug}`}>
+                {post.image && (
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    style={{ width: "100%", height: "180px", objectFit: "cover" }}
+                  />
+                )}
+              </Link>
+
+              <div style={{ padding: "15px" }}>
+                <Link href={`/category/${categorySlug}`}>
+                  <p style={{ color: "#4f46e5", fontSize: "12px" }}>
+                    {post.category}
+                  </p>
+                </Link>
+
+                <Link href={`/blog/${post.slug}`}>
+                  <h3>{post.title}</h3>
+                </Link>
+
+                <p style={{ fontSize: "13px", color: "#999" }}>
+                  {post.date}
+                </p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 }
