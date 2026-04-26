@@ -1,7 +1,7 @@
 ---
 title: Why 90% of Businesses Fail at Lead Generation (And How to Fix It)
-date: 2026-04-26
-description: Discover why most businesses struggle with lead generation and how to build a system that consistently brings in high-quality leads.
+date: "2026-04-26"
+description: Discover why most businesses struggle with lead generation
 image: https://images.unsplash.com/photo-1551288049-bebda4e38f71
 category: Lead Generation
 author: Vinay Yadav
