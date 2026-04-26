@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* =========================
-   🎨 THEME (KEEP YOURS)
+   🎨 THEME
 ========================= */
 
 :root {
@@ -30,57 +30,118 @@ body {
 }
 
 /* =========================
-   🔥 BLOG CONTENT STYLING
+   🔥 BLOG CONTENT (UPGRADED)
 ========================= */
 
 .blog-content {
   font-size: 18px;
-  line-height: 1.8;
+  line-height: 1.85;
   color: #333;
 }
 
-.blog-content img {
-  width: 100%;
-  max-width: 700px;
-  border-radius: 12px;
-  margin: 25px auto;
-  display: block;
-}
-
-.blog-content h2 {
-  margin-top: 50px;
-  font-size: 28px;
-}
-
-.blog-content h3 {
-  margin-top: 30px;
-  font-size: 20px;
-}
-
+/* Paragraphs */
 .blog-content p {
-  margin: 15px 0;
+  margin: 18px 0;
   color: #444;
 }
 
+/* Headings */
+.blog-content h2 {
+  margin-top: 60px;
+  margin-bottom: 15px;
+  font-size: 30px;
+  font-weight: 700;
+  color: #111;
+}
+
+.blog-content h3 {
+  margin-top: 35px;
+  margin-bottom: 10px;
+  font-size: 22px;
+  font-weight: 600;
+  color: #222;
+}
+
+/* Lists */
 .blog-content ul {
-  margin: 15px 0;
+  margin: 18px 0;
   padding-left: 20px;
 }
 
 .blog-content li {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+}
+
+/* Images */
+.blog-content img {
+  width: 100%;
+  max-width: 720px;
+  border-radius: 14px;
+  margin: 30px auto;
+  display: block;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Links */
+.blog-content a {
+  color: #4f46e5;
+  text-decoration: underline;
+  transition: 0.2s;
+}
+
+.blog-content a:hover {
+  color: #3730a3;
+}
+
+/* Strong text */
+.blog-content strong {
+  color: #111;
+}
+
+/* Blockquote */
+.blog-content blockquote {
+  border-left: 4px solid #4f46e5;
+  padding-left: 18px;
+  color: #555;
+  margin: 25px 0;
+  font-style: italic;
+  background: #f9fafb;
+  padding: 15px 18px;
+  border-radius: 8px;
+}
+
+/* Code blocks */
+.blog-content pre {
+  background: #111;
+  color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  overflow-x: auto;
+  margin: 20px 0;
+}
+
+.blog-content code {
+  background: #f3f4f6;
+  padding: 3px 6px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Horizontal rule */
+.blog-content hr {
+  margin: 40px 0;
+  border: none;
+  border-top: 1px solid #eee;
 }
 
 /* =========================
    📑 TOC SIDEBAR
 ========================= */
 
-/* Hide TOC inside content */
 .blog-content nav {
   display: none;
 }
 
-/* Sidebar */
 .toc-sidebar {
   position: sticky;
   top: 100px;
@@ -92,7 +153,6 @@ body {
   border-radius: 10px;
 }
 
-/* Links */
 .toc-sidebar a {
   display: block;
   color: #666;
@@ -107,7 +167,6 @@ body {
   transform: translateX(3px);
 }
 
-/* Nested */
 .toc-sidebar ul ul {
   margin-left: 10px;
   border-left: 1px solid #eee;
@@ -145,6 +204,11 @@ body {
   padding: 10px 16px;
   border-radius: 8px;
   text-decoration: none;
+  transition: 0.2s;
+}
+
+.cta-box a:hover {
+  background: #3730a3;
 }
 
 /* =========================
@@ -165,20 +229,20 @@ body {
    ✨ PREMIUM TOUCHES
 ========================= */
 
-.blog-content strong {
-  color: #111;
+/* Smooth rendering */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.blog-content blockquote {
-  border-left: 4px solid #4f46e5;
-  padding-left: 15px;
-  color: #555;
-  margin: 20px 0;
-  font-style: italic;
+/* Better spacing container */
+.blog-container {
+  max-width: 750px;
+  margin: auto;
 }
 
 /* =========================
-   📱 MOBILE OPTIMIZATION
+   📱 MOBILE
 ========================= */
 
 @media (max-width: 900px) {
@@ -193,5 +257,9 @@ body {
 
   div[style*="gridTemplateColumns"] {
     grid-template-columns: 1fr !important;
+  }
+
+  .blog-content {
+    font-size: 17px;
   }
 }
