@@ -1,88 +1,111 @@
-import Popup from "./components/Popup";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import Link from "next/link";
 
 export default function Home() {
   const dir = path.join(process.cwd(), "content/blog");
 
-  let posts = [];
-
-  try {
-    const files = fs.readdirSync(dir);
-
-    posts = files.map((file) => {
-      const slug = file.replace(".md", "");
-      const content = fs.readFileSync(path.join(dir, file), "utf8");
-      const { data } = matter(content);
-
-      return { slug, ...data };
-    });
-  } catch (err) {
-    console.error("Error loading posts:", err);
+  // ❌ Safety check (prevents build crash)
+  if (!fs.existsSync(dir)) {
+    return <div style={{ padding: "40px" }}>No blog posts found</div>;
   }
 
-  return (
-    <div style={{ fontFamily: "Arial, sans-serif" }}>
+  const files = fs.readdirSync(dir);
 
+  const posts = files.map((filename) => {
+    const filePath = path.join(dir, filename);
+    const file = fs.readFileSync(filePath, "utf8");
+    const { data } = matter(file);
+
+    return {
+      slug: filename.replace(".md", ""),
+      title: data.title || "No title",
+      date: data.date || "",
+      description: data.description || "",
+      image: data.image || "",
+    };
+  });
+
+  // 🔥 Sort latest first
+  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  return (
+    <div style={{ maxWidth: "1000px", margin: "auto", padding: "40px 20px" }}>
+      
       {/* HERO */}
-      <div style={{
-        textAlign: "center",
-        padding: "60px 20px",
-        maxWidth: "900px",
-        margin: "auto"
-      }}>
-        <h1 style={{ fontSize: "42px", fontWeight: "bold" }}>
+      <div style={{ textAlign: "center", marginBottom: "50px" }}>
+        <h1 style={{ fontSize: "42px", marginBottom: "10px" }}>
           Growth Insights
         </h1>
-        <p style={{ color: "#666" }}>
+        <p style={{ color: "#666", fontSize: "18px" }}>
           Proven strategies to generate leads and scale your business.
         </p>
       </div>
 
       {/* BLOG GRID */}
-      <div style={{
-        padding: "20px",
-        maxWidth: "1200px",
-        margin: "auto",
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-        gap: "25px"
-      }}>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          gap: "25px",
+        }}
+      >
         {posts.map((post) => (
-          <a
+          <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
             style={{
               textDecoration: "none",
-              color: "black",
-              borderRadius: "12px",
-              overflow: "hidden",
-              boxShadow: "0 6px 20px rgba(0,0,0,0.06)"
+              color: "inherit",
             }}
           >
-            {post.image && (
-              <img
-                src={post.image}
-                alt={post.title}
-                style={{
-                  width: "100%",
-                  height: "200px",
-                  objectFit: "cover"
-                }}
-              />
-            )}
+            <div
+              style={{
+                border: "1px solid #eee",
+                borderRadius: "12px",
+                overflow: "hidden",
+                transition: "0.2s",
+                background: "#fff",
+              }}
+            >
+              {/* IMAGE */}
+              {post.image && (
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  style={{
+                    width: "100%",
+                    height: "180px",
+                    objectFit: "cover",
+                  }}
+                />
+              )}
 
-            <div style={{ padding: "15px" }}>
-              <h2>{post.title}</h2>
-              <p style={{ color: "#666" }}>{post.description}</p>
+              {/* CONTENT */}
+              <div style={{ padding: "20px" }}>
+                <h2 style={{ fontSize: "20px", marginBottom: "10px" }}>
+                  {post.title}
+                </h2>
+
+                <p style={{ fontSize: "14px", color: "#666" }}>
+                  {post.date}
+                </p>
+
+                <p
+                  style={{
+                    marginTop: "10px",
+                    color: "#444",
+                    fontSize: "15px",
+                  }}
+                >
+                  {post.description}
+                </p>
+              </div>
             </div>
-          </a>
+          </Link>
         ))}
       </div>
-
-      {/* POPUP */}
-      <Popup />
 
     </div>
   );
