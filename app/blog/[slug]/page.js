@@ -54,14 +54,14 @@ export default async function Post({ params }) {
 
       {/* GRID */}
       <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "minmax(0, 1fr) 240px",
-          width: "100%",
-          gap: "40px",
-        }}
-      >
-        
+  className="blog-grid"
+  style={{
+    display: "grid",
+    gridTemplateColumns: "minmax(0, 1fr) 240px",
+    gap: "40px",
+    width: "100%",
+  }}
+>   
         {/* MAIN CONTENT */}
         <div className="blog-container">
           <div
