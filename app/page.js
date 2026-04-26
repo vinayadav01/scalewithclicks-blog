@@ -111,21 +111,19 @@ export default function Home() {
             .replace(/\s+/g, "-");
 
           return (
-            <Link
+            <div
               key={post.slug}
-              href={`/blog/${post.slug}`}
-              style={{ textDecoration: "none", color: "inherit" }}
+              style={{
+                border: "1px solid #eee",
+                borderRadius: "12px",
+                overflow: "hidden",
+                background: "#fff",
+                transition: "0.2s",
+              }}
             >
-              <div
-                style={{
-                  border: "1px solid #eee",
-                  borderRadius: "12px",
-                  overflow: "hidden",
-                  background: "#fff",
-                  transition: "0.2s",
-                }}
-              >
-                {/* IMAGE */}
+
+              {/* IMAGE CLICKABLE */}
+              <Link href={`/blog/${post.slug}`}>
                 {post.image && (
                   <img
                     src={post.image}
@@ -134,39 +132,44 @@ export default function Home() {
                       width: "100%",
                       height: "180px",
                       objectFit: "cover",
+                      cursor: "pointer",
                     }}
                   />
                 )}
+              </Link>
 
-                <div style={{ padding: "15px" }}>
+              <div style={{ padding: "15px" }}>
 
-                  {/* 🔥 CATEGORY LINK (IMPORTANT SEO FIX) */}
-                  <Link
-                    href={`/category/${categorySlug}`}
-                    onClick={(e) => e.stopPropagation()} // prevent card click override
+                {/* 🔥 CATEGORY BADGE (SEO LINK) */}
+                <Link href={`/category/${categorySlug}`}>
+                  <span
+                    style={{
+                      display: "inline-block",
+                      fontSize: "12px",
+                      color: "#4f46e5",
+                      background: "#eef2ff",
+                      padding: "4px 10px",
+                      borderRadius: "20px",
+                      marginBottom: "8px",
+                      fontWeight: "500",
+                      cursor: "pointer",
+                    }}
                   >
-                    <p
-                      style={{
-                        fontSize: "12px",
-                        color: "#4f46e5",
-                        marginBottom: "5px",
-                        fontWeight: "500",
-                      }}
-                    >
-                      {post.category}
-                    </p>
-                  </Link>
+                    {post.category}
+                  </span>
+                </Link>
 
-                  {/* TITLE */}
-                  <h3>{post.title}</h3>
+                {/* TITLE */}
+                <Link href={`/blog/${post.slug}`}>
+                  <h3 style={{ cursor: "pointer" }}>{post.title}</h3>
+                </Link>
 
-                  {/* META */}
-                  <p style={{ fontSize: "13px", color: "#999" }}>
-                    {post.date} • {post.readingTime}
-                  </p>
-                </div>
+                {/* META */}
+                <p style={{ fontSize: "13px", color: "#999" }}>
+                  {post.date} • {post.readingTime}
+                </p>
               </div>
-            </Link>
+            </div>
           );
         })}
       </div>
