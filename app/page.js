@@ -1,52 +1,68 @@
 "use client";
 
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-import Link from "next/link";
 import { useState, useEffect } from "react";
-
-// 📖 Reading time
-function getReadingTime(text) {
-  const words = text.split(/\s+/).length;
-  return Math.ceil(words / 200) + " min read";
-}
+import Link from "next/link";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
-  const [filteredPosts, setFilteredPosts] = useState([]);
-  const [search, setSearch] = useState("");
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
   const [category, setCategory] = useState("All");
 
-  useEffect(() => {
-    async function loadPosts() {
-      const res = await fetch("/api/posts");
-      const data = await res.json();
-      setPosts(data);
-      setFilteredPosts(data);
+  const limit = 6;
+
+  // 🔥 FETCH POSTS
+  async function fetchPosts(pageNumber = 1) {
+    const res = await fetch(`/api/posts?page=${pageNumber}&limit=${limit}`);
+    const data = await res.json();
+
+    if (pageNumber === 1) {
+      setPosts(data.posts);
+    } else {
+      setPosts((prev) => [...prev, ...data.posts]);
     }
 
-    loadPosts();
+    if (posts.length + data.posts.length >= data.total) {
+      setHasMore(false);
+    }
+  }
+
+  useEffect(() => {
+    fetchPosts(1);
   }, []);
 
-  // 🔍 FILTER LOGIC
+  // 🔥 INFINITE SCROLL
   useEffect(() => {
-    let temp = [...posts];
+    const handleScroll = () => {
+      if (
+        window.innerHeight + window.scrollY >=
+          document.body.offsetHeight - 200 &&
+        hasMore
+      ) {
+        setPage((prev) => prev + 1);
+      }
+    };
 
-    if (category !== "All") {
-      temp = temp.filter((p) => p.category === category);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [hasMore]);
+
+  useEffect(() => {
+    if (page > 1) {
+      fetchPosts(page);
     }
+  }, [page]);
 
-    if (search) {
-      temp = temp.filter((p) =>
-        p.title.toLowerCase().includes(search.toLowerCase())
-      );
-    }
+  // 🎯 CATEGORY FILTER (client side)
+  const filteredPosts =
+    category === "All"
+      ? posts
+      : posts.filter((p) => p.category === category);
 
-    setFilteredPosts(temp);
-  }, [search, category, posts]);
-
-  const categories = ["All", ...new Set(posts.map((p) => p.category))];
+  const categories = [
+    "All",
+    ...new Set(posts.map((p) => p.category)),
+  ];
 
   return (
     <div style={{ maxWidth: "1100px", margin: "auto", padding: "40px 20px" }}>
@@ -59,22 +75,7 @@ export default function Home() {
         </p>
       </div>
 
-      {/* 🔍 SEARCH */}
-      <input
-        type="text"
-        placeholder="Search articles..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        style={{
-          width: "100%",
-          padding: "12px",
-          borderRadius: "8px",
-          border: "1px solid #ddd",
-          marginBottom: "20px",
-        }}
-      />
-
-      {/* 🏷 CATEGORY FILTER */}
+      {/* 🔥 FEATURED CATEGORIES */}
       <div style={{ marginBottom: "30px" }}>
         {categories.map((cat) => (
           <button
@@ -96,7 +97,7 @@ export default function Home() {
         ))}
       </div>
 
-      {/* 📚 POSTS */}
+      {/* POSTS */}
       <div
         style={{
           display: "grid",
@@ -116,6 +117,7 @@ export default function Home() {
                 borderRadius: "12px",
                 overflow: "hidden",
                 background: "#fff",
+                transition: "0.2s",
               }}
             >
               {post.image && (
@@ -145,6 +147,19 @@ export default function Home() {
           </Link>
         ))}
       </div>
+
+      {/* 🔄 LOADING */}
+      {hasMore && (
+        <p style={{ textAlign: "center", marginTop: "30px", color: "#666" }}>
+          Loading more articles...
+        </p>
+      )}
+
+      {!hasMore && (
+        <p style={{ textAlign: "center", marginTop: "30px", color: "#999" }}>
+          You’ve reached the end 🚀
+        </p>
+      )}
 
     </div>
   );
