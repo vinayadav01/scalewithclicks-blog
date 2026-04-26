@@ -6,21 +6,19 @@ import html from "remark-html";
 import remarkSlug from "remark-slug";
 import remarkToc from "remark-toc";
 
-// 🔥 VERY IMPORTANT (fixes 404 in production/build)
-export async function generateStaticParams() {
-  const dir = path.join(process.cwd(), "content/blog");
-
-  if (!fs.existsSync(dir)) return [];
-
-  const files = fs.readdirSync(dir);
-
-  return files.map((file) => ({
-    slug: file.replace(".md", ""),
-  }));
-}
-
 export default async function Post({ params }) {
-  const slug = params.slug;
+  // ✅ DEBUG (will show in terminal)
+  console.log("PARAMS:", params);
+
+  const slug = params?.slug;
+
+  if (!slug) {
+    return (
+      <div style={{ padding: "40px", textAlign: "center" }}>
+        ❌ Slug missing — route not working
+      </div>
+    );
+  }
 
   const filePath = path.join(
     process.cwd(),
@@ -28,10 +26,12 @@ export default async function Post({ params }) {
     `${slug}.md`
   );
 
+  console.log("FILE PATH:", filePath);
+
   if (!fs.existsSync(filePath)) {
     return (
       <div style={{ padding: "40px", textAlign: "center" }}>
-        ❌ Post not found<br />
+        ❌ Post not found <br />
         Slug: {slug}
       </div>
     );
