@@ -20,8 +20,6 @@ Let’s break down the real reasons—and more importantly—how to fix them.
 
 ## The Harsh Reality: Why Most Lead Generation Fails
 
-![Marketing Funnel](https://images.unsplash.com/photo-1460925895917-afdab827c52f)
-
 Many businesses assume that running ads or posting on social media is enough. But lead generation isn’t just about getting clicks—it’s about building a complete system that turns strangers into paying clients.
 
 ---
@@ -36,6 +34,8 @@ When your messaging is too broad:
 - Your content feels generic  
 - Your leads are unqualified  
 
+![Marketing Funnel](https://images.unsplash.com/photo-1460925895917-afdab827c52f)
+
 ### ✅ Fix:
 
 Define your ideal customer profile (ICP):
@@ -49,8 +49,6 @@ The more specific you are, the better your conversions.
 ---
 
 ## 2. Focusing on Traffic Instead of Conversions
-
-![Website Analytics](https://images.unsplash.com/photo-1556155092-8707de31f9c4)
 
 Many businesses obsess over:
 
@@ -73,6 +71,8 @@ But traffic alone doesn’t pay the bills.
 ## 3. Weak or No Funnel Strategy
 
 Driving traffic without a funnel is like pouring water into a leaking bucket.
+
+![Website Analytics](https://images.unsplash.com/photo-1556155092-8707de31f9c4)
 
 ### ✅ Fix:
 
