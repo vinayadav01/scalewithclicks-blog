@@ -30,7 +30,7 @@ body {
 }
 
 /* =========================
-   🔥 BLOG CONTENT (FIXED)
+   🔥 BLOG CONTENT
 ========================= */
 
 .blog-content {
@@ -39,13 +39,11 @@ body {
   color: #333;
 }
 
-/* Paragraphs */
 .blog-content p {
   margin: 18px 0;
   color: #444;
 }
 
-/* Headings */
 .blog-content h1 {
   margin-top: 30px;
   margin-bottom: 10px;
@@ -70,27 +68,27 @@ body {
   color: #222;
 }
 
-/* ✅ FIXED LISTS (bullets issue) */
+/* ✅ Lists fixed */
 .blog-content ul {
   margin: 18px 0;
   padding-left: 24px;
-  list-style: disc; /* 🔥 FIX */
+  list-style: disc;
 }
 
 .blog-content ol {
   margin: 18px 0;
   padding-left: 24px;
-  list-style: decimal; /* 🔥 FIX */
+  list-style: decimal;
 }
 
 .blog-content li {
   margin-bottom: 8px;
 }
 
-/* ✅ FIXED IMAGES (smaller + cleaner) */
+/* ✅ Images fixed */
 .blog-content img {
   width: 100%;
-  max-width: 650px; /* 🔥 reduced size */
+  max-width: 650px;
   border-radius: 12px;
   margin: 25px auto;
   display: block;
@@ -101,16 +99,10 @@ body {
 .blog-content a {
   color: #4f46e5;
   text-decoration: underline;
-  transition: 0.2s;
 }
 
 .blog-content a:hover {
   color: #3730a3;
-}
-
-/* Strong text */
-.blog-content strong {
-  color: #111;
 }
 
 /* Blockquote */
@@ -124,7 +116,7 @@ body {
   border-radius: 8px;
 }
 
-/* Code blocks */
+/* Code */
 .blog-content pre {
   background: #111;
   color: #fff;
@@ -141,10 +133,9 @@ body {
   font-size: 14px;
 }
 
-/* Horizontal rule */
+/* Divider */
 .blog-content hr {
   margin: 40px 0;
-  border: none;
   border-top: 1px solid #eee;
 }
 
@@ -152,7 +143,6 @@ body {
    📑 TOC SIDEBAR
 ========================= */
 
-/* Hide TOC inside content */
 .blog-content nav {
   display: none;
 }
@@ -172,8 +162,6 @@ body {
   color: #666;
   text-decoration: none;
   margin: 6px 0;
-  line-height: 1.4;
-  transition: 0.2s;
 }
 
 .toc-sidebar a:hover {
@@ -192,8 +180,6 @@ body {
 }
 
 /* =========================
- 
-/* =========================
    📊 PROGRESS BAR
 ========================= */
 
@@ -208,34 +194,25 @@ body {
 }
 
 /* =========================
-   ✨ PREMIUM TOUCHES
+   ✨ LAYOUT
 ========================= */
 
-* {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 .blog-container {
-  max-width: 720px;
+  max-width: 680px;
   margin: auto;
 }
 
 /* =========================
-   📱 MOBILE
+   📱 MOBILE FIX (IMPORTANT)
 ========================= */
 
 @media (max-width: 900px) {
+  .blog-grid {
+    display: block !important; /* 🔥 KEY FIX */
+  }
+
   .toc-sidebar {
     display: none;
-  }
-
-  .cta-box {
-    position: static;
-  }
-
-  div[style*="gridTemplateColumns"] {
-    grid-template-columns: 1fr !important;
   }
 
   .blog-content {
