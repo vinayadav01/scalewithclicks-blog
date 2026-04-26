@@ -7,24 +7,8 @@ import remarkSlug from "remark-slug";
 import remarkToc from "remark-toc";
 import { notFound } from "next/navigation";
 
-// ✅ Ensure dynamic params work
-export const dynamicParams = true;
-
-// ✅ Generate static slugs
-export async function generateStaticParams() {
-  const dir = path.join(process.cwd(), "content/blog");
-
-  // If folder doesn't exist → avoid crash
-  if (!fs.existsSync(dir)) return [];
-
-  const files = fs.readdirSync(dir);
-
-  return files
-    .filter((file) => file.endsWith(".md")) // only .md files
-    .map((file) => ({
-      slug: file.replace(".md", ""),
-    }));
-}
+// ✅ FORCE dynamic (fixes 404 issue)
+export const dynamic = "force-dynamic";
 
 // ✅ SEO metadata
 export async function generateMetadata({ params }) {
@@ -41,7 +25,7 @@ export async function generateMetadata({ params }) {
 
 // ✅ MAIN PAGE
 export default async function Post({ params }) {
-  // 🚨 HARD VALIDATION (no silent failure)
+  // 🚨 Validate slug
   if (!params?.slug) {
     notFound();
   }
@@ -54,7 +38,7 @@ export default async function Post({ params }) {
     `${slug}.md`
   );
 
-  // 🚨 If file not found → show 404 page
+  // 🚨 If file not found → show 404
   if (!fs.existsSync(filePath)) {
     notFound();
   }
