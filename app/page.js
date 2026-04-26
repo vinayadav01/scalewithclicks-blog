@@ -1,113 +1,102 @@
+"use client";
+
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
-// 📖 Estimate reading time
+// 📖 Reading time
 function getReadingTime(text) {
-  const wordsPerMinute = 200;
   const words = text.split(/\s+/).length;
-  const minutes = Math.ceil(words / wordsPerMinute);
-  return `${minutes} min read`;
+  return Math.ceil(words / 200) + " min read";
 }
 
 export default function Home() {
-  const dir = path.join(process.cwd(), "content/blog");
+  const [posts, setPosts] = useState([]);
+  const [filteredPosts, setFilteredPosts] = useState([]);
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("All");
 
-  if (!fs.existsSync(dir)) {
-    return <div style={{ padding: "40px" }}>No blog posts found</div>;
-  }
+  useEffect(() => {
+    async function loadPosts() {
+      const res = await fetch("/api/posts");
+      const data = await res.json();
+      setPosts(data);
+      setFilteredPosts(data);
+    }
 
-  const files = fs.readdirSync(dir);
+    loadPosts();
+  }, []);
 
-  const posts = files.map((filename) => {
-    const filePath = path.join(dir, filename);
-    const file = fs.readFileSync(filePath, "utf8");
-    const { data, content } = matter(file);
+  // 🔍 FILTER LOGIC
+  useEffect(() => {
+    let temp = [...posts];
 
-    return {
-      slug: filename.replace(".md", ""),
-      title: data.title || "No title",
-      date: data.date || "",
-      description: data.description || "",
-      image: data.image || "",
-      readingTime: getReadingTime(content),
-    };
-  });
+    if (category !== "All") {
+      temp = temp.filter((p) => p.category === category);
+    }
 
-  // 🔥 Sort latest first
-  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+    if (search) {
+      temp = temp.filter((p) =>
+        p.title.toLowerCase().includes(search.toLowerCase())
+      );
+    }
 
-  const featured = posts[0];
-  const restPosts = posts.slice(1);
+    setFilteredPosts(temp);
+  }, [search, category, posts]);
+
+  const categories = ["All", ...new Set(posts.map((p) => p.category))];
 
   return (
     <div style={{ maxWidth: "1100px", margin: "auto", padding: "40px 20px" }}>
       
       {/* HERO */}
-      <div style={{ textAlign: "center", marginBottom: "50px" }}>
-        <h1 style={{ fontSize: "44px", marginBottom: "10px" }}>
-          Growth Insights
-        </h1>
-        <p style={{ color: "#666", fontSize: "18px" }}>
-          Proven strategies to generate leads and scale your business.
+      <div style={{ textAlign: "center", marginBottom: "40px" }}>
+        <h1 style={{ fontSize: "42px" }}>Growth Insights</h1>
+        <p style={{ color: "#666" }}>
+          Proven strategies to grow your business
         </p>
       </div>
 
-      {/* 🔥 FEATURED POST */}
-      {featured && (
-        <Link
-          href={`/blog/${featured.slug}`}
-          style={{ textDecoration: "none", color: "inherit" }}
-        >
-          <div
+      {/* 🔍 SEARCH */}
+      <input
+        type="text"
+        placeholder="Search articles..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        style={{
+          width: "100%",
+          padding: "12px",
+          borderRadius: "8px",
+          border: "1px solid #ddd",
+          marginBottom: "20px",
+        }}
+      />
+
+      {/* 🏷 CATEGORY FILTER */}
+      <div style={{ marginBottom: "30px" }}>
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setCategory(cat)}
             style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "30px",
-              marginBottom: "60px",
-              borderRadius: "16px",
-              overflow: "hidden",
-              border: "1px solid #eee",
-              background: "#fff",
+              marginRight: "10px",
+              marginBottom: "10px",
+              padding: "8px 14px",
+              borderRadius: "20px",
+              border: "1px solid #ddd",
+              background: category === cat ? "#4f46e5" : "#fff",
+              color: category === cat ? "#fff" : "#333",
+              cursor: "pointer",
             }}
           >
-            {featured.image && (
-              <img
-                src={featured.image}
-                alt={featured.title}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                }}
-              />
-            )}
+            {cat}
+          </button>
+        ))}
+      </div>
 
-            <div style={{ padding: "30px" }}>
-              <p style={{ color: "#4f46e5", fontWeight: "bold" }}>
-                Featured
-              </p>
-
-              <h2 style={{ fontSize: "28px", margin: "10px 0" }}>
-                {featured.title}
-              </h2>
-
-              <p style={{ color: "#666" }}>
-                {featured.description}
-              </p>
-
-              <p style={{ marginTop: "15px", color: "#999", fontSize: "14px" }}>
-                {featured.date} • {featured.readingTime}
-              </p>
-            </div>
-          </div>
-        </Link>
-      )}
-
-      {/* 🔥 LATEST POSTS */}
-      <h2 style={{ marginBottom: "20px" }}>Latest Articles</h2>
-
+      {/* 📚 POSTS */}
       <div
         style={{
           display: "grid",
@@ -115,14 +104,11 @@ export default function Home() {
           gap: "25px",
         }}
       >
-        {restPosts.map((post) => (
+        {filteredPosts.map((post) => (
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            style={{
-              textDecoration: "none",
-              color: "inherit",
-            }}
+            style={{ textDecoration: "none", color: "inherit" }}
           >
             <div
               style={{
@@ -130,19 +116,8 @@ export default function Home() {
                 borderRadius: "12px",
                 overflow: "hidden",
                 background: "#fff",
-                transition: "all 0.2s ease",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "translateY(-5px)";
-                e.currentTarget.style.boxShadow =
-                  "0 10px 30px rgba(0,0,0,0.08)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = "none";
               }}
             >
-              {/* IMAGE */}
               {post.image && (
                 <img
                   src={post.image}
@@ -155,24 +130,15 @@ export default function Home() {
                 />
               )}
 
-              {/* CONTENT */}
-              <div style={{ padding: "20px" }}>
-                <h3 style={{ fontSize: "18px", marginBottom: "10px" }}>
-                  {post.title}
-                </h3>
-
-                <p style={{ fontSize: "13px", color: "#888" }}>
-                  {post.date} • {post.readingTime}
+              <div style={{ padding: "15px" }}>
+                <p style={{ fontSize: "12px", color: "#888" }}>
+                  {post.category}
                 </p>
 
-                <p
-                  style={{
-                    marginTop: "10px",
-                    color: "#444",
-                    fontSize: "14px",
-                  }}
-                >
-                  {post.description}
+                <h3>{post.title}</h3>
+
+                <p style={{ fontSize: "13px", color: "#999" }}>
+                  {post.date} • {post.readingTime}
                 </p>
               </div>
             </div>
