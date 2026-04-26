@@ -9,7 +9,7 @@ import remarkToc from "remark-toc";
 export const dynamic = "force-dynamic";
 
 export default async function Post({ params }) {
-  // ✅ FIX for Next.js 16
+  // ✅ Next.js 16 fix
   const { slug } = await params;
 
   const filePath = path.join(
@@ -25,13 +25,19 @@ export default async function Post({ params }) {
   const file = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(file);
 
-  const processed = await remark()
+  // ✅ Generate content + TOC separately
+  const processedContent = await remark()
     .use(remarkSlug)
+    .use(html)
+    .process(content);
+
+  const processedToc = await remark()
     .use(remarkToc)
     .use(html)
     .process(content);
 
-  const contentHtml = processed.toString();
+  const contentHtml = processedContent.toString();
+  const tocHtml = processedToc.toString().match(/<nav[\s\S]*?<\/nav>/)?.[0] || "";
 
   return (
     <div style={{ maxWidth: "1200px", margin: "auto", padding: "40px 20px" }}>
@@ -46,11 +52,11 @@ export default async function Post({ params }) {
         {data.date} • {data.author || "Vinay Yadav"}
       </p>
 
-      {/* GRID LAYOUT */}
+      {/* GRID */}
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "1fr 280px",
+          gridTemplateColumns: "1fr 260px",
           gap: "40px",
         }}
       >
@@ -65,25 +71,14 @@ export default async function Post({ params }) {
 
         {/* SIDEBAR */}
         <div>
-
-          {/* TOC (auto from markdown headings) */}
-          <div
-            className="toc-sidebar"
-            dangerouslySetInnerHTML={{
-              __html: contentHtml.match(/<nav[\s\S]*?<\/nav>/)?.[0] || "",
-            }}
-          />
-
-          {/* AUTHOR */}
-          <div className="author-card">
-            <h4>About the Author</h4>
-            <p style={{ fontWeight: "600" }}>
-              {data.author || "Vinay Yadav"}
-            </p>
-            <p style={{ fontSize: "14px", color: "#666" }}>
-              Helping businesses grow with smart marketing strategies.
-            </p>
-          </div>
+          
+          {/* TOC */}
+          {tocHtml && (
+            <div
+              className="toc-sidebar"
+              dangerouslySetInnerHTML={{ __html: tocHtml }}
+            />
+          )}
 
           {/* CTA */}
           <div className="cta-box">
