@@ -6,13 +6,17 @@ import html from "remark-html";
 import remarkSlug from "remark-slug";
 import remarkToc from "remark-toc";
 
-export default async function Post(props) {
-  // ✅ FIX: properly resolve params
-  const params = await props.params;
-  const slug = params?.slug;
+// ✅ Dynamic SEO title
+export async function generateMetadata({ params }) {
+  const slug = params?.slug || "";
 
-  console.log("PARAMS:", params);
-  console.log("SLUG:", slug);
+  return {
+    title: slug.replace(/-/g, " ") + " | Growth Insights",
+  };
+}
+
+export default async function Post({ params }) {
+  const slug = params?.slug;
 
   if (!slug) {
     return (
@@ -27,8 +31,6 @@ export default async function Post(props) {
     "content/blog",
     `${slug}.md`
   );
-
-  console.log("FILE PATH:", filePath);
 
   if (!fs.existsSync(filePath)) {
     return (
@@ -48,17 +50,33 @@ export default async function Post(props) {
     .use(html)
     .process(content);
 
+  const contentHtml = processed.toString();
+
   return (
     <div style={{ maxWidth: "800px", margin: "auto", padding: "40px 20px" }}>
       
+      {/* CATEGORY */}
+      <p
+        style={{
+          color: "#4f46e5",
+          fontWeight: "500",
+          marginBottom: "10px",
+        }}
+      >
+        {data.category}
+      </p>
+
+      {/* TITLE */}
       <h1 style={{ fontSize: "36px", marginBottom: "10px" }}>
         {data.title}
       </h1>
 
+      {/* META */}
       <p style={{ color: "#777", marginBottom: "20px" }}>
         {data.date} • {data.author || "Vinay Yadav"}
       </p>
 
+      {/* IMAGE */}
       {data.image && (
         <img
           src={data.image}
@@ -71,7 +89,11 @@ export default async function Post(props) {
         />
       )}
 
-      <div dangerouslySetInnerHTML={{ __html: processed.toString() }} />
+      {/* CONTENT */}
+      <div
+        className="blog-content"
+        dangerouslySetInnerHTML={{ __html: contentHtml }}
+      />
     </div>
   );
 }
