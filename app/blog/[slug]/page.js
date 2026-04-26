@@ -10,7 +10,24 @@ import { notFound } from "next/navigation";
 export const dynamic = "force-dynamic";
 
 export default async function Post({ params }) {
-  const slug = params.slug;
+  // ✅ Safe slug handling
+  const slug = params?.slug;
+
+  // 🚨 If slug missing → show debug (not 404)
+  if (!slug) {
+    return (
+      <pre>
+        {JSON.stringify(
+          {
+            error: "Slug is undefined ❌",
+            params,
+          },
+          null,
+          2
+        )}
+      </pre>
+    );
+  }
 
   const filePath = path.join(
     process.cwd(),
@@ -18,6 +35,7 @@ export default async function Post({ params }) {
     `${slug}.md`
   );
 
+  // 🚨 Debug if file not found
   if (!fs.existsSync(filePath)) {
     return (
       <pre>
@@ -43,10 +61,12 @@ export default async function Post({ params }) {
     .use(html)
     .process(content);
 
+  const contentHtml = processed.toString();
+
   return (
     <div style={{ maxWidth: "800px", margin: "auto", padding: "40px 20px" }}>
-      <h1>{data.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: processed.toString() }} />
+      <h1>{data.title || slug}</h1>
+      <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
     </div>
   );
 }
