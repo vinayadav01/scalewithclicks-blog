@@ -1,48 +1,36 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-
-function getReadingTime(text) {
-  return Math.ceil(text.split(/\s+/).length / 200) + " min read";
-}
+import { remark } from "remark";
+import html from "remark-html";
+import remarkSlug from "remark-slug";
+import remarkToc from "remark-toc";
 
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
+  const slug = searchParams.get("slug");
 
-  const page = parseInt(searchParams.get("page")) || 1;
-  const limit = parseInt(searchParams.get("limit")) || 6;
+  const filePath = path.join(
+    process.cwd(),
+    "content/blog",
+    `${slug}.md`
+  );
 
-  const dir = path.join(process.cwd(), "content/blog");
-
-  if (!fs.existsSync(dir)) {
-    return Response.json({ posts: [], total: 0 });
+  if (!fs.existsSync(filePath)) {
+    return Response.json({ error: "Post not found" }, { status: 404 });
   }
 
-  const files = fs.readdirSync(dir);
+  const file = fs.readFileSync(filePath, "utf8");
+  const { data, content } = matter(file);
 
-  const allPosts = files.map((filename) => {
-    const filePath = path.join(dir, filename);
-    const file = fs.readFileSync(filePath, "utf8");
-    const { data, content } = matter(file);
-
-    return {
-      slug: filename.replace(".md", ""),
-      title: data.title,
-      date: data.date,
-      category: data.category || "General",
-      image: data.image,
-      readingTime: getReadingTime(content),
-    };
-  });
-
-  // sort latest
-  allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-  const start = (page - 1) * limit;
-  const paginated = allPosts.slice(start, start + limit);
+  const processed = await remark()
+    .use(remarkSlug)
+    .use(remarkToc, { heading: "table of contents" })
+    .use(html)
+    .process(content);
 
   return Response.json({
-    posts: paginated,
-    total: allPosts.length,
+    data,
+    contentHtml: processed.toString(),
   });
 }
