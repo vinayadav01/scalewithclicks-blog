@@ -30,7 +30,7 @@ body {
 }
 
 /* =========================
-   🔥 BLOG CONTENT (UPGRADED)
+   🔥 BLOG CONTENT (FIXED)
 ========================= */
 
 .blog-content {
@@ -46,40 +46,55 @@ body {
 }
 
 /* Headings */
+.blog-content h1 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: 34px;
+  font-weight: 700;
+  color: #111;
+}
+
 .blog-content h2 {
-  margin-top: 60px;
+  margin-top: 50px;
   margin-bottom: 15px;
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 700;
   color: #111;
 }
 
 .blog-content h3 {
-  margin-top: 35px;
+  margin-top: 30px;
   margin-bottom: 10px;
   font-size: 22px;
   font-weight: 600;
   color: #222;
 }
 
-/* Lists */
+/* ✅ FIXED LISTS (bullets issue) */
 .blog-content ul {
   margin: 18px 0;
-  padding-left: 20px;
+  padding-left: 24px;
+  list-style: disc; /* 🔥 FIX */
+}
+
+.blog-content ol {
+  margin: 18px 0;
+  padding-left: 24px;
+  list-style: decimal; /* 🔥 FIX */
 }
 
 .blog-content li {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
-/* Images */
+/* ✅ FIXED IMAGES (smaller + cleaner) */
 .blog-content img {
   width: 100%;
-  max-width: 720px;
-  border-radius: 14px;
-  margin: 30px auto;
+  max-width: 650px; /* 🔥 reduced size */
+  border-radius: 12px;
+  margin: 25px auto;
   display: block;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
 
 /* Links */
@@ -101,7 +116,6 @@ body {
 /* Blockquote */
 .blog-content blockquote {
   border-left: 4px solid #4f46e5;
-  padding-left: 18px;
   color: #555;
   margin: 25px 0;
   font-style: italic;
@@ -138,6 +152,7 @@ body {
    📑 TOC SIDEBAR
 ========================= */
 
+/* Hide TOC inside content */
 .blog-content nav {
   display: none;
 }
@@ -146,7 +161,6 @@ body {
   position: sticky;
   top: 100px;
   border-left: 2px solid #eee;
-  padding-left: 15px;
   font-size: 14px;
   background: #fafafa;
   padding: 15px;
@@ -157,7 +171,7 @@ body {
   display: block;
   color: #666;
   text-decoration: none;
-  margin: 8px 0;
+  margin: 6px 0;
   line-height: 1.4;
   transition: 0.2s;
 }
@@ -167,33 +181,28 @@ body {
   transform: translateX(3px);
 }
 
+.toc-sidebar ul {
+  padding-left: 10px;
+}
+
 .toc-sidebar ul ul {
-  margin-left: 10px;
+  margin-left: 8px;
   border-left: 1px solid #eee;
   padding-left: 10px;
 }
 
 /* =========================
-   🧠 AUTHOR + CTA
+   🎯 CTA
 ========================= */
-
-.author-card {
-  position: sticky;
-  top: 100px;
-  padding: 20px;
-  border: 1px solid #eee;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  background: #fff;
-}
 
 .cta-box {
   position: sticky;
-  top: 260px;
+  top: 200px;
   padding: 20px;
   background: #eef2ff;
   border-radius: 12px;
   text-align: center;
+  margin-top: 20px;
 }
 
 .cta-box a {
@@ -229,15 +238,13 @@ body {
    ✨ PREMIUM TOUCHES
 ========================= */
 
-/* Smooth rendering */
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Better spacing container */
 .blog-container {
-  max-width: 750px;
+  max-width: 720px;
   margin: auto;
 }
 
@@ -250,7 +257,6 @@ body {
     display: none;
   }
 
-  .author-card,
   .cta-box {
     position: static;
   }
