@@ -30,69 +30,72 @@ body {
 }
 
 /* =========================
-   🔥 BLOG CONTENT
+   🔥 BLOG CONTENT (POLISHED)
 ========================= */
 
 .blog-content {
-  font-size: 18px;
-  line-height: 1.85;
-  color: #333;
+  font-size: 16.5px;            /* 🔥 slightly tighter */
+  line-height: 1.6;             /* 🔥 better readability */
+  letter-spacing: 0.1px;
+  max-width: 100%;
 }
 
+/* Paragraphs */
 .blog-content p {
-  margin: 18px 0;
+  margin: 12px 0;               /* 🔥 reduced gap */
   color: #444;
 }
 
+/* Headings */
 .blog-content h1 {
-  margin-top: 30px;
-  margin-bottom: 10px;
-  font-size: 34px;
+  margin-top: 25px;
+  margin-bottom: 8px;
+  font-size: 32px;
   font-weight: 700;
   color: #111;
 }
 
 .blog-content h2 {
-  margin-top: 50px;
-  margin-bottom: 15px;
-  font-size: 28px;
+  margin-top: 35px;             /* 🔥 reduced */
+  margin-bottom: 10px;
+  font-size: 26px;
   font-weight: 700;
   color: #111;
 }
 
 .blog-content h3 {
-  margin-top: 30px;
-  margin-bottom: 10px;
-  font-size: 22px;
+  margin-top: 22px;
+  margin-bottom: 8px;
+  font-size: 21px;
   font-weight: 600;
   color: #222;
 }
 
-/* ✅ Lists fixed */
+/* Lists */
 .blog-content ul {
-  margin: 18px 0;
-  padding-left: 24px;
+  margin: 14px 0;
+  padding-left: 22px;
   list-style: disc;
 }
 
 .blog-content ol {
-  margin: 18px 0;
-  padding-left: 24px;
+  margin: 14px 0;
+  padding-left: 22px;
   list-style: decimal;
 }
 
 .blog-content li {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
-/* ✅ Images fixed */
+/* Images */
 .blog-content img {
   width: 100%;
-  max-width: 650px;
-  border-radius: 12px;
-  margin: 25px auto;
+  max-width: 600px;             /* 🔥 tighter */
+  border-radius: 10px;
+  margin: 20px auto;
   display: block;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
 }
 
 /* Links */
@@ -109,10 +112,10 @@ body {
 .blog-content blockquote {
   border-left: 4px solid #4f46e5;
   color: #555;
-  margin: 25px 0;
+  margin: 20px 0;
   font-style: italic;
   background: #f9fafb;
-  padding: 15px 18px;
+  padding: 12px 16px;
   border-radius: 8px;
 }
 
@@ -120,22 +123,22 @@ body {
 .blog-content pre {
   background: #111;
   color: #fff;
-  padding: 15px;
-  border-radius: 10px;
+  padding: 14px;
+  border-radius: 8px;
   overflow-x: auto;
-  margin: 20px 0;
+  margin: 18px 0;
 }
 
 .blog-content code {
   background: #f3f4f6;
-  padding: 3px 6px;
-  border-radius: 6px;
-  font-size: 14px;
+  padding: 2px 5px;
+  border-radius: 5px;
+  font-size: 13px;
 }
 
 /* Divider */
 .blog-content hr {
-  margin: 40px 0;
+  margin: 30px 0;
   border-top: 1px solid #eee;
 }
 
@@ -151,32 +154,33 @@ body {
   position: sticky;
   top: 100px;
   border-left: 2px solid #eee;
-  font-size: 14px;
+  font-size: 13px;
   background: #fafafa;
-  padding: 15px;
-  border-radius: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  max-width: 200px; /* 🔥 prevents wide empty space */
 }
 
 .toc-sidebar a {
   display: block;
   color: #666;
   text-decoration: none;
-  margin: 6px 0;
+  margin: 5px 0;
 }
 
 .toc-sidebar a:hover {
   color: #4f46e5;
-  transform: translateX(3px);
+  transform: translateX(2px);
 }
 
 .toc-sidebar ul {
-  padding-left: 10px;
+  padding-left: 8px;
 }
 
 .toc-sidebar ul ul {
-  margin-left: 8px;
+  margin-left: 6px;
   border-left: 1px solid #eee;
-  padding-left: 10px;
+  padding-left: 8px;
 }
 
 /* =========================
@@ -194,21 +198,21 @@ body {
 }
 
 /* =========================
-   ✨ LAYOUT
+   ✨ LAYOUT FIX (IMPORTANT)
 ========================= */
 
 .blog-container {
-  max-width: 680px;
+  max-width: 640px;  /* 🔥 KEY FIX → removes wide feel */
   margin: auto;
 }
 
 /* =========================
-   📱 MOBILE FIX (IMPORTANT)
+   📱 MOBILE FIX
 ========================= */
 
 @media (max-width: 900px) {
   .blog-grid {
-    display: block !important; /* 🔥 KEY FIX */
+    display: block !important;
   }
 
   .toc-sidebar {
@@ -216,6 +220,6 @@ body {
   }
 
   .blog-content {
-    font-size: 17px;
+    font-size: 16px;
   }
 }
