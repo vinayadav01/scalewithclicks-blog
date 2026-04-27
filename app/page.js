@@ -20,180 +20,145 @@ export default function Home() {
     const { data } = matter(file);
 
     return {
-      slug: filename.replace(".mdx", "").replace(".md", ""),
+      slug: filename.replace(".md", ""),
       title: data.title || "No title",
       date: data.date || "",
       image: data.image || "",
       category: data.category || "General",
-      description: data.description || "",
     };
   });
 
   posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  const featuredPost = posts[0];
-  const restPosts = posts.slice(1);
+  const featured = posts[0];
+  const categories = [...new Set(posts.map((p) => p.category))];
 
   return (
-    <div style={{ maxWidth: "1100px", margin: "auto", padding: "40px 20px" }}>
+    <div style={{ maxWidth: "1200px", margin: "auto", padding: "40px 20px" }}>
 
-      {/* HEADER */}
-      <div style={{ textAlign: "center", marginBottom: "30px" }}>
-        <h1 style={{ fontSize: "42px" }}>
-          Digital Marketing Tips to Grow Your Business
+      {/* HERO */}
+      <div style={{ textAlign: "center", marginBottom: "40px" }}>
+        <h1 style={{ fontSize: "42px", fontWeight: "800" }}>
+          Digital Marketing Insights & Growth Strategies
         </h1>
-        <p style={{ color: "#666" }}>
-          Google Ads, SEO, Lead Generation & Conversion Strategies
+        <p style={{ color: "#64748b" }}>
+          Learn Google Ads, SEO, Lead Generation & Scaling Strategies
         </p>
-
-        {/* CTA */}
-        <div style={{ marginTop: "20px" }}>
-          <a
-            href="https://calendly.com/vinayyadav01992"
-            style={{
-              background: "#2563eb",
-              color: "#fff",
-              padding: "12px 22px",
-              borderRadius: "8px",
-              textDecoration: "none",
-              fontWeight: "600",
-              display: "inline-block",
-            }}
-          >
-            🚀 Get Free Growth Strategy
-          </a>
-        </div>
-      </div>
-
-      {/* CATEGORY FILTERS */}
-      <div style={{ textAlign: "center", marginBottom: "30px" }}>
-        <Link href="/category/google-ads.html">Google Ads</Link>{" | "}
-        <Link href="/category/meta-ads.html">Meta Ads</Link>{" | "}
-        <Link href="/category/seo.html">SEO</Link>{" | "}
-        <Link href="/category/lead-generation.html">Lead Generation</Link>
       </div>
 
       {/* FEATURED POST */}
-      {featuredPost && (
-        <div
-          style={{
-            marginBottom: "40px",
-            border: "1px solid #eee",
-            borderRadius: "14px",
-            overflow: "hidden",
-          }}
-        >
-          <Link href={`/blog/${featuredPost.slug}`}>
-            {featuredPost.image && (
+      {featured && (
+        <div style={{ marginBottom: "40px" }}>
+          <Link href={`/blog/${featured.slug}`}>
+            <div style={{ position: "relative" }}>
               <img
-                src={featuredPost.image}
-                alt={featuredPost.title}
-                style={{ width: "100%", height: "320px", objectFit: "cover" }}
+                src={featured.image}
+                style={{ width: "100%", height: "320px", objectFit: "cover", borderRadius: "16px" }}
               />
-            )}
+              <div style={{ position: "absolute", bottom: "20px", left: "20px", color: "#fff" }}>
+                <span style={{ background: "#2563eb", padding: "6px 12px", borderRadius: "20px", fontSize: "12px" }}>
+                  Featured
+                </span>
+                <h2 style={{ fontSize: "28px", marginTop: "10px" }}>{featured.title}</h2>
+              </div>
+            </div>
           </Link>
-
-          <div style={{ padding: "20px" }}>
-            <p style={{ color: "#4f46e5", fontSize: "13px" }}>
-              {featuredPost.category}
-            </p>
-
-            <Link href={`/blog/${featuredPost.slug}`}>
-              <h2>{featuredPost.title}</h2>
-            </Link>
-
-            <p style={{ color: "#555", marginTop: "10px" }}>
-              {featuredPost.description}
-            </p>
-
-            <p style={{ fontSize: "13px", color: "#999" }}>
-              {featuredPost.date}
-            </p>
-          </div>
         </div>
       )}
 
-      {/* BLOG GRID */}
-      <div
+      <div style={{ display: "grid", gridTemplateColumns: "3fr 1fr", gap: "30px" }}>
+
+        {/* BLOG GRID */}
+        <div>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+              gap: "20px",
+            }}
+          >
+            {posts.map((post) => {
+              const categorySlug = post.category.toLowerCase().replace(/\s+/g, "-");
+
+              return (
+                <div key={post.slug} style={{ border: "1px solid #eee", borderRadius: "12px" }}>
+                  <Link href={`/blog/${post.slug}`}>
+                    {post.image && (
+                      <img
+                        src={post.image}
+                        style={{ width: "100%", height: "160px", objectFit: "cover" }}
+                      />
+                    )}
+                  </Link>
+
+                  <div style={{ padding: "15px" }}>
+                    <Link href={`/category/${categorySlug}`}>
+                      <p style={{ color: "#2563eb", fontSize: "12px" }}>{post.category}</p>
+                    </Link>
+
+                    <Link href={`/blog/${post.slug}`}>
+                      <h3 style={{ fontSize: "18px" }}>{post.title}</h3>
+                    </Link>
+
+                    <p style={{ fontSize: "13px", color: "#999" }}>{post.date}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* SIDEBAR */}
+        <div>
+
+          {/* CTA BOX */}
+          <div style={{ background: "#2563eb", color: "#fff", padding: "20px", borderRadius: "12px", marginBottom: "20px" }}>
+            <h3>🚀 Want More Leads?</h3>
+            <p style={{ fontSize: "14px" }}>
+              Get a free strategy to grow your business with paid ads & SEO
+            </p>
+            <a
+              href="https://calendly.com/vinayyadav01992"
+              style={{ display: "inline-block", marginTop: "10px", background: "#fff", color: "#2563eb", padding: "10px 14px", borderRadius: "8px" }}
+            >
+              Book Free Call
+            </a>
+          </div>
+
+          {/* CATEGORIES */}
+          <div style={{ border: "1px solid #eee", padding: "20px", borderRadius: "12px" }}>
+            <h3>Categories</h3>
+            {categories.map((cat) => {
+              const slug = cat.toLowerCase().replace(/\s+/g, "-");
+              return (
+                <div key={cat} style={{ marginTop: "10px" }}>
+                  <Link href={`/category/${slug}`}>
+                    <span style={{ color: "#2563eb", cursor: "pointer" }}>{cat}</span>
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
+
+        </div>
+      </div>
+
+      {/* STICKY CTA */}
+      <a
+        href="https://calendly.com/vinayyadav01992"
         style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-          gap: "25px",
+          position: "fixed",
+          bottom: "20px",
+          right: "20px",
+          background: "#2563eb",
+          color: "#fff",
+          padding: "14px 18px",
+          borderRadius: "30px",
+          fontWeight: "600",
         }}
       >
-        {restPosts.map((post) => {
-          const categorySlug = post.category
-            ?.toLowerCase()
-            .replace(/\s+/g, "-");
-
-          return (
-            <div
-              key={post.slug}
-              style={{
-                border: "1px solid #eee",
-                borderRadius: "12px",
-                overflow: "hidden",
-              }}
-            >
-              <Link href={`/blog/${post.slug}`}>
-                {post.image && (
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    style={{
-                      width: "100%",
-                      height: "180px",
-                      objectFit: "cover",
-                    }}
-                  />
-                )}
-              </Link>
-
-              <div style={{ padding: "15px" }}>
-                <Link href={`/category/${categorySlug}.html`}>
-                  <p style={{ color: "#4f46e5", fontSize: "12px" }}>
-                    {post.category}
-                  </p>
-                </Link>
-
-                <Link href={`/blog/${post.slug}`}>
-                  <h3 style={{ margin: "5px 0" }}>{post.title}</h3>
-                </Link>
-
-                <p style={{ fontSize: "14px", color: "#555" }}>
-                  {post.description}
-                </p>
-
-                <p style={{ fontSize: "13px", color: "#999" }}>
-                  {post.date}
-                </p>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-
-      {/* BOTTOM CTA */}
-      <div style={{ textAlign: "center", marginTop: "50px" }}>
-        <h2>Want More Leads & Sales?</h2>
-        <p style={{ color: "#666" }}>
-          Get a custom growth strategy for your business.
-        </p>
-
-        <a
-          href="https://calendly.com/vinayyadav01992"
-          style={{
-            background: "#2563eb",
-            color: "#fff",
-            padding: "12px 22px",
-            borderRadius: "8px",
-            textDecoration: "none",
-            fontWeight: "600",
-          }}
-        >
-          🚀 Book Free Strategy Call
-        </a>
-      </div>
+        🚀 Free Strategy
+      </a>
 
     </div>
   );
