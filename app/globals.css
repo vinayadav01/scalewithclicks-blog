@@ -202,8 +202,8 @@ body {
 ========================= */
 
 .blog-container {
-  max-width: 640px;  /* 🔥 KEY FIX → removes wide feel */
-  margin: auto;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 /* =========================
