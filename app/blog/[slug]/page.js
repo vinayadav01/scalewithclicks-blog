@@ -53,17 +53,17 @@ export default async function Post({ params }) {
       </p>
 
       {/* GRID */}
-      <div
+   <div
   className="blog-grid"
   style={{
     display: "grid",
-    gridTemplateColumns: "minmax(0, 1fr) 240px",
-    gap: "40px",
-    width: "100%",
+    gridTemplateColumns: "minmax(0, 1fr) 220px",
+    gap: "30px",
+    alignItems: "start",
   }}
->   
+> 
         {/* MAIN CONTENT */}
-        <div className="blog-container">
+       <div className="blog-container" style={{ maxWidth: "680px" }}>
           <div
             className="blog-content"
             dangerouslySetInnerHTML={{ __html: contentHtml }}
