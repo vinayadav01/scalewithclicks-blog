@@ -23,7 +23,7 @@ export default function Home() {
       slug: filename.replace(".md", ""),
       title: data.title || "No title",
       date: data.date || "",
-      image: data.image || "",
+      image: data.image || "/images/default.jpg",
       category: data.category || "General",
     };
   });
@@ -50,100 +50,199 @@ export default function Home() {
       {featured && (
         <div style={{ marginBottom: "40px" }}>
           <Link href={`/blog/${featured.slug}`}>
-            <div style={{ position: "relative" }}>
+            <div style={{ position: "relative", cursor: "pointer" }}>
+              
               <img
                 src={featured.image}
-                style={{ width: "100%", height: "320px", objectFit: "cover", borderRadius: "16px" }}
+                alt={featured.title}
+                style={{
+                  width: "100%",
+                  height: "320px",
+                  objectFit: "cover",
+                  borderRadius: "16px",
+                }}
               />
-              <div style={{ position: "absolute", bottom: "20px", left: "20px", color: "#fff" }}>
-                <span style={{ background: "#2563eb", padding: "6px 12px", borderRadius: "20px", fontSize: "12px" }}>
+
+              {/* DARK OVERLAY */}
+              <div
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background: "rgba(0,0,0,0.4)",
+                  borderRadius: "16px",
+                }}
+              />
+
+              {/* TEXT */}
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: "20px",
+                  left: "20px",
+                  color: "#fff",
+                }}
+              >
+                <span
+                  style={{
+                    background: "#2563eb",
+                    padding: "6px 12px",
+                    borderRadius: "20px",
+                    fontSize: "12px",
+                  }}
+                >
                   Featured
                 </span>
-                <h2 style={{ fontSize: "28px", marginTop: "10px" }}>{featured.title}</h2>
+                <h2 style={{ fontSize: "28px", marginTop: "10px" }}>
+                  {featured.title}
+                </h2>
               </div>
             </div>
           </Link>
         </div>
       )}
 
-      <div style={{ display: "grid", gridTemplateColumns: "3fr 1fr", gap: "30px" }}>
+      {/* MAIN GRID */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "2fr 1fr",
+          gap: "30px",
+          alignItems: "start",
+        }}
+      >
 
         {/* BLOG GRID */}
-        <div>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-              gap: "20px",
-            }}
-          >
-            {posts.map((post) => {
-              const categorySlug = post.category.toLowerCase().replace(/\s+/g, "-");
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+            gap: "20px",
+          }}
+        >
+          {posts.map((post) => {
+            const categorySlug = post.category
+              .toLowerCase()
+              .replace(/\s+/g, "-");
 
-              return (
-                <div key={post.slug} style={{ border: "1px solid #eee", borderRadius: "12px" }}>
-                  <Link href={`/blog/${post.slug}`}>
-                    {post.image && (
-                      <img
-                        src={post.image}
-                        style={{ width: "100%", height: "160px", objectFit: "cover" }}
-                      />
-                    )}
+            return (
+              <div
+                key={post.slug}
+                style={{
+                  border: "1px solid #eee",
+                  borderRadius: "12px",
+                  overflow: "hidden",
+                  transition: "0.3s",
+                  cursor: "pointer",
+                }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.transform = "translateY(-5px)")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.transform = "translateY(0)")
+                }
+              >
+                <Link href={`/blog/${post.slug}`}>
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    style={{
+                      width: "100%",
+                      height: "180px",
+                      objectFit: "cover",
+                    }}
+                  />
+                </Link>
+
+                <div style={{ padding: "15px" }}>
+                  <Link href={`/category/${categorySlug}`}>
+                    <p style={{ color: "#2563eb", fontSize: "12px" }}>
+                      {post.category}
+                    </p>
                   </Link>
 
-                  <div style={{ padding: "15px" }}>
-                    <Link href={`/category/${categorySlug}`}>
-                      <p style={{ color: "#2563eb", fontSize: "12px" }}>{post.category}</p>
-                    </Link>
+                  <Link href={`/blog/${post.slug}`}>
+                    <h3 style={{ fontSize: "18px", margin: "5px 0" }}>
+                      {post.title}
+                    </h3>
+                  </Link>
 
-                    <Link href={`/blog/${post.slug}`}>
-                      <h3 style={{ fontSize: "18px" }}>{post.title}</h3>
-                    </Link>
-
-                    <p style={{ fontSize: "13px", color: "#999" }}>{post.date}</p>
-                  </div>
+                  <p style={{ fontSize: "13px", color: "#999" }}>
+                    {post.date}
+                  </p>
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
 
         {/* SIDEBAR */}
-        <div>
+        <div style={{ position: "sticky", top: "100px" }}>
 
-          {/* CTA BOX */}
-          <div style={{ background: "#2563eb", color: "#fff", padding: "20px", borderRadius: "12px", marginBottom: "20px" }}>
-            <h3>🚀 Want More Leads?</h3>
-            <p style={{ fontSize: "14px" }}>
-              Get a free strategy to grow your business with paid ads & SEO
+          {/* CTA */}
+          <div
+            style={{
+              background: "linear-gradient(135deg, #2563eb, #1d4ed8)",
+              padding: "25px",
+              borderRadius: "16px",
+              color: "#fff",
+              marginBottom: "20px",
+              boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+            }}
+          >
+            <h3 style={{ marginBottom: "10px" }}>🚀 Want More Leads?</h3>
+            <p style={{ fontSize: "14px", marginBottom: "15px" }}>
+              Get a free strategy to grow your business with ads & SEO
             </p>
+
             <a
               href="https://calendly.com/vinayyadav01992"
-              style={{ display: "inline-block", marginTop: "10px", background: "#fff", color: "#2563eb", padding: "10px 14px", borderRadius: "8px" }}
+              style={{
+                display: "inline-block",
+                padding: "12px 18px",
+                background: "#fff",
+                color: "#2563eb",
+                borderRadius: "8px",
+                fontWeight: "600",
+                textDecoration: "none",
+              }}
             >
               Book Free Call
             </a>
           </div>
 
           {/* CATEGORIES */}
-          <div style={{ border: "1px solid #eee", padding: "20px", borderRadius: "12px" }}>
+          <div
+            style={{
+              border: "1px solid #eee",
+              padding: "20px",
+              borderRadius: "12px",
+            }}
+          >
             <h3>Categories</h3>
+
             {categories.map((cat) => {
               const slug = cat.toLowerCase().replace(/\s+/g, "-");
+
               return (
                 <div key={cat} style={{ marginTop: "10px" }}>
                   <Link href={`/category/${slug}`}>
-                    <span style={{ color: "#2563eb", cursor: "pointer" }}>{cat}</span>
+                    <span
+                      style={{
+                        color: "#2563eb",
+                        cursor: "pointer",
+                      }}
+                    >
+                      {cat}
+                    </span>
                   </Link>
                 </div>
               );
             })}
           </div>
-
         </div>
       </div>
 
-      {/* STICKY CTA */}
+      {/* STICKY CTA BUTTON */}
       <a
         href="https://calendly.com/vinayyadav01992"
         style={{
@@ -155,11 +254,11 @@ export default function Home() {
           padding: "14px 18px",
           borderRadius: "30px",
           fontWeight: "600",
+          boxShadow: "0 10px 20px rgba(0,0,0,0.2)",
         }}
       >
         🚀 Free Strategy
       </a>
-
     </div>
   );
 }
