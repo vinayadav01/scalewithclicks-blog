@@ -28,6 +28,14 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      {/* ✅ ADD HEAD HERE */}
+      <head>
+        <meta
+          name="google-site-verification"
+          content="UG50HhrybK9nw-uBE1UJYvuHAsvGdj44bMJajcWMxgU"
+        />
+      </head>
+
       <body className="min-h-full flex flex-col">
 
         {/* ✅ Google Analytics (BLOG PROPERTY) */}
@@ -42,7 +50,8 @@ export default function RootLayout({
             gtag('js', new Date());
 
             gtag('config', 'G-PG5ZS7WVRJ', {
-              page_path: window.location.pathname,
+              page_title: document.title,
+              page_location: window.location.href,
             });
           `}
         </Script>
