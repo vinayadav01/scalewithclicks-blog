@@ -29,10 +29,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable}`}
     >
-      <body className="min-h-full flex flex-col">
-
+      <body
+        style={{
+          margin: 0,
+          fontFamily: "var(--font-geist-sans)",
+          background: "#f8fafc",
+        }}
+      >
         {/* ✅ Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-PG5ZS7WVRJ"
@@ -51,24 +56,24 @@ export default function RootLayout({
         </Script>
 
         {/* MAIN CONTENT */}
-        <main style={{ flex: 1 }}>{children}</main>
+        <main style={{ minHeight: "80vh" }}>{children}</main>
 
-        {/* ✅ IMPROVED FOOTER */}
+        {/* ✅ PREMIUM FOOTER */}
         <footer
           style={{
-            background: "#0f172a",
+            background: "#020617",
             color: "#cbd5f5",
-            padding: "40px 20px",
-            marginTop: "40px",
+            padding: "50px 20px",
+            marginTop: "60px",
           }}
         >
           <div
             style={{
-              maxWidth: "1100px",
+              maxWidth: "1200px",
               margin: "auto",
               display: "grid",
               gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-              gap: "30px",
+              gap: "40px",
             }}
           >
             {/* BRAND */}
@@ -76,8 +81,8 @@ export default function RootLayout({
               <h3 style={{ color: "#fff", marginBottom: "10px" }}>
                 ScaleWithClicks
               </h3>
-              <p style={{ fontSize: "14px", lineHeight: "1.6" }}>
-                Helping businesses generate leads and scale with Google Ads,
+              <p style={{ fontSize: "14px", lineHeight: "1.7" }}>
+                Helping businesses generate leads and scale using Google Ads,
                 Meta Ads, SEO, and conversion tracking systems.
               </p>
             </div>
@@ -85,18 +90,18 @@ export default function RootLayout({
             {/* SERVICES */}
             <div>
               <h4 style={{ color: "#fff", marginBottom: "10px" }}>Services</h4>
-              <div style={{ fontSize: "14px", lineHeight: "2" }}>
+              <div style={{ fontSize: "14px", lineHeight: "2.2" }}>
                 <div>
-                  <a href="https://scalewithclicks.com/services/google-ads-agency.html">Google Ads</a>
+                  <a href="https://scalewithclicks.com/services/google-ads-agency.html" target="_blank" rel="noopener noreferrer">Google Ads</a>
                 </div>
                 <div>
-                  <a href="https://scalewithclicks.com/services/meta-ads-agency.html">Meta Ads</a>
+                  <a href="https://scalewithclicks.com/services/meta-ads-agency.html" target="_blank" rel="noopener noreferrer">Meta Ads</a>
                 </div>
                 <div>
-                  <a href="https://scalewithclicks.com/services/seo-services.html">SEO Services</a>
+                  <a href="https://scalewithclicks.com/services/seo-services.html" target="_blank" rel="noopener noreferrer">SEO Services</a>
                 </div>
                 <div>
-                  <a href="https://scalewithclicks.com/services/conversion-tracking.html">Conversion Tracking</a>
+                  <a href="https://scalewithclicks.com/services/conversion-tracking.html" target="_blank" rel="noopener noreferrer">Conversion Tracking</a>
                 </div>
               </div>
             </div>
@@ -104,35 +109,21 @@ export default function RootLayout({
             {/* RESOURCES */}
             <div>
               <h4 style={{ color: "#fff", marginBottom: "10px" }}>Resources</h4>
-              <div style={{ fontSize: "14px", lineHeight: "2" }}>
-                <div>
-                  <a href="/">Home</a>
-                </div>
-                <div>
-                  <a href="/category/google-ads">Google Ads Blogs</a>
-                </div>
-                <div>
-                  <a href="/category/seo">SEO Blogs</a>
-                </div>
-                <div>
-                  <a href="/category/lead-generation">Lead Generation</a>
-                </div>
+              <div style={{ fontSize: "14px", lineHeight: "2.2" }}>
+                <div><a href="/">Home</a></div>
+                <div><a href="/category/google-ads">Google Ads Blogs</a></div>
+                <div><a href="/category/seo">SEO Blogs</a></div>
+                <div><a href="/category/lead-generation">Lead Generation</a></div>
               </div>
             </div>
 
             {/* LEGAL */}
             <div>
               <h4 style={{ color: "#fff", marginBottom: "10px" }}>Legal</h4>
-              <div style={{ fontSize: "14px", lineHeight: "2" }}>
-                <div>
-                  <a href="/privacy-policy">Privacy Policy</a>
-                </div>
-                <div>
-                  <a href="/terms-and-conditions">Terms & Conditions</a>
-                </div>
-                <div>
-                  <a href="/contact">Contact</a>
-                </div>
+              <div style={{ fontSize: "14px", lineHeight: "2.2" }}>
+                <div><a href="/privacy-policy">Privacy Policy</a></div>
+                <div><a href="/terms-and-conditions">Terms & Conditions</a></div>
+                <div><a href="/contact">Contact</a></div>
               </div>
             </div>
           </div>
@@ -141,10 +132,11 @@ export default function RootLayout({
           <div
             style={{
               textAlign: "center",
-              marginTop: "30px",
+              marginTop: "40px",
               fontSize: "13px",
               borderTop: "1px solid #1e293b",
-              paddingTop: "15px",
+              paddingTop: "20px",
+              color: "#94a3b8",
             }}
           >
             © 2026 ScaleWithClicks. All rights reserved.
