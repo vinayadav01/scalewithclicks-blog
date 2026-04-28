@@ -8,27 +8,38 @@ export const dynamic = "force-dynamic";
 export default function Home() {
   const dir = path.join(process.cwd(), "content/blog");
 
+  // ✅ If folder missing
   if (!fs.existsSync(dir)) {
     return <div style={{ padding: "40px" }}>No blog posts found</div>;
   }
 
-  const files = fs.readdirSync(dir);
+  // ✅ Only allow .md & .mdx files
+  const files = fs
+    .readdirSync(dir)
+    .filter((file) => file.endsWith(".md") || file.endsWith(".mdx"));
 
+  // ✅ Parse posts safely
   const posts = files.map((filename) => {
-    const filePath = path.join(dir, filename);
-    const file = fs.readFileSync(filePath, "utf8");
-    const { data } = matter(file);
+    try {
+      const filePath = path.join(dir, filename);
+      const file = fs.readFileSync(filePath, "utf8");
+      const { data } = matter(file);
 
-    return {
-      slug: filename.replace(".mdx", "").replace(".md", ""),
-      title: data.title || "No title",
-      date: data.date || "",
-      image: data.image || "",
-      category: data.category || "General",
-      description: data.description || "",
-    };
-  });
+      return {
+        slug: filename.replace(".mdx", "").replace(".md", ""),
+        title: data.title || "No title",
+        date: data.date || "1970-01-01",
+        image: data.image || "",
+        category: data.category || "General",
+        description: data.description || "",
+      };
+    } catch (err) {
+      console.error("Error reading file:", filename);
+      return null;
+    }
+  }).filter(Boolean);
 
+  // ✅ Sort safely
   posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
   const featuredPost = posts[0];
@@ -50,6 +61,7 @@ export default function Home() {
         <div style={{ marginTop: "20px" }}>
           <a
             href="https://calendly.com/vinayyadav01992"
+            target="_blank"
             style={{
               background: "#2563eb",
               color: "#fff",
@@ -150,7 +162,8 @@ export default function Home() {
               </Link>
 
               <div style={{ padding: "15px" }}>
-                <Link href={`/category/${categorySlug}.html`}>
+                {/* ✅ FIXED CATEGORY LINK */}
+                <Link href={`/category/${categorySlug}`}>
                   <p style={{ color: "#4f46e5", fontSize: "12px" }}>
                     {post.category}
                   </p>
@@ -182,6 +195,7 @@ export default function Home() {
 
         <a
           href="https://calendly.com/vinayyadav01992"
+          target="_blank"
           style={{
             background: "#2563eb",
             color: "#fff",
@@ -194,7 +208,6 @@ export default function Home() {
           🚀 Book Free Strategy Call
         </a>
       </div>
-
     </div>
   );
 }
