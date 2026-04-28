@@ -3,93 +3,208 @@ import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
-import remarkSlug from "remark-slug";
-import remarkToc from "remark-toc";
+import Link from "next/link";
 
-export const dynamic = "force-dynamic";
-
-export default async function Post({ params }) {
-  // ✅ Next.js 16 fix
-  const { slug } = await params;
-
+export default async function BlogPost({ params }) {
   const filePath = path.join(
     process.cwd(),
     "app/content/blog",
-    `${slug}.md`
+    `${params.slug}.md`
   );
-
-  if (!fs.existsSync(filePath)) {
-    return <h1 style={{ padding: "40px" }}>Post not found ❌</h1>;
-  }
 
   const file = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(file);
 
-  // ✅ Content
-  const processedContent = await remark()
-    .use(remarkSlug)
-    .use(html)
-    .process(content);
-
-  // ✅ TOC
-  const processedToc = await remark()
-    .use(remarkToc)
-    .use(html)
-    .process(content);
-
+  const processedContent = await remark().use(html).process(content);
   const contentHtml = processedContent.toString();
-  const tocHtml =
-    processedToc.toString().match(/<nav[\s\S]*?<\/nav>/)?.[0] || "";
 
-  const hasToc = !!tocHtml;
+  const categorySlug = data.category?.toLowerCase().replace(/\s+/g, "-");
 
   return (
-    <div style={{ padding: "40px 20px" }}>
+    <div style={{ maxWidth: "1200px", margin: "auto", padding: "40px 20px" }}>
       
-      {/* MAIN WRAPPER (KEY FIX) */}
-      <div style={{ maxWidth: "900px", margin: "auto" }}>
-        
-        {/* TITLE */}
-        <h1 style={{ fontSize: "38px", marginBottom: "10px" }}>
-          {data.title}
-        </h1>
-
-        {/* META */}
-        <p style={{ color: "#777", marginBottom: "30px" }}>
-          {data.date} • {data.author || "Vinay Yadav"}
-        </p>
-
-        {/* LAYOUT */}
+      {/* PROGRESS BAR */}
+      <div
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          height: "4px",
+          width: "100%",
+          background: "#e2e8f0",
+          zIndex: 999,
+        }}
+      >
         <div
-          className="blog-grid"
+          id="progressBar"
           style={{
-            display: hasToc ? "grid" : "block",
-            gridTemplateColumns: hasToc
-              ? "minmax(0, 1fr) 200px"   // 🔥 smaller sidebar
-              : "1fr",
-            gap: "30px",
-            alignItems: "start",
+            height: "100%",
+            width: "0%",
+            background: "#2563eb",
           }}
-        >
-          
-          {/* CONTENT (FULL WIDTH FIX) */}
-          <div className="blog-container">
-            <div
-              className="blog-content"
-              dangerouslySetInnerHTML={{ __html: contentHtml }}
-            />
-          </div>
+        ></div>
+      </div>
 
-          {/* SIDEBAR (ONLY IF EXISTS) */}
-          {hasToc && (
-            <div
-              className="toc-sidebar"
-              dangerouslySetInnerHTML={{ __html: tocHtml }}
+      <div style={{ display: "grid", gridTemplateColumns: "3fr 1fr", gap: "40px" }}>
+        
+        {/* MAIN CONTENT */}
+        <article>
+          
+          {/* CATEGORY */}
+          <Link href={`/category/${categorySlug}`}>
+            <span
+              style={{
+                background: "#e0e7ff",
+                color: "#3730a3",
+                padding: "6px 12px",
+                borderRadius: "20px",
+                fontSize: "12px",
+                fontWeight: "600",
+              }}
+            >
+              {data.category}
+            </span>
+          </Link>
+
+          {/* TITLE */}
+          <h1
+            style={{
+              fontSize: "42px",
+              fontWeight: "800",
+              marginTop: "20px",
+              lineHeight: "1.3",
+            }}
+          >
+            {data.title}
+          </h1>
+
+          {/* META */}
+          <p style={{ color: "#64748b", marginTop: "10px" }}>
+            {data.date} • By {data.author || "Admin"}
+          </p>
+
+          {/* FEATURED IMAGE */}
+          {data.image && (
+            <img
+              src={data.image}
+              alt={data.title}
+              style={{
+                width: "100%",
+                borderRadius: "16px",
+                margin: "30px 0",
+              }}
             />
           )}
 
-        </div>
+          {/* CONTENT */}
+          <div
+            dangerouslySetInnerHTML={{ __html: contentHtml }}
+            style={{
+              fontSize: "18px",
+              lineHeight: "1.8",
+              color: "#1e293b",
+            }}
+          ></div>
+
+          {/* CTA */}
+          <div
+            style={{
+              marginTop: "40px",
+              padding: "25px",
+              background: "#f1f5f9",
+              borderRadius: "12px",
+            }}
+          >
+            <h3>🚀 Want More Leads?</h3>
+            <p>
+              Get a proven strategy to scale your business using ads & SEO.
+            </p>
+            <a
+              href="https://calendly.com/vinayyadav01992"
+              style={{
+                display: "inline-block",
+                marginTop: "10px",
+                background: "#2563eb",
+                color: "#fff",
+                padding: "12px 16px",
+                borderRadius: "8px",
+                fontWeight: "600",
+              }}
+            >
+              Book Free Strategy Call
+            </a>
+          </div>
+
+        </article>
+
+        {/* SIDEBAR */}
+        <aside style={{ position: "sticky", top: "100px", height: "fit-content" }}>
+          
+          {/* QUICK CTA */}
+          <div
+            style={{
+              background: "#2563eb",
+              color: "#fff",
+              padding: "20px",
+              borderRadius: "12px",
+              marginBottom: "20px",
+            }}
+          >
+            <h3>🔥 Scale Faster</h3>
+            <p style={{ fontSize: "14px" }}>
+              Get expert help with Google Ads & SEO
+            </p>
+            <a
+              href="https://calendly.com/vinayyadav01992"
+              style={{
+                display: "inline-block",
+                marginTop: "10px",
+                background: "#fff",
+                color: "#2563eb",
+                padding: "10px 14px",
+                borderRadius: "8px",
+                fontWeight: "600",
+              }}
+            >
+              Book Call
+            </a>
+          </div>
+
+          {/* SERVICES */}
+          <div
+            style={{
+              border: "1px solid #eee",
+              padding: "20px",
+              borderRadius: "12px",
+            }}
+          >
+            <h4>Our Services</h4>
+
+            <div style={{ marginTop: "10px" }}>
+              <a href="https://scalewithclicks.com/services/google-ads-agency.html">Google Ads</a><br />
+              <a href="https://scalewithclicks.com/services/meta-ads-agency.html">Meta Ads</a><br />
+              <a href="https://scalewithclicks.com/services/seo-services.html">SEO</a><br />
+              <a href="https://scalewithclicks.com/services/conversion-tracking.html">Tracking</a>
+            </div>
+          </div>
+
+        </aside>
+
       </div>
+
+      {/* SCRIPT FOR PROGRESS BAR */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.onscroll = function() {
+              let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+              let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+              let scrolled = (winScroll / height) * 100;
+              document.getElementById("progressBar").style.width = scrolled + "%";
+            };
+          `,
+        }}
+      />
     </div>
   );
 }
