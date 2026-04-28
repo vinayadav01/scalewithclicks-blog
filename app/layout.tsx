@@ -69,7 +69,7 @@ export default function RootLayout({
     <img
       src="/logo.png" // 👈 put logo in public folder
       alt="ScaleWithClicks"
-      style={{ height: "40px" }}
+      style={{ height: "88px" }}
     />
   </Link>
 
