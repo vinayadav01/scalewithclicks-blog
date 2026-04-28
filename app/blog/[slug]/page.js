@@ -7,15 +7,19 @@ import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 
-export default async function BlogPost({ params }) {
+export default async function BlogPost(props) {
   try {
-    // ✅ FIX: ensure slug exists
-    if (!params || !params.slug) {
-      console.log("❌ No slug received:", params);
+    // ✅ FIX: get params safely
+    const slug = props?.params?.slug;
+
+    console.log("👉 PARAMS:", props?.params);
+
+    if (!slug) {
+      console.log("❌ Slug missing");
       return notFound();
     }
 
-    const slug = params.slug.toLowerCase();
+    const cleanSlug = slug.toLowerCase();
 
     const dir = path.join(process.cwd(), "content/blog");
 
@@ -30,11 +34,13 @@ export default async function BlogPost({ params }) {
       return file
         .replace(".md", "")
         .replace(".mdx", "")
-        .toLowerCase() === slug;
+        .toLowerCase() === cleanSlug;
     });
 
+    console.log("👉 MATCHED:", matchedFile);
+
     if (!matchedFile) {
-      console.log("❌ No matching file for:", slug);
+      console.log("❌ No matching file");
       return notFound();
     }
 
