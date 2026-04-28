@@ -1,107 +1,38 @@
----
-title: Terms and Conditions
----
+export default function TermsPage() {
+  return (
+    <div style={{ maxWidth: "800px", margin: "auto", padding: "40px 20px" }}>
+      
+      <h1 style={{ fontSize: "32px", marginBottom: "20px" }}>
+        Terms & Conditions
+      </h1>
 
-# Terms and Conditions
+      <p>Last updated: 2026</p>
 
-Last updated: April 2026
+      <h2>1. Use of Website</h2>
+      <p>
+        By using this website, you agree to follow all applicable laws and regulations.
+      </p>
 
-Welcome to ScaleWithClicks. By accessing this website, you agree to the following terms.
+      <h2>2. Intellectual Property</h2>
+      <p>
+        All content on this site is owned by ScaleWithClicks and cannot be reused without permission.
+      </p>
 
----
+      <h2>3. Limitation of Liability</h2>
+      <p>
+        We are not responsible for any losses resulting from the use of this website.
+      </p>
 
-## 1. Use of Website
+      <h2>4. External Links</h2>
+      <p>
+        We may link to external websites. We are not responsible for their content.
+      </p>
 
-You agree to use this website only for lawful purposes. You must not:
+      <h2>5. Changes</h2>
+      <p>
+        We may update these terms at any time.
+      </p>
 
-- Use the site for fraudulent activities
-- Attempt to hack or disrupt the website
-- Copy or reuse content without permission
-
----
-
-## 2. Services Disclaimer
-
-We provide digital marketing insights and services including:
-
-- Google Ads
-- Meta Ads
-- SEO
-- Lead generation strategies
-
-We do not guarantee specific results such as:
-- Exact number of leads
-- Revenue growth
-- ROI outcomes
-
-Results vary based on multiple factors.
-
----
-
-## 3. Intellectual Property
-
-All content on this website including:
-
-- Text
-- Images
-- Graphics
-- Branding
-
-is owned by ScaleWithClicks and cannot be copied or reused without permission.
-
----
-
-## 4. External Links
-
-Our website may contain links to third-party websites.
-
-We are not responsible for:
-- Their content
-- Their privacy policies
-- Their practices
-
----
-
-## 5. Limitation of Liability
-
-We are not liable for:
-
-- Business losses
-- Data loss
-- Indirect damages
-
-arising from the use of our website or services.
-
----
-
-## 6. Payments & Services
-
-If you purchase services:
-
-- Pricing will be clearly communicated
-- No guarantee of specific results
-- Refund policies (if any) will be defined separately
-
----
-
-## 7. Termination
-
-We reserve the right to:
-
-- Restrict access to the website
-- Terminate services if misuse is detected
-
----
-
-## 8. Changes to Terms
-
-We may update these terms at any time. Continued use of the website means you accept the updated terms.
-
----
-
-## 9. Contact Information
-
-For any questions:
-
-📧 scalewithclicks@gmail.com  
-🌐 https://scalewithclicks.com
+    </div>
+  );
+}
