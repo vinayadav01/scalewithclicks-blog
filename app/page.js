@@ -67,10 +67,10 @@ export default function Home() {
 
       {/* CATEGORY FILTERS */}
       <div style={{ textAlign: "center", marginBottom: "30px" }}>
-        <Link href="/category/google-ads.html">Google Ads</Link>{" | "}
-        <Link href="/category/meta-ads.html">Meta Ads</Link>{" | "}
-        <Link href="/category/seo.html">SEO</Link>{" | "}
-        <Link href="/category/lead-generation.html">Lead Generation</Link>
+        <Link href="/category/google-ads">Google Ads</Link>{" | "}
+        <Link href="/category/meta-ads">Meta Ads</Link>{" | "}
+        <Link href="/category/seo">SEO</Link>{" | "}
+        <Link href="/category/lead-generation">Lead Generation</Link>
       </div>
 
       {/* FEATURED POST */}
