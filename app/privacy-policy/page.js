@@ -62,7 +62,7 @@ export default function PrivacyPolicy() {
         <h3>Questions About Your Data?</h3>
         <p>Contact us and we’ll help you understand how your data is handled.</p>
         <a
-          href="mailto:your@email.com"
+          href="mailto:scalewithclicks@gmail.com"
           style={{
             display: "inline-block",
             marginTop: "10px",
