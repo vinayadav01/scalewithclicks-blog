@@ -5,7 +5,13 @@ export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 export default function Home() {
-  const posts = getPosts();
+  let posts = [];
+
+try {
+  posts = getPosts();
+} catch (err) {
+  console.error("Homepage error:", err);
+}
 
   if (!posts || posts.length === 0) {
     return <div style={{ padding: "40px" }}>No blog posts found</div>;
