@@ -6,11 +6,23 @@ import html from "remark-html";
 import Link from "next/link";
 
 export default async function BlogPost({ params }) {
+  const slug = params?.slug;
+
   const filePath = path.join(
     process.cwd(),
     "app/content/blog",
-    `${params.slug}.md`
+    `${slug}.md`
   );
+
+  // ✅ Prevent crash if file missing
+  if (!fs.existsSync(filePath)) {
+    return (
+      <div style={{ padding: "40px", textAlign: "center" }}>
+        <h2>Post not found</h2>
+        <Link href="/">← Back to Home</Link>
+      </div>
+    );
+  }
 
   const file = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(file);
@@ -18,11 +30,13 @@ export default async function BlogPost({ params }) {
   const processedContent = await remark().use(html).process(content);
   const contentHtml = processedContent.toString();
 
-  const categorySlug = data.category?.toLowerCase().replace(/\s+/g, "-");
+  const categorySlug = data.category
+    ?.toLowerCase()
+    .replace(/\s+/g, "-");
 
   return (
     <div style={{ maxWidth: "1200px", margin: "auto", padding: "40px 20px" }}>
-      
+
       {/* PROGRESS BAR */}
       <div
         style={{
@@ -42,29 +56,38 @@ export default async function BlogPost({ params }) {
             width: "0%",
             background: "#2563eb",
           }}
-        ></div>
+        />
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "3fr 1fr", gap: "40px" }}>
-        
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "3fr 1fr",
+          gap: "40px",
+        }}
+      >
+
         {/* MAIN CONTENT */}
         <article>
-          
+
           {/* CATEGORY */}
-          <Link href={`/category/${categorySlug}`}>
-            <span
-              style={{
-                background: "#e0e7ff",
-                color: "#3730a3",
-                padding: "6px 12px",
-                borderRadius: "20px",
-                fontSize: "12px",
-                fontWeight: "600",
-              }}
-            >
-              {data.category}
-            </span>
-          </Link>
+          {categorySlug && (
+            <Link href={`/category/${categorySlug}`}>
+              <span
+                style={{
+                  background: "#e0e7ff",
+                  color: "#3730a3",
+                  padding: "6px 12px",
+                  borderRadius: "20px",
+                  fontSize: "12px",
+                  fontWeight: "600",
+                  cursor: "pointer",
+                }}
+              >
+                {data.category}
+              </span>
+            </Link>
+          )}
 
           {/* TITLE */}
           <h1
@@ -104,7 +127,7 @@ export default async function BlogPost({ params }) {
               lineHeight: "1.8",
               color: "#1e293b",
             }}
-          ></div>
+          />
 
           {/* CTA */}
           <div
@@ -129,6 +152,7 @@ export default async function BlogPost({ params }) {
                 padding: "12px 16px",
                 borderRadius: "8px",
                 fontWeight: "600",
+                textDecoration: "none",
               }}
             >
               Book Free Strategy Call
@@ -138,8 +162,14 @@ export default async function BlogPost({ params }) {
         </article>
 
         {/* SIDEBAR */}
-        <aside style={{ position: "sticky", top: "100px", height: "fit-content" }}>
-          
+        <aside
+          style={{
+            position: "sticky",
+            top: "100px",
+            height: "fit-content",
+          }}
+        >
+
           {/* QUICK CTA */}
           <div
             style={{
@@ -164,6 +194,7 @@ export default async function BlogPost({ params }) {
                 padding: "10px 14px",
                 borderRadius: "8px",
                 fontWeight: "600",
+                textDecoration: "none",
               }}
             >
               Book Call
@@ -180,7 +211,7 @@ export default async function BlogPost({ params }) {
           >
             <h4>Our Services</h4>
 
-            <div style={{ marginTop: "10px" }}>
+            <div style={{ marginTop: "10px", lineHeight: "2" }}>
               <a href="https://scalewithclicks.com/services/google-ads-agency.html">Google Ads</a><br />
               <a href="https://scalewithclicks.com/services/meta-ads-agency.html">Meta Ads</a><br />
               <a href="https://scalewithclicks.com/services/seo-services.html">SEO</a><br />
@@ -189,19 +220,22 @@ export default async function BlogPost({ params }) {
           </div>
 
         </aside>
-
       </div>
 
-      {/* SCRIPT FOR PROGRESS BAR */}
+      {/* ✅ SAFE SCROLL SCRIPT */}
       <script
         dangerouslySetInnerHTML={{
           __html: `
-            window.onscroll = function() {
-              let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-              let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-              let scrolled = (winScroll / height) * 100;
-              document.getElementById("progressBar").style.width = scrolled + "%";
-            };
+            window.addEventListener("scroll", function() {
+              const bar = document.getElementById("progressBar");
+              if (!bar) return;
+
+              const winScroll = document.documentElement.scrollTop;
+              const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+              const scrolled = (winScroll / height) * 100;
+
+              bar.style.width = scrolled + "%";
+            });
           `,
         }}
       />
