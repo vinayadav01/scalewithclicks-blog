@@ -31,10 +31,22 @@ export default async function BlogPost({ params }) {
     console.log("👉 Files:", files);
 
     // ✅ MATCH FILE PROPERLY
-    const matchedFile = files.find((file) => {
-      const fileSlug = normalize(file.replace(/\.(md|mdx)$/, ""));
-      return fileSlug === slug;
-    });
+    let matchedFile = null;
+
+for (const file of files) {
+  const fileSlug = normalize(file.replace(/\.(md|mdx)$/, ""));
+
+  console.log("👉 Comparing:");
+  console.log("URL slug:", slug);
+  console.log("File slug:", fileSlug);
+
+  if (fileSlug === slug) {
+    matchedFile = file;
+    break;
+  }
+}
+
+console.log("✅ MATCHED FILE:", matchedFile);
 
     if (!matchedFile) {
       console.error("❌ No match for slug:", slug);
