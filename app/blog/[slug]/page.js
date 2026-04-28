@@ -4,28 +4,36 @@ import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
 import Link from "next/link";
+import { notFound } from "next/navigation";
+
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 
 export default async function BlogPost({ params }) {
   const slug = params?.slug;
 
   const dir = path.join(process.cwd(), "app/content/blog");
 
-  // ✅ Get all files
+  // ✅ Safety check
+  if (!fs.existsSync(dir)) {
+    return notFound();
+  }
+
   const files = fs.readdirSync(dir);
 
-  // ✅ Find correct file (FIXED)
-  const matchedFile = files.find((file) =>
-    file.replace(/\.(md|mdx)$/, "") === slug
-  );
+  // ✅ Normalize slug matching (VERY IMPORTANT)
+  const matchedFile = files.find((file) => {
+    const cleanName = file
+      .replace(/\.(md|mdx)$/, "")
+      .toLowerCase()
+      .trim();
+
+    return cleanName === slug?.toLowerCase().trim();
+  });
 
   // ❌ If not found
   if (!matchedFile) {
-    return (
-      <div style={{ padding: "40px", textAlign: "center" }}>
-        <h2>Post not found</h2>
-        <Link href="/">← Back to Home</Link>
-      </div>
-    );
+    return notFound();
   }
 
   const filePath = path.join(dir, matchedFile);
@@ -228,7 +236,7 @@ export default async function BlogPost({ params }) {
         </aside>
       </div>
 
-      {/* SCROLL BAR FIX */}
+      {/* ✅ SAFE CLIENT SCRIPT */}
       <script
         dangerouslySetInnerHTML={{
           __html: `
