@@ -1,3 +1,8 @@
 export default function Page({ params }) {
-  return <h1>{params.slug}</h1>;
+  return (
+    <div style={{ padding: 40 }}>
+      <h1>Slug:</h1>
+      <p>{params?.slug}</p>
+    </div>
+  );
 }
