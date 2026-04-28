@@ -3,47 +3,57 @@ import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+
 export default function CategoryPage({ params }) {
   const slug = params?.slug;
 
   const dir = path.join(process.cwd(), "app/content/blog");
 
-  // ✅ Prevent crash if folder missing
+  // ✅ Safety check
   if (!fs.existsSync(dir)) {
     return <div style={{ padding: "40px" }}>No posts found</div>;
   }
 
   const files = fs.readdirSync(dir);
 
-  const posts = files.map((filename) => {
-    try {
-      const filePath = path.join(dir, filename);
-      const file = fs.readFileSync(filePath, "utf8");
-      const { data } = matter(file);
+  const posts = files
+    .map((filename) => {
+      try {
+        const filePath = path.join(dir, filename);
+        const file = fs.readFileSync(filePath, "utf8");
+        const { data } = matter(file);
 
-      return {
-        slug: filename.replace(".md", ""),
-        title: data.title || "No title",
-        date: data.date || "",
-        image: data.image || "/images/default.jpg",
-        category: data.category || "General",
-      };
-    } catch (err) {
-      // ✅ Skip broken files safely
-      return null;
-    }
-  }).filter(Boolean);
+        return {
+          // ✅ FIX: support .md and .mdx
+          slug: filename.replace(/\.(md|mdx)$/, ""),
+          title: data.title || "No title",
+          date: data.date || "",
+          image: data.image || "/images/default.jpg",
+          category: data.category || "General",
+        };
+      } catch (err) {
+        return null;
+      }
+    })
+    .filter(Boolean);
 
-  // ✅ Strong normalization
+  // ✅ STRONG NORMALIZATION (IMPORTANT)
   const normalize = (str) =>
-    str?.toLowerCase().trim().replace(/\s+/g, "-");
+    str
+      ?.toString()
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9\s-]/g, "") // remove special chars
+      .replace(/\s+/g, "-");
 
   const filteredPosts = posts.filter(
     (post) => normalize(post.category) === normalize(slug)
   );
 
   return (
-    <div style={{ maxWidth: "1000px", margin: "auto", padding: "40px 20px" }}>
+    <div style={{ maxWidth: "1100px", margin: "auto", padding: "40px 20px" }}>
 
       {/* TITLE */}
       <h1
@@ -81,7 +91,14 @@ export default function CategoryPage({ params }) {
                 borderRadius: "12px",
                 overflow: "hidden",
                 transition: "0.3s",
+                cursor: "pointer",
               }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.transform = "translateY(-5px)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.transform = "translateY(0)")
+              }
             >
               <Link href={`/blog/${post.slug}`}>
                 <img
