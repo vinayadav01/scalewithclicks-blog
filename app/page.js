@@ -17,7 +17,7 @@ try {
     return <div style={{ padding: "40px" }}>No blog posts found</div>;
   }
 
-  const featured = posts[0];
+  const featured = posts?.[0];
   const restPosts = posts.slice(1);
 
   const categories = [...new Set(posts.map((p) => p.category))];
