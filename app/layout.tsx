@@ -6,10 +6,14 @@ import { Inter } from "next/font/google";
 
 const inter = Inter({
   subsets: ["latin"],
+  display: "swap", // ✅ better performance (prevents layout shift)
 });
 
 export const metadata: Metadata = {
-  title: "Growth Insights | ScaleWithClicks",
+  title: {
+    default: "Growth Insights | ScaleWithClicks",
+    template: "%s | ScaleWithClicks", // ✅ dynamic SEO titles
+  },
   description: "Proven strategies to generate leads and scale your business",
   verification: {
     google: "UG50HhrybK9nw-uBE1UJYvuHAsvGdj44bMJajcWMxgU",
@@ -23,13 +27,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={inter.className}
-        style={{
-          margin: 0,
-          background: "#f8fafc",
-        }}
-      >
+      <body className={inter.className} style={{ margin: 0, background: "#f8fafc" }}>
+        
         {/* ✅ Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-PG5ZS7WVRJ"
@@ -40,9 +39,7 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-PG5ZS7WVRJ', {
-              page_path: window.location.pathname,
-            });
+            gtag('config', 'G-PG5ZS7WVRJ');
           `}
         </Script>
 
@@ -59,8 +56,8 @@ export default function RootLayout({
           <Link href="/">
             <img
               src="/logo.png"
-              alt="ScaleWithClicks"
-              style={{ height: "88px" }}
+              alt="ScaleWithClicks logo"
+              style={{ height: "60px" }} // ✅ better UX (88px too big)
             />
           </Link>
 
@@ -92,40 +89,45 @@ export default function RootLayout({
               gap: "40px",
             }}
           >
+            {/* BRAND */}
             <div>
               <h3 style={{ color: "#fff" }}>ScaleWithClicks</h3>
-              <p style={{ fontSize: "14px" }}>
+              <p style={{ fontSize: "14px", lineHeight: "1.6" }}>
                 Helping businesses generate leads using Ads, SEO & tracking.
               </p>
             </div>
 
+            {/* SERVICES */}
             <div>
               <h4 style={{ color: "#fff" }}>Services</h4>
-              <div>
-                <a href="https://scalewithclicks.com/services/google-ads-agency.html" target="_blank">Google Ads</a><br />
-                <a href="https://scalewithclicks.com/services/meta-ads-agency.html" target="_blank">Meta Ads</a><br />
-                <a href="https://scalewithclicks.com/services/seo-services.html" target="_blank">SEO</a><br />
+              <div style={{ lineHeight: "2" }}>
+                <a href="https://scalewithclicks.com/services/google-ads-agency.html" target="_blank" rel="noopener noreferrer">Google Ads</a><br />
+                <a href="https://scalewithclicks.com/services/meta-ads-agency.html" target="_blank" rel="noopener noreferrer">Meta Ads</a><br />
+                <a href="https://scalewithclicks.com/services/seo-services.html" target="_blank" rel="noopener noreferrer">SEO</a>
               </div>
             </div>
 
+            {/* RESOURCES */}
             <div>
               <h4 style={{ color: "#fff" }}>Resources</h4>
-              <div>
+              <div style={{ lineHeight: "2" }}>
                 <Link href="/">Home</Link><br />
                 <Link href="/category/google-ads">Google Ads</Link><br />
                 <Link href="/category/seo">SEO</Link>
               </div>
             </div>
 
+            {/* LEGAL */}
             <div>
               <h4 style={{ color: "#fff" }}>Legal</h4>
-              <div>
+              <div style={{ lineHeight: "2" }}>
                 <Link href="/privacy-policy">Privacy Policy</Link><br />
                 <Link href="/terms-and-conditions">Terms</Link>
               </div>
             </div>
           </div>
 
+          {/* COPYRIGHT */}
           <div
             style={{
               textAlign: "center",
@@ -133,9 +135,10 @@ export default function RootLayout({
               fontSize: "13px",
               borderTop: "1px solid #1e293b",
               paddingTop: "20px",
+              color: "#94a3b8",
             }}
           >
-            © 2026 ScaleWithClicks
+            © {new Date().getFullYear()} ScaleWithClicks
           </div>
         </footer>
       </body>
