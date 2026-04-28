@@ -9,7 +9,7 @@ export const runtime = "nodejs";
 export default function CategoryPage({ params }) {
   const slug = params?.slug;
 
-  const dir = path.join(process.cwd(), "app/content/blog");
+  const dir = path.join(process.cwd(), "content/blog");
 
   // ✅ Safety check
   if (!fs.existsSync(dir)) {
