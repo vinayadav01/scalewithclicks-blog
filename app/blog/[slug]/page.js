@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 
+// normalize slug
 const normalize = (str) =>
   str
     ?.toLowerCase()
@@ -16,7 +17,15 @@ const normalize = (str) =>
 
 export default async function BlogPost({ params }) {
   try {
-    const slug = normalize(params?.slug);
+    // ✅ IMPORTANT FIX
+    const { slug: rawSlug } = await params;
+
+    if (!rawSlug) {
+      console.error("❌ slug missing");
+      return notFound();
+    }
+
+    const slug = normalize(rawSlug);
 
     const dir = path.join(process.cwd(), "content/blog");
 
@@ -30,7 +39,6 @@ export default async function BlogPost({ params }) {
     console.log("👉 URL SLUG:", slug);
     console.log("👉 FILES:", files);
 
-    // ✅ SUPER SAFE MATCH
     const matchedFile = files.find((file) => {
       const fileSlug = normalize(file);
       return fileSlug === slug;
@@ -54,6 +62,7 @@ export default async function BlogPost({ params }) {
     return (
       <div style={{ maxWidth: "900px", margin: "auto", padding: "40px 20px" }}>
         <h1>{data.title}</h1>
+
         <p style={{ color: "#666" }}>
           {data.date} • {data.author || "Admin"}
         </p>
@@ -62,7 +71,11 @@ export default async function BlogPost({ params }) {
           <img
             src={data.image}
             alt={data.title}
-            style={{ width: "100%", margin: "20px 0", borderRadius: "10px" }}
+            style={{
+              width: "100%",
+              margin: "20px 0",
+              borderRadius: "10px",
+            }}
           />
         )}
 
