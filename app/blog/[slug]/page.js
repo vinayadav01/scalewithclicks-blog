@@ -1,3 +1,8 @@
 export default function Page({ params }) {
-  return <h1>{params.slug}</h1>;
+  return (
+    <div>
+      <h1>DYNAMIC WORKING</h1>
+      <p>{JSON.stringify(params)}</p>
+    </div>
+  );
 }
