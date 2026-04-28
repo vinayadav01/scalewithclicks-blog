@@ -109,5 +109,5 @@ We may update this policy from time to time. Changes will be posted on this page
 
 If you have any questions, contact us:
 
-📧 your@email.com  
+📧 scalewithclicks@gmail.com  
 🌐 https://scalewithclicks.com
