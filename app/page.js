@@ -31,6 +31,8 @@ export default function Home() {
   posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
   const featured = posts[0];
+  const restPosts = posts.slice(1); // ✅ FIX: remove duplicate
+
   const categories = [...new Set(posts.map((p) => p.category))];
 
   return (
@@ -46,15 +48,15 @@ export default function Home() {
         </p>
       </div>
 
-      {/* FEATURED POST */}
+      {/* FEATURED */}
       {featured && (
         <div style={{ marginBottom: "40px" }}>
           <Link href={`/blog/${featured.slug}`}>
             <div style={{ position: "relative", cursor: "pointer" }}>
-              
               <img
                 src={featured.image}
                 alt={featured.title}
+                onError={(e) => (e.currentTarget.src = "/images/default.jpg")}
                 style={{
                   width: "100%",
                   height: "320px",
@@ -63,17 +65,15 @@ export default function Home() {
                 }}
               />
 
-              {/* DARK OVERLAY */}
               <div
                 style={{
                   position: "absolute",
                   inset: 0,
-                  background: "rgba(0,0,0,0.4)",
+                  background: "rgba(0,0,0,0.45)",
                   borderRadius: "16px",
                 }}
               />
 
-              {/* TEXT */}
               <div
                 style={{
                   position: "absolute",
@@ -92,6 +92,7 @@ export default function Home() {
                 >
                   Featured
                 </span>
+
                 <h2 style={{ fontSize: "28px", marginTop: "10px" }}>
                   {featured.title}
                 </h2>
@@ -107,11 +108,10 @@ export default function Home() {
           display: "grid",
           gridTemplateColumns: "2fr 1fr",
           gap: "30px",
-          alignItems: "start",
         }}
       >
 
-        {/* BLOG GRID */}
+        {/* POSTS */}
         <div
           style={{
             display: "grid",
@@ -119,10 +119,8 @@ export default function Home() {
             gap: "20px",
           }}
         >
-          {posts.map((post) => {
-            const categorySlug = post.category
-              .toLowerCase()
-              .replace(/\s+/g, "-");
+          {restPosts.map((post) => {
+            const categorySlug = post.category.toLowerCase().replace(/\s+/g, "-");
 
             return (
               <div
@@ -145,6 +143,7 @@ export default function Home() {
                   <img
                     src={post.image}
                     alt={post.title}
+                    onError={(e) => (e.currentTarget.src = "/images/default.jpg")}
                     style={{
                       width: "100%",
                       height: "180px",
@@ -176,7 +175,13 @@ export default function Home() {
         </div>
 
         {/* SIDEBAR */}
-        <div style={{ position: "sticky", top: "100px" }}>
+        <div
+          style={{
+            position: "sticky",
+            top: "100px",
+            height: "fit-content",
+          }}
+        >
 
           {/* CTA */}
           <div
@@ -186,18 +191,20 @@ export default function Home() {
               borderRadius: "16px",
               color: "#fff",
               marginBottom: "20px",
-              boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
             }}
           >
-            <h3 style={{ marginBottom: "10px" }}>🚀 Want More Leads?</h3>
-            <p style={{ fontSize: "14px", marginBottom: "15px" }}>
+            <h3>🚀 Want More Leads?</h3>
+            <p style={{ fontSize: "14px" }}>
               Get a free strategy to grow your business with ads & SEO
             </p>
 
             <a
               href="https://calendly.com/vinayyadav01992"
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
                 display: "inline-block",
+                marginTop: "10px",
                 padding: "12px 18px",
                 background: "#fff",
                 color: "#2563eb",
@@ -226,12 +233,7 @@ export default function Home() {
               return (
                 <div key={cat} style={{ marginTop: "10px" }}>
                   <Link href={`/category/${slug}`}>
-                    <span
-                      style={{
-                        color: "#2563eb",
-                        cursor: "pointer",
-                      }}
-                    >
+                    <span style={{ color: "#2563eb", cursor: "pointer" }}>
                       {cat}
                     </span>
                   </Link>
@@ -242,9 +244,11 @@ export default function Home() {
         </div>
       </div>
 
-      {/* STICKY CTA BUTTON */}
+      {/* FLOATING CTA */}
       <a
         href="https://calendly.com/vinayyadav01992"
+        target="_blank"
+        rel="noopener noreferrer"
         style={{
           position: "fixed",
           bottom: "20px",
