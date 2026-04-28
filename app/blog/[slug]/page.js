@@ -9,51 +9,68 @@ import { notFound } from "next/navigation";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
-// ✅ ONE normalize function ONLY
+// ✅ Strong normalize (handles everything)
 const normalize = (str) =>
-  str?.toLowerCase().trim().replace(/[\s_]+/g, "-");
+  str
+    ?.toLowerCase()
+    .trim()
+    .replace(/[\s_]+/g, "-")
+    .replace(/-+/g, "-");
 
 export default async function BlogPost({ params }) {
   try {
-    const slug = normalize(params?.slug);
+    console.log("👉 PARAMS:", params);
 
-    // ✅ CORRECT PATH (ROOT content folder)
+    if (!params?.slug) {
+      console.error("❌ No slug received");
+      return notFound();
+    }
+
+    const slug = normalize(params.slug);
+
+    // ✅ Correct path
     const dir = path.join(process.cwd(), "content/blog");
 
+    console.log("📁 BLOG DIR:", dir);
+
     if (!fs.existsSync(dir)) {
-      console.error("❌ Blog folder not found:", dir);
+      console.error("❌ Blog folder NOT FOUND");
       return notFound();
     }
 
     const files = fs.readdirSync(dir);
 
-    console.log("👉 URL slug:", slug);
-    console.log("👉 Files:", files);
+    console.log("📄 FILES:", files);
 
-    // ✅ MATCH FILE PROPERLY
+    if (!files.length) {
+      console.error("❌ No files inside blog folder");
+      return notFound();
+    }
+
     let matchedFile = null;
 
-for (const file of files) {
-  const fileSlug = normalize(file.replace(/\.(md|mdx)$/, ""));
+    for (const file of files) {
+      const fileSlug = normalize(file.replace(/\.(md|mdx)$/, ""));
 
-  console.log("👉 Comparing:");
-  console.log("URL slug:", slug);
-  console.log("File slug:", fileSlug);
+      console.log("🔍 Comparing:");
+      console.log("URL:", slug);
+      console.log("FILE:", fileSlug);
 
-  if (fileSlug === slug) {
-    matchedFile = file;
-    break;
-  }
-}
+      if (fileSlug === slug) {
+        matchedFile = file;
+        break;
+      }
+    }
 
-console.log("✅ MATCHED FILE:", matchedFile);
+    console.log("✅ MATCHED:", matchedFile);
 
     if (!matchedFile) {
-      console.error("❌ No match for slug:", slug);
+      console.error("❌ No matching blog found");
       return notFound();
     }
 
     const filePath = path.join(dir, matchedFile);
+
     const file = fs.readFileSync(filePath, "utf8");
 
     const { data, content } = matter(file);
@@ -66,85 +83,30 @@ console.log("✅ MATCHED FILE:", matchedFile);
     return (
       <div style={{ maxWidth: "1200px", margin: "auto", padding: "40px 20px" }}>
         
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "3fr 1fr",
-            gap: "40px",
-          }}
-        >
+        <div style={{ display: "grid", gridTemplateColumns: "3fr 1fr", gap: "40px" }}>
           
-          {/* MAIN CONTENT */}
           <article>
 
             {categorySlug && (
               <Link href={`/category/${categorySlug}`}>
-                <span
-                  style={{
-                    background: "#e0e7ff",
-                    padding: "6px 12px",
-                    borderRadius: "20px",
-                    fontSize: "12px",
-                  }}
-                >
-                  {data.category}
-                </span>
+                <span>{data.category}</span>
               </Link>
             )}
 
-            <h1 style={{ fontSize: "36px", marginTop: "20px" }}>
-              {data.title}
-            </h1>
+            <h1>{data.title}</h1>
 
-            <p style={{ color: "#64748b" }}>
-              {data.date} • {data.author || "Admin"}
-            </p>
+            <p>{data.date} • {data.author || "Admin"}</p>
 
-            {data.image && (
-              <img
-                src={data.image}
-                alt={data.title}
-                style={{
-                  width: "100%",
-                  borderRadius: "12px",
-                  margin: "20px 0",
-                }}
-              />
-            )}
+            {data.image && <img src={data.image} alt={data.title} />}
 
-            <div
-              dangerouslySetInnerHTML={{ __html: contentHtml }}
-              style={{
-                lineHeight: "1.8",
-                fontSize: "18px",
-              }}
-            />
+            <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
 
           </article>
 
-          {/* SIDEBAR */}
-          <aside style={{ position: "sticky", top: "100px" }}>
-            <div
-              style={{
-                background: "#2563eb",
-                color: "#fff",
-                padding: "20px",
-                borderRadius: "12px",
-              }}
-            >
+          <aside>
+            <div>
               <h3>🚀 Want More Leads?</h3>
-              <a
-                href="https://calendly.com/vinayyadav01992"
-                style={{
-                  display: "inline-block",
-                  marginTop: "10px",
-                  background: "#fff",
-                  color: "#2563eb",
-                  padding: "10px 14px",
-                  borderRadius: "8px",
-                  textDecoration: "none",
-                }}
-              >
+              <a href="https://calendly.com/vinayyadav01992">
                 Book Call
               </a>
             </div>
