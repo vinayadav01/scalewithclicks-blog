@@ -53,29 +53,101 @@ export default function RootLayout({
         {/* MAIN CONTENT */}
         <main style={{ flex: 1 }}>{children}</main>
 
-        {/* ✅ FOOTER (CORRECT POSITION) */}
+        {/* ✅ IMPROVED FOOTER */}
         <footer
           style={{
-            textAlign: "center",
-            padding: "20px",
-            borderTop: "1px solid #eee",
+            background: "#0f172a",
+            color: "#cbd5f5",
+            padding: "40px 20px",
             marginTop: "40px",
-            fontSize: "14px",
-            color: "#64748b",
           }}
         >
-          <div style={{ marginBottom: "8px" }}>
-            © 2026 ScaleWithClicks
+          <div
+            style={{
+              maxWidth: "1100px",
+              margin: "auto",
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+              gap: "30px",
+            }}
+          >
+            {/* BRAND */}
+            <div>
+              <h3 style={{ color: "#fff", marginBottom: "10px" }}>
+                ScaleWithClicks
+              </h3>
+              <p style={{ fontSize: "14px", lineHeight: "1.6" }}>
+                Helping businesses generate leads and scale with Google Ads,
+                Meta Ads, SEO, and conversion tracking systems.
+              </p>
+            </div>
+
+            {/* SERVICES */}
+            <div>
+              <h4 style={{ color: "#fff", marginBottom: "10px" }}>Services</h4>
+              <div style={{ fontSize: "14px", lineHeight: "2" }}>
+                <div>
+                  <a href="https://scalewithclicks.com/services/google-ads-agency.html">Google Ads</a>
+                </div>
+                <div>
+                  <a href="https://scalewithclicks.com/services/meta-ads-agency.html">Meta Ads</a>
+                </div>
+                <div>
+                  <a href="https://scalewithclicks.com/services/seo-services.html">SEO Services</a>
+                </div>
+                <div>
+                  <a href="https://scalewithclicks.com/services/conversion-tracking.html">Conversion Tracking</a>
+                </div>
+              </div>
+            </div>
+
+            {/* RESOURCES */}
+            <div>
+              <h4 style={{ color: "#fff", marginBottom: "10px" }}>Resources</h4>
+              <div style={{ fontSize: "14px", lineHeight: "2" }}>
+                <div>
+                  <a href="/">Home</a>
+                </div>
+                <div>
+                  <a href="/category/google-ads">Google Ads Blogs</a>
+                </div>
+                <div>
+                  <a href="/category/seo">SEO Blogs</a>
+                </div>
+                <div>
+                  <a href="/category/lead-generation">Lead Generation</a>
+                </div>
+              </div>
+            </div>
+
+            {/* LEGAL */}
+            <div>
+              <h4 style={{ color: "#fff", marginBottom: "10px" }}>Legal</h4>
+              <div style={{ fontSize: "14px", lineHeight: "2" }}>
+                <div>
+                  <a href="/privacy-policy">Privacy Policy</a>
+                </div>
+                <div>
+                  <a href="/terms-and-conditions">Terms & Conditions</a>
+                </div>
+                <div>
+                  <a href="/contact">Contact</a>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div>
-            <a href="/privacy-policy" style={{ marginRight: "10px" }}>
-              Privacy Policy
-            </a>
-            |
-            <a href="/terms-and-conditions" style={{ marginLeft: "10px" }}>
-              Terms & Conditions
-            </a>
+          {/* BOTTOM BAR */}
+          <div
+            style={{
+              textAlign: "center",
+              marginTop: "30px",
+              fontSize: "13px",
+              borderTop: "1px solid #1e293b",
+              paddingTop: "15px",
+            }}
+          >
+            © 2026 ScaleWithClicks. All rights reserved.
           </div>
         </footer>
       </body>
