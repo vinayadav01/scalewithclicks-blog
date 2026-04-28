@@ -223,3 +223,7 @@ body {
     font-size: 16px;
   }
 }
+
+footer a:hover {
+  color: #60a5fa;
+}
