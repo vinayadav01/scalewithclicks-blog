@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
@@ -55,6 +56,30 @@ export default function RootLayout({
           `}
         </Script>
 
+   <header
+  style={{
+    padding: "20px",
+    borderBottom: "1px solid #eee",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+  }}
+>
+  <Link href="/">
+    <img
+      src="/logo.png" // 👈 put logo in public folder
+      alt="ScaleWithClicks"
+      style={{ height: "40px" }}
+    />
+  </Link>
+
+  <nav>
+    <Link href="/" style={{ marginRight: "15px" }}>Home</Link>
+    <Link href="/category/google-ads" style={{ marginRight: "15px" }}>Google Ads</Link>
+    <Link href="/category/seo">SEO</Link>
+  </nav>
+</header>     
+        
         {/* MAIN CONTENT */}
         <main style={{ minHeight: "80vh" }}>{children}</main>
 
