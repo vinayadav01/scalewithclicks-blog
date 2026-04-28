@@ -174,27 +174,35 @@ export default function Home() {
       </div>
 
       {/* BOTTOM CTA */}
-      <div style={{ textAlign: "center", marginTop: "50px" }}>
-        <h2>Want More Leads & Sales?</h2>
-        <p style={{ color: "#666" }}>
-          Get a custom growth strategy for your business.
-        </p>
+      <div
+  style={{
+    marginTop: "60px", // 👈 increase spacing
+    padding: "30px",
+    background: "#f1f5f9",
+    borderRadius: "12px",
+    textAlign: "center",
+    clear: "both", // 👈 prevents overlap
+  }}
+>
+  <h3>Want More Leads & Sales?</h3>
+  <p>Get a custom growth strategy for your business.</p>
 
-        <a
-          href="https://calendly.com/vinayyadav01992"
-          style={{
-            background: "#2563eb",
-            color: "#fff",
-            padding: "12px 22px",
-            borderRadius: "8px",
-            textDecoration: "none",
-            fontWeight: "600",
-          }}
-        >
-          🚀 Book Free Strategy Call
-        </a>
+  <a
+    href="https://calendly.com/vinayyadav01992"
+    style={{
+      display: "inline-block",
+      marginTop: "15px",
+      background: "#2563eb",
+      color: "#fff",
+      padding: "12px 18px",
+      borderRadius: "8px",
+      fontWeight: "600",
+      textDecoration: "none",
+    }}
+  >
+    🚀 Book Free Strategy Call
+  </a>
+</div>
       </div>
-
-    </div>
   );
 }
