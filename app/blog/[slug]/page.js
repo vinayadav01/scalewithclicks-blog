@@ -7,63 +7,49 @@ import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 
-// normalize slug
-const normalize = (str) =>
-  str
-    ?.toLowerCase()
-    .trim()
-    .replace(/\.mdx?$/, "")
-    .replace(/\s+/g, "-");
-
 export default async function BlogPost({ params }) {
   try {
-    // ✅ IMPORTANT FIX
-    const { slug: rawSlug } = await params;
-
-    if (!rawSlug) {
-      console.error("❌ slug missing");
+    // ✅ FIX: ensure slug exists
+    if (!params || !params.slug) {
+      console.log("❌ No slug received:", params);
       return notFound();
     }
 
-    const slug = normalize(rawSlug);
+    const slug = params.slug.toLowerCase();
 
     const dir = path.join(process.cwd(), "content/blog");
 
     if (!fs.existsSync(dir)) {
-      console.error("❌ Blog folder missing:", dir);
+      console.log("❌ Blog folder missing");
       return notFound();
     }
 
     const files = fs.readdirSync(dir);
 
-    console.log("👉 URL SLUG:", slug);
-    console.log("👉 FILES:", files);
-
     const matchedFile = files.find((file) => {
-      const fileSlug = normalize(file);
-      return fileSlug === slug;
+      return file
+        .replace(".md", "")
+        .replace(".mdx", "")
+        .toLowerCase() === slug;
     });
 
-    console.log("✅ MATCHED FILE:", matchedFile);
-
     if (!matchedFile) {
-      console.error("❌ No matching blog found");
+      console.log("❌ No matching file for:", slug);
       return notFound();
     }
 
     const filePath = path.join(dir, matchedFile);
-    const file = fs.readFileSync(filePath, "utf8");
+    const fileContent = fs.readFileSync(filePath, "utf8");
 
-    const { data, content } = matter(file);
+    const { data, content } = matter(fileContent);
 
     const processedContent = await remark().use(html).process(content);
-    const contentHtml = processedContent.toString();
 
     return (
-      <div style={{ maxWidth: "900px", margin: "auto", padding: "40px 20px" }}>
+      <div style={{ maxWidth: "900px", margin: "auto", padding: "40px" }}>
         <h1>{data.title}</h1>
 
-        <p style={{ color: "#666" }}>
+        <p>
           {data.date} • {data.author || "Admin"}
         </p>
 
@@ -71,19 +57,19 @@ export default async function BlogPost({ params }) {
           <img
             src={data.image}
             alt={data.title}
-            style={{
-              width: "100%",
-              margin: "20px 0",
-              borderRadius: "10px",
-            }}
+            style={{ width: "100%", margin: "20px 0" }}
           />
         )}
 
-        <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
+        <div
+          dangerouslySetInnerHTML={{
+            __html: processedContent.toString(),
+          }}
+        />
       </div>
     );
   } catch (err) {
-    console.error("🔥 BLOG ERROR:", err);
+    console.error("🔥 ERROR:", err);
     return notFound();
   }
 }
