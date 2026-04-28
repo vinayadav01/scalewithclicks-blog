@@ -8,14 +8,18 @@ import Link from "next/link";
 export default async function BlogPost({ params }) {
   const slug = params?.slug;
 
-  const filePath = path.join(
-    process.cwd(),
-    "app/content/blog",
-    `${slug}.md`
+  const dir = path.join(process.cwd(), "app/content/blog");
+
+  // ✅ Get all files
+  const files = fs.readdirSync(dir);
+
+  // ✅ Find correct file (FIXED)
+  const matchedFile = files.find((file) =>
+    file.replace(/\.(md|mdx)$/, "") === slug
   );
 
-  // ✅ Prevent crash if file missing
-  if (!fs.existsSync(filePath)) {
+  // ❌ If not found
+  if (!matchedFile) {
     return (
       <div style={{ padding: "40px", textAlign: "center" }}>
         <h2>Post not found</h2>
@@ -24,7 +28,9 @@ export default async function BlogPost({ params }) {
     );
   }
 
+  const filePath = path.join(dir, matchedFile);
   const file = fs.readFileSync(filePath, "utf8");
+
   const { data, content } = matter(file);
 
   const processedContent = await remark().use(html).process(content);
@@ -106,7 +112,7 @@ export default async function BlogPost({ params }) {
             {data.date} • By {data.author || "Admin"}
           </p>
 
-          {/* FEATURED IMAGE */}
+          {/* IMAGE */}
           {data.image && (
             <img
               src={data.image}
@@ -170,7 +176,7 @@ export default async function BlogPost({ params }) {
           }}
         >
 
-          {/* QUICK CTA */}
+          {/* CTA */}
           <div
             style={{
               background: "#2563eb",
@@ -222,7 +228,7 @@ export default async function BlogPost({ params }) {
         </aside>
       </div>
 
-      {/* ✅ SAFE SCROLL SCRIPT */}
+      {/* SCROLL BAR FIX */}
       <script
         dangerouslySetInnerHTML={{
           __html: `
