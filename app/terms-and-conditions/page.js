@@ -1,38 +1,88 @@
+export const metadata = {
+  title: "Terms & Conditions | ScaleWithClicks",
+  description: "Read the terms and conditions for using ScaleWithClicks website and services.",
+};
+
 export default function TermsPage() {
   return (
-    <div style={{ maxWidth: "800px", margin: "auto", padding: "40px 20px" }}>
+    <div style={{ maxWidth: "900px", margin: "auto", padding: "60px 20px" }}>
       
-      <h1 style={{ fontSize: "32px", marginBottom: "20px" }}>
+      {/* HEADER */}
+      <h1 style={{ fontSize: "38px", fontWeight: "800", marginBottom: "10px" }}>
         Terms & Conditions
       </h1>
-
-      <p>Last updated: 2026</p>
-
-      <h2>1. Use of Website</h2>
-      <p>
-        By using this website, you agree to follow all applicable laws and regulations.
+      <p style={{ color: "#64748b", marginBottom: "40px" }}>
+        Last updated: April 2026
       </p>
 
-      <h2>2. Intellectual Property</h2>
-      <p>
-        All content on this site is owned by ScaleWithClicks and cannot be reused without permission.
-      </p>
+      {/* INTRO BOX */}
+      <div style={{ background: "#f8fafc", padding: "20px", borderRadius: "12px", marginBottom: "30px" }}>
+        <p>
+          By accessing this website, you agree to comply with and be bound by the following terms and conditions.
+        </p>
+      </div>
 
-      <h2>3. Limitation of Liability</h2>
-      <p>
-        We are not responsible for any losses resulting from the use of this website.
-      </p>
+      {/* SECTIONS */}
+      <Section title="1. Use of Website">
+        You agree to use this website only for lawful purposes and in a way that does not infringe the rights of others.
+      </Section>
 
-      <h2>4. External Links</h2>
-      <p>
-        We may link to external websites. We are not responsible for their content.
-      </p>
+      <Section title="2. Intellectual Property">
+        All content, including text, graphics, and branding, is the property of ScaleWithClicks and may not be reused without permission.
+      </Section>
 
-      <h2>5. Changes</h2>
-      <p>
-        We may update these terms at any time.
-      </p>
+      <Section title="3. Services Disclaimer">
+        We do not guarantee specific results from marketing services. Results depend on multiple external factors.
+      </Section>
 
+      <Section title="4. External Links">
+        Our website may contain links to third-party websites. We are not responsible for their content or practices.
+      </Section>
+
+      <Section title="5. Limitation of Liability">
+        We are not liable for any direct or indirect damages resulting from the use of this website.
+      </Section>
+
+      <Section title="6. Changes to Terms">
+        We may update these terms at any time. Continued use of the website means you accept the updated terms.
+      </Section>
+
+      {/* CTA */}
+      <div style={{
+        marginTop: "50px",
+        padding: "25px",
+        background: "#2563eb",
+        color: "#fff",
+        borderRadius: "12px"
+      }}>
+        <h3>Need Help Growing Your Business?</h3>
+        <p>Get a free strategy call to scale your leads and revenue.</p>
+        <a
+          href="https://calendly.com/vinayyadav01992"
+          style={{
+            display: "inline-block",
+            marginTop: "10px",
+            background: "#fff",
+            color: "#2563eb",
+            padding: "10px 14px",
+            borderRadius: "8px",
+            fontWeight: "600"
+          }}
+        >
+          Book Free Call
+        </a>
+      </div>
+
+    </div>
+  );
+}
+
+/* REUSABLE SECTION COMPONENT */
+function Section({ title, children }) {
+  return (
+    <div style={{ marginBottom: "30px" }}>
+      <h2 style={{ fontSize: "22px", marginBottom: "10px" }}>{title}</h2>
+      <p style={{ color: "#475569", lineHeight: "1.7" }}>{children}</p>
     </div>
   );
 }
