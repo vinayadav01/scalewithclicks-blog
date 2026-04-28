@@ -16,29 +16,24 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Growth Insights | ScaleWithClicks",
   description: "Proven strategies to generate leads and scale your business",
+  verification: {
+    google: "UG50HhrybK9nw-uBE1UJYvuHAsvGdj44bMJajcWMxgU",
+  },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      {/* ✅ ADD HEAD HERE */}
-      <head>
-        <meta
-          name="google-site-verification"
-          content="UG50HhrybK9nw-uBE1UJYvuHAsvGdj44bMJajcWMxgU"
-        />
-      </head>
-
       <body className="min-h-full flex flex-col">
 
-        {/* ✅ Google Analytics (BLOG PROPERTY) */}
+        {/* ✅ Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-PG5ZS7WVRJ"
           strategy="afterInteractive"
@@ -50,13 +45,39 @@ export default function RootLayout({
             gtag('js', new Date());
 
             gtag('config', 'G-PG5ZS7WVRJ', {
-              page_title: document.title,
-              page_location: window.location.href,
+              page_path: window.location.pathname,
             });
           `}
         </Script>
 
-        {children}
+        {/* MAIN CONTENT */}
+        <main style={{ flex: 1 }}>{children}</main>
+
+        {/* ✅ FOOTER (CORRECT POSITION) */}
+        <footer
+          style={{
+            textAlign: "center",
+            padding: "20px",
+            borderTop: "1px solid #eee",
+            marginTop: "40px",
+            fontSize: "14px",
+            color: "#64748b",
+          }}
+        >
+          <div style={{ marginBottom: "8px" }}>
+            © 2026 ScaleWithClicks
+          </div>
+
+          <div>
+            <a href="/privacy-policy" style={{ marginRight: "10px" }}>
+              Privacy Policy
+            </a>
+            |
+            <a href="/terms-and-conditions" style={{ marginLeft: "10px" }}>
+              Terms & Conditions
+            </a>
+          </div>
+        </footer>
       </body>
     </html>
   );
