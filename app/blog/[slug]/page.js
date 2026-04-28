@@ -26,10 +26,22 @@ export default async function BlogPost({ params }) {
 
     const files = fs.readdirSync(dir);
 
-    const matchedFile = files.find((file) => {
-      const clean = normalize(file.replace(/\.(md|mdx)$/, ""));
-      return clean === slug;
-    });
+   console.log("👉 URL slug:", slug);
+console.log("👉 Files:", files); 
+    
+    const normalize = (str) =>
+  str
+    ?.toLowerCase()
+    .trim()
+    .replace(/[\s_]+/g, "-");
+
+const matchedFile = files.find((file) => {
+  const cleanName = normalize(
+    file.replace(/\.(md|mdx)$/, "")
+  );
+
+  return cleanName === normalize(slug);
+});
 
     if (!matchedFile) {
       console.error("Post not found for slug:", slug);
