@@ -16,9 +16,6 @@ export default function Home() {
 
   const categories = [...new Set(posts.map((p) => p.category))];
 
-  const createSlug = (text) =>
-    text?.toLowerCase().replace(/\s+/g, "-");
-
   return (
     <div style={{ maxWidth: "1200px", margin: "auto", padding: "40px 20px" }}>
       
@@ -104,56 +101,53 @@ export default function Home() {
             gap: "20px",
           }}
         >
-          {restPosts.map((post) => {
-            const categorySlug = createSlug(post.category);
+          {restPosts.map((post) => (
+            <div
+              key={post.slug}
+              style={{
+                border: "1px solid #eee",
+                borderRadius: "12px",
+                overflow: "hidden",
+                transition: "0.3s",
+                cursor: "pointer",
+              }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.transform = "translateY(-5px)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.transform = "translateY(0)")
+              }
+            >
+              <Link href={`/blog/${post.slug}`}>
+                <img
+                  src={post.image || "/images/default.jpg"}
+                  alt={post.title}
+                  style={{
+                    width: "100%",
+                    height: "180px",
+                    objectFit: "cover",
+                  }}
+                />
+              </Link>
 
-            return (
-              <div
-                key={post.slug}
-                style={{
-                  border: "1px solid #eee",
-                  borderRadius: "12px",
-                  overflow: "hidden",
-                  transition: "0.3s",
-                  cursor: "pointer",
-                }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.transform = "translateY(-5px)")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.transform = "translateY(0)")
-                }
-              >
-                <Link href={`/blog/${post.slug}`}>
-                  <img
-                    src={post.image || "/images/default.jpg"}
-                    alt={post.title}
-                    style={{
-                      width: "100%",
-                      height: "180px",
-                      objectFit: "cover",
-                    }}
-                  />
+              <div style={{ padding: "15px" }}>
+                {/* ✅ USE SAME categorySlug FROM DATA */}
+                <Link href={`/category/${post.categorySlug}`}>
+                  <p style={{ color: "#2563eb", fontSize: "12px" }}>
+                    {post.category}
+                  </p>
                 </Link>
 
-                <div style={{ padding: "15px" }}>
-                  <Link href={`/category/${categorySlug}`}>
-                    <p style={{ color: "#2563eb", fontSize: "12px" }}>
-                      {post.category}
-                    </p>
-                  </Link>
+                <Link href={`/blog/${post.slug}`}>
+                  <h3 style={{ margin: "5px 0" }}>{post.title}</h3>
+                </Link>
 
-                  <Link href={`/blog/${post.slug}`}>
-                    <h3 style={{ margin: "5px 0" }}>{post.title}</h3>
-                  </Link>
-
-                  <p style={{ fontSize: "13px", color: "#999" }}>
-                    {post.date}
-                  </p>
-                </div>
+                <p style={{ fontSize: "13px", color: "#999" }}>
+                  {post.date}
+                </p>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
 
         {/* SIDEBAR */}
@@ -197,7 +191,7 @@ export default function Home() {
             <h3>Categories</h3>
 
             {categories.map((cat) => {
-              const slug = createSlug(cat);
+              const slug = cat.toLowerCase().replace(/\s+/g, "-");
 
               return (
                 <div key={cat} style={{ marginTop: "8px" }}>
