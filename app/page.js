@@ -40,7 +40,11 @@ export default function Home() {
   }).filter(Boolean);
 
   // ✅ Sort safely
-  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+  posts.sort((a, b) => {
+  const dateA = new Date(a.date).getTime() || 0;
+  const dateB = new Date(b.date).getTime() || 0;
+  return dateB - dateA;
+});
 
   const featuredPost = posts[0];
   const restPosts = posts.slice(1);
@@ -59,9 +63,10 @@ export default function Home() {
 
         {/* CTA */}
         <div style={{ marginTop: "20px" }}>
-          <a
-            href="https://calendly.com/vinayyadav01992"
-            target="_blank"
+         <a
+  href="https://calendly.com/vinayyadav01992"
+  target="_blank"
+  rel="noopener noreferrer"
             style={{
               background: "#2563eb",
               color: "#fff",
@@ -134,9 +139,9 @@ export default function Home() {
         }}
       >
         {restPosts.map((post) => {
-          const categorySlug = post.category
-            ?.toLowerCase()
-            .replace(/\s+/g, "-");
+         const categorySlug = (post.category || "general")
+  .toLowerCase()
+  .replace(/\s+/g, "-");
 
           return (
             <div
@@ -193,9 +198,10 @@ export default function Home() {
           Get a custom growth strategy for your business.
         </p>
 
-        <a
-          href="https://calendly.com/vinayyadav01992"
-          target="_blank"
+      <a
+  href="https://calendly.com/vinayyadav01992"
+  target="_blank"
+  rel="noopener noreferrer"
           style={{
             background: "#2563eb",
             color: "#fff",
