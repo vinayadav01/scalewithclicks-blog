@@ -3,7 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static"; // ✅ SEO + static build
 
 export default function Home() {
   const dir = path.join(process.cwd(), "content/blog");
@@ -19,32 +19,34 @@ export default function Home() {
     .filter((file) => file.endsWith(".md") || file.endsWith(".mdx"));
 
   // ✅ Parse posts safely
-  const posts = files.map((filename) => {
-    try {
-      const filePath = path.join(dir, filename);
-      const file = fs.readFileSync(filePath, "utf8");
-      const { data } = matter(file);
+  const posts = files
+    .map((filename) => {
+      try {
+        const filePath = path.join(dir, filename);
+        const file = fs.readFileSync(filePath, "utf8");
+        const { data } = matter(file);
 
-      return {
-        slug: filename.replace(".mdx", "").replace(".md", ""),
-        title: data.title || "No title",
-        date: data.date || "1970-01-01",
-        image: data.image || "",
-        category: data.category || "General",
-        description: data.description || "",
-      };
-    } catch (err) {
-      console.error("Error reading file:", filename);
-      return null;
-    }
-  }).filter(Boolean);
+        return {
+          slug: filename.replace(".mdx", "").replace(".md", ""),
+          title: data.title || "No title",
+          date: data.date || "1970-01-01",
+          image: data.image || "",
+          category: data.category || "General",
+          description: data.description || "",
+        };
+      } catch (err) {
+        console.error("Error reading file:", filename);
+        return null;
+      }
+    })
+    .filter(Boolean);
 
   // ✅ Sort safely
   posts.sort((a, b) => {
-  const dateA = new Date(a.date).getTime() || 0;
-  const dateB = new Date(b.date).getTime() || 0;
-  return dateB - dateA;
-});
+    const dateA = new Date(a.date).getTime() || 0;
+    const dateB = new Date(b.date).getTime() || 0;
+    return dateB - dateA;
+  });
 
   const featuredPost = posts[0];
   const restPosts = posts.slice(1);
@@ -63,10 +65,10 @@ export default function Home() {
 
         {/* CTA */}
         <div style={{ marginTop: "20px" }}>
-         <a
-  href="https://calendly.com/vinayyadav01992"
-  target="_blank"
-  rel="noopener noreferrer"
+          <a
+            href="https://calendly.com/vinayyadav01992"
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
               background: "#2563eb",
               color: "#fff",
@@ -101,13 +103,11 @@ export default function Home() {
           }}
         >
           <Link href={`/blog/${featuredPost.slug}`}>
-            {featuredPost.image && (
-              <img
-                src={featuredPost.image}
-                alt={featuredPost.title}
-                style={{ width: "100%", height: "320px", objectFit: "cover" }}
-              />
-            )}
+            <img
+              src={featuredPost.image || "/default.jpg"} // ✅ fallback
+              alt={featuredPost.title}
+              style={{ width: "100%", height: "320px", objectFit: "cover" }}
+            />
           </Link>
 
           <div style={{ padding: "20px" }}>
@@ -124,7 +124,7 @@ export default function Home() {
             </p>
 
             <p style={{ fontSize: "13px", color: "#999" }}>
-              {featuredPost.date}
+              {new Date(featuredPost.date).toLocaleDateString()} {/* ✅ fixed */}
             </p>
           </div>
         </div>
@@ -139,9 +139,9 @@ export default function Home() {
         }}
       >
         {restPosts.map((post) => {
-         const categorySlug = (post.category || "general")
-  .toLowerCase()
-  .replace(/\s+/g, "-");
+          const categorySlug = (post.category || "general")
+            .toLowerCase()
+            .replace(/\s+/g, "-");
 
           return (
             <div
@@ -153,21 +153,18 @@ export default function Home() {
               }}
             >
               <Link href={`/blog/${post.slug}`}>
-                {post.image && (
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    style={{
-                      width: "100%",
-                      height: "180px",
-                      objectFit: "cover",
-                    }}
-                  />
-                )}
+                <img
+                  src={post.image || "/default.jpg"} // ✅ fallback
+                  alt={post.title}
+                  style={{
+                    width: "100%",
+                    height: "180px",
+                    objectFit: "cover",
+                  }}
+                />
               </Link>
 
               <div style={{ padding: "15px" }}>
-                {/* ✅ FIXED CATEGORY LINK */}
                 <Link href={`/category/${categorySlug}`}>
                   <p style={{ color: "#4f46e5", fontSize: "12px" }}>
                     {post.category}
@@ -183,7 +180,7 @@ export default function Home() {
                 </p>
 
                 <p style={{ fontSize: "13px", color: "#999" }}>
-                  {post.date}
+                  {new Date(post.date).toLocaleDateString()} {/* ✅ fixed */}
                 </p>
               </div>
             </div>
@@ -198,10 +195,10 @@ export default function Home() {
           Get a custom growth strategy for your business.
         </p>
 
-      <a
-  href="https://calendly.com/vinayyadav01992"
-  target="_blank"
-  rel="noopener noreferrer"
+        <a
+          href="https://calendly.com/vinayyadav01992"
+          target="_blank"
+          rel="noopener noreferrer"
           style={{
             background: "#2563eb",
             color: "#fff",
