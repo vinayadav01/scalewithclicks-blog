@@ -3,22 +3,19 @@ import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
 
-export const dynamic = "force-dynamic"; // ✅ SEO + static build
+export const dynamic = "force-dynamic";
 
 export default function Home() {
   const dir = path.join(process.cwd(), "content/blog");
 
-  // ✅ If folder missing
   if (!fs.existsSync(dir)) {
     return <div style={{ padding: "40px" }}>No blog posts found</div>;
   }
 
-  // ✅ Only allow .md & .mdx files
   const files = fs
     .readdirSync(dir)
     .filter((file) => file.endsWith(".md") || file.endsWith(".mdx"));
 
-  // ✅ Parse posts safely
   const posts = files
     .map((filename) => {
       try {
@@ -41,7 +38,6 @@ export default function Home() {
     })
     .filter(Boolean);
 
-  // ✅ Sort safely
   posts.sort((a, b) => {
     const dateA = new Date(a.date).getTime() || 0;
     const dateB = new Date(b.date).getTime() || 0;
@@ -63,7 +59,6 @@ export default function Home() {
           Google Ads, SEO, Lead Generation & Conversion Strategies
         </p>
 
-        {/* CTA */}
         <div style={{ marginTop: "20px" }}>
           <a
             href="https://calendly.com/vinayyadav01992"
@@ -104,7 +99,7 @@ export default function Home() {
         >
           <Link href={`/blog/${featuredPost.slug}`}>
             <img
-              src={featuredPost.image || "/default.jpg"} // ✅ fallback
+              src={featuredPost.image || "/default.jpg"}
               alt={featuredPost.title}
               style={{ width: "100%", height: "320px", objectFit: "cover" }}
             />
@@ -124,7 +119,7 @@ export default function Home() {
             </p>
 
             <p style={{ fontSize: "13px", color: "#999" }}>
-              {new Date(featuredPost.date).toLocaleDateString()} {/* ✅ fixed */}
+              {new Date(featuredPost.date).toLocaleDateString()}
             </p>
           </div>
         </div>
@@ -136,6 +131,7 @@ export default function Home() {
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
           gap: "25px",
+          marginBottom: "70px", // ✅ FIXED SPACING
         }}
       >
         {restPosts.map((post) => {
@@ -154,7 +150,7 @@ export default function Home() {
             >
               <Link href={`/blog/${post.slug}`}>
                 <img
-                  src={post.image || "/default.jpg"} // ✅ fallback
+                  src={post.image || "/default.jpg"}
                   alt={post.title}
                   style={{
                     width: "100%",
@@ -180,7 +176,7 @@ export default function Home() {
                 </p>
 
                 <p style={{ fontSize: "13px", color: "#999" }}>
-                  {new Date(post.date).toLocaleDateString()} {/* ✅ fixed */}
+                  {new Date(post.date).toLocaleDateString()}
                 </p>
               </div>
             </div>
@@ -189,7 +185,14 @@ export default function Home() {
       </div>
 
       {/* BOTTOM CTA */}
-      <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <div
+        style={{
+          textAlign: "center",
+          marginTop: "80px",
+          paddingTop: "20px",
+          borderTop: "1px solid #eee", // ✅ extra separation
+        }}
+      >
         <h2>Want More Leads & Sales?</h2>
         <p style={{ color: "#666" }}>
           Get a custom growth strategy for your business.
@@ -206,6 +209,8 @@ export default function Home() {
             borderRadius: "8px",
             textDecoration: "none",
             fontWeight: "600",
+            display: "inline-block",
+            marginTop: "10px",
           }}
         >
           🚀 Book Free Strategy Call
