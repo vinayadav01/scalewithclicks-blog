@@ -3,7 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
 
-export const dynamic = "force-static"; // ✅ SEO + static build
+export const dynamic = "force-dynamic"; // ✅ SEO + static build
 
 export default function Home() {
   const dir = path.join(process.cwd(), "content/blog");
