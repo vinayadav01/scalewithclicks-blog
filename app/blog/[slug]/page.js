@@ -45,10 +45,7 @@ export default async function BlogPost({ params }) {
   const file = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(file);
 
-  const processedContent = await remark()
-    .use(html)
-    .process(content);
-
+  const processedContent = await remark().use(html).process(content);
   const contentHtml = processedContent.toString();
 
   return (
@@ -86,66 +83,59 @@ export default async function BlogPost({ params }) {
 
       {/* BLOG CONTENT */}
       <div
-        className="blog-content"
         dangerouslySetInnerHTML={{ __html: contentHtml }}
+        style={{
+          color: "#333",
+        }}
       />
 
-      {/* STYLES */}
-      <style jsx>{`
-        .blog-content h1,
-        .blog-content h2,
-        .blog-content h3 {
+      {/* INLINE GLOBAL STYLING */}
+      <style>{`
+        h2 {
+          font-size: 26px;
           margin-top: 30px;
           margin-bottom: 10px;
-          font-weight: 700;
         }
 
-        .blog-content h2 {
-          font-size: 26px;
-        }
-
-        .blog-content h3 {
+        h3 {
           font-size: 22px;
+          margin-top: 25px;
+          margin-bottom: 8px;
         }
 
-        .blog-content p {
+        p {
           margin-bottom: 15px;
-          color: #333;
         }
 
-        .blog-content ul {
+        ul {
           padding-left: 20px;
           margin-bottom: 20px;
         }
 
-        .blog-content li {
+        li {
           margin-bottom: 8px;
         }
 
-        .blog-content img {
+        img {
           width: 100%;
           margin: 20px 0;
           border-radius: 10px;
         }
 
-        .blog-content a {
+        a {
           color: #2563eb;
           text-decoration: none;
           font-weight: 500;
         }
 
-        .blog-content a:hover {
+        a:hover {
           text-decoration: underline;
         }
 
-        .blog-content hr {
+        hr {
           margin: 30px 0;
           border: none;
           border-top: 1px solid #eee;
-        }
-
-        .blog-content strong {
-          font-weight: 600;
         }
       `}</style>
     </div>
