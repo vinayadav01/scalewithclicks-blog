@@ -227,3 +227,51 @@ body {
 footer a:hover {
   color: #60a5fa;
 }
+
+.blog-content {
+  line-height: 1.8;
+  font-size: 16px;
+  color: #333;
+}
+
+.blog-content h1,
+.blog-content h2,
+.blog-content h3 {
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.blog-content p {
+  margin-bottom: 16px;
+}
+
+.blog-content ul {
+  margin-left: 20px;
+  margin-bottom: 16px;
+}
+
+.blog-content li {
+  margin-bottom: 8px;
+}
+
+.blog-content img {
+  width: 100%;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.blog-content hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 30px 0;
+}
+
+.blog-content a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.blog-content a:hover {
+  text-decoration: underline;
+}
