@@ -3,7 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
-import remarkSlug from "remark-slug";
+import rehypeSlug from "rehype-slug";
 import remarkToc from "remark-toc";
 
 export async function GET(req) {
@@ -29,7 +29,8 @@ export async function GET(req) {
     const { data, content } = matter(file);
 
     const processed = await remark()
-      .use(remarkSlug)
+  .use(html)
+  .use(rehypeSlug)
       .use(remarkToc, { heading: "table of contents" })
       .use(html)
       .process(content);
