@@ -12,7 +12,7 @@ import rehypeStringify from "rehype-stringify";
 export const dynamicParams = true;
 
 // ✅ TEMP FIX
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
 
 // ✅ Generates all blog routes
 export async function generateStaticParams() {
@@ -101,6 +101,7 @@ export default async function BlogPost({ params }) {
     <span className="reading-time">5 min read</span>
   </div>
 </div>
+    <div id="progress-bar"></div>
       <Navbar />
 
       {/* SCHEMA */}
@@ -156,35 +157,13 @@ export default async function BlogPost({ params }) {
           scroll-behavior: smooth;
         }
 
-        .navbar {
-          position: sticky;
-          top: 0;
-          z-index: 999;
-          padding: 16px 40px;
-          background: transparent;
-          transition: 0.3s;
-        }
-
-        .navbar.scrolled {
-          background: #0b1b34;
-          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .navbar a {
-          color: #000;
-        }
-
-        .navbar.scrolled a {
-          color: #fff;
-        }
-
         .blog-layout {
-          display: grid;
-          grid-template-columns: 250px 1fr 300px;
-          gap: 40px;
-          max-width: 1200px;
-          margin: 40px auto;
-        }
+  display: grid;
+  grid-template-columns: 220px 1fr 280px;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 40px auto;
+}
 
         .sidebar-inner {
           position: sticky;
@@ -224,6 +203,16 @@ export default async function BlogPost({ params }) {
           text-align: center;
         }
 
+          #progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: #ff6a00;
+  z-index: 2000;
+}
+          
         @media (max-width: 1024px) {
           .blog-layout {
             grid-template-columns: 1fr;
