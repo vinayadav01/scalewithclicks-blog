@@ -14,17 +14,6 @@ The problem isn’t Google Ads — it’s usually the strategy behind it. If you
 
 ---
 
-## Table of Contents
-
-## 1. You’re Targeting the Wrong Keywords
-## 2. Your Ads Don’t Match User Intent
-## 3. Your Landing Page Is Weak
-## 4. No Proper Conversion Tracking
-## 5. Poor Campaign Structure
-## 6. No Optimization
-
----
-
 ## 1. You’re Targeting the Wrong Keywords
 
 ![Google Ads keyword targeting example](/images/google-ads-keywords.jpg)
