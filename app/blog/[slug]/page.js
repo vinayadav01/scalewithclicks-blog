@@ -46,10 +46,11 @@ export default async function BlogPost({ params }) {
 
   // ✅ Markdown pipeline
   const processedContent = await remark()
-    .use(remarkRehype)
-    .use(rehypeSlug)
-    .use(rehypeStringify)
-    .process(content);
+  .use(require("remark-toc"), { heading: "table of contents" })
+  .use(remarkRehype)
+  .use(rehypeSlug)
+  .use(rehypeStringify)
+  .process(content);
 
   const contentHtml = processedContent.toString();
 
