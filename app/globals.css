@@ -146,41 +146,30 @@ body {
    📑 TOC SIDEBAR
 ========================= */
 
-.blog-content nav {
-  display: none;
+.toc {
+  margin-top: 20px;
 }
 
-.toc-sidebar {
-  position: sticky;
-  top: 100px;
-  border-left: 2px solid #eee;
-  font-size: 13px;
-  background: #fafafa;
-  padding: 12px;
-  border-radius: 8px;
-  max-width: 200px; /* 🔥 prevents wide empty space */
+.toc p {
+  font-size: 12px;
+  font-weight: 600;
+  color: #888;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
 }
 
-.toc-sidebar a {
-  display: block;
-  color: #666;
+.toc a {
+  display: block;              /* ✅ THIS FIXES JOINING */
+  margin-bottom: 8px;
+  color: #444;
+  font-size: 14px;
   text-decoration: none;
-  margin: 5px 0;
+  line-height: 1.4;
 }
 
-.toc-sidebar a:hover {
-  color: #4f46e5;
+.toc a:hover {
+  color: #000;
   transform: translateX(2px);
-}
-
-.toc-sidebar ul {
-  padding-left: 8px;
-}
-
-.toc-sidebar ul ul {
-  margin-left: 6px;
-  border-left: 1px solid #eee;
-  padding-left: 8px;
 }
 
 /* =========================
