@@ -48,6 +48,57 @@ export default async function BlogPost({ params }) {
   const processedContent = await remark().use(html).process(content);
   const contentHtml = processedContent.toString();
 
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: data.title,
+  description: data.description,
+  image: `https://blog.scalewithclicks.com${data.image}`,
+  author: {
+    "@type": "Person",
+    name: data.author || "Vinay Yadav",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "ScaleWithClicks",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://blog.scalewithclicks.com/images/logo.png",
+    },
+  },
+  datePublished: data.date,
+  dateModified: data.date,
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": `https://blog.scalewithclicks.com/blog/${params.slug}`,
+  },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://blog.scalewithclicks.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Blog",
+      item: "https://blog.scalewithclicks.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: data.title,
+      item: `https://blog.scalewithclicks.com/blog/${params.slug}`,
+    },
+  ],
+};  
+  
   return (
     <div
       style={{
@@ -58,6 +109,17 @@ export default async function BlogPost({ params }) {
         fontSize: "16px",
       }}
     >
+
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+/>
+
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+/>
+        
       {/* TITLE */}
       <h1 style={{ fontSize: "34px", marginBottom: "10px" }}>
         {data.title || "No title"}
