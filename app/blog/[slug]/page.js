@@ -28,7 +28,7 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogPost({ params }) {
-  const { slug } = params;
+  const { slug } = await params;
 
   const mdPath = path.join(process.cwd(), "content/blog", `${slug}.md`);
   const mdxPath = path.join(process.cwd(), "content/blog", `${slug}.mdx`);
