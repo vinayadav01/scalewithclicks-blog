@@ -116,17 +116,8 @@ export default async function BlogPost({ params }) {
             <p>{data.author || "Vinay Yadav"}</p>
           </div>
 
-          <div className="toc">
-            <p>TABLE OF CONTENTS</p>
-            <a href="#1-targeting-the-wrong-keywords">Wrong Keywords</a>
-            <a href="#2-ignoring-search-intent">Search Intent</a>
-            <a href="#3-no-negative-keywords">Negative Keywords</a>
-            <a href="#4-poor-landing-page-experience">Landing Page</a>
-            <a href="#5-not-tracking-conversions">Tracking</a>
-            <a href="#6-weak-ad-copy">Ad Copy</a>
-            <a href="#7-no-optimization-strategy">Optimization</a>
+      
           </div>
-        </div>
       </aside>
 
       {/* MAIN CONTENT */}
