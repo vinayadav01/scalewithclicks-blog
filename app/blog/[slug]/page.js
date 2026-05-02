@@ -158,7 +158,15 @@ export default async function BlogPost({ params }) {
         <h1>{data.title}</h1>
         <p className="date">{data.date}</p>
 
-        {data.image && <img src={data.image} alt={data.title} />}
+        {data.image && (
+  <Image
+    src={data.image}
+    alt={data.title}
+    width={800}
+    height={400}
+    style={{ width: "100%", height: "auto", borderRadius: "10px" }}
+  />
+)}
 
         <div
           className="blog-content"
