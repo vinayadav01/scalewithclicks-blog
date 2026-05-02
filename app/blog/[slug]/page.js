@@ -12,7 +12,7 @@ import rehypeStringify from "rehype-stringify";
 export const dynamicParams = true;
 
 // ✅ TEMP FIX
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 
 // ✅ Generates all blog routes
 export async function generateStaticParams() {
@@ -28,7 +28,7 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogPost({ params }) {
-  const { slug } = params;
+  const { slug } = await params;
 
   const mdPath = path.join(process.cwd(), "content/blog", `${slug}.md`);
   const mdxPath = path.join(process.cwd(), "content/blog", `${slug}.mdx`);
@@ -38,7 +38,7 @@ export default async function BlogPost({ params }) {
   if (fs.existsSync(mdPath)) filePath = mdPath;
   else if (fs.existsSync(mdxPath)) filePath = mdxPath;
   else {
-     return notFound(); // ✅ fixed
+       return <div>FILE NOT FOUND: {slug}</div>;
 }
 
   const file = fs.readFileSync(filePath, "utf8");
