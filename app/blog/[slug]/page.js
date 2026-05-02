@@ -95,7 +95,7 @@ export default async function BlogPost({ params }) {
  return (
   <>
     <Navbar />
-
+<div id="progress-bar"></div>
     {/* SCHEMA */}
     <script
       type="application/ld+json"
