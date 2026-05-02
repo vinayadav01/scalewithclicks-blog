@@ -2,21 +2,29 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
+import Image from "next/image";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 export default function CategoryPage({ params }) {
-  const slug = params?.slug;
+  const slug = params.slug || "";
 
   const dir = path.join(process.cwd(), "content/blog");
 
-  // ✅ Safety check
   if (!fs.existsSync(dir)) {
     return <div style={{ padding: "40px" }}>No posts found</div>;
   }
 
   const files = fs.readdirSync(dir);
+
+  const normalize = (str) =>
+    str
+      ?.toString()
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9\s-]/g, "")
+      .replace(/\s+/g, "-");
 
   const posts = files
     .map((filename) => {
@@ -26,117 +34,92 @@ export default function CategoryPage({ params }) {
         const { data } = matter(file);
 
         return {
-          // ✅ FIX: support .md and .mdx
           slug: filename.replace(/\.(md|mdx)$/, ""),
           title: data.title || "No title",
           date: data.date || "",
           image: data.image || "/images/default.jpg",
-          category: data.category || "General",
+          category: data.category || "general",
+          normalizedCategory: normalize(data.category || "general"),
         };
-      } catch (err) {
+      } catch {
         return null;
       }
     })
     .filter(Boolean);
 
-  // ✅ STRONG NORMALIZATION (IMPORTANT)
-  const normalize = (str) =>
-    str
-      ?.toString()
-      .toLowerCase()
-      .trim()
-      .replace(/[^a-z0-9\s-]/g, "") // remove special chars
-      .replace(/\s+/g, "-");
-
   const filteredPosts = posts.filter(
-    (post) => normalize(post.category) === normalize(slug)
+    (post) => post.normalizedCategory === normalize(slug)
   );
 
+  // 👇 FEATURED POST (first one)
+  const featured = filteredPosts[0];
+  const restPosts = filteredPosts.slice(1);
+
   return (
-    <div style={{ maxWidth: "1100px", margin: "auto", padding: "40px 20px" }}>
+    <div className="category-layout">
 
-      {/* TITLE */}
-      <h1
-        style={{
-          marginBottom: "30px",
-          textTransform: "capitalize",
-          fontSize: "32px",
-          fontWeight: "700",
-        }}
-      >
-        {slug.replace(/-/g, " ")} Posts
-      </h1>
+      {/* LEFT SIDEBAR */}
+      <aside className="category-sidebar">
+        <div className="category-sidebar-inner">
+          <p className="category-label">CATEGORY</p>
+          <h2>{slug.replace(/-/g, " ")}</h2>
 
-      {/* EMPTY STATE */}
-      {filteredPosts.length === 0 ? (
-        <div style={{ padding: "20px", color: "#64748b" }}>
-          <p>No posts found in this category.</p>
-          <Link href="/" style={{ color: "#2563eb" }}>
-            ← Back to Home
-          </Link>
+          <p className="category-desc">
+            Explore all articles related to {slug.replace(/-/g, " ")}.
+          </p>
+
+          <hr />
+
+          <p className="category-count">
+            {filteredPosts.length} Articles
+          </p>
         </div>
-      ) : (
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-            gap: "20px",
-          }}
-        >
-          {filteredPosts.map((post) => (
-            <div
-              key={post.slug}
-              style={{
-                border: "1px solid #eee",
-                borderRadius: "12px",
-                overflow: "hidden",
-                transition: "0.3s",
-                cursor: "pointer",
-              }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.transform = "translateY(-5px)")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.transform = "translateY(0)")
-              }
-            >
-              <Link href={`/blog/${post.slug}`}>
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  style={{
-                    width: "100%",
-                    height: "160px",
-                    objectFit: "cover",
-                  }}
-                />
-              </Link>
+      </aside>
 
-              <div style={{ padding: "15px" }}>
-                <p
-                  style={{
-                    fontSize: "12px",
-                    color: "#2563eb",
-                    marginBottom: "5px",
-                  }}
-                >
-                  {post.category}
-                </p>
+      {/* MAIN CONTENT */}
+      <main className="category-content">
 
-                <Link href={`/blog/${post.slug}`}>
-                  <h3 style={{ fontSize: "18px", margin: "5px 0" }}>
-                    {post.title}
-                  </h3>
-                </Link>
-
-                <p style={{ fontSize: "13px", color: "#999" }}>
-                  {post.date}
-                </p>
-              </div>
+        {/* FEATURED POST */}
+        {featured && (
+          <Link href={`/blog/${featured.slug}`} className="featured-card">
+            <Image
+              src={featured.image}
+              alt={featured.title}
+              width={900}
+              height={400}
+            />
+            <div className="featured-overlay">
+              <h2>{featured.title}</h2>
+              <p>{featured.date}</p>
             </div>
+          </Link>
+        )}
+
+        {/* GRID POSTS */}
+        <div className="category-grid">
+          {restPosts.map((post) => (
+            <Link
+              key={post.slug}
+              href={`/blog/${post.slug}`}
+              className="category-card"
+            >
+              <Image
+                src={post.image}
+                alt={post.title}
+                width={400}
+                height={200}
+              />
+
+              <div className="card-body">
+                <p className="card-category">{post.category}</p>
+                <h3>{post.title}</h3>
+                <span>{post.date}</span>
+              </div>
+            </Link>
           ))}
         </div>
-      )}
+
+      </main>
     </div>
   );
 }
