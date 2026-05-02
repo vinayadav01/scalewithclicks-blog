@@ -110,19 +110,11 @@ export default async function BlogPost({ params }) {
   };
 
  return (
-<div className="toc">
-  <p>TABLE OF CONTENTS</p>
-
-  {headings.map((item, index) => (
-    <a key={index} href={`#${item.id}`}>
-      {item.text}
-    </a>
-  ))}
-</div>
-   
   <>
     <Navbar />
-<div id="progress-bar"></div>
+
+    <div id="progress-bar"></div>
+
     {/* SCHEMA */}
     <script
       type="application/ld+json"
@@ -139,11 +131,20 @@ export default async function BlogPost({ params }) {
       <aside className="sidebar">
         <div className="sidebar-inner">
           <div className="author">
+            <img src="/images/author.jpg" alt="author" />
             <p>{data.author || "Vinay Yadav"}</p>
           </div>
 
-      
+          <div className="toc">
+            <p>TABLE OF CONTENTS</p>
+
+            {headings.map((item, index) => (
+              <a key={index} href={`#${item.id}`}>
+                {item.text}
+              </a>
+            ))}
           </div>
+        </div>
       </aside>
 
       {/* MAIN CONTENT */}
@@ -161,5 +162,5 @@ export default async function BlogPost({ params }) {
 
     </div>
   </>
-);
-          }
+);          
+}
