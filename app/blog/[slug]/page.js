@@ -4,7 +4,8 @@ import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
 import { notFound } from "next/navigation";
-import { useEffect, useState } from "react";
+import Navbar from "@/components/Navbar";
+import slug from "remark-slug";
 
 // ✅ Prevents random 404 issues
 export const dynamicParams = false;
@@ -40,9 +41,13 @@ export default async function BlogPost({ params }) {
   const file = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(file);
 
-  const processedContent = await remark().use(html).process(content);
-  const contentHtml = processedContent.toString();
+const processedContent = await remark()
+  .use(slug)
+  .use(html)
+  .process(content);
 
+const contentHtml = processedContent.toString();
+  
   // ✅ SCHEMA (unchanged)
   const schema = {
     "@context": "https://schema.org",
@@ -147,6 +152,7 @@ export default async function BlogPost({ params }) {
 
         .navbar.scrolled {
           background: #0b1b34;
+          color: white;
           box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
@@ -158,7 +164,7 @@ export default async function BlogPost({ params }) {
 
         .navbar a {
           margin: 0 10px;
-          color: white;
+          color: #000;
         }
 
         .cta-btn {
@@ -219,6 +225,21 @@ export default async function BlogPost({ params }) {
           text-align: center;
         }
 
+        @media (max-width: 1024px) {
+  .blog-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar,
+  .right-cta {
+    display: none;
+  }
+
+  .content {
+    max-width: 100%;
+  }
+}
+
         /* TYPOGRAPHY */
         h2 { font-size: 26px; margin-top: 30px; }
         h3 { font-size: 22px; margin-top: 25px; }
@@ -230,27 +251,3 @@ export default async function BlogPost({ params }) {
   );
 }
 
-/* NAVBAR COMPONENT */
-function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  return (
-    <header className={`navbar ${scrolled ? "scrolled" : ""}`}>
-      <div className="nav-container">
-        <div>ScaleWithClicks</div>
-        <nav>
-          <a href="/">Home</a>
-          <a href="/blog">Blog</a>
-          <a href="/services">Services</a>
-        </nav>
-        <button className="cta-btn">Start Now</button>
-      </div>
-    </header>
-  );
-}
