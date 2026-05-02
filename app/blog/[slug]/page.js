@@ -111,11 +111,10 @@ export default async function BlogPost({ params }) {
     ],
   };
 
- return (
-<>
-  <Navbar />
-
-  <ProgressBar />
+return (
+  <>
+    <Navbar />
+    <ProgressBar />
 
     {/* SCHEMA */}
     <script
@@ -129,91 +128,63 @@ export default async function BlogPost({ params }) {
 
     <div className="blog-layout">
 
-  {/* LEFT SIDEBAR */}
-  <aside className="sidebar">
-    <div className="sidebar-inner">
-      <div className="toc">
-        <p>TABLE OF CONTENTS</p>
+      {/* SIDEBAR */}
+      <aside className="sidebar">
+        <div className="sidebar-inner">
+          <div className="toc">
+            <p>TABLE OF CONTENTS</p>
+            {headings.map((item, index) => (
+              <a key={index} href={`#${item.id}`}>
+                {item.text}
+              </a>
+            ))}
+          </div>
+        </div>
+      </aside>
 
-        {headings.map((item, index) => (
-          <a key={index} href={`#${item.id}`}>
-            {item.text}
-          </a>
-        ))}
-      </div>
-    </div>
-  </aside>
+      {/* RIGHT SIDE */}
+      <div>
 
-  {/* MAIN CONTENT */}
-  <main className="content">
+        <div className="blog-header">
+          <div className="breadcrumb">
+            <a href="/">Home</a> /
+            <a href={`/category/${data.category?.toLowerCase()}`}>
+              {data.category}
+            </a> /
+            <span>{data.title}</span>
+          </div>
 
-    {/* ✅ MOVE HEADER HERE */}
-    <div className="blog-header">
+          <h1 className="blog-title">{data.title}</h1>
 
-      <div className="breadcrumb">
-        <a href="/">Home</a> / 
-        <a href={`/category/${data.category?.toLowerCase()}`}>
-          {data.category}
-        </a> / 
-        <span>{data.title}</span>
-      </div>
+          <div className="author-row">
+            <div className="author-left">
+              <img src="/images/author.jpg" width="40" />
+              <span>{data.author}</span>
+            </div>
 
-      <h1 className="blog-title">{data.title}</h1>
-
-      <div className="author-row">
-        <div className="author-left">
-          <Image src="/images/author.jpg" width={40} height={40} alt="author" />
-          <span>{data.author}</span>
+            <div className="share-icons">
+              <a href={`https://www.facebook.com/sharer/sharer.php?u=https://blog.scalewithclicks.com/blog/${slug}`} target="_blank">F</a>
+              <a href={`https://twitter.com/intent/tweet?url=https://blog.scalewithclicks.com/blog/${slug}&text=${data.title}`} target="_blank">T</a>
+              <a href={`https://www.linkedin.com/sharing/share-offsite/?url=https://blog.scalewithclicks.com/blog/${slug}`} target="_blank">IN</a>
+            </div>
+          </div>
         </div>
 
-        <div className="share-icons">
-          <a
-            href={`https://www.facebook.com/sharer/sharer.php?u=https://blog.scalewithclicks.com/blog/${slug}`}
-            target="_blank"
-          >
-            F
-          </a>
+        <main className="content">
+          {data.image && (
+            <div className="hero-image">
+              <img src={data.image} alt={data.title} />
+            </div>
+          )}
 
-          <a
-            href={`https://twitter.com/intent/tweet?url=https://blog.scalewithclicks.com/blog/${slug}&text=${data.title}`}
-            target="_blank"
-          >
-            T
-          </a>
+          <div
+            className="blog-content"
+            dangerouslySetInnerHTML={{ __html: contentHtml }}
+          />
+        </main>
 
-          <a
-            href={`https://www.linkedin.com/sharing/share-offsite/?url=https://blog.scalewithclicks.com/blog/${slug}`}
-            target="_blank"
-          >
-            IN
-          </a>
-        </div>
       </div>
-
     </div>
-
-    {/* REMOVE duplicate title/date below */}
-    {/* ❌ DELETE THIS */}
-    {/* <h1>{data.title}</h1> */}
-    {/* <p className="date">{data.date}</p> */}
-
-    {data.image && (
-      <div className="hero-image">
-        <Image
-          src={data.image}
-          alt={data.title}
-          width={900}
-          height={500}
-        />
-      </div>
-    )}
-
-    <div
-      className="blog-content"
-      dangerouslySetInnerHTML={{ __html: contentHtml }}
-    />
-
-  </main>
-
-</div>
+  </>
+);
 }
