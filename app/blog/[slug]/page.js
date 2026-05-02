@@ -5,7 +5,9 @@ import { remark } from "remark";
 import html from "remark-html";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
-import slug from "remark-slug";
+import remarkRehype from "remark-rehype";
+import rehypeSlug from "rehype-slug";
+import rehypeStringify from "rehype-stringify";
 
 // ✅ Prevents random 404 issues
 export const dynamicParams = false;
@@ -42,8 +44,9 @@ export default async function BlogPost({ params }) {
   const { data, content } = matter(file);
 
 const processedContent = await remark()
-  .use(slug)
-  .use(html)
+  .use(remarkRehype)
+  .use(rehypeSlug)
+  .use(rehypeStringify)
   .process(content);
 
 const contentHtml = processedContent.toString();
