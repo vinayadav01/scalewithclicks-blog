@@ -25,11 +25,7 @@ export default function Navbar() {
   
   return (
     <header className={`navbar ${scrolled ? "scrolled" : ""}`}>
-  <div className="nav-container">
-    
-    <div className="logo">ScaleWithClicks</div>
-
-  </div>
+  
 </header>
   );
 }
