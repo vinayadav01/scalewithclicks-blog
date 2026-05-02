@@ -9,14 +9,16 @@ const inter = Inter({
   display: "swap", // ✅ better performance (prevents layout shift)
 });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "ScaleWithClicks Blog",
   description: "Performance Marketing Blog",
 
-  icons: {
-    icon: "/favicon.png",
   verification: {
     google: "UG50HhrybK9nw-uBE1UJYvuHAsvGdj44bMJajcWMxgU",
+  },
+
+  icons: {
+    icon: "/favicon.png",
   },
 };
 
