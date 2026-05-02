@@ -94,18 +94,7 @@ export default async function BlogPost({ params }) {
 
   return (
     <>
-
-   <div className="topbar">
-  <div className="topbar-inner">
-    <span>Google Ads</span>
-    <span>5 min read</span>
-  </div>
-</div>
-
-<div id="progress-bar"></div>
-
-<Navbar />
-    
+  
       {/* SCHEMA */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
@@ -143,12 +132,4 @@ export default async function BlogPost({ params }) {
           <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
         </main>
 
-        {/* RIGHT CTA */}
-        <aside className="right-cta">
-          <div className="cta-box">
-            <h3>Launch your Campaign!</h3>
-            <p>Create full funnel campaigns that drive real business results.</p>
-            <button>Start Now</button>
-          </div>
-        </aside>
       </div>
