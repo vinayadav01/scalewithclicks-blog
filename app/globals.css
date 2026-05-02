@@ -276,10 +276,10 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* NAVBAR */
+/* NAVBAR CLEAN FIX */
 .navbar {
   position: sticky;
-  top: 0; /* sits below topbar */
+  top: 0;
   z-index: 999;
   background: #fff;
   border-bottom: 1px solid #eee;
@@ -289,20 +289,19 @@ footer a:hover {
   max-width: 1100px;
   margin: auto;
   padding: 14px 20px;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
-/* LEFT */
+/* LOGO */
 .logo {
   font-weight: 600;
 }
 
-/* CENTER */
+/* CENTER LINKS */
 .nav-links {
   display: flex;
-  justify-content: center;
   gap: 30px;
 }
 
@@ -312,46 +311,26 @@ footer a:hover {
   font-weight: 500;
 }
 
-/* RIGHT */
+/* ❌ REMOVE CTA BUTTON COMPLETELY */
 .cta-btn {
-  justify-self: end;
-  background: #ff6a00;
-  padding: 10px 18px;
-  border-radius: 25px;
-  color: white;
-  border: none;
-  font-weight: 500;
-  cursor: pointer;
-}
-.content h1 {
-  font-size: 32px;
-  margin-bottom: 10px;
+  display: none;
 }
 
-.topbar + #progress-bar {
-  top: 30px;
-}
-
-.cta-btn {
-  background: #ff6a00;
-  padding: 8px 16px;
-  border-radius: 20px;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
+/* PROGRESS BAR (FIXED) */
 #progress-bar {
   position: fixed;
-  top: 30px; /* below topbar */
+  top: 0; /* ✅ FIXED */
   left: 0;
   height: 3px;
   width: 0%;
   background: #ff6a00;
   z-index: 2000;
 }
+
+/* BLOG LAYOUT */
 .blog-layout {
   display: grid;
-  grid-template-columns: 220px 1fr; /* 👈 remove right column */
+  grid-template-columns: 220px 1fr;
   gap: 40px;
   max-width: 1100px;
   margin: 40px auto;
