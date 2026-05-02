@@ -92,44 +92,56 @@ export default async function BlogPost({ params }) {
     ],
   };
 
-  return (
-    <>
-  
-      {/* SCHEMA */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+ return (
+  <>
+    <Navbar />
 
-      <div className="blog-layout">
+    {/* SCHEMA */}
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+    />
 
-        {/* LEFT SIDEBAR */}
-        <aside className="sidebar">
-          <div className="sidebar-inner">
-            <div className="author">
-              <img src="/images/author.jpg" alt="author" />
-              <p>{data.author || "Vinay Yadav"}</p>
-            </div>
+    <div className="blog-layout">
 
-            <div className="toc">
-              <p>TABLE OF CONTENTS</p>
-              <a href="#1-targeting-the-wrong-keywords">Wrong Keywords</a>
-              <a href="#2-ignoring-search-intent">Search Intent</a>
-              <a href="#3-no-negative-keywords">Negative Keywords</a>
-              <a href="#4-poor-landing-page-experience">Landing Page</a>
-              <a href="#5-not-tracking-conversions">Tracking</a>
-              <a href="#6-weak-ad-copy">Ad Copy</a>
-              <a href="#7-no-optimization-strategy">Optimization</a>
-            </div>
+      {/* LEFT SIDEBAR */}
+      <aside className="sidebar">
+        <div className="sidebar-inner">
+          <div className="author">
+            <img src="/images/author.jpg" alt="author" />
+            <p>{data.author || "Vinay Yadav"}</p>
           </div>
-        </aside>
 
-        {/* MAIN CONTENT */}
-        <main className="content">
-          <h1>{data.title}</h1>
-          <p className="date">{data.date}</p>
+          <div className="toc">
+            <p>TABLE OF CONTENTS</p>
+            <a href="#1-targeting-the-wrong-keywords">Wrong Keywords</a>
+            <a href="#2-ignoring-search-intent">Search Intent</a>
+            <a href="#3-no-negative-keywords">Negative Keywords</a>
+            <a href="#4-poor-landing-page-experience">Landing Page</a>
+            <a href="#5-not-tracking-conversions">Tracking</a>
+            <a href="#6-weak-ad-copy">Ad Copy</a>
+            <a href="#7-no-optimization-strategy">Optimization</a>
+          </div>
+        </div>
+      </aside>
 
-          {data.image && <img src={data.image} alt={data.title} />}
+      {/* MAIN CONTENT */}
+      <main className="content">
+        <h1>{data.title}</h1>
+        <p className="date">{data.date}</p>
 
-          <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
-        </main>
+        {data.image && <img src={data.image} alt={data.title} />}
 
-      </div>
+        <div
+          className="blog-content"
+          dangerouslySetInnerHTML={{ __html: contentHtml }}
+        />
+      </main>
+
+    </div>
+  </>
+);
