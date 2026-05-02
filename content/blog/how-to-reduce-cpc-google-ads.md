@@ -3,7 +3,7 @@ title: How to Reduce Cost Per Click (CPC) in Google Ads (2026 Guide)
 date: "2026-04-27"
 description: Learn how to reduce CPC in Google Ads with proven strategies. Improve ROI, lower ad costs, and increase conversions.
 image: /images/reduce-cpc.jpg
-category: Google Ads
+category: google-ads
 author: Vinay Yadav
 ---
 
