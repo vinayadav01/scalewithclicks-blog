@@ -27,7 +27,8 @@ export default function ProgressBar({ image }) {
         <div
           className="progress-bar"
           style={{ width: `${scroll}%` }}
-        />
+          height: scroll > 2 ? "6px" : "3px", // 👈 THIS LINE
+/>
       </div>
 
       {/* THUMB IMAGE */}
