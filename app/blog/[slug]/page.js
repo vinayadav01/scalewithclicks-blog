@@ -37,7 +37,9 @@ export default async function BlogPost({ params }) {
 
   if (fs.existsSync(mdPath)) filePath = mdPath;
   else if (fs.existsSync(mdxPath)) filePath = mdxPath;
-  else return notFound();
+  else {
+  return <div>FILE NOT FOUND: {slug}</div>;
+}
 
   const file = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(file);
