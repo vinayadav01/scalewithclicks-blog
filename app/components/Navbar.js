@@ -34,9 +34,6 @@ export default function Navbar() {
       <a href="/blog">Blog</a>
       <a href="/services">Services</a>
     </nav>
-
-    <button className="cta-btn">Start Now</button>
-
   </div>
 </header>
   );
