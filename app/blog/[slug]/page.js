@@ -7,7 +7,22 @@ import Navbar from "../../components/Navbar";
 import remarkRehype from "remark-rehype";
 import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
-import remarkToc from "remark-toc";
+
+function extractHeadings(content) {
+  const lines = content.split("\n");
+
+  return lines
+    .filter(line => line.startsWith("## "))
+    .map(line => {
+      const text = line.replace("## ", "").trim();
+
+      const id = text
+        .toLowerCase()
+        .replace(/[^\w]+/g, "-");
+
+      return { text, id };
+    });
+}
 
 // ✅ Prevents random 404 issues
 export const dynamicParams = true;
@@ -44,10 +59,10 @@ export default async function BlogPost({ params }) {
 
   const file = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(file);
-
+  const headings = extractHeadings(content);
+  
   // ✅ Markdown pipeline
   const processedContent = await remark()
-  .use(remarkToc, { heading: "table of contents" })
   .use(remarkRehype)
   .use(rehypeSlug)
   .use(rehypeStringify)
@@ -95,6 +110,16 @@ export default async function BlogPost({ params }) {
   };
 
  return (
+<div className="toc">
+  <p>TABLE OF CONTENTS</p>
+
+  {headings.map((item, index) => (
+    <a key={index} href={`#${item.id}`}>
+      {item.text}
+    </a>
+  ))}
+</div>
+   
   <>
     <Navbar />
 <div id="progress-bar"></div>
