@@ -132,17 +132,7 @@ export default async function BlogPost({ params }) {
       {/* LEFT SIDEBAR */}
       <aside className="sidebar">
         <div className="sidebar-inner">
-          <div className="author">
-         <Image
-  src="/images/author.jpg"
-  alt="author"
-  width={50}
-  height={50}
-  className="author-img"
-/>
-            <p>{data.author || "Vinay Yadav"}</p>
-          </div>
-
+         
           <div className="toc">
   <p>TABLE OF CONTENTS</p>
 
@@ -174,11 +164,28 @@ export default async function BlogPost({ params }) {
       <span>{data.author}</span>
     </div>
 
-    <div className="social-icons">
-      <span>f</span>
-      <span>t</span>
-      <span>in</span>
-    </div>
+    <div className="share-icons">
+  <a
+    href={`https://www.facebook.com/sharer/sharer.php?u=https://blog.scalewithclicks.com/blog/${slug}`}
+    target="_blank"
+  >
+    F
+  </a>
+
+  <a
+    href={`https://twitter.com/intent/tweet?url=https://blog.scalewithclicks.com/blog/${slug}&text=${data.title}`}
+    target="_blank"
+  >
+    T
+  </a>
+
+  <a
+    href={`https://www.linkedin.com/sharing/share-offsite/?url=https://blog.scalewithclicks.com/blog/${slug}`}
+    target="_blank"
+  >
+    IN
+  </a>
+</div>
   </div>
 
 </div>
