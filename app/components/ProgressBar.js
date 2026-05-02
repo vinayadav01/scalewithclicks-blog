@@ -26,8 +26,9 @@ export default function ProgressBar({ image }) {
       <div className="progress-container">
         <div
           className="progress-bar"
-          style={{ width: `${scroll}%` }}
+          style={{ width: `${scroll}%` 
           height: scroll > 2 ? "6px" : "3px", // 👈 THIS LINE
+            }}
 />
       </div>
 
