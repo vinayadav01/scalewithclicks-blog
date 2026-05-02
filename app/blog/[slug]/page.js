@@ -131,7 +131,7 @@ export default async function BlogPost({ params }) {
       <aside className="sidebar">
         <div className="sidebar-inner">
           <div className="author">
-            <img src="/images/author.jpg" alt="author" />
+            <img src="/public/images/author.jpg" alt="author" />
             <p>{data.author || "Vinay Yadav"}</p>
           </div>
 
