@@ -18,13 +18,15 @@ export default function CategoryPage({ params }) {
 
   const files = fs.readdirSync(dir);
 
-  const normalize = (str) =>
-    str
-      ?.toString()
-      .toLowerCase()
-      .trim()
-      .replace(/[^a-z0-9\s-]/g, "")
-      .replace(/\s+/g, "-");
+ const normalize = (str) =>
+  str
+    ?.toString()
+    .normalize("NFKD") // 🔥 removes hidden unicode issues
+    .toLowerCase()
+    .trim()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
 
   const posts = files
     .map((filename) => {
@@ -47,8 +49,10 @@ export default function CategoryPage({ params }) {
     })
     .filter(Boolean);
 
+const currentSlug = normalize(slug);
+
   const filteredPosts = posts.filter(
-    (post) => post.normalizedCategory === normalize(slug)
+    (post) => normalize(post.category) === currentSlug
   );
 
   // 👇 FEATURED POST (first one)
