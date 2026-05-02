@@ -9,9 +9,10 @@ export default function ProgressBar({ image }) {
     const handleScroll = () => {
       const totalHeight =
         document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPosition = window.scrollY;
 
+      const scrollPosition = window.scrollY;
       const scrolled = (scrollPosition / totalHeight) * 100;
+
       setScroll(scrolled);
     };
 
@@ -21,6 +22,7 @@ export default function ProgressBar({ image }) {
 
   return (
     <>
+      {/* BAR */}
       <div className="progress-container">
         <div
           className="progress-bar"
@@ -28,7 +30,7 @@ export default function ProgressBar({ image }) {
         />
       </div>
 
-      {/* 🔥 FEATURED IMAGE THUMB */}
+      {/* THUMB IMAGE */}
       {image && (
         <div
           className="progress-thumb"
@@ -37,8 +39,8 @@ export default function ProgressBar({ image }) {
           <Image
             src={image}
             alt="progress"
-            width={26}
-            height={26}
+            width={28}
+            height={28}
           />
         </div>
       )}
