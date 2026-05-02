@@ -95,15 +95,17 @@ export default async function BlogPost({ params }) {
   return (
     <>
 
-    <div className="topbar">
+   <div className="topbar">
   <div className="topbar-inner">
-    <span className="category">Google Ads</span>
-    <span className="reading-time">5 min read</span>
+    <span>Google Ads</span>
+    <span>5 min read</span>
   </div>
 </div>
-    <div id="progress-bar"></div>
-      <Navbar />
 
+<div id="progress-bar"></div>
+
+<Navbar />
+    
       {/* SCHEMA */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
@@ -150,86 +152,3 @@ export default async function BlogPost({ params }) {
           </div>
         </aside>
       </div>
-
-      {/* STYLES */}
-      <style>{`
-        html {
-          scroll-behavior: smooth;
-        }
-
-        .blog-layout {
-  display: grid;
-  grid-template-columns: 220px 1fr 280px;
-  gap: 40px;
-  max-width: 1100px;
-  margin: 40px auto;
-}
-
-        .sidebar-inner {
-          position: sticky;
-          top: 100px;
-        }
-
-        .author img {
-          width: 60px;
-          border-radius: 50%;
-        }
-
-        .toc a {
-          display: block;
-          margin: 8px 0;
-          color: #555;
-        }
-
-        .toc a:hover {
-          color: #000;
-        }
-
-        .content {
-          max-width: 700px;
-        }
-
-        .date {
-          color: #666;
-          margin-bottom: 10px;
-        }
-
-        .cta-box {
-          position: sticky;
-          top: 120px;
-          background: #f5f7fb;
-          padding: 20px;
-          border-radius: 10px;
-          text-align: center;
-        }
-
-          #progress-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  width: 0%;
-  background: #ff6a00;
-  z-index: 2000;
-}
-          
-        @media (max-width: 1024px) {
-          .blog-layout {
-            grid-template-columns: 1fr;
-          }
-
-          .sidebar,
-          .right-cta {
-            display: none;
-          }
-        }
-
-        h2 { font-size: 26px; margin-top: 30px; }
-        h3 { font-size: 22px; margin-top: 25px; }
-        p { margin-bottom: 15px; }
-        ul { padding-left: 20px; }
-        img { width: 100%; border-radius: 10px; margin: 20px 0; }
-      `}</style>
-    </>
-  );
-}
