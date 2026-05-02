@@ -14,13 +14,24 @@ The problem isn’t Google Ads — it’s usually the strategy behind it. If you
 
 ---
 
+## Table of Contents
+
+## 1. You’re Targeting the Wrong Keywords
+## 2. Your Ads Don’t Match User Intent
+## 3. Your Landing Page Is Weak
+## 4. No Proper Conversion Tracking
+## 5. Poor Campaign Structure
+## 6. No Optimization
+
+---
+
 ## 1. You’re Targeting the Wrong Keywords
 
 ![Google Ads keyword targeting example](/images/google-ads-keywords.jpg)
 
 If your keywords are too broad or irrelevant, you’ll attract clicks that never convert.
 
-### ✅ Fix:
+### Fix:
 
 - Use high-intent keywords (buy, hire, service)  
 - Avoid generic terms  
@@ -34,7 +45,7 @@ If your keywords are too broad or irrelevant, you’ll attract clicks that never
 
 If your ad doesn’t match what users are searching, they won’t convert.
 
-### ✅ Fix:
+### Fix:
 
 - Match ad copy with intent  
 - Highlight benefits  
@@ -48,7 +59,7 @@ If your ad doesn’t match what users are searching, they won’t convert.
 
 Even great ads fail with a poor landing page.
 
-### ✅ Fix:
+### Fix:
 
 - Clear headline  
 - Fast loading  
@@ -63,7 +74,7 @@ Even great ads fail with a poor landing page.
 
 If you’re not tracking correctly, you don’t know what’s working.
 
-### ✅ Fix:
+### Fix:
 
 - Set up GTM  
 - Track leads & calls  
@@ -80,7 +91,7 @@ If you’re not tracking correctly, you don’t know what’s working.
 
 Messy campaigns waste budget.
 
-### ✅ Fix:
+### Fix:
 
 - Separate campaigns  
 - Proper ad groups  
@@ -94,7 +105,7 @@ Messy campaigns waste budget.
 
 Google Ads requires constant optimization.
 
-### ✅ Fix:
+### Fix:
 
 - Monitor weekly  
 - Pause bad ads  
@@ -102,7 +113,7 @@ Google Ads requires constant optimization.
 
 ---
 
-## 🚀 Improve Your Marketing Performance
+## Improve Your Marketing Performance
 
 👉 [Google Ads Management](https://scalewithclicks.com/services/google-ads-agency.html)  
 👉 [Meta Ads Services](https://scalewithclicks.com/services/meta-ads-agency.html)  
@@ -119,7 +130,7 @@ Google Ads requires constant optimization.
 
 ---
 
-## 🎯 Need Help Fixing Your Google Ads?
+## Need Help Fixing Your Google Ads?
 
 If your campaigns are not converting, we can help.
 
