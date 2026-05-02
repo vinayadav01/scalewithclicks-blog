@@ -114,7 +114,7 @@ export default async function BlogPost({ params }) {
 return (
   <>
     <Navbar />
-    <ProgressBar />
+    <ProgressBar image={data.image} />
 
     {/* SCHEMA */}
     <script
