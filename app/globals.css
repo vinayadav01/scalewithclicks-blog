@@ -319,3 +319,19 @@ footer a:hover {
   border: none;
   cursor: pointer;
 }
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #111;
+  color: #fff;
+  font-size: 14px;
+}
+
+.topbar-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 6px 20px;
+  display: flex;
+  justify-content: space-between;
+}
