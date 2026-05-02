@@ -42,15 +42,16 @@ export default async function BlogPost({ params }) {
   const file = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(file);
 
-const processedContent = await remark()
-  .use(remarkRehype)
-  .use(rehypeSlug)
-  .use(rehypeStringify)
-  .process(content);
+  // ✅ Correct markdown pipeline
+  const processedContent = await remark()
+    .use(remarkRehype)
+    .use(rehypeSlug)
+    .use(rehypeStringify)
+    .process(content);
 
-const contentHtml = processedContent.toString();
-  
-  // ✅ SCHEMA (unchanged)
+  const contentHtml = processedContent.toString();
+
+  // ✅ SCHEMA
   const schema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -89,14 +90,12 @@ const contentHtml = processedContent.toString();
 
   return (
     <>
-      {/* NAVBAR */}
       <Navbar />
 
       {/* SCHEMA */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
-      {/* BLOG LAYOUT */}
       <div className="blog-layout">
 
         {/* LEFT SIDEBAR */}
@@ -142,7 +141,10 @@ const contentHtml = processedContent.toString();
 
       {/* STYLES */}
       <style>{`
-        /* NAVBAR */
+        html {
+          scroll-behavior: smooth;
+        }
+
         .navbar {
           position: sticky;
           top: 0;
@@ -154,30 +156,17 @@ const contentHtml = processedContent.toString();
 
         .navbar.scrolled {
           background: #0b1b34;
-          color: white;
           box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .nav-container {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-
         .navbar a {
-          margin: 0 10px;
           color: #000;
         }
 
-        .cta-btn {
-          background: #ff6a00;
-          padding: 8px 16px;
-          border-radius: 20px;
-          color: white;
-          border: none;
+        .navbar.scrolled a {
+          color: #fff;
         }
 
-        /* LAYOUT */
         .blog-layout {
           display: grid;
           grid-template-columns: 250px 1fr 300px;
@@ -186,7 +175,6 @@ const contentHtml = processedContent.toString();
           margin: 40px auto;
         }
 
-        /* SIDEBAR */
         .sidebar-inner {
           position: sticky;
           top: 100px;
@@ -203,13 +191,8 @@ const contentHtml = processedContent.toString();
           color: #555;
         }
 
-        /* CONTENT */
         .content {
           max-width: 700px;
-        }
-
-        .content h1 {
-          font-size: 32px;
         }
 
         .date {
@@ -217,7 +200,6 @@ const contentHtml = processedContent.toString();
           margin-bottom: 10px;
         }
 
-        /* CTA */
         .cta-box {
           position: sticky;
           top: 120px;
@@ -228,21 +210,16 @@ const contentHtml = processedContent.toString();
         }
 
         @media (max-width: 1024px) {
-  .blog-layout {
-    grid-template-columns: 1fr;
-  }
+          .blog-layout {
+            grid-template-columns: 1fr;
+          }
 
-  .sidebar,
-  .right-cta {
-    display: none;
-  }
+          .sidebar,
+          .right-cta {
+            display: none;
+          }
+        }
 
-  .content {
-    max-width: 100%;
-  }
-}
-
-        /* TYPOGRAPHY */
         h2 { font-size: 26px; margin-top: 30px; }
         h3 { font-size: 22px; margin-top: 25px; }
         p { margin-bottom: 15px; }
@@ -252,4 +229,3 @@ const contentHtml = processedContent.toString();
     </>
   );
 }
-
