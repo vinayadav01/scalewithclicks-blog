@@ -2,9 +2,10 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
-import html from "remark-html";
-import rehypeSlug from "rehype-slug";
 import remarkToc from "remark-toc";
+import remarkRehype from "remark-rehype";
+import rehypeSlug from "rehype-slug";
+import rehypeStringify from "rehype-stringify";
 
 export async function GET(req) {
   try {
@@ -28,11 +29,12 @@ export async function GET(req) {
     const file = fs.readFileSync(filePath, "utf8");
     const { data, content } = matter(file);
 
+    // ✅ CORRECT PIPELINE
     const processed = await remark()
-  .use(html)
-  .use(rehypeSlug)
       .use(remarkToc, { heading: "table of contents" })
-      .use(html)
+      .use(remarkRehype)
+      .use(rehypeSlug)
+      .use(rehypeStringify)
       .process(content);
 
     return Response.json({
