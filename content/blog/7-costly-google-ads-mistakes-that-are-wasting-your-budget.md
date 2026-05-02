@@ -47,7 +47,7 @@ If you're new, start from our main blog hub 👉 [Growth Insights](/)
 
 ---
 
-## 1. Targeting the Wrong Keywords
+## 1 Targeting the Wrong Keywords
 
 ![Keyword Mistake](/images/keyword-mistake.jpg)
 
@@ -78,7 +78,7 @@ Focus on **high-intent keywords** like:
 
 ---
 
-## 2. Ignoring Search Intent
+## 2 Ignoring Search Intent
 
 ![Search Intent](/images/search-intent.jpg)
 
@@ -108,7 +108,7 @@ Match your ads with **user intent**:
 
 ---
 
-## 3. No Negative Keywords
+## 3 No Negative Keywords
 
 ![Negative Keywords](/images/negative-keywords.jpg)
 
@@ -136,7 +136,7 @@ This alone can reduce wasted spend by **30–50%**.
 
 ---
 
-## 4. Poor Landing Page Experience
+## 4 Poor Landing Page Experience
 
 ![Landing Page Issue](/images/landing-page-issue.jpg)
 
@@ -168,7 +168,7 @@ Your landing page must:
 
 ---
 
-## 5. Not Tracking Conversions
+## 5 Not Tracking Conversions
 
 ![Tracking Issue](/images/conversion-tracking.jpg)
 
@@ -195,7 +195,7 @@ Set up:
 
 ---
 
-## 6. Weak Ad Copy
+## 6 Weak Ad Copy
 
 ![Ad Copy Mistake](/images/ad-copy.jpg)
 
@@ -224,7 +224,7 @@ Use **benefit-driven copy**:
 
 ---
 
-## 7. No Optimization Strategy
+## 7 No Optimization Strategy
 
 ![Optimization Issue](/images/optimization.jpg)
 
