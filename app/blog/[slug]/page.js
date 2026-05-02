@@ -94,6 +94,13 @@ export default async function BlogPost({ params }) {
 
   return (
     <>
+
+    <div className="topbar">
+  <div className="topbar-inner">
+    <span className="category">Google Ads</span>
+    <span className="reading-time">5 min read</span>
+  </div>
+</div>
       <Navbar />
 
       {/* SCHEMA */}
