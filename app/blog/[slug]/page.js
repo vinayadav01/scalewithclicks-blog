@@ -28,7 +28,7 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogPost({ params }) {
-  const { slug } = await params;
+  const { slug } = params;
 
   const mdPath = path.join(process.cwd(), "content/blog", `${slug}.md`);
   const mdxPath = path.join(process.cwd(), "content/blog", `${slug}.mdx`);
@@ -38,7 +38,7 @@ export default async function BlogPost({ params }) {
   if (fs.existsSync(mdPath)) filePath = mdPath;
   else if (fs.existsSync(mdxPath)) filePath = mdxPath;
   else {
-  return <div>FILE NOT FOUND: {slug}</div>;
+     return notFound(); // ✅ fixed
 }
 
   const file = fs.readFileSync(filePath, "utf8");
