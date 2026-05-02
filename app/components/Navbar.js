@@ -25,17 +25,19 @@ export default function Navbar() {
   
   return (
     <header className={`navbar ${scrolled ? "scrolled" : ""}`}>
-      <div className="nav-container">
-        <div>ScaleWithClicks</div>
+  <div className="nav-container">
+    
+    <div className="logo">ScaleWithClicks</div>
 
-        <nav>
-          <a href="/">Home</a>
-          <a href="/blog">Blog</a>
-          <a href="/services">Services</a>
-        </nav>
+    <nav className="nav-links">
+      <a href="/">Home</a>
+      <a href="/blog">Blog</a>
+      <a href="/services">Services</a>
+    </nav>
 
-        <button className="cta-btn">Start Now</button>
-      </div>
-    </header>
+    <button className="cta-btn">Start Now</button>
+
+  </div>
+</header>
   );
 }
