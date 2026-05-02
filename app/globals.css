@@ -279,7 +279,7 @@ footer a:hover {
 /* NAVBAR */
 .navbar {
   position: sticky;
-  top: 30px; /* sits below topbar */
+  top: 0; /* sits below topbar */
   z-index: 999;
   background: #fff;
   border-bottom: 1px solid #eee;
@@ -323,23 +323,6 @@ footer a:hover {
   font-weight: 500;
   cursor: pointer;
 }
-/* TOP BAR */
-.topbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: #000;
-  color: #fff;
-}
-
-.topbar-inner {
-  max-width: 1100px;
-  margin: auto;
-  padding: 6px 20px;
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-}
 .content h1 {
   font-size: 32px;
   margin-bottom: 10px;
@@ -357,22 +340,6 @@ footer a:hover {
   border: none;
   cursor: pointer;
 }
-.topbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: #111;
-  color: #fff;
-  font-size: 14px;
-}
-
-.topbar-inner {
-  max-width: 1200px;
-  margin: auto;
-  padding: 6px 20px;
-  display: flex;
-  justify-content: space-between;
-}
 #progress-bar {
   position: fixed;
   top: 30px; /* below topbar */
@@ -381,4 +348,11 @@ footer a:hover {
   width: 0%;
   background: #ff6a00;
   z-index: 2000;
+}
+.blog-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr; /* 👈 remove right column */
+  gap: 40px;
+  max-width: 1100px;
+  margin: 40px auto;
 }
