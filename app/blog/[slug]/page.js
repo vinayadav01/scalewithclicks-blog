@@ -9,7 +9,7 @@ import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
 
 // ✅ Prevents random 404 issues
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 // ✅ TEMP FIX
 export const dynamic = "force-dynamic";
