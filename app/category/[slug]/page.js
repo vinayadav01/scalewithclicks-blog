@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 export default function CategoryPage({ params }) {
-  const slug = params.slug || "";
+  const slug = params?.slug?.toString() || "";
 
   const dir = path.join(process.cwd(), "content/blog");
 
@@ -51,9 +51,15 @@ export default function CategoryPage({ params }) {
 
 const currentSlug = normalize(slug);
 
-  const filteredPosts = posts.filter(
-    (post) => normalize(post.category) === currentSlug
+const filteredPosts = posts.filter((post) => {
+  const postCategory = normalize(post.category);
+
+  return (
+    postCategory === currentSlug ||
+    postCategory.includes(currentSlug) ||
+    currentSlug.includes(postCategory)
   );
+});
 
   // 👇 FEATURED POST (first one)
   const featured = filteredPosts[0];
