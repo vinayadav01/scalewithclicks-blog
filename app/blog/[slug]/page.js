@@ -8,6 +8,7 @@ import remarkRehype from "remark-rehype";
 import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
 import Image from "next/image";
+import ProgressBar from "../../components/ProgressBar";
 
 function extractHeadings(content) {
   const lines = content.split("\n");
@@ -111,10 +112,10 @@ export default async function BlogPost({ params }) {
   };
 
  return (
-  <>
-    <Navbar />
+<>
+  <Navbar />
 
-    <div id="progress-bar"></div>
+  <ProgressBar />
 
     {/* SCHEMA */}
     <script
