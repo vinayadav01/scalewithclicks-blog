@@ -7,6 +7,7 @@ import Navbar from "../../components/Navbar";
 import remarkRehype from "remark-rehype";
 import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
+import remarkToc from "remark-toc";
 
 // ✅ Prevents random 404 issues
 export const dynamicParams = true;
@@ -46,7 +47,7 @@ export default async function BlogPost({ params }) {
 
   // ✅ Markdown pipeline
   const processedContent = await remark()
-  .use(require("remark-toc"), { heading: "table of contents" })
+  .use(remarkToc, { heading: "table of contents" })
   .use(remarkRehype)
   .use(rehypeSlug)
   .use(rehypeStringify)
