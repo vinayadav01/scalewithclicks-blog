@@ -305,17 +305,6 @@ footer a:hover {
   display: none;
 }
 
-/* PROGRESS BAR (FIXED) */
-#progress-bar {
-  position: fixed;
-  top: 0; /* ✅ FIXED */
-  left: 0;
-  height: 3px;
-  width: 0%;
-  background: #ff6a00;
-  z-index: 2000;
-}
-
 /* BLOG LAYOUT */
 .blog-layout {
   display: grid;
@@ -389,4 +378,32 @@ footer a:hover {
 
 .toc a:hover {
   color: #000;
+}
+/* PROGRESS BAR */
+.progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  z-index: 9999;
+}
+
+.progress-bar {
+  height: 4px;
+  background: #ff6a00;
+  width: 0%;
+}
+
+.progress-thumb {
+  position: fixed;
+  top: -8px;
+  transform: translateX(-50%);
+}
+
+.progress-thumb img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid white;
 }
