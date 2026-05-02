@@ -271,22 +271,3 @@ If you want a done-for-you system that generates consistent leads:
 Or explore more insights here: [Growth Insights Blog](/)
 
 ---
-
-## 🔑 SEO Keywords Used
-
-- google ads mistakes  
-- why google ads not converting  
-- reduce google ads cost  
-- improve google ads ROI  
-- google ads optimization tips  
-- lead generation google ads  
-- ppc mistakes  
-
----
-
-## 📸 REQUIRED IMAGES (UPLOAD THESE)
-
-Upload these to:
-
-```bash
-/public/images/
