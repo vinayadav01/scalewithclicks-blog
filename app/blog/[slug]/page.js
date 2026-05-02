@@ -7,6 +7,7 @@ import Navbar from "../../components/Navbar";
 import remarkRehype from "remark-rehype";
 import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
+import Image from "next/image";
 
 function extractHeadings(content) {
   const lines = content.split("\n");
@@ -131,7 +132,12 @@ export default async function BlogPost({ params }) {
       <aside className="sidebar">
         <div className="sidebar-inner">
           <div className="author">
-            <img src="/public/images/author.jpg" alt="author" />
+          <Image
+  src="/images/author.jpg"
+  alt="author"
+  width={60}
+  height={60}
+/>
             <p>{data.author || "Vinay Yadav"}</p>
           </div>
 
