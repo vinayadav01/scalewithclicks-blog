@@ -21,20 +21,6 @@ In this guide, we’ll break down the **7 most costly Google Ads mistakes** that
 
 ---
 
-## Table of Contents
-
-- Why Most Google Ads Campaigns Fail
-- 1. Targeting the Wrong Keywords
-- 2. Ignoring Search Intent
-- 3. No Negative Keywords
-- 4. Poor Landing Page Experience
-- 5. Not Tracking Conversions
-- 6. Weak Ad Copy
-- 7. No Optimization Strategy
-- Final Thoughts
-
----
-
 ## Why Most Google Ads Campaigns Fail
 
 Most advertisers think success comes from increasing budget.
