@@ -28,7 +28,7 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogPost({ params }) {
-  const slug = params.slug;
+  const { slug } = params;
 
   const mdPath = path.join(process.cwd(), "content/blog", `${slug}.md`);
   const mdxPath = path.join(process.cwd(), "content/blog", `${slug}.mdx`);
@@ -42,7 +42,7 @@ export default async function BlogPost({ params }) {
   const file = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(file);
 
-  // ✅ Correct markdown pipeline
+  // ✅ Markdown pipeline
   const processedContent = await remark()
     .use(remarkRehype)
     .use(rehypeSlug)
@@ -51,13 +51,15 @@ export default async function BlogPost({ params }) {
 
   const contentHtml = processedContent.toString();
 
-  // ✅ SCHEMA
+  // ✅ SCHEMA (safe image handling)
   const schema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: data.title,
     description: data.description,
-    image: `https://blog.scalewithclicks.com${data.image}`,
+    image: data.image
+      ? `https://blog.scalewithclicks.com${data.image}`
+      : "https://blog.scalewithclicks.com/images/default.jpg",
     author: {
       "@type": "Person",
       name: data.author || "Vinay Yadav",
@@ -74,7 +76,7 @@ export default async function BlogPost({ params }) {
     dateModified: data.date,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://blog.scalewithclicks.com/blog/${params.slug}`,
+      "@id": `https://blog.scalewithclicks.com/blog/${slug}`,
     },
   };
 
@@ -84,7 +86,7 @@ export default async function BlogPost({ params }) {
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: "https://blog.scalewithclicks.com" },
       { "@type": "ListItem", position: 2, name: "Blog", item: "https://blog.scalewithclicks.com" },
-      { "@type": "ListItem", position: 3, name: data.title, item: `https://blog.scalewithclicks.com/blog/${params.slug}` },
+      { "@type": "ListItem", position: 3, name: data.title, item: `https://blog.scalewithclicks.com/blog/${slug}` },
     ],
   };
 
@@ -189,6 +191,10 @@ export default async function BlogPost({ params }) {
           display: block;
           margin: 8px 0;
           color: #555;
+        }
+
+        .toc a:hover {
+          color: #000;
         }
 
         .content {
