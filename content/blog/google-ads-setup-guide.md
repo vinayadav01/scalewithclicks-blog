@@ -3,7 +3,7 @@ title: Google Ads Setup Guide for Beginners (Step-by-Step 2026)
 date: "2026-04-27"
 description: Learn how to set up Google Ads step-by-step. Complete beginner guide to launch profitable campaigns and generate leads in 2026.
 image: /images/google-ads-setup.jpg
-category: Google Ads
+category: google-ads
 author: Vinay Yadav
 ---
 
