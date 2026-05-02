@@ -10,11 +10,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: "Growth Insights | ScaleWithClicks",
-    template: "%s | ScaleWithClicks", // ✅ dynamic SEO titles
-  },
-  description: "Proven strategies to generate leads and scale your business",
+  title: "ScaleWithClicks Blog",
+  description: "Performance Marketing Blog",
+
+  icons: {
+    icon: "/favicon.png",
   verification: {
     google: "UG50HhrybK9nw-uBE1UJYvuHAsvGdj44bMJajcWMxgU",
   },
