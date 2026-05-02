@@ -142,16 +142,44 @@ export default async function BlogPost({ params }) {
           </div>
 
           <div className="toc">
-            <p>TABLE OF CONTENTS</p>
+  <p>TABLE OF CONTENTS</p>
 
-            {headings.map((item, index) => (
-              <a key={index} href={`#${item.id}`}>
-                {item.text}
-              </a>
-            ))}
-          </div>
+  {headings.map((item, index) => (
+    <a key={index} href={`#${item.id}`}>
+      {item.text}
+    </a>
+  ))}
+</div>
         </div>
       </aside>
+
+<div className="blog-header">
+
+  {/* Breadcrumb */}
+  <div className="breadcrumb">
+    <a href="/">Home</a> / 
+    <a href={`/category/${data.category?.toLowerCase()}`}>{data.category}</a> / 
+    <span>{data.title}</span>
+  </div>
+
+  {/* Title */}
+  <h1 className="blog-title">{data.title}</h1>
+
+  {/* Author Row */}
+  <div className="author-row">
+    <div className="author-left">
+      <Image src="/images/author.jpg" width={40} height={40} alt="author" />
+      <span>{data.author}</span>
+    </div>
+
+    <div className="social-icons">
+      <span>f</span>
+      <span>t</span>
+      <span>in</span>
+    </div>
+  </div>
+
+</div>
 
       {/* MAIN CONTENT */}
       <main className="content">
@@ -159,13 +187,14 @@ export default async function BlogPost({ params }) {
         <p className="date">{data.date}</p>
 
         {data.image && (
-  <Image
-    src={data.image}
-    alt={data.title}
-    width={800}
-    height={400}
-    style={{ width: "100%", height: "auto", borderRadius: "10px" }}
-  />
+  <div className="hero-image">
+    <Image
+      src={data.image}
+      alt={data.title}
+      width={900}
+      height={500}
+    />
+  </div>
 )}
 
         <div
