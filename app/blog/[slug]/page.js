@@ -3,7 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import { notFound } from "next/navigation";
-import Navbar from "@/components/Navbar";
+import Navbar from "../../../components/Navbar";
 import remarkRehype from "remark-rehype";
 import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
