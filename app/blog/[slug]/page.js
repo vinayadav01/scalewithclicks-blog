@@ -9,6 +9,7 @@ import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
 import Image from "next/image";
 import ProgressBar from "../../components/ProgressBar";
+import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 
 function extractHeadings(content) {
   const lines = content.split("\n");
@@ -162,12 +163,36 @@ return (
               <span>{data.author}</span>
             </div>
 
-            <div className="share-icons">
-              <a href={`https://www.facebook.com/sharer/sharer.php?u=https://blog.scalewithclicks.com/blog/${slug}`} target="_blank">F</a>
-              <a href={`https://twitter.com/intent/tweet?url=https://blog.scalewithclicks.com/blog/${slug}&text=${data.title}`} target="_blank">T</a>
-              <a href={`https://www.linkedin.com/sharing/share-offsite/?url=https://blog.scalewithclicks.com/blog/${slug}`} target="_blank">IN</a>
-            </div>
-          </div>
+            <div style={{ display: "flex", gap: "15px", alignItems: "center" }}>
+  
+  <a
+    href="https://www.facebook.com/sharer/sharer.php?u=https://blog.scalewithclicks.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    style={{ color: "#1877F2", fontSize: "18px" }}
+  >
+    <FaFacebookF />
+  </a>
+
+  <a
+    href="https://twitter.com/intent/tweet?url=https://blog.scalewithclicks.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    style={{ color: "#1DA1F2", fontSize: "18px" }}
+  >
+    <FaTwitter />
+  </a>
+
+  <a
+    href="https://www.linkedin.com/sharing/share-offsite/?url=https://blog.scalewithclicks.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    style={{ color: "#0A66C2", fontSize: "18px" }}
+  >
+    <FaLinkedinIn />
+  </a>
+
+</div>          </div>
         </div>
 
         <main className="content">
