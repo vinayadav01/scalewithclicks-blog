@@ -3,7 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import { notFound } from "next/navigation";
-import Navbar from "@/components/Navbar";
+import Navbar from "../../../components/Navbar";
 import remarkRehype from "remark-rehype";
 import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
@@ -40,6 +40,7 @@ export default async function BlogPost({ params }) {
   else return notFound();
 
   const file = fs.readFileSync(filePath, "utf8");
+
   const { data, content } = matter(file);
 
   // ✅ Markdown pipeline
@@ -51,7 +52,7 @@ export default async function BlogPost({ params }) {
 
   const contentHtml = processedContent.toString();
 
-  // ✅ SCHEMA (safe image handling)
+  // ✅ SCHEMA
   const schema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -84,9 +85,24 @@ export default async function BlogPost({ params }) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://blog.scalewithclicks.com" },
-      { "@type": "ListItem", position: 2, name: "Blog", item: "https://blog.scalewithclicks.com" },
-      { "@type": "ListItem", position: 3, name: data.title, item: `https://blog.scalewithclicks.com/blog/${slug}` },
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://blog.scalewithclicks.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: "https://blog.scalewithclicks.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: data.title,
+        item: `https://blog.scalewithclicks.com/blog/${slug}`,
+      },
     ],
   };
 
@@ -95,11 +111,16 @@ export default async function BlogPost({ params }) {
       <Navbar />
 
       {/* SCHEMA */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
 
       <div className="blog-layout">
-
         {/* LEFT SIDEBAR */}
         <aside className="sidebar">
           <div className="sidebar-inner">
@@ -142,31 +163,9 @@ export default async function BlogPost({ params }) {
       </div>
 
       {/* STYLES */}
-      <style>{`
+      <style jsx>{`
         html {
           scroll-behavior: smooth;
-        }
-
-        .navbar {
-          position: sticky;
-          top: 0;
-          z-index: 999;
-          padding: 16px 40px;
-          background: transparent;
-          transition: 0.3s;
-        }
-
-        .navbar.scrolled {
-          background: #0b1b34;
-          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .navbar a {
-          color: #000;
-        }
-
-        .navbar.scrolled a {
-          color: #fff;
         }
 
         .blog-layout {
@@ -226,11 +225,29 @@ export default async function BlogPost({ params }) {
           }
         }
 
-        h2 { font-size: 26px; margin-top: 30px; }
-        h3 { font-size: 22px; margin-top: 25px; }
-        p { margin-bottom: 15px; }
-        ul { padding-left: 20px; }
-        img { width: 100%; border-radius: 10px; margin: 20px 0; }
+        h2 {
+          font-size: 26px;
+          margin-top: 30px;
+        }
+
+        h3 {
+          font-size: 22px;
+          margin-top: 25px;
+        }
+
+        p {
+          margin-bottom: 15px;
+        }
+
+        ul {
+          padding-left: 20px;
+        }
+
+        img {
+          width: 100%;
+          border-radius: 10px;
+          margin: 20px 0;
+        }
       `}</style>
     </>
   );
