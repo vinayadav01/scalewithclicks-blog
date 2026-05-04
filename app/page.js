@@ -2,9 +2,11 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
-import html from "remark-html";
 import { notFound } from "next/navigation";
-import { useEffect, useState } from "react";
+import Navbar from "@/components/Navbar";
+import remarkRehype from "remark-rehype";
+import rehypeSlug from "rehype-slug";
+import rehypeStringify from "rehype-stringify";
 
 // ✅ Prevents random 404 issues
 export const dynamicParams = false;
@@ -26,7 +28,7 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogPost({ params }) {
-  const slug = params.slug;
+  const { slug } = params;
 
   const mdPath = path.join(process.cwd(), "content/blog", `${slug}.md`);
   const mdxPath = path.join(process.cwd(), "content/blog", `${slug}.mdx`);
@@ -40,16 +42,24 @@ export default async function BlogPost({ params }) {
   const file = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(file);
 
-  const processedContent = await remark().use(html).process(content);
+  // ✅ Markdown pipeline
+  const processedContent = await remark()
+    .use(remarkRehype)
+    .use(rehypeSlug)
+    .use(rehypeStringify)
+    .process(content);
+
   const contentHtml = processedContent.toString();
 
-  // ✅ SCHEMA (unchanged)
+  // ✅ SCHEMA (safe image handling)
   const schema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: data.title,
     description: data.description,
-    image: `https://blog.scalewithclicks.com${data.image}`,
+    image: data.image
+      ? `https://blog.scalewithclicks.com${data.image}`
+      : "https://blog.scalewithclicks.com/images/default.jpg",
     author: {
       "@type": "Person",
       name: data.author || "Vinay Yadav",
@@ -66,7 +76,7 @@ export default async function BlogPost({ params }) {
     dateModified: data.date,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://blog.scalewithclicks.com/blog/${params.slug}`,
+      "@id": `https://blog.scalewithclicks.com/blog/${slug}`,
     },
   };
 
@@ -76,20 +86,18 @@ export default async function BlogPost({ params }) {
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: "https://blog.scalewithclicks.com" },
       { "@type": "ListItem", position: 2, name: "Blog", item: "https://blog.scalewithclicks.com" },
-      { "@type": "ListItem", position: 3, name: data.title, item: `https://blog.scalewithclicks.com/blog/${params.slug}` },
+      { "@type": "ListItem", position: 3, name: data.title, item: `https://blog.scalewithclicks.com/blog/${slug}` },
     ],
   };
 
   return (
     <>
-      {/* NAVBAR */}
       <Navbar />
 
       {/* SCHEMA */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
-      {/* BLOG LAYOUT */}
       <div className="blog-layout">
 
         {/* LEFT SIDEBAR */}
@@ -135,7 +143,10 @@ export default async function BlogPost({ params }) {
 
       {/* STYLES */}
       <style>{`
-        /* NAVBAR */
+        html {
+          scroll-behavior: smooth;
+        }
+
         .navbar {
           position: sticky;
           top: 0;
@@ -150,26 +161,14 @@ export default async function BlogPost({ params }) {
           box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .nav-container {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-
         .navbar a {
-          margin: 0 10px;
-          color: white;
+          color: #000;
         }
 
-        .cta-btn {
-          background: #ff6a00;
-          padding: 8px 16px;
-          border-radius: 20px;
-          color: white;
-          border: none;
+        .navbar.scrolled a {
+          color: #fff;
         }
 
-        /* LAYOUT */
         .blog-layout {
           display: grid;
           grid-template-columns: 250px 1fr 300px;
@@ -178,7 +177,6 @@ export default async function BlogPost({ params }) {
           margin: 40px auto;
         }
 
-        /* SIDEBAR */
         .sidebar-inner {
           position: sticky;
           top: 100px;
@@ -195,13 +193,12 @@ export default async function BlogPost({ params }) {
           color: #555;
         }
 
-        /* CONTENT */
-        .content {
-          max-width: 700px;
+        .toc a:hover {
+          color: #000;
         }
 
-        .content h1 {
-          font-size: 32px;
+        .content {
+          max-width: 700px;
         }
 
         .date {
@@ -209,7 +206,6 @@ export default async function BlogPost({ params }) {
           margin-bottom: 10px;
         }
 
-        /* CTA */
         .cta-box {
           position: sticky;
           top: 120px;
@@ -219,7 +215,17 @@ export default async function BlogPost({ params }) {
           text-align: center;
         }
 
-        /* TYPOGRAPHY */
+        @media (max-width: 1024px) {
+          .blog-layout {
+            grid-template-columns: 1fr;
+          }
+
+          .sidebar,
+          .right-cta {
+            display: none;
+          }
+        }
+
         h2 { font-size: 26px; margin-top: 30px; }
         h3 { font-size: 22px; margin-top: 25px; }
         p { margin-bottom: 15px; }
@@ -227,30 +233,5 @@ export default async function BlogPost({ params }) {
         img { width: 100%; border-radius: 10px; margin: 20px 0; }
       `}</style>
     </>
-  );
-}
-
-/* NAVBAR COMPONENT */
-function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  return (
-    <header className={`navbar ${scrolled ? "scrolled" : ""}`}>
-      <div className="nav-container">
-        <div>ScaleWithClicks</div>
-        <nav>
-          <a href="/">Home</a>
-          <a href="/blog">Blog</a>
-          <a href="/services">Services</a>
-        </nav>
-        <button className="cta-btn">Start Now</button>
-      </div>
-    </header>
   );
 }
