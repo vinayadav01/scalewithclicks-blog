@@ -10,6 +10,7 @@ import rehypeStringify from "rehype-stringify";
 import Image from "next/image";
 import ProgressBar from "../../components/ProgressBar";
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import FloatingShare from "../../../components/FloatingShare";
 
 function extractHeadings(content) {
   const lines = content.split("\n");
