@@ -17,6 +17,15 @@ export const dynamicParams = true;
 // ✅ TEMP FIX (force dynamic rendering)
 export const dynamic = "force-dynamic";
 
+export async function generateMetadata({ params }) {
+  const slug = params.slug;
+
+  return {
+    title: slug.replace(/-/g, " "),
+    description: "Learn digital marketing strategies to grow your business.",
+  };
+}
+
 // ✅ Generate all slugs
 export async function generateStaticParams() {
   const dir = path.join(process.cwd(), "content/blog");
