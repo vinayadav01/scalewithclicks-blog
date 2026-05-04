@@ -1,11 +1,18 @@
 "use client";
 
-export default function FloatingShare() {
-  const url =
-    typeof window !== "undefined" ? window.location.href : "";
+import { useEffect, useState } from "react";
 
-  const title =
-    typeof document !== "undefined" ? document.title : "";
+export default function FloatingShare() {
+  const [url, setUrl] = useState("");
+  const [title, setTitle] = useState("");
+
+  useEffect(() => {
+    setUrl(window.location.href);
+    setTitle(document.title);
+  }, []);
+
+  // ✅ Prevent render until ready
+  if (!url) return null;
 
   return (
     <div style={container}>
