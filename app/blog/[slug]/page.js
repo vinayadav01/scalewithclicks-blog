@@ -118,6 +118,10 @@ return (
     <Navbar />
     <ProgressBar image={data.image} />
 
+<div className="hidden md:block">
+  <FloatingShare />
+</div>
+
     {/* SCHEMA */}
     <script
       type="application/ld+json"
