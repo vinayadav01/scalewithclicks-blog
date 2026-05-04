@@ -67,8 +67,6 @@ if (!matchedFile) {
   );
 }
 
-const filePath = path.join(dir, matchedFile);
-
   const filePath = path.join(dir, matchedFile);
 
   const file = fs.readFileSync(filePath, "utf8");
