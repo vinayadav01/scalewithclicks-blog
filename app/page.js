@@ -1,16 +1,44 @@
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 import Link from "next/link";
-import { getPosts, normalize } from "../lib/getPosts";
 
 export const dynamic = "force-dynamic";
 
 export default function Home() {
-  const posts = getPosts();
+  const dir = path.join(process.cwd(), "content/blog");
 
-  if (!posts.length) {
+  if (!fs.existsSync(dir)) {
     return <div style={{ padding: "40px" }}>No blog posts found</div>;
   }
 
-  // Sort posts by date (latest first)
+  const files = fs
+    .readdirSync(dir)
+    .filter((file) => file.endsWith(".md") || file.endsWith(".mdx"));
+
+  const posts = files
+    .map((filename) => {
+      try {
+        const filePath = path.join(dir, filename);
+        const file = fs.readFileSync(filePath, "utf8");
+
+        const { data } = matter(file);
+
+        return {
+          slug: filename.replace(".mdx", "").replace(".md", ""),
+          title: data.title || "No title",
+          date: data.date || "1970-01-01",
+          image: data.image || "",
+          category: data.category || "General",
+          description: data.description || "",
+        };
+      } catch (err) {
+        console.error("Error reading file:", filename);
+        return null;
+      }
+    })
+    .filter(Boolean);
+
   posts.sort((a, b) => {
     const dateA = new Date(a.date).getTime() || 0;
     const dateB = new Date(b.date).getTime() || 0;
@@ -108,7 +136,9 @@ export default function Home() {
         }}
       >
         {restPosts.map((post) => {
-          const categorySlug = normalize(post.category);
+          const categorySlug = (post.category || "general")
+            .toLowerCase()
+            .replace(/\s+/g, "-");
 
           return (
             <div
