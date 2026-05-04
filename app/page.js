@@ -196,6 +196,6 @@ export default async function BlogPost({ params }) {
         dangerouslySetInnerHTML={{ __html: contentHtml }}
       />
     </main>
-
   </div>
+</div>
 </div>
