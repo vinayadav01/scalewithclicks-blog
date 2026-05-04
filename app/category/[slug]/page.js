@@ -1,71 +1,27 @@
-import { getPosts, normalize } from "../../../lib/getPosts";
+import { getPosts } from "../../../lib/getPosts";
 import Link from "next/link";
 
-export const dynamic = "force-dynamic";
-
 export default function CategoryPage({ params }) {
-  const slug = params?.slug?.toString() || "";
+  const { slug } = params;
 
-  const posts = getPosts();
-
-  const currentSlug = normalize(slug);
-
-  const filteredPosts = posts.filter(
-    (post) => normalize(post.category) === currentSlug
+  const posts = getPosts().filter(
+    (post) =>
+      post.category.toLowerCase().replace(/\s+/g, "-") === slug
   );
 
   return (
-    <div style={{ maxWidth: "1100px", margin: "auto", padding: "40px 20px" }}>
-      <h1 style={{ fontSize: "32px", marginBottom: "30px" }}>
-        {slug.replace(/-/g, " ")} Posts
+    <div style={{ maxWidth: "1000px", margin: "auto", padding: "40px" }}>
+      <h1 style={{ marginBottom: "30px" }}>
+        Category: {slug.replace(/-/g, " ")}
       </h1>
 
-      {filteredPosts.length === 0 ? (
-        <p>No posts found.</p>
-      ) : (
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-            gap: "20px",
-          }}
-        >
-          {filteredPosts.map((post) => (
-            <Link key={post.slug} href={`/blog/${post.slug}`}>
-              <div
-                style={{
-                  border: "1px solid #eee",
-                  borderRadius: "12px",
-                  overflow: "hidden",
-                  cursor: "pointer",
-                }}
-              >
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  style={{
-                    width: "100%",
-                    height: "160px",
-                    objectFit: "cover",
-                  }}
-                />
-
-                <div style={{ padding: "15px" }}>
-                  <p style={{ fontSize: "12px", color: "#2563eb" }}>
-                    {post.category}
-                  </p>
-
-                  <h3>{post.title}</h3>
-
-                  <p style={{ fontSize: "13px", color: "#999" }}>
-                    {post.date}
-                  </p>
-                </div>
-              </div>
-            </Link>
-          ))}
+      {posts.map((post) => (
+        <div key={post.slug} style={{ marginBottom: "20px" }}>
+          <Link href={`/blog/${post.slug}`}>
+            <h3>{post.title}</h3>
+          </Link>
         </div>
-      )}
+      ))}
     </div>
   );
 }
