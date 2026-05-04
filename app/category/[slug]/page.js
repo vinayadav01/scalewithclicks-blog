@@ -4,12 +4,18 @@ import Link from "next/link";
 export const dynamic = "force-dynamic";
 
 export default function CategoryPage({ params }) {
-  const slug = params?.slug?.toString() || "";
+  const slug = Array.isArray(params.slug)
+    ? params.slug[0]
+    : params.slug || "";
 
   const posts = getPosts();
 
   const currentSlug = normalize(slug);
 
+console.log("slug:", slug);
+console.log("posts:", posts);
+console.log("categories:", posts.map(p => p.category));
+  
   const filteredPosts = posts.filter(
     (post) => normalize(post.category) === currentSlug
   );
