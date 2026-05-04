@@ -1,14 +1,7 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
 import Link from "next/link";
 import { getPosts, normalize } from "../lib/getPosts";
 
-const posts = getPosts();
 export const dynamic = "force-dynamic";
-
-export default function Home() {
-  import { getPosts, normalize } from "../lib/getPosts";
 
 export default function Home() {
   const posts = getPosts();
@@ -17,21 +10,7 @@ export default function Home() {
     return <div style={{ padding: "40px" }}>No blog posts found</div>;
   }
 
-        return {
-          slug: filename.replace(".mdx", "").replace(".md", ""),
-          title: data.title || "No title",
-          date: data.date || "1970-01-01",
-          image: data.image || "",
-          category: data.category || "General",
-          description: data.description || "",
-        };
-      } catch (err) {
-        console.error("Error reading file:", filename);
-        return null;
-      }
-    })
-    .filter(Boolean);
-
+  // Sort posts by date (latest first)
   posts.sort((a, b) => {
     const dateA = new Date(a.date).getTime() || 0;
     const dateB = new Date(b.date).getTime() || 0;
@@ -125,7 +104,7 @@ export default function Home() {
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
           gap: "25px",
-          marginBottom: "70px", // ✅ FIXED SPACING
+          marginBottom: "70px",
         }}
       >
         {restPosts.map((post) => {
@@ -182,7 +161,7 @@ export default function Home() {
           textAlign: "center",
           marginTop: "80px",
           paddingTop: "20px",
-          borderTop: "1px solid #eee", // ✅ extra separation
+          borderTop: "1px solid #eee",
         }}
       >
         <h2>Want More Leads & Sales?</h2>
