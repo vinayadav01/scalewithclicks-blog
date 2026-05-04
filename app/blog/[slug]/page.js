@@ -49,16 +49,31 @@ export async function generateStaticParams() {
 export default async function BlogPost({ params }) {
   const { slug } = params;
   
-  const mdPath = path.join(process.cwd(), "content/blog", `${slug}.md`);
-  const mdxPath = path.join(process.cwd(), "content/blog", `${slug}.mdx`);
+ const dir = path.join(process.cwd(), "content/blog");
 
-  let filePath = "";
-
-  if (fs.existsSync(mdPath)) filePath = mdPath;
-  else if (fs.existsSync(mdxPath)) filePath = mdxPath;
-  else {
-       return <div>FILE NOT FOUND: {slug}</div>;
+if (!fs.existsSync(dir)) {
+  return <div>No blog directory found</div>;
 }
+
+const files = fs.readdirSync(dir);
+
+// 🔥 match slug with normalized filename
+const matchedFile = files.find((file) => {
+  const fileSlug = file
+    .replace(/\.(md|mdx)$/, "")
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+
+  return fileSlug === slug;
+});
+
+if (!matchedFile) {
+  return <div>FILE NOT FOUND: {slug}</div>;
+}
+
+const filePath = path.join(dir, matchedFile);
 
   const file = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(file);
