@@ -447,3 +447,11 @@ body {
 a {
   text-decoration: none;
 }
+.footer a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
