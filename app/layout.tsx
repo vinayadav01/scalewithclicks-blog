@@ -67,6 +67,8 @@ export default function RootLayout({
             <Link href="/" style={{ marginRight: "15px" }}>Home</Link>
             <Link href="/category/google-ads" style={{ marginRight: "15px" }}>Google Ads</Link>
             <Link href="/category/seo">SEO</Link>
+            <Link href="/category/meta">Meta</Link>
+            <Link href="/category/lead-generation">Lead Generation</Link>
           </nav>
         </header>
 
@@ -106,6 +108,7 @@ export default function RootLayout({
                 <a href="https://scalewithclicks.com/services/google-ads-agency.html" target="_blank" rel="noopener noreferrer">Google Ads</a><br />
                 <a href="https://scalewithclicks.com/services/meta-ads-agency.html" target="_blank" rel="noopener noreferrer">Meta Ads</a><br />
                 <a href="https://scalewithclicks.com/services/seo-services.html" target="_blank" rel="noopener noreferrer">SEO</a>
+                <a href="https://scalewithclicks.com/services/conversion-tracking.html" target="_blank" rel="noopener noreferrer">Conversion Tracking</a>
               </div>
             </div>
 
