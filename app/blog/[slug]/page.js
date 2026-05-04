@@ -46,7 +46,10 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogPost({ params }) {
-  const { slug } = params;
+  const slug = Array.isArray(params.slug)
+  ? params.slug[0]
+  : params.slug;
+  console.log("PARAM SLUG:", slug);
 
   const dir = path.join(process.cwd(), "content/blog");
 
