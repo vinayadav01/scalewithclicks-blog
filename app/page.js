@@ -46,7 +46,7 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogPost({ params }) {
-  const { slug } = params; // ❌ removed await
+  const { slug } = params;
 
   const mdPath = path.join(process.cwd(), "content/blog", `${slug}.md`);
   const mdxPath = path.join(process.cwd(), "content/blog", `${slug}.mdx`);
@@ -55,7 +55,7 @@ export default async function BlogPost({ params }) {
 
   if (fs.existsSync(mdPath)) filePath = mdPath;
   else if (fs.existsSync(mdxPath)) filePath = mdxPath;
-  else return notFound(); // ✅ better handling
+  else return notFound();
 
   const file = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(file);
@@ -144,58 +144,86 @@ export default async function BlogPost({ params }) {
 
       <div className="blog-layout">
 
-  {/* SIDEBAR */}
-  <aside className="sidebar">
-    <div className="sidebar-inner">
-      <div className="toc">
-        <p>TABLE OF CONTENTS</p>
-        {headings.map((item, index) => (
-          <a key={index} href={`#${item.id}`}>
-            {item.text}
-          </a>
-        ))}
-      </div>
-    </div>
-  </aside>
+        {/* SIDEBAR */}
+        <aside className="sidebar">
+          <div className="sidebar-inner">
+            <div className="toc">
+              <p>TABLE OF CONTENTS</p>
+              {headings.map((item, index) => (
+                <a key={index} href={`#${item.id}`}>
+                  {item.text}
+                </a>
+              ))}
+            </div>
+          </div>
+        </aside>
 
-  {/* RIGHT SIDE (IMPORTANT WRAPPER) */}
-  <div>
+        {/* RIGHT SIDE */}
+        <div>
 
-    <div className="blog-header">
-      <div className="breadcrumb">
-        <a href="/">Home</a> /
-        <a href={`/category/${data.category?.toLowerCase()}`}>{data.category}</a> /
-        <span>{data.title}</span>
-      </div>
+          <div className="blog-header">
+            <div className="breadcrumb">
+              <a href="/">Home</a> /
+              <a href={`/category/${data.category?.toLowerCase()}`}>
+                {data.category}
+              </a> /
+              <span>{data.title}</span>
+            </div>
 
-      <h1 className="blog-title">{data.title}</h1>
+            <h1 className="blog-title">{data.title}</h1>
 
-      <div className="author-row">
-        <div className="author-left">
-          <Image src="/images/author.jpg" width={40} height={40} alt="author" />
-          <span>{data.author}</span>
+            <div className="author-row">
+              <div className="author-left">
+                <Image src="/images/author.jpg" width={40} height={40} alt="author" />
+                <span>{data.author}</span>
+              </div>
+
+              <div className="share-icons">
+                <a
+                  href={`https://www.facebook.com/sharer/sharer.php?u=https://blog.scalewithclicks.com/blog/${slug}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  F
+                </a>
+                <a
+                  href={`https://twitter.com/intent/tweet?url=https://blog.scalewithclicks.com/blog/${slug}&text=${data.title}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  T
+                </a>
+                <a
+                  href={`https://www.linkedin.com/sharing/share-offsite/?url=https://blog.scalewithclicks.com/blog/${slug}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  IN
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <main className="content">
+            {data.image && (
+              <div className="hero-image">
+                <Image
+                  src={data.image}
+                  alt={data.title}
+                  width={900}
+                  height={500}
+                />
+              </div>
+            )}
+
+            <div
+              className="blog-content"
+              dangerouslySetInnerHTML={{ __html: contentHtml }}
+            />
+          </main>
+
         </div>
-
-        <div className="share-icons">
-          <a href={`https://www.facebook.com/sharer/sharer.php?u=https://blog.scalewithclicks.com/blog/${slug}`} target="_blank">F</a>
-          <a href={`https://twitter.com/intent/tweet?url=https://blog.scalewithclicks.com/blog/${slug}&text=${data.title}`} target="_blank">T</a>
-          <a href={`https://www.linkedin.com/sharing/share-offsite/?url=https://blog.scalewithclicks.com/blog/${slug}`} target="_blank">IN</a>
-        </div>
       </div>
-    </div>
-
-    <main className="content">
-      {data.image && (
-        <div className="hero-image">
-          <Image src={data.image} alt={data.title} width={900} height={500} />
-        </div>
-      )}
-
-      <div
-        className="blog-content"
-        dangerouslySetInnerHTML={{ __html: contentHtml }}
-      />
-    </main>
-  </div>
-</div>
-</div>
+    </>
+  );
+}
