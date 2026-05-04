@@ -36,32 +36,13 @@ export const dynamic = "force-dynamic";
 export async function generateStaticParams() {
   const dir = path.join(process.cwd(), "content/blog");
 
-  if (!fs.existsSync(dir)) return [];
-
-  const files = fs.readdirSync(dir);
-
-  return files.map((file) => ({
-    slug: normalize(file.replace(/\.(md|mdx)$/, "")),
-  }));
+if (!fs.existsSync(dir)) {
+  return <div>No blog directory found</div>;
 }
 
-export default async function BlogPost({ params }) {
-  const slug = Array.isArray(params.slug)
-  ? params.slug[0]
-  : params.slug;
-  console.log("PARAM SLUG:", slug);
+const files = fs.readdirSync(dir); // ✅ ONLY ONCE
 
-  const dir = path.join(process.cwd(), "content/blog");
-
-  if (!fs.existsSync(dir)) {
-    return <div>No blog directory found</div>;
-  }
-
-  const files = fs.readdirSync(dir);
-
-  // ✅ CORRECT MATCHING (FIXED)
- const files = fs.readdirSync(dir);
-
+// ✅ FIXED MATCHING
 const matchedFile = files.find((file) => {
   const fileSlug = normalize(file.replace(/\.(md|mdx)$/, ""));
   return fileSlug === slug;
@@ -85,6 +66,8 @@ if (!matchedFile) {
     </div>
   );
 }
+
+const filePath = path.join(dir, matchedFile);
 
   const filePath = path.join(dir, matchedFile);
 
