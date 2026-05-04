@@ -10,6 +10,7 @@ import rehypeStringify from "rehype-stringify";
 import Image from "next/image";
 import ProgressBar from "../../components/ProgressBar";
 import FloatingShare from "../../../components/FloatingShare";
+import { normalize } from "../../../lib/getPosts";
 
 function extractHeadings(content) {
   const lines = content.split("\n");
@@ -42,7 +43,7 @@ export async function generateStaticParams() {
   const files = fs.readdirSync(dir);
 
   return files.map((file) => ({
-    slug: file.replace(".md", "").replace(".mdx", ""),
+    slug: normalize(file.replace(/\.(md|mdx)$/, "")),
   }));
 }
 
@@ -59,12 +60,10 @@ const files = fs.readdirSync(dir);
 
 // 🔥 match slug with normalized filename
 const matchedFile = files.find((file) => {
-  const fileSlug = file
-    .replace(/\.(md|mdx)$/, "")
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
+  const matchedFile = files.find((file) => {
+  const fileSlug = normalize(file.replace(/\.(md|mdx)$/, ""));
+  return fileSlug === slug;
+});
 
   return fileSlug === slug;
 });
