@@ -2,7 +2,9 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
+import { getPosts, normalize } from "../lib/getPosts";
 
+const posts = getPosts();
 export const dynamic = "force-dynamic";
 
 export default function Home() {
@@ -11,10 +13,6 @@ export default function Home() {
   if (!fs.existsSync(dir)) {
     return <div style={{ padding: "40px" }}>No blog posts found</div>;
   }
-
-  const files = fs
-    .readdirSync(dir)
-    .filter((file) => file.endsWith(".md") || file.endsWith(".mdx"));
 
   const posts = files
     .map((filename) => {
