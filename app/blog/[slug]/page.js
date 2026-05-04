@@ -11,22 +11,20 @@ export const dynamicParams = false;
 export const dynamic = "force-dynamic";
 
 // ✅ Generates all blog routes at build time
+
 export async function generateStaticParams() {
   const dir = path.join(process.cwd(), "content/blog");
 
-  if (!fs.existsSync(dir)) {
-    return [];
-  }
+  if (!fs.existsSync(dir)) return [];
 
-  const files = fs.readdirSync(dir);
+ const files = fs.readdirSync(dir);
 
-  return files.map((file) => ({
-    slug: file.replace(".md", "").replace(".mdx", ""),
-  }));
-}
+const matchedFile = files.find((file) => {
+  return file.replace(/\.(md|mdx)$/, "") === slug;
+});
 
 export default async function BlogPost({ params }) {
-  const slug = params.slug;
+  const slug = params?.slug;
 
   const mdPath = path.join(process.cwd(), "content/blog", `${slug}.md`);
   const mdxPath = path.join(process.cwd(), "content/blog", `${slug}.mdx`);
