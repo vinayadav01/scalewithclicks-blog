@@ -1,35 +1,21 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
 import Link from "next/link";
+import { getPosts, normalize } from "../lib/getPosts";
 
 export const dynamic = "force-dynamic";
 
 export default function Home() {
-  const dir = path.join(process.cwd(), "content/blog");
+  const posts = getPosts();
 
-  if (!fs.existsSync(dir)) {
+  if (!posts.length) {
     return <div style={{ padding: "40px" }}>No blog posts found</div>;
   }
 
-  const files = fs.readdirSync(dir);
-
-  const posts = files.map((filename) => {
-    const filePath = path.join(dir, filename);
-    const file = fs.readFileSync(filePath, "utf8");
-    const { data } = matter(file);
-
-    return {
-      slug: filename.replace(".mdx", "").replace(".md", ""),
-      title: data.title || "No title",
-      date: data.date || "",
-      image: data.image || "",
-      category: data.category || "General",
-      description: data.description || "",
-    };
+  // Sort posts by date (latest first)
+  posts.sort((a, b) => {
+    const dateA = new Date(a.date).getTime() || 0;
+    const dateB = new Date(b.date).getTime() || 0;
+    return dateB - dateA;
   });
-
-  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
   const featuredPost = posts[0];
   const restPosts = posts.slice(1);
@@ -46,10 +32,11 @@ export default function Home() {
           Google Ads, SEO, Lead Generation & Conversion Strategies
         </p>
 
-        {/* CTA */}
         <div style={{ marginTop: "20px" }}>
           <a
             href="https://calendly.com/vinayyadav01992"
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
               background: "#2563eb",
               color: "#fff",
@@ -67,10 +54,10 @@ export default function Home() {
 
       {/* CATEGORY FILTERS */}
       <div style={{ textAlign: "center", marginBottom: "30px" }}>
-        <Link href="/category/google-ads.html">Google Ads</Link>{" | "}
-        <Link href="/category/meta-ads.html">Meta Ads</Link>{" | "}
-        <Link href="/category/seo.html">SEO</Link>{" | "}
-        <Link href="/category/lead-generation.html">Lead Generation</Link>
+        <Link href="/category/google-ads">Google Ads</Link>{" | "}
+        <Link href="/category/meta-ads">Meta Ads</Link>{" | "}
+        <Link href="/category/seo">SEO</Link>{" | "}
+        <Link href="/category/lead-generation">Lead Generation</Link>
       </div>
 
       {/* FEATURED POST */}
@@ -84,13 +71,11 @@ export default function Home() {
           }}
         >
           <Link href={`/blog/${featuredPost.slug}`}>
-            {featuredPost.image && (
-              <img
-                src={featuredPost.image}
-                alt={featuredPost.title}
-                style={{ width: "100%", height: "320px", objectFit: "cover" }}
-              />
-            )}
+            <img
+              src={featuredPost.image || "/default.jpg"}
+              alt={featuredPost.title}
+              style={{ width: "100%", height: "320px", objectFit: "cover" }}
+            />
           </Link>
 
           <div style={{ padding: "20px" }}>
@@ -107,7 +92,7 @@ export default function Home() {
             </p>
 
             <p style={{ fontSize: "13px", color: "#999" }}>
-              {featuredPost.date}
+              {new Date(featuredPost.date).toLocaleDateString()}
             </p>
           </div>
         </div>
@@ -119,12 +104,11 @@ export default function Home() {
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
           gap: "25px",
+          marginBottom: "70px",
         }}
       >
         {restPosts.map((post) => {
-          const categorySlug = post.category
-            ?.toLowerCase()
-            .replace(/\s+/g, "-");
+          const categorySlug = normalize(post.category);
 
           return (
             <div
@@ -136,21 +120,19 @@ export default function Home() {
               }}
             >
               <Link href={`/blog/${post.slug}`}>
-                {post.image && (
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    style={{
-                      width: "100%",
-                      height: "180px",
-                      objectFit: "cover",
-                    }}
-                  />
-                )}
+                <img
+                  src={post.image || "/default.jpg"}
+                  alt={post.title}
+                  style={{
+                    width: "100%",
+                    height: "180px",
+                    objectFit: "cover",
+                  }}
+                />
               </Link>
 
               <div style={{ padding: "15px" }}>
-                <Link href={`/category/${categorySlug}.html`}>
+                <Link href={`/category/${categorySlug}`}>
                   <p style={{ color: "#4f46e5", fontSize: "12px" }}>
                     {post.category}
                   </p>
@@ -165,7 +147,7 @@ export default function Home() {
                 </p>
 
                 <p style={{ fontSize: "13px", color: "#999" }}>
-                  {post.date}
+                  {new Date(post.date).toLocaleDateString()}
                 </p>
               </div>
             </div>
@@ -174,7 +156,14 @@ export default function Home() {
       </div>
 
       {/* BOTTOM CTA */}
-      <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <div
+        style={{
+          textAlign: "center",
+          marginTop: "80px",
+          paddingTop: "20px",
+          borderTop: "1px solid #eee",
+        }}
+      >
         <h2>Want More Leads & Sales?</h2>
         <p style={{ color: "#666" }}>
           Get a custom growth strategy for your business.
@@ -182,6 +171,8 @@ export default function Home() {
 
         <a
           href="https://calendly.com/vinayyadav01992"
+          target="_blank"
+          rel="noopener noreferrer"
           style={{
             background: "#2563eb",
             color: "#fff",
@@ -189,12 +180,13 @@ export default function Home() {
             borderRadius: "8px",
             textDecoration: "none",
             fontWeight: "600",
+            display: "inline-block",
+            marginTop: "10px",
           }}
         >
           🚀 Book Free Strategy Call
         </a>
       </div>
-
     </div>
   );
 }
