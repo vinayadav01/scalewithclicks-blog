@@ -6,7 +6,7 @@ import remarkRehype from "remark-rehype";
 import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
 import { notFound } from "next/navigation";
-import Navbar from "@/components/Navbar";
+import Navbar from "../../components/Navbar";
 import FloatingShare from "@/components/FloatingShare";
 
 // ✅ Prevent random 404
