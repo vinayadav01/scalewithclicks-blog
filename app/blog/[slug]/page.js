@@ -2,12 +2,10 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
-import { notFound } from "next/navigation";
 import Navbar from "../../components/Navbar";
 import remarkRehype from "remark-rehype";
 import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
-import Image from "next/image";
 import ProgressBar from "../../components/ProgressBar";
 import FloatingShare from "../../../components/FloatingShare";
 import { normalize } from "../../../lib/getPosts";
@@ -32,45 +30,62 @@ export const dynamicParams = true;
 // ✅ TEMP FIX
 export const dynamic = "force-dynamic";
 
-// ✅ Generates all blog routes
+
+// ✅ ONLY RETURNS SLUGS (IMPORTANT)
 export async function generateStaticParams() {
   const dir = path.join(process.cwd(), "content/blog");
 
-if (!fs.existsSync(dir)) {
-  return <div>No blog directory found</div>;
+  if (!fs.existsSync(dir)) return [];
+
+  const files = fs.readdirSync(dir);
+
+  return files.map((file) => ({
+    slug: normalize(file.replace(/\.(md|mdx)$/, "")),
+  }));
 }
 
-const files = fs.readdirSync(dir); // ✅ ONLY ONCE
 
-// ✅ FIXED MATCHING
-const matchedFile = files.find((file) => {
-  const fileSlug = normalize(file.replace(/\.(md|mdx)$/, ""));
-  return fileSlug === slug;
-});
+// ✅ MAIN PAGE FUNCTION
+export default async function BlogPost({ params }) {
+  const { slug } = params; // ✅ MUST BE HERE
 
-if (!matchedFile) {
-  return (
-    <div style={{ padding: "40px" }}>
-      <h2>FILE NOT FOUND: {slug}</h2>
-      <p>Available files:</p>
-      <ul>
-        {files.map((file) => {
-          const fileSlug = normalize(file.replace(/\.(md|mdx)$/, ""));
-          return (
-            <li key={file}>
-              {file} → {fileSlug}
-            </li>
-          );
-        })}
-      </ul>
-    </div>
-  );
-}
+  const dir = path.join(process.cwd(), "content/blog");
+
+  if (!fs.existsSync(dir)) {
+    return <div>No blog directory found</div>;
+  }
+
+  const files = fs.readdirSync(dir);
+
+  // ✅ MATCH FILE
+  const matchedFile = files.find((file) => {
+    const fileSlug = normalize(file.replace(/\.(md|mdx)$/, ""));
+    return fileSlug === slug;
+  });
+
+  if (!matchedFile) {
+    return (
+      <div style={{ padding: "40px" }}>
+        <h2>FILE NOT FOUND: {slug}</h2>
+        <ul>
+          {files.map((file) => {
+            const fileSlug = normalize(file.replace(/\.(md|mdx)$/, ""));
+            return (
+              <li key={file}>
+                {file} → {fileSlug}
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    );
+  }
 
   const filePath = path.join(dir, matchedFile);
 
   const file = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(file);
+
   const headings = extractHeadings(content);
 
   const processedContent = await remark()
