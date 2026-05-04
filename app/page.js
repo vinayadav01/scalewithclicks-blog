@@ -3,13 +3,13 @@ import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import { notFound } from "next/navigation";
-import Navbar from "../../../components/Navbar";
+import Navbar from "../../components/Navbar";
 import remarkRehype from "remark-rehype";
 import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
 
 // ✅ Prevents random 404 issues
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 // ✅ TEMP FIX
 export const dynamic = "force-dynamic";
@@ -28,7 +28,7 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogPost({ params }) {
-  const { slug } = await params;
+  const { slug } = params; // ❌ removed wrong await
 
   const mdPath = path.join(process.cwd(), "content/blog", `${slug}.md`);
   const mdxPath = path.join(process.cwd(), "content/blog", `${slug}.mdx`);
@@ -37,10 +37,9 @@ export default async function BlogPost({ params }) {
 
   if (fs.existsSync(mdPath)) filePath = mdPath;
   else if (fs.existsSync(mdxPath)) filePath = mdxPath;
-  else return notFound();
+  else return notFound(); // ✅ better than custom div
 
   const file = fs.readFileSync(filePath, "utf8");
-
   const { data, content } = matter(file);
 
   // ✅ Markdown pipeline
@@ -108,6 +107,17 @@ export default async function BlogPost({ params }) {
 
   return (
     <>
+      {/* TOP BAR */}
+      <div className="topbar">
+        <div className="topbar-inner">
+          <span className="category">Google Ads</span>
+          <span className="reading-time">5 min read</span>
+        </div>
+      </div>
+
+      {/* PROGRESS BAR */}
+      <div id="progress-bar"></div>
+
       <Navbar />
 
       {/* SCHEMA */}
@@ -170,9 +180,9 @@ export default async function BlogPost({ params }) {
 
         .blog-layout {
           display: grid;
-          grid-template-columns: 250px 1fr 300px;
+          grid-template-columns: 220px 1fr 280px;
           gap: 40px;
-          max-width: 1200px;
+          max-width: 1100px;
           margin: 40px auto;
         }
 
@@ -212,6 +222,16 @@ export default async function BlogPost({ params }) {
           padding: 20px;
           border-radius: 10px;
           text-align: center;
+        }
+
+        #progress-bar {
+          position: fixed;
+          top: 0;
+          left: 0;
+          height: 3px;
+          width: 0%;
+          background: #ff6a00;
+          z-index: 2000;
         }
 
         @media (max-width: 1024px) {
