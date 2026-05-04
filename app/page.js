@@ -10,7 +10,7 @@ export default function Home() {
     return <div style={{ padding: "40px" }}>No blog posts found</div>;
   }
 
-  // ✅ Ensure sorting is always safe
+  // ✅ Safe sorting
   const sortedPosts = [...posts].sort((a, b) => {
     const dateA = new Date(a.date).getTime() || 0;
     const dateB = new Date(b.date).getTime() || 0;
@@ -70,7 +70,8 @@ export default function Home() {
             overflow: "hidden",
           }}
         >
-          <Link href={`/blog/${normalize(featuredPost.slug)}`}>
+          {/* ✅ FIXED */}
+          <Link href={`/blog/${featuredPost.slug}`}>
             <img
               src={featuredPost.image || "/default.jpg"}
               alt={featuredPost.title}
@@ -83,7 +84,8 @@ export default function Home() {
               {featuredPost.category}
             </p>
 
-            <Link href={`/blog/${normalize(featuredPost.slug)}`}>
+            {/* ✅ FIXED */}
+            <Link href={`/blog/${featuredPost.slug}`}>
               <h2>{featuredPost.title}</h2>
             </Link>
 
@@ -109,18 +111,18 @@ export default function Home() {
       >
         {restPosts.map((post) => {
           const categorySlug = normalize(post.category);
-          const safeSlug = normalize(post.slug);
 
           return (
             <div
-              key={safeSlug}
+              key={post.slug}
               style={{
                 border: "1px solid #eee",
                 borderRadius: "12px",
                 overflow: "hidden",
               }}
             >
-              <Link href={`/blog/${safeSlug}`}>
+              {/* ✅ FIXED */}
+              <Link href={`/blog/${post.slug}`}>
                 <img
                   src={post.image || "/default.jpg"}
                   alt={post.title}
@@ -139,7 +141,8 @@ export default function Home() {
                   </p>
                 </Link>
 
-                <Link href={`/blog/${safeSlug}`}>
+                {/* ✅ FIXED */}
+                <Link href={`/blog/${post.slug}`}>
                   <h3 style={{ margin: "5px 0" }}>{post.title}</h3>
                 </Link>
 
@@ -156,7 +159,7 @@ export default function Home() {
         })}
       </div>
 
-      {/* BOTTOM CTA */}
+      {/* CTA */}
       <div
         style={{
           textAlign: "center",
