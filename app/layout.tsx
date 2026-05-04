@@ -104,7 +104,7 @@ export default function RootLayout({
             {/* SERVICES */}
             <div>
               <h4 style={{ color: "#fff" }}>Services</h4>
-              <div style={{ lineHeight: "2" }}>
+              <div style={{ lineHeight: "3" }}>
                 <a href="https://scalewithclicks.com/services/google-ads-agency.html" target="_blank" rel="noopener noreferrer">Google Ads</a><br />
                 <a href="https://scalewithclicks.com/services/meta-ads-agency.html" target="_blank" rel="noopener noreferrer">Meta Ads</a><br />
                 <a href="https://scalewithclicks.com/services/seo-services.html" target="_blank" rel="noopener noreferrer">SEO</a>
@@ -115,7 +115,7 @@ export default function RootLayout({
             {/* RESOURCES */}
             <div>
               <h4 style={{ color: "#fff" }}>Resources</h4>
-              <div style={{ lineHeight: "2" }}>
+              <div style={{ lineHeight: "3" }}>
                 <Link href="/">Home</Link><br />
                 <Link href="/category/google-ads">Google Ads</Link><br />
                 <Link href="/category/seo">SEO</Link>
