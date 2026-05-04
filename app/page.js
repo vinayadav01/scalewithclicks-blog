@@ -1,222 +1,256 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import Link from "next/link";
+import { remark } from "remark";
+import html from "remark-html";
+import { notFound } from "next/navigation";
+import { useEffect, useState } from "react";
 
+// ✅ Prevents random 404 issues
+export const dynamicParams = false;
+
+// ✅ TEMP FIX
 export const dynamic = "force-dynamic";
 
-export default function Home() {
+// ✅ Generates all blog routes
+export async function generateStaticParams() {
   const dir = path.join(process.cwd(), "content/blog");
 
-  if (!fs.existsSync(dir)) {
-    return <div style={{ padding: "40px" }}>No blog posts found</div>;
-  }
+  if (!fs.existsSync(dir)) return [];
 
-  const files = fs
-    .readdirSync(dir)
-    .filter((file) => file.endsWith(".md") || file.endsWith(".mdx"));
+  const files = fs.readdirSync(dir);
 
-  const posts = files
-    .map((filename) => {
-      try {
-        const filePath = path.join(dir, filename);
-        const file = fs.readFileSync(filePath, "utf8");
+  return files.map((file) => ({
+    slug: file.replace(".md", "").replace(".mdx", ""),
+  }));
+}
 
-        const { data } = matter(file);
+export default async function BlogPost({ params }) {
+  const slug = params.slug;
 
-        return {
-          slug: filename.replace(".mdx", "").replace(".md", ""),
-          title: data.title || "No title",
-          date: data.date || "1970-01-01",
-          image: data.image || "",
-          category: data.category || "General",
-          description: data.description || "",
-        };
-      } catch (err) {
-        console.error("Error reading file:", filename);
-        return null;
-      }
-    })
-    .filter(Boolean);
+  const mdPath = path.join(process.cwd(), "content/blog", `${slug}.md`);
+  const mdxPath = path.join(process.cwd(), "content/blog", `${slug}.mdx`);
 
-  posts.sort((a, b) => {
-    const dateA = new Date(a.date).getTime() || 0;
-    const dateB = new Date(b.date).getTime() || 0;
-    return dateB - dateA;
-  });
+  let filePath = "";
 
-  const featuredPost = posts[0];
-  const restPosts = posts.slice(1);
+  if (fs.existsSync(mdPath)) filePath = mdPath;
+  else if (fs.existsSync(mdxPath)) filePath = mdxPath;
+  else return notFound();
+
+  const file = fs.readFileSync(filePath, "utf8");
+  const { data, content } = matter(file);
+
+  const processedContent = await remark().use(html).process(content);
+  const contentHtml = processedContent.toString();
+
+  // ✅ SCHEMA (unchanged)
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: data.title,
+    description: data.description,
+    image: `https://blog.scalewithclicks.com${data.image}`,
+    author: {
+      "@type": "Person",
+      name: data.author || "Vinay Yadav",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "ScaleWithClicks",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://blog.scalewithclicks.com/images/logo.png",
+      },
+    },
+    datePublished: data.date,
+    dateModified: data.date,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://blog.scalewithclicks.com/blog/${params.slug}`,
+    },
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://blog.scalewithclicks.com" },
+      { "@type": "ListItem", position: 2, name: "Blog", item: "https://blog.scalewithclicks.com" },
+      { "@type": "ListItem", position: 3, name: data.title, item: `https://blog.scalewithclicks.com/blog/${params.slug}` },
+    ],
+  };
 
   return (
-    <div style={{ maxWidth: "1100px", margin: "auto", padding: "40px 20px" }}>
+    <>
+      {/* NAVBAR */}
+      <Navbar />
 
-      {/* HEADER */}
-      <div style={{ textAlign: "center", marginBottom: "30px" }}>
-        <h1 style={{ fontSize: "42px" }}>
-          Digital Marketing Tips to Grow Your Business
-        </h1>
-        <p style={{ color: "#666" }}>
-          Google Ads, SEO, Lead Generation & Conversion Strategies
-        </p>
+      {/* SCHEMA */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
-        <div style={{ marginTop: "20px" }}>
-          <a
-            href="https://calendly.com/vinayyadav01992"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              background: "#2563eb",
-              color: "#fff",
-              padding: "12px 22px",
-              borderRadius: "8px",
-              textDecoration: "none",
-              fontWeight: "600",
-              display: "inline-block",
-            }}
-          >
-            🚀 Get Free Growth Strategy
-          </a>
-        </div>
-      </div>
+      {/* BLOG LAYOUT */}
+      <div className="blog-layout">
 
-      {/* CATEGORY FILTERS */}
-      <div style={{ textAlign: "center", marginBottom: "30px" }}>
-        <Link href="/category/google-ads">Google Ads</Link>{" | "}
-        <Link href="/category/meta-ads">Meta Ads</Link>{" | "}
-        <Link href="/category/seo">SEO</Link>{" | "}
-        <Link href="/category/lead-generation">Lead Generation</Link>
-      </div>
-
-      {/* FEATURED POST */}
-      {featuredPost && (
-        <div
-          style={{
-            marginBottom: "40px",
-            border: "1px solid #eee",
-            borderRadius: "14px",
-            overflow: "hidden",
-          }}
-        >
-          <Link href={`/blog/${featuredPost.slug}`}>
-            <img
-              src={featuredPost.image || "/default.jpg"}
-              alt={featuredPost.title}
-              style={{ width: "100%", height: "320px", objectFit: "cover" }}
-            />
-          </Link>
-
-          <div style={{ padding: "20px" }}>
-            <p style={{ color: "#4f46e5", fontSize: "13px" }}>
-              {featuredPost.category}
-            </p>
-
-            <Link href={`/blog/${featuredPost.slug}`}>
-              <h2>{featuredPost.title}</h2>
-            </Link>
-
-            <p style={{ color: "#555", marginTop: "10px" }}>
-              {featuredPost.description}
-            </p>
-
-            <p style={{ fontSize: "13px", color: "#999" }}>
-              {new Date(featuredPost.date).toLocaleDateString()}
-            </p>
-          </div>
-        </div>
-      )}
-
-      {/* BLOG GRID */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-          gap: "25px",
-          marginBottom: "70px",
-        }}
-      >
-        {restPosts.map((post) => {
-          const categorySlug = (post.category || "general")
-            .toLowerCase()
-            .replace(/\s+/g, "-");
-
-          return (
-            <div
-              key={post.slug}
-              style={{
-                border: "1px solid #eee",
-                borderRadius: "12px",
-                overflow: "hidden",
-              }}
-            >
-              <Link href={`/blog/${post.slug}`}>
-                <img
-                  src={post.image || "/default.jpg"}
-                  alt={post.title}
-                  style={{
-                    width: "100%",
-                    height: "180px",
-                    objectFit: "cover",
-                  }}
-                />
-              </Link>
-
-              <div style={{ padding: "15px" }}>
-                <Link href={`/category/${categorySlug}`}>
-                  <p style={{ color: "#4f46e5", fontSize: "12px" }}>
-                    {post.category}
-                  </p>
-                </Link>
-
-                <Link href={`/blog/${post.slug}`}>
-                  <h3 style={{ margin: "5px 0" }}>{post.title}</h3>
-                </Link>
-
-                <p style={{ fontSize: "14px", color: "#555" }}>
-                  {post.description}
-                </p>
-
-                <p style={{ fontSize: "13px", color: "#999" }}>
-                  {new Date(post.date).toLocaleDateString()}
-                </p>
-              </div>
+        {/* LEFT SIDEBAR */}
+        <aside className="sidebar">
+          <div className="sidebar-inner">
+            <div className="author">
+              <img src="/images/author.jpg" alt="author" />
+              <p>{data.author || "Vinay Yadav"}</p>
             </div>
-          );
-        })}
+
+            <div className="toc">
+              <p>TABLE OF CONTENTS</p>
+              <a href="#1-targeting-the-wrong-keywords">Wrong Keywords</a>
+              <a href="#2-ignoring-search-intent">Search Intent</a>
+              <a href="#3-no-negative-keywords">Negative Keywords</a>
+              <a href="#4-poor-landing-page-experience">Landing Page</a>
+              <a href="#5-not-tracking-conversions">Tracking</a>
+              <a href="#6-weak-ad-copy">Ad Copy</a>
+              <a href="#7-no-optimization-strategy">Optimization</a>
+            </div>
+          </div>
+        </aside>
+
+        {/* MAIN CONTENT */}
+        <main className="content">
+          <h1>{data.title}</h1>
+          <p className="date">{data.date}</p>
+
+          {data.image && <img src={data.image} alt={data.title} />}
+
+          <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
+        </main>
+
+        {/* RIGHT CTA */}
+        <aside className="right-cta">
+          <div className="cta-box">
+            <h3>Launch your Campaign!</h3>
+            <p>Create full funnel campaigns that drive real business results.</p>
+            <button>Start Now</button>
+          </div>
+        </aside>
       </div>
 
-      {/* BOTTOM CTA */}
-      <div
-        style={{
-          textAlign: "center",
-          marginTop: "80px",
-          paddingTop: "20px",
-          borderTop: "1px solid #eee",
-        }}
-      >
-        <h2>Want More Leads & Sales?</h2>
-        <p style={{ color: "#666" }}>
-          Get a custom growth strategy for your business.
-        </p>
+      {/* STYLES */}
+      <style>{`
+        /* NAVBAR */
+        .navbar {
+          position: sticky;
+          top: 0;
+          z-index: 999;
+          padding: 16px 40px;
+          background: transparent;
+          transition: 0.3s;
+        }
 
-        <a
-          href="https://calendly.com/vinayyadav01992"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            background: "#2563eb",
-            color: "#fff",
-            padding: "12px 22px",
-            borderRadius: "8px",
-            textDecoration: "none",
-            fontWeight: "600",
-            display: "inline-block",
-            marginTop: "10px",
-          }}
-        >
-          🚀 Book Free Strategy Call
-        </a>
+        .navbar.scrolled {
+          background: #0b1b34;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .navbar a {
+          margin: 0 10px;
+          color: white;
+        }
+
+        .cta-btn {
+          background: #ff6a00;
+          padding: 8px 16px;
+          border-radius: 20px;
+          color: white;
+          border: none;
+        }
+
+        /* LAYOUT */
+        .blog-layout {
+          display: grid;
+          grid-template-columns: 250px 1fr 300px;
+          gap: 40px;
+          max-width: 1200px;
+          margin: 40px auto;
+        }
+
+        /* SIDEBAR */
+        .sidebar-inner {
+          position: sticky;
+          top: 100px;
+        }
+
+        .author img {
+          width: 60px;
+          border-radius: 50%;
+        }
+
+        .toc a {
+          display: block;
+          margin: 8px 0;
+          color: #555;
+        }
+
+        /* CONTENT */
+        .content {
+          max-width: 700px;
+        }
+
+        .content h1 {
+          font-size: 32px;
+        }
+
+        .date {
+          color: #666;
+          margin-bottom: 10px;
+        }
+
+        /* CTA */
+        .cta-box {
+          position: sticky;
+          top: 120px;
+          background: #f5f7fb;
+          padding: 20px;
+          border-radius: 10px;
+          text-align: center;
+        }
+
+        /* TYPOGRAPHY */
+        h2 { font-size: 26px; margin-top: 30px; }
+        h3 { font-size: 22px; margin-top: 25px; }
+        p { margin-bottom: 15px; }
+        ul { padding-left: 20px; }
+        img { width: 100%; border-radius: 10px; margin: 20px 0; }
+      `}</style>
+    </>
+  );
+}
+
+/* NAVBAR COMPONENT */
+function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <header className={`navbar ${scrolled ? "scrolled" : ""}`}>
+      <div className="nav-container">
+        <div>ScaleWithClicks</div>
+        <nav>
+          <a href="/">Home</a>
+          <a href="/blog">Blog</a>
+          <a href="/services">Services</a>
+        </nav>
+        <button className="cta-btn">Start Now</button>
       </div>
-    </div>
+    </header>
   );
 }
