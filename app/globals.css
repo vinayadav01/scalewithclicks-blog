@@ -1,3 +1,10 @@
+@import "tailwindcss";
+
+/* Optional: your custom styles below */
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
 /* =========================
    🎨 THEME
 ========================= */
