@@ -6,19 +6,19 @@ export const dynamic = "force-dynamic";
 export default function Home() {
   const posts = getPosts();
 
-  if (!posts.length) {
+  if (!posts || posts.length === 0) {
     return <div style={{ padding: "40px" }}>No blog posts found</div>;
   }
 
-  // Sort posts by date (latest first)
-  posts.sort((a, b) => {
+  // ✅ Ensure sorting is always safe
+  const sortedPosts = [...posts].sort((a, b) => {
     const dateA = new Date(a.date).getTime() || 0;
     const dateB = new Date(b.date).getTime() || 0;
     return dateB - dateA;
   });
 
-  const featuredPost = posts[0];
-  const restPosts = posts.slice(1);
+  const featuredPost = sortedPosts[0];
+  const restPosts = sortedPosts.slice(1);
 
   return (
     <div style={{ maxWidth: "1100px", margin: "auto", padding: "40px 20px" }}>
@@ -70,7 +70,7 @@ export default function Home() {
             overflow: "hidden",
           }}
         >
-          <Link href={`/blog/${featuredPost.slug}`}>
+          <Link href={`/blog/${normalize(featuredPost.slug)}`}>
             <img
               src={featuredPost.image || "/default.jpg"}
               alt={featuredPost.title}
@@ -83,7 +83,7 @@ export default function Home() {
               {featuredPost.category}
             </p>
 
-            <Link href={`/blog/${featuredPost.slug}`}>
+            <Link href={`/blog/${normalize(featuredPost.slug)}`}>
               <h2>{featuredPost.title}</h2>
             </Link>
 
@@ -109,17 +109,18 @@ export default function Home() {
       >
         {restPosts.map((post) => {
           const categorySlug = normalize(post.category);
+          const safeSlug = normalize(post.slug);
 
           return (
             <div
-              key={post.slug}
+              key={safeSlug}
               style={{
                 border: "1px solid #eee",
                 borderRadius: "12px",
                 overflow: "hidden",
               }}
             >
-              <Link href={`/blog/${post.slug}`}>
+              <Link href={`/blog/${safeSlug}`}>
                 <img
                   src={post.image || "/default.jpg"}
                   alt={post.title}
@@ -138,7 +139,7 @@ export default function Home() {
                   </p>
                 </Link>
 
-                <Link href={`/blog/${post.slug}`}>
+                <Link href={`/blog/${safeSlug}`}>
                   <h3 style={{ margin: "5px 0" }}>{post.title}</h3>
                 </Link>
 
