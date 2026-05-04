@@ -4,29 +4,16 @@ import Link from "next/link";
 export const dynamic = "force-dynamic";
 
 export default function CategoryPage({ params }) {
-  const slug = Array.isArray(params.slug)
-    ? params.slug[0]
-    : params.slug || "";
+  const slug = params?.slug?.toString() || "";
 
   const posts = getPosts();
 
   const currentSlug = normalize(slug);
 
-console.log("slug:", slug);
-console.log("posts:", posts);
-console.log("categories:", posts.map(p => p.category));
-  
-  const filteredPosts = posts.filter((post) => {
-  const normalizedCategory = normalize(post.category);
-  console.log("POST:", post.title);
-  console.log("RAW CATEGORY:", post.category);
-  console.log("NORMALIZED:", normalizedCategory);
-  console.log("SLUG:", currentSlug);
-  console.log("MATCH:", normalizedCategory === currentSlug);
-  console.log("------------");
+  const filteredPosts = posts.filter(
+    (post) => normalize(post.category) === currentSlug
+  );
 
-  return normalizedCategory === currentSlug;
-});
   return (
     <div style={{ maxWidth: "1100px", margin: "auto", padding: "40px 20px" }}>
       <h1 style={{ fontSize: "32px", marginBottom: "30px" }}>
