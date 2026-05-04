@@ -1,24 +1,24 @@
-import { getPosts } from "../../../lib/getPosts";
 import Link from "next/link";
+import { getPosts } from "@/lib/getPosts";
+import Navbar from "@/components/Navbar";
 
 export default function CategoryPage({ params }) {
-  const { slug } = params;
+  const category = params.category;
 
   const posts = getPosts().filter(
-    (post) =>
-      post.category.toLowerCase().replace(/\s+/g, "-") === slug
+    (p) => p.category === category
   );
 
   return (
-    <div style={{ maxWidth: "1000px", margin: "auto", padding: "40px" }}>
-      <h1 style={{ marginBottom: "30px" }}>
-        Category: {slug.replace(/-/g, " ")}
-      </h1>
+    <div style={{ padding: "40px" }}>
+      <Navbar />
+
+      <h1>Category: {category}</h1>
 
       {posts.map((post) => (
-        <div key={post.slug} style={{ marginBottom: "20px" }}>
+        <div key={post.slug}>
           <Link href={`/blog/${post.slug}`}>
-            <h3>{post.title}</h3>
+            <h2>{post.title}</h2>
           </Link>
         </div>
       ))}
