@@ -60,27 +60,31 @@ export default async function BlogPost({ params }) {
   const files = fs.readdirSync(dir);
 
   // ✅ CORRECT MATCHING (FIXED)
-  const matchedFile = files.find((file) => {
-    const fileSlug = normalize(file.replace(/\.(md|mdx)$/, ""));
-    return fileSlug === slug;
-  });
+ const files = fs.readdirSync(dir);
 
-  // ❌ If still not found → show debug info
-  if (!matchedFile) {
-    return (
-      <div style={{ padding: "40px" }}>
-        <h2>FILE NOT FOUND: {slug}</h2>
-        <p>Available files:</p>
-        <ul>
-          {files.map((f) => (
-            <li key={f}>
-              {f} → {normalize(f.replace(/\.(md|mdx)$/, ""))}
+const matchedFile = files.find((file) => {
+  const fileSlug = normalize(file.replace(/\.(md|mdx)$/, ""));
+  return fileSlug === slug;
+});
+
+if (!matchedFile) {
+  return (
+    <div style={{ padding: "40px" }}>
+      <h2>FILE NOT FOUND: {slug}</h2>
+      <p>Available files:</p>
+      <ul>
+        {files.map((file) => {
+          const fileSlug = normalize(file.replace(/\.(md|mdx)$/, ""));
+          return (
+            <li key={file}>
+              {file} → {fileSlug}
             </li>
-          ))}
-        </ul>
-      </div>
-    );
-  }
+          );
+        })}
+      </ul>
+    </div>
+  );
+}
 
   const filePath = path.join(dir, matchedFile);
 
