@@ -88,43 +88,79 @@ export default async function BlogPost({ params }) {
   };
 
   return (
-    <div
-      style={{
-        maxWidth: "800px",
-        margin: "auto",
-        padding: "40px 20px",
-        lineHeight: "1.7",
-      }}
-    >
-      <Navbar />
+  <>
+    <Navbar />
+    <ProgressBar image={data.image} />
 
-      <div className="hidden md:block">
-        <FloatingShare />
+    {/* SCHEMA */}
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+    />
+
+    <div className="blog-layout">
+
+      {/* SIDEBAR */}
+      <aside className="sidebar">
+        <div className="sidebar-inner">
+          <div className="toc">
+            <p>TABLE OF CONTENTS</p>
+            {headings.map((item, index) => (
+              <a key={index} href={`#${item.id}`}>
+                {item.text}
+              </a>
+            ))}
+          </div>
+        </div>
+      </aside>
+
+      {/* RIGHT SIDE */}
+      <div>
+
+        <div className="blog-header">
+          <div className="breadcrumb">
+            <a href="/">Home</a> /
+            <a href={`/category/${data.category?.toLowerCase()}`}>
+              {data.category}
+            </a> /
+            <span>{data.title}</span>
+          </div>
+
+          <h1 className="blog-title">{data.title}</h1>
+
+          <div className="author-row">
+            <div className="author-left">
+              <img src="/images/author.jpg" width="40" />
+              <span>{data.author}</span>
+            </div>
+
+            <div className="share-icons">
+              <a href={`https://www.facebook.com/sharer/sharer.php?u=https://blog.scalewithclicks.com/blog/${slug}`} target="_blank">F</a>
+              <a href={`https://twitter.com/intent/tweet?url=https://blog.scalewithclicks.com/blog/${slug}&text=${data.title}`} target="_blank">T</a>
+              <a href={`https://www.linkedin.com/sharing/share-offsite/?url=https://blog.scalewithclicks.com/blog/${slug}`} target="_blank">IN</a>
+            </div>
+          </div>
+        </div>
+
+        <main className="content">
+          {data.image && (
+            <div className="hero-image">
+              <img src={data.image} alt={data.title} />
+            </div>
+          )}
+
+          <div
+            className="blog-content"
+            dangerouslySetInnerHTML={{ __html: contentHtml }}
+          />
+        </main>
+
       </div>
-
-      {/* Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
-
-      {/* TITLE */}
-      <h1 style={{ fontSize: "34px" }}>{data.title}</h1>
-
-      {/* DATE */}
-      <p style={{ color: "#666" }}>{data.date}</p>
-
-      {/* IMAGE */}
-      {data.image && (
-        <img
-          src={data.image}
-          alt={data.title}
-          style={{ width: "100%", borderRadius: "10px", margin: "20px 0" }}
-        />
-      )}
-
-      {/* CONTENT */}
-      <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
     </div>
-  );
+  </>
+);
 }
