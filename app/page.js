@@ -7,6 +7,24 @@ import Navbar from "../../components/Navbar";
 import remarkRehype from "remark-rehype";
 import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
+import Image from "next/image";
+
+// ✅ Extract headings for TOC
+function extractHeadings(content) {
+  const lines = content.split("\n");
+
+  return lines
+    .filter((line) => line.startsWith("## "))
+    .map((line) => {
+      const text = line.replace("## ", "").trim();
+
+      const id = text
+        .toLowerCase()
+        .replace(/[^\w]+/g, "-");
+
+      return { text, id };
+    });
+}
 
 // ✅ Prevents random 404 issues
 export const dynamicParams = true;
@@ -14,7 +32,7 @@ export const dynamicParams = true;
 // ✅ TEMP FIX
 export const dynamic = "force-dynamic";
 
-// ✅ Generates all blog routes
+// ✅ Generate routes
 export async function generateStaticParams() {
   const dir = path.join(process.cwd(), "content/blog");
 
@@ -28,7 +46,7 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogPost({ params }) {
-  const { slug } = params; // ❌ removed wrong await
+  const { slug } = params; // ❌ removed await
 
   const mdPath = path.join(process.cwd(), "content/blog", `${slug}.md`);
   const mdxPath = path.join(process.cwd(), "content/blog", `${slug}.mdx`);
@@ -37,10 +55,12 @@ export default async function BlogPost({ params }) {
 
   if (fs.existsSync(mdPath)) filePath = mdPath;
   else if (fs.existsSync(mdxPath)) filePath = mdxPath;
-  else return notFound(); // ✅ better than custom div
+  else return notFound(); // ✅ better handling
 
   const file = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(file);
+
+  const headings = extractHeadings(content);
 
   // ✅ Markdown pipeline
   const processedContent = await remark()
@@ -107,18 +127,10 @@ export default async function BlogPost({ params }) {
 
   return (
     <>
-      {/* TOP BAR */}
-      <div className="topbar">
-        <div className="topbar-inner">
-          <span className="category">Google Ads</span>
-          <span className="reading-time">5 min read</span>
-        </div>
-      </div>
-
-      {/* PROGRESS BAR */}
-      <div id="progress-bar"></div>
-
       <Navbar />
+
+      {/* Progress Bar */}
+      <div id="progress-bar"></div>
 
       {/* SCHEMA */}
       <script
@@ -131,144 +143,59 @@ export default async function BlogPost({ params }) {
       />
 
       <div className="blog-layout">
-        {/* LEFT SIDEBAR */}
-        <aside className="sidebar">
-          <div className="sidebar-inner">
-            <div className="author">
-              <img src="/images/author.jpg" alt="author" />
-              <p>{data.author || "Vinay Yadav"}</p>
-            </div>
 
-            <div className="toc">
-              <p>TABLE OF CONTENTS</p>
-              <a href="#1-targeting-the-wrong-keywords">Wrong Keywords</a>
-              <a href="#2-ignoring-search-intent">Search Intent</a>
-              <a href="#3-no-negative-keywords">Negative Keywords</a>
-              <a href="#4-poor-landing-page-experience">Landing Page</a>
-              <a href="#5-not-tracking-conversions">Tracking</a>
-              <a href="#6-weak-ad-copy">Ad Copy</a>
-              <a href="#7-no-optimization-strategy">Optimization</a>
-            </div>
-          </div>
-        </aside>
+  {/* SIDEBAR */}
+  <aside className="sidebar">
+    <div className="sidebar-inner">
+      <div className="toc">
+        <p>TABLE OF CONTENTS</p>
+        {headings.map((item, index) => (
+          <a key={index} href={`#${item.id}`}>
+            {item.text}
+          </a>
+        ))}
+      </div>
+    </div>
+  </aside>
 
-        {/* MAIN CONTENT */}
-        <main className="content">
-          <h1>{data.title}</h1>
-          <p className="date">{data.date}</p>
+  {/* RIGHT SIDE (IMPORTANT WRAPPER) */}
+  <div>
 
-          {data.image && <img src={data.image} alt={data.title} />}
-
-          <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
-        </main>
-
-        {/* RIGHT CTA */}
-        <aside className="right-cta">
-          <div className="cta-box">
-            <h3>Launch your Campaign!</h3>
-            <p>Create full funnel campaigns that drive real business results.</p>
-            <button>Start Now</button>
-          </div>
-        </aside>
+    <div className="blog-header">
+      <div className="breadcrumb">
+        <a href="/">Home</a> /
+        <a href={`/category/${data.category?.toLowerCase()}`}>{data.category}</a> /
+        <span>{data.title}</span>
       </div>
 
-      {/* STYLES */}
-      <style jsx>{`
-        html {
-          scroll-behavior: smooth;
-        }
+      <h1 className="blog-title">{data.title}</h1>
 
-        .blog-layout {
-          display: grid;
-          grid-template-columns: 220px 1fr 280px;
-          gap: 40px;
-          max-width: 1100px;
-          margin: 40px auto;
-        }
+      <div className="author-row">
+        <div className="author-left">
+          <Image src="/images/author.jpg" width={40} height={40} alt="author" />
+          <span>{data.author}</span>
+        </div>
 
-        .sidebar-inner {
-          position: sticky;
-          top: 100px;
-        }
+        <div className="share-icons">
+          <a href={`https://www.facebook.com/sharer/sharer.php?u=https://blog.scalewithclicks.com/blog/${slug}`} target="_blank">F</a>
+          <a href={`https://twitter.com/intent/tweet?url=https://blog.scalewithclicks.com/blog/${slug}&text=${data.title}`} target="_blank">T</a>
+          <a href={`https://www.linkedin.com/sharing/share-offsite/?url=https://blog.scalewithclicks.com/blog/${slug}`} target="_blank">IN</a>
+        </div>
+      </div>
+    </div>
 
-        .author img {
-          width: 60px;
-          border-radius: 50%;
-        }
+    <main className="content">
+      {data.image && (
+        <div className="hero-image">
+          <Image src={data.image} alt={data.title} width={900} height={500} />
+        </div>
+      )}
 
-        .toc a {
-          display: block;
-          margin: 8px 0;
-          color: #555;
-        }
+      <div
+        className="blog-content"
+        dangerouslySetInnerHTML={{ __html: contentHtml }}
+      />
+    </main>
 
-        .toc a:hover {
-          color: #000;
-        }
-
-        .content {
-          max-width: 700px;
-        }
-
-        .date {
-          color: #666;
-          margin-bottom: 10px;
-        }
-
-        .cta-box {
-          position: sticky;
-          top: 120px;
-          background: #f5f7fb;
-          padding: 20px;
-          border-radius: 10px;
-          text-align: center;
-        }
-
-        #progress-bar {
-          position: fixed;
-          top: 0;
-          left: 0;
-          height: 3px;
-          width: 0%;
-          background: #ff6a00;
-          z-index: 2000;
-        }
-
-        @media (max-width: 1024px) {
-          .blog-layout {
-            grid-template-columns: 1fr;
-          }
-
-          .sidebar,
-          .right-cta {
-            display: none;
-          }
-        }
-
-        h2 {
-          font-size: 26px;
-          margin-top: 30px;
-        }
-
-        h3 {
-          font-size: 22px;
-          margin-top: 25px;
-        }
-
-        p {
-          margin-bottom: 15px;
-        }
-
-        ul {
-          padding-left: 20px;
-        }
-
-        img {
-          width: 100%;
-          border-radius: 10px;
-          margin: 20px 0;
-        }
-      `}</style>
-    </>
-  );
-}
+  </div>
+</div>
