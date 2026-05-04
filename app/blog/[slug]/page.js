@@ -2,7 +2,6 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
-import html from "remark-html";
 import { notFound } from "next/navigation";
 
 // ✅ Prevents random 404 issues
@@ -45,9 +44,11 @@ export default async function BlogPost({ params }) {
   const file = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(file);
 
-  const processedContent = await remark().use(html).process(content);
-  const contentHtml = processedContent.toString();
-
+ const processedContent = await remark()
+  .use(remarkRehype)
+  .use(rehypeSlug)
+  .use(rehypeStringify)
+  .process(content);
 const schema = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
