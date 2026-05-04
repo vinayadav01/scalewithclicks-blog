@@ -8,18 +8,14 @@ const posts = getPosts();
 export const dynamic = "force-dynamic";
 
 export default function Home() {
-  const dir = path.join(process.cwd(), "content/blog");
+  import { getPosts, normalize } from "../lib/getPosts";
 
-  if (!fs.existsSync(dir)) {
+export default function Home() {
+  const posts = getPosts();
+
+  if (!posts.length) {
     return <div style={{ padding: "40px" }}>No blog posts found</div>;
   }
-
-  const posts = files
-    .map((filename) => {
-      try {
-        const filePath = path.join(dir, filename);
-        const file = fs.readFileSync(filePath, "utf8");
-        const { data } = matter(file);
 
         return {
           slug: filename.replace(".mdx", "").replace(".md", ""),
@@ -133,9 +129,7 @@ export default function Home() {
         }}
       >
         {restPosts.map((post) => {
-          const categorySlug = (post.category || "general")
-            .toLowerCase()
-            .replace(/\s+/g, "-");
+          const categorySlug = normalize(post.category);
 
           return (
             <div
