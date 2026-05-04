@@ -3,8 +3,8 @@ import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import { notFound } from "next/navigation";
-import Navbar from "../../components/Navbar";
-import FloatingShare from "../../components/FloatingShare";
+import Navbar from "@/components/Navbar";
+import FloatingShare from "@/components/FloatingShare";
 
 // ✅ Prevents random 404 issues
 export const dynamicParams = false;
