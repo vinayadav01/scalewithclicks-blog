@@ -88,7 +88,7 @@ export default function Home() {
         <div className="mt-20">
           <h2 className="text-2xl font-bold mb-6">📚 All Articles</h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {posts.map((post, i) => (
               <BlogCard key={post?.slug || i} post={post} />
             ))}
