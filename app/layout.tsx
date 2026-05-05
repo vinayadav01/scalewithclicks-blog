@@ -1,12 +1,11 @@
 import Link from "next/link";
-import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import { Inter } from "next/font/google";
 
 const inter = Inter({
   subsets: ["latin"],
-  display: "swap", // ✅ better performance (prevents layout shift)
+  display: "swap",
 });
 
 export const metadata = {
@@ -22,15 +21,11 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className="bg-gradient-to-br from-gray-50 to-gray-100">
-        
+    <html lang="en" className="scroll-smooth">
+      <body className={`${inter.className} bg-gray-50 text-gray-900`}>
+
         {/* ✅ Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-PG5ZS7WVRJ"
@@ -45,108 +40,119 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* HEADER */}
-        <header
-          style={{
-            padding: "20px",
-            borderBottom: "1px solid #eee",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <Link href="/">
-            <img
-              src="/logo.png"
-              alt="ScaleWithClicks logo"
-              style={{ height: "60px" }} // ✅ better UX (88px too big)
-            />
-          </Link>
+        {/* ================= HEADER ================= */}
+        <header className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-gray-200">
 
-          <nav>
-            <Link href="/" style={{ marginRight: "15px" }}>Home</Link>
-            <Link href="/category/google-ads" style={{ marginRight: "15px" }}>Google Ads</Link>
-            <Link href="/category/seo">SEO</Link>
-            <Link href="/category/meta">Meta</Link>
-            <Link href="/category/lead-generation">Lead Generation</Link>
-          </nav>
+          <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+
+            {/* LOGO */}
+            <Link href="/" className="flex items-center gap-2">
+              <img
+                src="/logo.png"
+                alt="ScaleWithClicks logo"
+                className="h-10 w-auto"
+              />
+              <span className="font-semibold text-lg tracking-tight">
+                ScaleWithClicks
+              </span>
+            </Link>
+
+            {/* NAV */}
+            <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+
+              <Link href="/" className="hover:text-purple-600 transition">
+                Home
+              </Link>
+
+              <Link href="/category/google-ads" className="hover:text-purple-600 transition">
+                Google Ads
+              </Link>
+
+              <Link href="/category/seo" className="hover:text-purple-600 transition">
+                SEO
+              </Link>
+
+              <Link href="/category/meta" className="hover:text-purple-600 transition">
+                Meta
+              </Link>
+
+              <Link href="/category/lead-generation" className="hover:text-purple-600 transition">
+                Lead Gen
+              </Link>
+
+            </nav>
+
+            {/* CTA BUTTON */}
+            <a
+              href="https://scalewithclicks.com"
+              className="hidden md:inline-block bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:scale-105 transition"
+            >
+              Free Audit
+            </a>
+
+          </div>
         </header>
 
-        {/* MAIN */}
-        <main style={{ minHeight: "80vh" }}>{children}</main>
+        {/* ================= MAIN ================= */}
+        <main className="min-h-[80vh]">
+          {children}
+        </main>
 
-        {/* FOOTER */}
-        <footer
-          style={{
-            background: "#020617",
-            color: "#cbd5f5",
-            padding: "50px 20px",
-            marginTop: "60px",
-          }}
-        >
-          <div
-            style={{
-              maxWidth: "1200px",
-              margin: "auto",
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-              gap: "40px",
-            }}
-          >
+        {/* ================= FOOTER ================= */}
+        <footer className="bg-slate-950 text-slate-300 mt-20">
+
+          <div className="max-w-7xl mx-auto px-6 py-14 grid gap-10 md:grid-cols-4">
+
             {/* BRAND */}
             <div>
-              <h3 style={{ color: "#fff" }}>ScaleWithClicks</h3>
-              <p style={{ fontSize: "14px", lineHeight: "1.6" }}>
-                Helping businesses generate leads using Ads, SEO & tracking.
+              <h3 className="text-white text-lg font-semibold">
+                ScaleWithClicks
+              </h3>
+              <p className="text-sm mt-3 leading-relaxed">
+                Helping businesses generate high-quality leads using Ads, SEO & tracking.
               </p>
             </div>
 
             {/* SERVICES */}
             <div>
-              <h4 style={{ color: "#fff" }}>Services</h4>
-              <div style={{ lineHeight: "3" }}>
-                <a href="https://scalewithclicks.com/services/google-ads-agency.html" target="_blank" rel="noopener noreferrer">Google Ads</a><br />
-                <a href="https://scalewithclicks.com/services/meta-ads-agency.html" target="_blank" rel="noopener noreferrer">Meta Ads</a><br />
-                <a href="https://scalewithclicks.com/services/seo-services.html" target="_blank" rel="noopener noreferrer">SEO</a><br />
-                <a href="https://scalewithclicks.com/services/conversion-tracking.html" target="_blank" rel="noopener noreferrer">Conversion Tracking</a>
-              </div>
+              <h4 className="text-white font-semibold mb-3">Services</h4>
+              <ul className="space-y-2 text-sm">
+                <li><a href="https://scalewithclicks.com/services/google-ads-agency.html" target="_blank">Google Ads</a></li>
+                <li><a href="https://scalewithclicks.com/services/meta-ads-agency.html" target="_blank">Meta Ads</a></li>
+                <li><a href="https://scalewithclicks.com/services/seo-services.html" target="_blank">SEO</a></li>
+                <li><a href="https://scalewithclicks.com/services/conversion-tracking.html" target="_blank">Tracking</a></li>
+              </ul>
             </div>
 
             {/* RESOURCES */}
             <div>
-              <h4 style={{ color: "#fff" }}>Resources</h4>
-              <div style={{ lineHeight: "3" }}>
-                <Link href="/">Home</Link><br />
-                <Link href="/category/google-ads">Google Ads</Link><br />
-                <Link href="/category/seo">SEO</Link><br />
-                <Link href="/category/meta">Meta</Link>
-              </div>
+              <h4 className="text-white font-semibold mb-3">Resources</h4>
+              <ul className="space-y-2 text-sm">
+                <li><Link href="/">Home</Link></li>
+                <li><Link href="/category/google-ads">Google Ads</Link></li>
+                <li><Link href="/category/seo">SEO</Link></li>
+                <li><Link href="/category/meta">Meta</Link></li>
+              </ul>
             </div>
 
             {/* LEGAL */}
             <div>
-              <h4 style={{ color: "#fff" }}>Legal</h4>
-              <div style={{ lineHeight: "2" }}>
-                <Link href="/privacy-policy">Privacy Policy</Link><br />
-                <Link href="/terms-and-conditions">Terms</Link>
-              </div>
+              <h4 className="text-white font-semibold mb-3">Legal</h4>
+              <ul className="space-y-2 text-sm">
+                <li><Link href="/privacy-policy">Privacy Policy</Link></li>
+                <li><Link href="/terms-and-conditions">Terms</Link></li>
+              </ul>
             </div>
+
           </div>
 
           {/* COPYRIGHT */}
-          <div
-            style={{
-              textAlign: "center",
-              marginTop: "40px",
-              fontSize: "13px",
-              borderTop: "1px solid #1e293b",
-              paddingTop: "20px",
-              color: "#94a3b8",
-            }}
-          >
-            © {new Date().getFullYear()} ScaleWithClicks
+          <div className="text-center text-xs border-t border-slate-800 py-6 text-slate-500">
+            © {new Date().getFullYear()} ScaleWithClicks. All rights reserved.
           </div>
+
         </footer>
+
       </body>
     </html>
   );
