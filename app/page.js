@@ -22,11 +22,13 @@ export default function Home() {
         <Link href={`/blog/${featured.slug}`} className="lg:col-span-2 group">
           <div className="relative h-[420px] rounded-2xl overflow-hidden">
 
-            <img
-              src={featured.image}
-              alt={featured.title}
-              className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-            />
+           <div className="relative w-full h-[220px] overflow-hidden rounded-xl">
+  <img
+    src={post.image}
+    alt={post.title}
+    className="w-full h-full object-cover"
+  />
+</div>
 
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
 
