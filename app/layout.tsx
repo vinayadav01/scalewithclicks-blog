@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import Script from "next/script";
 import "./globals.css";
@@ -11,27 +14,21 @@ const inter = Inter({
 export const metadata = {
   title: "ScaleWithClicks Blog",
   description: "Performance Marketing Blog",
-
-  verification: {
-    google: "UG50HhrybK9nw-uBE1UJYvuHAsvGdj44bMJajcWMxgU",
-  },
-
-  icons: {
-    icon: "/favicon.png",
-  },
 };
 
 export default function RootLayout({ children }) {
-  return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} bg-gray-50 text-gray-900`}>
+  const [open, setOpen] = useState(false);
 
-        {/* ✅ Google Analytics */}
+  return (
+    <html lang="en">
+      <body className={`${inter.className} bg-gradient-to-br from-gray-50 to-gray-100`}>
+
+        {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-PG5ZS7WVRJ"
           strategy="afterInteractive"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="ga" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -41,114 +38,111 @@ export default function RootLayout({ children }) {
         </Script>
 
         {/* ================= HEADER ================= */}
-        <header className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-gray-200">
+        <header className="bg-white border-b sticky top-0 z-50">
 
           <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
 
             {/* LOGO */}
-            <Link href="/" className="flex items-center gap-2">
-              <img
-                src="/logo.png"
-                alt="ScaleWithClicks logo"
-                className="h-10 w-auto"
-              />
-              <span className="font-semibold text-lg tracking-tight">
-                ScaleWithClicks
-              </span>
+            <Link href="/">
+              <img src="/logo.png" alt="logo" className="h-10" />
             </Link>
 
-            {/* NAV */}
+            {/* DESKTOP NAV */}
             <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-
-              <Link href="/" className="hover:text-purple-600 transition">
-                Home
-              </Link>
-
-              <Link href="/category/google-ads" className="hover:text-purple-600 transition">
-                Google Ads
-              </Link>
-
-              <Link href="/category/seo" className="hover:text-purple-600 transition">
-                SEO
-              </Link>
-
-              <Link href="/category/meta" className="hover:text-purple-600 transition">
-                Meta
-              </Link>
-
-              <Link href="/category/lead-generation" className="hover:text-purple-600 transition">
-                Lead Gen
-              </Link>
-
+              <Link href="/">Home</Link>
+              <Link href="/category/google-ads">Google Ads</Link>
+              <Link href="/category/seo">SEO</Link>
+              <Link href="/category/meta">Meta</Link>
+              <Link href="/category/lead-generation">Lead Gen</Link>
             </nav>
 
-            {/* CTA BUTTON */}
-            <a
-              href="https://scalewithclicks.com"
-              className="hidden md:inline-block bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:scale-105 transition"
+            {/* HAMBURGER */}
+            <button
+              className="md:hidden text-2xl"
+              onClick={() => setOpen(true)}
             >
-              Free Audit
-            </a>
+              ☰
+            </button>
 
           </div>
+
+          {/* ================= MOBILE DRAWER ================= */}
+
+          {/* OVERLAY */}
+          {open && (
+            <div
+              className="fixed inset-0 bg-black/40 z-40"
+              onClick={() => setOpen(false)}
+            />
+          )}
+
+          {/* DRAWER */}
+          <div
+            className={`fixed top-0 left-0 h-full w-[260px] bg-white z-50 transform transition-transform duration-300 ${
+              open ? "translate-x-0" : "-translate-x-full"
+            }`}
+          >
+            <div className="p-5 border-b flex justify-between items-center">
+              <span className="font-bold">Menu</span>
+              <button onClick={() => setOpen(false)}>✕</button>
+            </div>
+
+            <nav className="flex flex-col p-5 gap-4 text-sm">
+              <Link href="/" onClick={() => setOpen(false)}>Home</Link>
+              <Link href="/category/google-ads" onClick={() => setOpen(false)}>Google Ads</Link>
+              <Link href="/category/seo" onClick={() => setOpen(false)}>SEO</Link>
+              <Link href="/category/meta" onClick={() => setOpen(false)}>Meta</Link>
+              <Link href="/category/lead-generation" onClick={() => setOpen(false)}>Lead Generation</Link>
+            </nav>
+          </div>
+
         </header>
 
         {/* ================= MAIN ================= */}
-        <main className="min-h-[80vh]">
-          {children}
-        </main>
+        <main className="min-h-[80vh]">{children}</main>
 
         {/* ================= FOOTER ================= */}
-        <footer className="bg-slate-950 text-slate-300 mt-20">
+        <footer className="bg-[#020617] text-[#cbd5f5] px-6 py-12 mt-16">
 
-          <div className="max-w-7xl mx-auto px-6 py-14 grid gap-10 md:grid-cols-4">
+          <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-10">
 
-            {/* BRAND */}
             <div>
-              <h3 className="text-white text-lg font-semibold">
-                ScaleWithClicks
-              </h3>
-              <p className="text-sm mt-3 leading-relaxed">
-                Helping businesses generate high-quality leads using Ads, SEO & tracking.
+              <h3 className="text-white font-bold">ScaleWithClicks</h3>
+              <p className="text-sm mt-2">
+                Helping businesses generate leads using Ads, SEO & tracking.
               </p>
             </div>
 
-            {/* SERVICES */}
             <div>
-              <h4 className="text-white font-semibold mb-3">Services</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="https://scalewithclicks.com/services/google-ads-agency.html" target="_blank">Google Ads</a></li>
-                <li><a href="https://scalewithclicks.com/services/meta-ads-agency.html" target="_blank">Meta Ads</a></li>
-                <li><a href="https://scalewithclicks.com/services/seo-services.html" target="_blank">SEO</a></li>
-                <li><a href="https://scalewithclicks.com/services/conversion-tracking.html" target="_blank">Tracking</a></li>
-              </ul>
+              <h4 className="text-white font-semibold">Services</h4>
+              <div className="mt-2 space-y-2 text-sm">
+                <a href="https://scalewithclicks.com/services/google-ads-agency.html">Google Ads</a><br/>
+                <a href="https://scalewithclicks.com/services/meta-ads-agency.html">Meta Ads</a><br/>
+                <a href="https://scalewithclicks.com/services/seo-services.html">SEO</a><br/>
+              </div>
             </div>
 
-            {/* RESOURCES */}
             <div>
-              <h4 className="text-white font-semibold mb-3">Resources</h4>
-              <ul className="space-y-2 text-sm">
-                <li><Link href="/">Home</Link></li>
-                <li><Link href="/category/google-ads">Google Ads</Link></li>
-                <li><Link href="/category/seo">SEO</Link></li>
-                <li><Link href="/category/meta">Meta</Link></li>
-              </ul>
+              <h4 className="text-white font-semibold">Resources</h4>
+              <div className="mt-2 space-y-2 text-sm">
+                <Link href="/">Home</Link><br/>
+                <Link href="/category/google-ads">Google Ads</Link><br/>
+                <Link href="/category/seo">SEO</Link>
+              </div>
             </div>
 
-            {/* LEGAL */}
             <div>
-              <h4 className="text-white font-semibold mb-3">Legal</h4>
-              <ul className="space-y-2 text-sm">
-                <li><Link href="/privacy-policy">Privacy Policy</Link></li>
-                <li><Link href="/terms-and-conditions">Terms</Link></li>
-              </ul>
+              <h4 className="text-white font-semibold">Legal</h4>
+              <div className="mt-2 space-y-2 text-sm">
+                <Link href="/privacy-policy">Privacy Policy</Link><br/>
+                <Link href="/terms-and-conditions">Terms</Link>
+              </div>
             </div>
 
           </div>
 
-          {/* COPYRIGHT */}
-          <div className="text-center text-xs border-t border-slate-800 py-6 text-slate-500">
-            © {new Date().getFullYear()} ScaleWithClicks. All rights reserved.
+          <div className="text-center text-xs mt-10 border-t border-gray-700 pt-6">
+            © {new Date().getFullYear()} ScaleWithClicks
           </div>
 
         </footer>
