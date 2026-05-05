@@ -109,6 +109,15 @@ export default async function BlogPost({ params }) {
           {data.title}
         </h1>
 
+  {/* FEATURED SNIPPET */}
+{data.description && (
+  <div className="mb-6 p-5 bg-purple-50 border-l-4 border-purple-600 rounded-lg">
+    <p className="text-gray-800 leading-relaxed text-[15px]">
+      {data.description}
+    </p>
+  </div>
+)}
+
         {/* IMAGE */}
         {data.image && (
           <div className="relative w-full h-[420px] mb-8 rounded-2xl overflow-hidden">
@@ -163,6 +172,33 @@ export default async function BlogPost({ params }) {
             </div>
           </>
         )}
+
+{/* FAQ UI SECTION */}
+{faqs.length > 0 && (
+  <div className="mt-16">
+    <h2 className="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+
+    <div className="space-y-4">
+      {faqs.map((faq, i) => (
+        <details
+          key={i}
+          className="group border rounded-xl p-4 cursor-pointer bg-white hover:shadow-sm transition"
+        >
+          <summary className="font-semibold text-gray-800 flex justify-between items-center">
+            {faq.question}
+            <span className="ml-2 text-purple-600 group-open:rotate-180 transition">
+              ▼
+            </span>
+          </summary>
+
+          <p className="mt-3 text-sm text-gray-600 leading-relaxed">
+            {faq.answer}
+          </p>
+        </details>
+      ))}
+    </div>
+  </div>
+)}
 
         {/* AUTHOR */}
         <div className="mt-16 p-6 border rounded-xl bg-gray-50">
