@@ -1,4 +1,5 @@
 import BlogCard from "@/components/BlogCard";
+import { getAllPosts } from "@/lib/getPosts";
 
 export default function Home() {
   const posts = getAllPosts(); // your existing function
