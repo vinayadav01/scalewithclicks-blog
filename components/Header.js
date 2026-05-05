@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -13,7 +14,13 @@ export default function Header() {
 
         {/* LOGO */}
         <Link href="/">
-          <img src="/logo.png" alt="logo" className="h-10" />
+          <Image
+  src="/logo.png"
+  alt="ScaleWithClicks logo"
+  width={140}
+  height={40}
+  className="h-8 md:h-10 w-auto"
+/>
         </Link>
 
         {/* DESKTOP NAV */}
