@@ -38,12 +38,14 @@ export default function Home() {
               <div className="md:col-span-2 relative rounded-2xl overflow-hidden group">
                 
                 {posts[0]?.image ? (
-                  <img
-                    src={posts[0].image}
-                    alt={posts[0]?.title || "blog image"}
-                    className="w-full h-[380px] object-cover"
-                  />
-                ) : (
+                  <div className="relative w-full h-[380px] overflow-hidden rounded-2xl">
+  <img
+    src={posts[0].image}
+    alt={posts[0].title}
+    className="w-full h-full object-cover"
+  />
+</div>
+      ) : (
                   <div className="w-full h-[380px] bg-gray-200 flex items-center justify-center">
                     No Image
                   </div>
