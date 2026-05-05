@@ -10,9 +10,9 @@ export default function sitemap() {
       url: baseUrl,
       lastModified: new Date(),
     },
-    ...posts.map((post) => ({
-      url: `${baseUrl}/blog/${post.slug}`,
-      lastModified: new Date(post.date),
-    })),
+  posts.map((post) => ({
+  url: `${baseUrl}/blog/${post.slug}`,
+  lastModified: post.date ? new Date(post.date) : new Date(), // ✅ safe
+}))
   ];
 }
