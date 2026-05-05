@@ -3,6 +3,9 @@ import Link from "next/link";
 export default function BlogCard({ post }) {
   if (!post) return null;
 
+const words = post.content ? post.content.split(/\s+/).length : 400;
+const readingTime = Math.ceil(words / 200);
+  
   const categorySlug = post.category
     ? post.category.toLowerCase().replace(/\s+/g, "-")
     : "other";
@@ -47,6 +50,10 @@ export default function BlogCard({ post }) {
             {post.title || "Untitled"}
           </h2>
         </Link>
+
+<p className="text-xs text-gray-400 mt-1">
+  {readingTime} min read
+</p>
 
         {/* DESCRIPTION */}
         <p className="text-sm text-gray-500 mt-2 line-clamp-2">
