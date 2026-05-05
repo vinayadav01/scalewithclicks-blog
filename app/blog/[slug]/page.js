@@ -12,7 +12,6 @@ import Image from "next/image";
 
 export const dynamic = "force-static";
 
-// ================= STATIC PATHS =================
 export async function generateStaticParams() {
   const dir = path.join(process.cwd(), "content/blog");
   if (!fs.existsSync(dir)) return [];
@@ -24,7 +23,6 @@ export async function generateStaticParams() {
   }));
 }
 
-// ================= MAIN =================
 export default async function BlogPost({ params }) {
   const { slug } = params;
 
@@ -34,7 +32,6 @@ export default async function BlogPost({ params }) {
   const mdxPath = path.join(process.cwd(), "content/blog", `${slug}.mdx`);
 
   let filePath = "";
-
   if (fs.existsSync(mdPath)) filePath = mdPath;
   else if (fs.existsSync(mdxPath)) filePath = mdxPath;
   else return notFound();
@@ -42,7 +39,6 @@ export default async function BlogPost({ params }) {
   const file = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(file);
 
-  // ================= MARKDOWN =================
   const processedContent = await remark()
     .use(remarkRehype)
     .use(rehypeSlug)
@@ -51,10 +47,9 @@ export default async function BlogPost({ params }) {
 
   const contentHtml = processedContent.toString();
 
-  // ================= TOC =================
+  // TOC
   const headings = [];
   const headingRegex = /<h([2-3]) id="(.*?)">(.*?)<\/h\1>/g;
-
   let match;
   while ((match = headingRegex.exec(contentHtml)) !== null) {
     headings.push({
@@ -63,10 +58,9 @@ export default async function BlogPost({ params }) {
     });
   }
 
-  // ================= FAQ =================
+  // FAQ
   const faqs = [];
   const faqRegex = /<h3.*?>(.*?)<\/h3>\s*<p>(.*?)<\/p>/g;
-
   let faqMatch;
   while ((faqMatch = faqRegex.exec(contentHtml)) !== null) {
     faqs.push({
@@ -75,57 +69,42 @@ export default async function BlogPost({ params }) {
     });
   }
 
-  // ================= RELATED =================
+  // Related
   const posts = getPosts() || [];
-
-  const currentPost = {
-    slug,
-    ...data,
-  };
-
   const relatedPosts = posts
-    .filter(
-      (p) =>
-        p.category === currentPost.category &&
-        p.slug !== currentPost.slug
-    )
+    .filter((p) => p.category === data.category && p.slug !== slug)
     .slice(0, 3);
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-10 grid lg:grid-cols-4 gap-10">
 
-      {/* ================= MAIN ================= */}
+      {/* MAIN */}
       <article className="lg:col-span-3">
 
-        {/* BREADCRUMB UI */}
+        {/* BREADCRUMB */}
         <p className="text-sm text-gray-500 mb-4">
-          <a href="/" className="hover:underline">Home</a> /
-          <a href="/" className="ml-1 hover:underline">Blog</a> /
-          <span className="ml-1 text-gray-700">{data.title}</span>
+          <a href="/">Home</a> / <a href="/">Blog</a> / {data.title}
         </p>
 
         {/* TITLE */}
-        <h1 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
+        <h1 className="text-3xl md:text-4xl font-bold mb-6">
           {data.title}
         </h1>
 
-  {/* FEATURED SNIPPET */}
-{data.description && (
-  <div className="mb-6 p-5 bg-purple-50 border-l-4 border-purple-600 rounded-lg">
-    <p className="text-gray-800 leading-relaxed text-[15px]">
-      {data.description}
-    </p>
-  </div>
-)}
+        {/* FEATURED SNIPPET */}
+        {data.description && (
+          <div className="mb-6 p-5 bg-purple-50 border-l-4 border-purple-600 rounded-lg">
+            {data.description}
+          </div>
+        )}
 
         {/* IMAGE */}
         {data.image && (
-          <div className="relative w-full h-[420px] mb-8 rounded-2xl overflow-hidden">
+          <div className="relative w-full h-[400px] mb-8 rounded-xl overflow-hidden">
             <Image
               src={data.image}
               alt={data.title}
               fill
-              priority
               className="object-cover"
             />
           </div>
@@ -133,49 +112,15 @@ export default async function BlogPost({ params }) {
 
         {/* CONTENT */}
         <div
-          className="prose prose-lg max-w-none
-          prose-headings:scroll-mt-28
-          prose-a:text-purple-600
-          prose-img:rounded-xl
-          prose-h2:mt-10
-          prose-h3:mt-8"
+          className="prose max-w-none"
           dangerouslySetInnerHTML={{ __html: contentHtml }}
         />
 
-{/* INLINE CTA */}
-<div className="mt-10 p-6 border rounded-xl bg-purple-50 flex flex-col md:flex-row items-center justify-between gap-4">
-
-  <div>
-    <h4 className="font-semibold text-lg">
-      Want better results from your ads?
-    </h4>
-    <p className="text-sm text-gray-600">
-      Get a free strategy tailored to your business.
-    </p>
-  </div>
-
-  <a
-    href="https://scalewithclicks.com"
-    className="bg-purple-600 text-white px-5 py-2 rounded-full font-medium hover:scale-105 transition"
-  >
-    Book Free Call →
-  </a>
-
-</div>
-
-        {/* INLINE CTA */}
-        <div className="mt-16 p-8 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-2xl text-center">
-          <h3 className="text-2xl font-bold">
-            Want Better Results from Google Ads?
-          </h3>
-          <p className="mt-2 text-white/80">
-            Stop wasting budget. Start scaling profitably.
-          </p>
-          <a
-            href="https://scalewithclicks.com"
-            className="inline-block mt-4 bg-white text-purple-600 px-6 py-2 rounded-full font-semibold"
-          >
-            Get Free Strategy →
+        {/* CTA 1 */}
+        <div className="mt-10 p-6 bg-purple-50 rounded-xl flex justify-between items-center">
+          <p>Want better results from your ads?</p>
+          <a href="https://scalewithclicks.com" className="bg-purple-600 text-white px-4 py-2 rounded-full">
+            Book Call
           </a>
         </div>
 
@@ -185,7 +130,6 @@ export default async function BlogPost({ params }) {
             <h3 className="text-xl font-bold mt-16 mb-4">
               Related Articles
             </h3>
-
             <div className="grid md:grid-cols-3 gap-6">
               {relatedPosts.map((post) => (
                 <BlogCard key={post.slug} post={post} />
@@ -194,181 +138,44 @@ export default async function BlogPost({ params }) {
           </>
         )}
 
-{/* MID CTA */}
-<div className="mt-16 p-8 bg-gray-900 text-white rounded-2xl text-center">
-
-  <h3 className="text-2xl font-bold">
-    Ready to Scale Your Leads?
-  </h3>
-
-  <p className="mt-2 text-white/70">
-    We build high-converting Google Ads campaigns that drive real ROI.
-  </p>
-
-  <a
-    href="https://scalewithclicks.com"
-    className="inline-block mt-4 bg-purple-600 px-6 py-3 rounded-full font-semibold"
-  >
-    Get Started →
-  </a>
-
-</div>
-
-{/* FAQ UI SECTION */}
-{faqs.length > 0 && (
-  <div className="mt-16">
-    <h2 className="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
-
-    <div className="space-y-4">
-      {faqs.map((faq, i) => (
-        <details
-          key={i}
-          className="group border rounded-xl p-4 cursor-pointer bg-white hover:shadow-sm transition"
-        >
-          <summary className="font-semibold text-gray-800 flex justify-between items-center">
-            {faq.question}
-            <span className="ml-2 text-purple-600 group-open:rotate-180 transition">
-              ▼
-            </span>
-          </summary>
-
-          <p className="mt-3 text-sm text-gray-600 leading-relaxed">
-            {faq.answer}
-          </p>
-        </details>
-      ))}
-    </div>
-  </div>
-)}
-
-{/* EXIT CTA */}
-<div className="mt-20 p-10 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-3xl text-center">
-
-  <h2 className="text-3xl font-bold">
-    Still Not Getting Results?
-  </h2>
-
-  <p className="mt-3 text-white/80">
-    Let’s fix your Google Ads and turn them into a profit machine.
-  </p>
-
-  <a
-    href="https://scalewithclicks.com"
-    className="inline-block mt-6 bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:scale-105 transition"
-  >
-    Get Free Strategy Call →
-  </a>
-
-</div>      
-
-{/* AUTHOR */}
-        <div className="mt-16 p-6 border rounded-xl bg-gray-50">
-          <h4 className="font-bold text-lg">About the Author</h4>
-          <p className="text-sm text-gray-600 mt-2">
-            Vinay Yadav is a performance marketing expert specializing in Google Ads and lead generation.
-          </p>
+        {/* CTA 2 */}
+        <div className="mt-16 p-8 bg-gray-900 text-white text-center rounded-xl">
+          <h3 className="text-2xl font-bold">Ready to Scale?</h3>
+          <a href="https://scalewithclicks.com" className="inline-block mt-4 bg-purple-600 px-6 py-3 rounded-full">
+            Get Started
+          </a>
         </div>
 
-        {/* BLOG SCHEMA */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BlogPosting",
-              headline: data.title,
-              description: data.description,
-              image: data.image,
-              author: {
-                "@type": "Person",
-                name: "Vinay Yadav",
-              },
-              publisher: {
-                "@type": "Organization",
-                name: "ScaleWithClicks",
-              },
-              datePublished: data.date,
-            }),
-          }}
-        />
-
-        {/* FAQ SCHEMA */}
+        {/* FAQ */}
         {faqs.length > 0 && (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "FAQPage",
-                mainEntity: faqs.map((faq) => ({
-                  "@type": "Question",
-                  name: faq.question,
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: faq.answer,
-                  },
-                })),
-              }),
-            }}
-          />
+          <div className="mt-16">
+            <h2 className="text-2xl font-bold mb-6">FAQs</h2>
+            {faqs.map((faq, i) => (
+              <details key={i} className="mb-3 border p-4 rounded">
+                <summary>{faq.question}</summary>
+                <p className="mt-2">{faq.answer}</p>
+              </details>
+            ))}
+          </div>
         )}
+
+        {/* EXIT CTA */}
+        <div className="mt-20 p-10 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-center rounded-2xl">
+          <h2 className="text-3xl font-bold">Need Help?</h2>
+          <a href="https://scalewithclicks.com" className="inline-block mt-6 bg-white text-purple-600 px-6 py-3 rounded-full">
+            Get Free Strategy
+          </a>
+        </div>
 
       </article>
 
-      {/* ================= SIDEBAR ================= */}
-      <aside className="hidden lg:block space-y-6">
+      {/* SIDEBAR */}
+      <aside className="hidden lg:block">
 
-  {/* STICKY CTA */}
-  <div className="sticky top-24 p-6 rounded-2xl bg-gradient-to-br from-purple-600 to-indigo-600 text-white shadow-lg">
-
-    <h4 className="text-lg font-bold leading-snug">
-      Struggling with Google Ads?
-    </h4>
-
-    <p className="text-sm mt-2 text-white/80">
-      Stop wasting budget. Get a proven strategy that actually converts.
-    </p>
-
-    <a
-      href="https://scalewithclicks.com"
-      className="block mt-4 bg-white text-purple-600 text-center px-4 py-2 rounded-full font-semibold hover:scale-105 transition"
-    >
-      Get Free Audit →
-    </a>
-
-  </div>
-
-       {/* TOC BELOW CTA */}
-  {headings.length > 0 && (
-    <div className="p-5 border rounded-xl bg-gray-50">
-      <h4 className="font-semibold mb-3">Table of Contents</h4>
-
-      <ul className="text-sm space-y-2">
-        {headings.map((h, i) => (
-          <li key={i}>
-            <a
-              href={`#${h.id}`}
-              className="text-gray-600 hover:text-purple-600"
-            >
-              {h.text}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  )}
-
-        {/* SIDEBAR CTA */}
-        <div className="p-5 bg-purple-600 text-white rounded-xl">
-          <h4 className="font-bold">Need More Leads?</h4>
-          <p className="text-sm mt-2 text-white/80">
-            Get expert help with high-converting campaigns.
-          </p>
-          <a
-            href="https://scalewithclicks.com"
-            className="inline-block mt-3 bg-white text-purple-600 px-4 py-2 rounded-full text-sm font-semibold"
-          >
-            Book Free Call →
+        <div className="sticky top-24 p-6 bg-purple-600 text-white rounded-xl">
+          <h4 className="font-bold">Get More Leads</h4>
+          <a href="https://scalewithclicks.com" className="block mt-3 bg-white text-purple-600 px-4 py-2 rounded-full text-center">
+            Book Call
           </a>
         </div>
 
