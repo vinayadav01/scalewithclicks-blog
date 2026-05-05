@@ -16,40 +16,60 @@ export default function Home() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
 
-      {/* HERO FEATURED */}
-      <div className="mb-16">
-        <div className="grid md:grid-cols-3 gap-6">
+     <div className="mb-16">
+  <div className="grid md:grid-cols-3 gap-6">
 
-          {/* Big */}
-          <div className="md:col-span-2 rounded-2xl overflow-hidden bg-gray-100">
+    {/* BIG FEATURED */}
+    <div className="md:col-span-2 relative rounded-2xl overflow-hidden group">
 
-  <div className="relative h-[350px] w-full">
-  <Image
-    src={posts[0].image}
-    alt={posts[0].title}
-    fill
-    className="object-cover"
-  />
-</div>
+      <img
+        src={posts[0].image}
+        className="w-full h-[380px] object-cover group-hover:scale-105 transition duration-500"
+      />
 
-  <div className="p-6">
-    <h2 className="text-2xl font-bold">{posts[0].title}</h2>
-    <p className="text-gray-600 mt-2">{posts[0].description}</p>
-  </div>
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
 
-</div>
+      {/* Content */}
+      <div className="absolute bottom-0 p-6 text-white">
+        <span className="text-xs bg-white/20 px-2 py-1 rounded">
+          {posts[0].category}
+        </span>
 
-          {/* Side */}
-          <div className="flex flex-col gap-4">
-            {posts.slice(1,3).map(post => (
-              <div key={post.slug} className="bg-gray-100 rounded-xl p-4">
-                <h3 className="font-semibold">{post.title}</h3>
-              </div>
-            ))}
+        <h2 className="text-2xl font-bold mt-2">
+          {posts[0].title}
+        </h2>
+
+        <p className="text-sm mt-2 text-gray-200">
+          {posts[0].description}
+        </p>
+      </div>
+    </div>
+
+    {/* SIDE CARDS */}
+    <div className="flex flex-col gap-4">
+      {posts.slice(1,3).map(post => (
+        <div key={post.slug} className="relative rounded-xl overflow-hidden group">
+
+          <img
+            src={post.image}
+            className="w-full h-[180px] object-cover group-hover:scale-105 transition duration-500"
+          />
+
+          <div className="absolute inset-0 bg-black/40" />
+
+          <div className="absolute bottom-0 p-4 text-white">
+            <h3 className="font-semibold text-sm">
+              {post.title}
+            </h3>
           </div>
 
         </div>
-      </div>
+      ))}
+    </div>
+
+  </div>
+</div>
 
       {/* CATEGORY SECTIONS */}
       {Object.keys(grouped).map(cat => (
