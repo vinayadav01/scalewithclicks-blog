@@ -92,22 +92,24 @@ export default function Home() {
       </div>
 
       {/* CTA SECTION */}
-      <div className="mt-20 bg-purple-600 text-white rounded-2xl p-10 text-center">
-        <h2 className="text-2xl font-bold">
-          Want More Leads From Google Ads?
-        </h2>
-        <p className="mt-2">
-          Get expert help to scale your campaigns profitably.
-        </p>
+<div className="mt-20 relative overflow-hidden rounded-3xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-12 text-center">
 
-        <a
-          href="https://scalewithclicks.com"
-          className="inline-block mt-4 bg-white text-purple-600 px-6 py-2 rounded-full"
-        >
-          Get Started →
-        </a>
-      </div>
+  <h2 className="text-3xl font-bold">
+    Scale Your Leads with Google Ads 🚀
+  </h2>
 
+  <p className="mt-3 text-lg text-white/80">
+    Stop wasting budget. Get high-converting campaigns built for growth.
+  </p>
+
+  <a
+    href="https://scalewithclicks.com"
+    className="inline-block mt-6 bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:scale-105 transition"
+  >
+    Get Free Strategy Call →
+  </a>
+
+</div>
     </div>
   );
 }
