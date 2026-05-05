@@ -1,46 +1,68 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function Header() {
+  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
+  // ✅ Detect scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="bg-white border-b sticky top-0 z-50">
+    <>
+      {/* ================= HEADER ================= */}
+      <header
+        className={`sticky top-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-white/80 backdrop-blur-md shadow-md py-2"
+            : "bg-white py-4"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
 
-      <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+          {/* LOGO */}
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo.png"
+              alt="ScaleWithClicks logo"
+              width={140}
+              height={40}
+              className={`transition-all duration-300 ${
+                scrolled ? "h-7" : "h-10"
+              } w-auto`}
+            />
+          </Link>
 
-        {/* LOGO */}
-        <Link href="/">
-          <Image
-  src="/logo.png"
-  alt="ScaleWithClicks logo"
-  width={140}
-  height={40}
-  className="h-8 md:h-10 w-auto"
-/>
-        </Link>
+          {/* DESKTOP NAV */}
+          <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+            <Link href="/">Home</Link>
+            <Link href="/category/google-ads">Google Ads</Link>
+            <Link href="/category/seo">SEO</Link>
+            <Link href="/category/meta">Meta</Link>
+            <Link href="/category/lead-generation">Lead Gen</Link>
+          </nav>
 
-        {/* DESKTOP NAV */}
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-          <Link href="/">Home</Link>
-          <Link href="/category/google-ads">Google Ads</Link>
-          <Link href="/category/seo">SEO</Link>
-          <Link href="/category/meta">Meta</Link>
-          <Link href="/category/lead-generation">Lead Gen</Link>
-        </nav>
+          {/* HAMBURGER */}
+          <button
+            className="md:hidden text-2xl"
+            onClick={() => setOpen(true)}
+          >
+            ☰
+          </button>
+        </div>
+      </header>
 
-        {/* HAMBURGER */}
-        <button
-          className="md:hidden text-2xl"
-          onClick={() => setOpen(true)}
-        >
-          ☰
-        </button>
-
-      </div>
+      {/* ================= MOBILE DRAWER ================= */}
 
       {/* OVERLAY */}
       {open && (
@@ -69,7 +91,6 @@ export default function Header() {
           <Link href="/category/lead-generation" onClick={() => setOpen(false)}>Lead Generation</Link>
         </nav>
       </div>
-
-    </header>
+    </>
   );
 }
