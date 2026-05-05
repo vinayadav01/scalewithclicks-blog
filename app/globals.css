@@ -455,3 +455,54 @@ a {
 .footer a:hover {
   text-decoration: underline;
 }
+
+.prose {
+  line-height: 1.8;
+  font-size: 17px;
+}
+
+.prose h1,
+.prose h2,
+.prose h3 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.prose h2 {
+  font-size: 28px;
+  margin-top: 40px;
+}
+
+.prose h3 {
+  font-size: 22px;
+  margin-top: 30px;
+}
+
+.prose p {
+  color: #374151;
+}
+
+.prose a {
+  color: #7c3aed;
+  font-weight: 500;
+}
+
+.prose ul {
+  padding-left: 20px;
+}
+
+.prose li {
+  margin: 8px 0;
+}
+
+.prose blockquote {
+  border-left: 4px solid #7c3aed;
+  padding-left: 16px;
+  color: #555;
+  font-style: italic;
+}
+
+.prose img {
+  border-radius: 12px;
+  margin: 20px 0;
+}
