@@ -126,16 +126,13 @@ while ((faqMatch = faqRegex.exec(contentHtml)) !== null) {
       <h1 className="text-3xl font-bold mb-6">{data.title}</h1>
 
       {/* IMAGE */}
-      {data.image && (
-        <div className="relative w-full h-[400px] mb-6">
-          <Image
-            src={data.image}
-            alt={data.title}
-            fill
-            priority
-            className="object-cover rounded-xl"
-          />
-        </div>
+     <div className="relative w-full h-[400px] mb-6 overflow-hidden rounded-xl">
+  <img
+    src={data.image}
+    alt={data.title}
+    className="w-full h-full object-cover"
+  />
+</div>
       )}
 
       {/* CONTENT */}
