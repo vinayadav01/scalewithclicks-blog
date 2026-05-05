@@ -91,17 +91,12 @@ $("h3").each((i, el) => {
     )
     .slice(0, 3);
 
-  return (
-    <div className="max-w-4xl mx-auto px-4 py-10">
-
-    <div className="grid lg:grid-cols-4 gap-10">
-
-  {/* MAIN CONTENT */}
-  <div className="lg:col-span-3">
+return (
+  <div className="max-w-4xl mx-auto px-4 py-10">
 
     {/* TOC */}
-   {headings.length > 0 && (
-  <div className="sticky top-24 mb-10 p-5 bg-gray-50 rounded-xl border">
+    {headings.length > 0 && (
+      <div className="sticky top-24 mb-10 p-5 bg-gray-50 rounded-xl border">
         <h3 className="font-bold mb-3">Table of Contents</h3>
 
         <ul className="space-y-2 text-sm">
@@ -119,84 +114,82 @@ $("h3").each((i, el) => {
       </div>
     )}
 
-    {/* YOUR EXISTING BLOG CONTENT BELOW */}
+    {/* TITLE */}
+    <h1 className="text-3xl font-bold mb-6">{data.title}</h1>
 
-      {/* Blog Title */}
-      <h1 className="text-3xl font-bold mb-6">{data.title}</h1>
-
-      {/* Image */}
-      {data.image && (
-        <img
-          src={data.image}
-          alt={data.title}
-          className="w-full rounded-xl mb-6"
-        />
-      )}
-
-      {/* Content */}
-      <div
-        className="prose max-w-none"
-        dangerouslySetInnerHTML={{ __html: contentHtml }}
+    {/* IMAGE */}
+    {data.image && (
+      <img
+        src={data.image}
+        alt={data.title}
+        className="w-full rounded-xl mb-6"
       />
+    )}
 
-      {/* Related Articles */}
-      {relatedPosts.length > 0 && (
-        <>
-          <h3 className="text-xl font-bold mt-16 mb-4">
-            Related Articles
-          </h3>
+    {/* CONTENT */}
+    <div
+      className="prose max-w-none"
+      dangerouslySetInnerHTML={{ __html: contentHtml }}
+    />
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {relatedPosts.map((post) => (
-              <BlogCard key={post.slug} post={post} />
-            ))}
-          </div>
-        </>
-      )}
+    {/* RELATED */}
+    {relatedPosts.length > 0 && (
+      <>
+        <h3 className="text-xl font-bold mt-16 mb-4">
+          Related Articles
+        </h3>
 
-      {/* Schema Markup */}
+        <div className="grid md:grid-cols-3 gap-6">
+          {relatedPosts.map((post) => (
+            <BlogCard key={post.slug} post={post} />
+          ))}
+        </div>
+      </>
+    )}
+
+    {/* BLOG SCHEMA */}
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: data.title,
+          description: data.description,
+          image: data.image,
+          author: {
+            "@type": "Person",
+            name: "Vinay Yadav",
+          },
+          publisher: {
+            "@type": "Organization",
+            name: "ScaleWithClicks",
+          },
+          datePublished: data.date,
+        }),
+      }}
+    />
+
+    {/* FAQ SCHEMA */}
+    {faqs.length > 0 && (
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            headline: data.title,
-            description: data.description,
-            image: data.image,
-            author: {
-              "@type": "Person",
-              name: "Vinay Yadav",
-            },
-            publisher: {
-              "@type": "Organization",
-              name: "ScaleWithClicks",
-            },
-            datePublished: data.date,
+            "@type": "FAQPage",
+            mainEntity: faqs.map((faq) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer,
+              },
+            })),
           }),
         }}
       />
+    )}
 
-        {faqs.length > 0 && (
-  <script
-    type="application/ld+json"
-    dangerouslySetInnerHTML={{
-      __html: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        mainEntity: faqs.map((faq) => ({
-          "@type": "Question",
-          name: faq.question,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: faq.answer,
-          },
-        })),
-      }),
-    }}
-  />
-)}
-
-    </div>
-  );
-}
+  </div>
+);
