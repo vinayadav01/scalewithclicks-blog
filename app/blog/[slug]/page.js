@@ -8,7 +8,6 @@ import rehypeStringify from "rehype-stringify";
 import { notFound } from "next/navigation";
 import BlogCard from "@/components/BlogCard";
 import { getPosts } from "@/lib/getPosts";
-import * as cheerio from "cheerio";
 import Image from "next/image";
 
 export const dynamic = "force-static";
@@ -52,7 +51,17 @@ export default async function BlogPost({ params }) {
 
   const contentHtml = processedContent.toString();
 
-  const $ = cheerio.load(contentHtml);
+const headings = [];
+
+const headingRegex = /<h([2-3]) id="(.*?)">(.*?)<\/h\1>/g;
+
+let match;
+while ((match = headingRegex.exec(contentHtml)) !== null) {
+  headings.push({
+    id: match[2],
+    text: match[3].replace(/<[^>]+>/g, ""),
+  });
+}
 
   // ✅ TOC HEADINGS
   const headings = [];
@@ -66,26 +75,17 @@ export default async function BlogPost({ params }) {
   });
 
   // ✅ SMART FAQ EXTRACTION
-  const faqs = [];
-  let isFaqSection = false;
+ const faqs = [];
 
-  $("h2, h3").each((i, el) => {
-    const text = $(el).text().toLowerCase();
+const faqRegex = /<h3.*?>(.*?)<\/h3>\s*<p>(.*?)<\/p>/g;
 
-    if (text.includes("faq")) {
-      isFaqSection = true;
-      return;
-    }
-
-    if (isFaqSection && el.tagName === "h3") {
-      const question = $(el).text();
-      const answer = $(el).next("p").text();
-
-      if (question && answer) {
-        faqs.push({ question, answer });
-      }
-    }
+let faqMatch;
+while ((faqMatch = faqRegex.exec(contentHtml)) !== null) {
+  faqs.push({
+    question: faqMatch[1].replace(/<[^>]+>/g, ""),
+    answer: faqMatch[2].replace(/<[^>]+>/g, ""),
   });
+}
 
   // ✅ RELATED POSTS
   const posts = getPosts() || [];
