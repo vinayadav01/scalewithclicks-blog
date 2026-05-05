@@ -1,5 +1,11 @@
 import Link from "next/link";
 
+<Link href={`/category/${post.category.toLowerCase().replace(/\s+/g, "-")}`}>
+  <span className="text-xs bg-purple-100 text-purple-600 px-2 py-1 rounded">
+    {post.category}
+  </span>
+</Link>
+
 export default function BlogCard({ post }) {
   return (
     <div className="group bg-white/70 backdrop-blur-lg border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 ease-in-out hover:-translate-y-1">
