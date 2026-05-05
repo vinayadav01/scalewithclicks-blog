@@ -2,6 +2,7 @@ import { getPosts } from "@/lib/getPosts";
 import BlogCard from "@/components/BlogCard";
 import CategorySection from "@/components/CategorySection";
 import Image from "next/image";
+import Sidebar from "@/components/Sidebar";
 
 export default function Home() {
   const posts = getPosts();
@@ -14,9 +15,10 @@ export default function Home() {
   }, {});
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
+    <div className="max-w-7xl mx-auto px-4 py-10 grid lg:grid-cols-4 gap-10">
 
      <div className="mb-16">
+    <div className="lg:col-span-3">
   <div className="grid md:grid-cols-3 gap-6">
 
     {/* BIG FEATURED */}
