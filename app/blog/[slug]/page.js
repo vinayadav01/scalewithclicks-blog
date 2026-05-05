@@ -6,6 +6,8 @@ import remarkRehype from "remark-rehype";
 import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
 import { notFound } from "next/navigation";
+import BlogCard from "@/components/BlogCard";
+import { getPosts } from "@/lib/getPosts"; // or getAllPosts (match your export)
 
 // ✅ generate static paths
 export async function generateStaticParams() {
@@ -22,8 +24,7 @@ export async function generateStaticParams() {
 
 // ✅ MAIN BLOG PAGE
 export default async function BlogPost({ params }) {
-  // 🔥 FIX: unwrap params (NEXT 16)
-  const { slug } = await params;
+  const { slug } = params;
 
   if (!slug) return notFound();
 
@@ -47,19 +48,80 @@ export default async function BlogPost({ params }) {
 
   const contentHtml = processedContent.toString();
 
-  return (
-    <div style={{ maxWidth: "800px", margin: "auto", padding: "40px" }}>
-      <h1>{data.title}</h1>
+  // ✅ get all posts for related section
+  const posts = getPosts(); // or getAllPosts()
+  const currentPost = {
+    slug,
+    ...data,
+  };
 
+  const relatedPosts = posts
+    .filter(
+      (p) =>
+        p.category === currentPost.category &&
+        p.slug !== currentPost.slug
+    )
+    .slice(0, 3);
+
+  return (
+    <div className="max-w-4xl mx-auto px-4 py-10">
+
+      {/* Blog Title */}
+      <h1 className="text-3xl font-bold mb-6">{data.title}</h1>
+
+      {/* Image */}
       {data.image && (
         <img
           src={data.image}
           alt={data.title}
-          style={{ width: "100%", margin: "20px 0" }}
+          className="w-full rounded-xl mb-6"
         />
       )}
 
-      <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
+      {/* Content */}
+      <div
+        className="prose max-w-none"
+        dangerouslySetInnerHTML={{ __html: contentHtml }}
+      />
+
+      {/* Related Articles */}
+      {relatedPosts.length > 0 && (
+        <>
+          <h3 className="text-xl font-bold mt-16 mb-4">
+            Related Articles
+          </h3>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {relatedPosts.map((post) => (
+              <BlogCard key={post.slug} post={post} />
+            ))}
+          </div>
+        </>
+      )}
+
+      {/* Schema Markup */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: data.title,
+            description: data.description,
+            image: data.image,
+            author: {
+              "@type": "Person",
+              name: "Vinay Yadav",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "ScaleWithClicks",
+            },
+            datePublished: data.date,
+          }),
+        }}
+      />
+
     </div>
   );
 }
