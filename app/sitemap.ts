@@ -12,7 +12,7 @@ export default function sitemap() {
     },
   posts.map((post) => ({
   url: `${baseUrl}/blog/${post.slug}`,
-  lastModified: post.date ? new Date(post.date) : new Date(), // ✅ safe
+lastModified: new Date((post as any).date || Date.now()),
 }))
   ];
 }
