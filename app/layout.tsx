@@ -29,7 +29,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className} style={{ margin: 0, background: "#f8fafc" }}>
+      <body className="bg-gradient-to-br from-gray-50 to-gray-100">
         
         {/* ✅ Google Analytics */}
         <Script
@@ -107,7 +107,7 @@ export default function RootLayout({
               <div style={{ lineHeight: "3" }}>
                 <a href="https://scalewithclicks.com/services/google-ads-agency.html" target="_blank" rel="noopener noreferrer">Google Ads</a><br />
                 <a href="https://scalewithclicks.com/services/meta-ads-agency.html" target="_blank" rel="noopener noreferrer">Meta Ads</a><br />
-                <a href="https://scalewithclicks.com/services/seo-services.html" target="_blank" rel="noopener noreferrer">SEO</a>
+                <a href="https://scalewithclicks.com/services/seo-services.html" target="_blank" rel="noopener noreferrer">SEO</a><br />
                 <a href="https://scalewithclicks.com/services/conversion-tracking.html" target="_blank" rel="noopener noreferrer">Conversion Tracking</a>
               </div>
             </div>
@@ -118,7 +118,8 @@ export default function RootLayout({
               <div style={{ lineHeight: "3" }}>
                 <Link href="/">Home</Link><br />
                 <Link href="/category/google-ads">Google Ads</Link><br />
-                <Link href="/category/seo">SEO</Link>
+                <Link href="/category/seo">SEO</Link><br />
+                <Link href="/category/meta">Meta</Link>
               </div>
             </div>
 
