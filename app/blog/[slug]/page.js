@@ -63,17 +63,6 @@ while ((match = headingRegex.exec(contentHtml)) !== null) {
   });
 }
 
-  // ✅ TOC HEADINGS
-  const headings = [];
-  $("h2, h3").each((i, el) => {
-    const text = $(el).text();
-    const id = $(el).attr("id");
-
-    if (text && id) {
-      headings.push({ text, id });
-    }
-  });
-
   // ✅ SMART FAQ EXTRACTION
  const faqs = [];
 
