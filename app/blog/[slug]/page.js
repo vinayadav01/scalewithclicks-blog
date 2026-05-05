@@ -47,6 +47,9 @@ export default async function BlogPost({ params }) {
 
   const contentHtml = processedContent.toString();
 
+const words = content.replace(/[#_*>\-\n]/g, "").split(/\s+/).length;
+const readingTime = Math.ceil(words / 200);
+
   // TOC
   const headings = [];
   const headingRegex = /<h([2-3]) id="(.*?)">(.*?)<\/h\1>/g;
@@ -78,6 +81,12 @@ export default async function BlogPost({ params }) {
   return (
     <div className="max-w-7xl mx-auto px-4 py-10 grid lg:grid-cols-4 gap-10">
 
+   <div
+  id="progress-bar"
+  className="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-purple-600 to-indigo-600 z-50"
+  style={{ width: "0%" }}
+/>
+    
       {/* MAIN */}
       <article className="lg:col-span-3">
 
@@ -91,6 +100,10 @@ export default async function BlogPost({ params }) {
           {data.title}
         </h1>
 
+<p className="text-sm text-gray-500 mb-6">
+  {data.date} • {readingTime} min read
+</p>
+
         {/* FEATURED SNIPPET */}
         {data.description && (
           <div className="mb-6 p-5 bg-purple-50 border-l-4 border-purple-600 rounded-lg">
@@ -102,11 +115,12 @@ export default async function BlogPost({ params }) {
         {data.image && (
           <div className="relative w-full h-[400px] mb-8 rounded-xl overflow-hidden">
             <Image
-              src={data.image}
-              alt={data.title}
-              fill
-              className="object-cover"
-            />
+  src={data.image}
+  alt={data.title}
+  fill
+  priority
+  className="object-cover"
+/>
           </div>
         )}
 
@@ -181,6 +195,27 @@ export default async function BlogPost({ params }) {
 
       </aside>
 
+<script
+  dangerouslySetInnerHTML={{
+    __html: `
+      window.onscroll = function () {
+        const winScroll = document.documentElement.scrollTop;
+        const height =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+
+        const scrolled = (winScroll / height) * 100;
+        const bar = document.getElementById("progress-bar");
+
+        if (bar) {
+          bar.style.width = scrolled + "%";
+        }
+      };
+    `,
+  }}
+/>
+        
     </div>
+
   );
 }
