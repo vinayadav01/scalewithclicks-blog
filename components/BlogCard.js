@@ -11,23 +11,25 @@ const readingTime = Math.ceil(words / 200);
     : "other";
 
   return (
-    <article className="group bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300">
+   <article className="group bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300">
 
       {/* IMAGE */}
-      <Link href={`/blog/${post.slug}`}>
-        <div className="relative w-full h-[180px] overflow-hidden">
+    <div className="relative w-full h-[200px] overflow-hidden">
+  {post.image ? (
+    <img
+      src={post.image}
+      alt={post.title}
+      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+    />
+  ) : (
+    <div className="w-full h-full bg-gray-200 flex items-center justify-center text-sm">
+      No Image
+    </div>
+  )}
 
-          {post.image ? (
-            <img
-              src={post.image}
-              alt={post.title || "blog image"}
-              className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-            />
-          ) : (
-            <div className="w-full h-full bg-gray-200 flex items-center justify-center text-sm">
-              No Image
-            </div>
-          )}
+  {/* Gradient */}
+  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+</div>
 
           {/* CATEGORY BADGE */}
           <div className="absolute top-3 left-3">
@@ -35,11 +37,6 @@ const readingTime = Math.ceil(words / 200);
               {post.category || "General"}
             </span>
           </div>
-
-          {/* GRADIENT */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-        </div>
-      </Link>
 
       {/* CONTENT */}
       <div className="p-4">
