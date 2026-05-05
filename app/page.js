@@ -1,143 +1,151 @@
+import Link from "next/link";
 import { getPosts } from "@/lib/getPosts";
-import BlogCard from "@/components/BlogCard";
-import Sidebar from "@/components/Sidebar";
 
 export default function Home() {
-  let posts = [];
+  const posts = getPosts() || [];
 
-  try {
-    const data = getPosts();
-    posts = Array.isArray(data) ? data : [];
-  } catch (err) {
-    console.error("Error loading posts:", err);
-    posts = [];
+  if (!posts.length) {
+    return <div className="p-10">No posts</div>;
   }
 
-  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
- if (!posts.length) {
   return (
-    <div className="p-10 text-center text-gray-500">
-      No posts found
-    </div>
-  );
-}
-  // GROUP BY CATEGORY
-  const grouped = {};
-  posts.forEach((p) => {
-    const cat = p?.category || "Other";
-    if (!grouped[cat]) grouped[cat] = [];
-    grouped[cat].push(p);
-  });
+    <div className="max-w-7xl mx-auto px-4 py-10">
 
-  return (
-    <div className="max-w-7xl mx-auto px-4 py-10 grid lg:grid-cols-4 gap-10">
+      {/* ================= FEATURED ================= */}
+      <h2 className="text-lg font-semibold mb-6">▶ FEATURED</h2>
 
-      {/* ================= MAIN ================= */}
-      <div className="lg:col-span-3">
+      <div className="grid md:grid-cols-3 gap-6">
 
-        {/* ================= FEATURED ================= */}
-        <div className="mb-16 grid md:grid-cols-3 gap-6">
+        {/* BIG CARD */}
+        <Link href={`/blog/${posts[0].slug}`}>
+          <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition">
 
-          {/* BIG POST */}
-          <div className="md:col-span-2 relative rounded-2xl overflow-hidden group">
+            <span className="text-xs bg-gray-100 px-3 py-1 rounded-full">
+              {posts[0].category}
+            </span>
 
-            {posts[0]?.image ? (
-              <div className="relative w-full h-[320px] md:h-[400px] overflow-hidden">
+            <div className="mt-4 grid md:grid-cols-2 gap-4 items-center">
+
+              {/* TEXT */}
+              <div>
+                <h2 className="text-xl font-bold leading-snug">
+                  {posts[0].title}
+                </h2>
+                <p className="text-sm text-gray-500 mt-2">
+                  {posts[0].description}
+                </p>
+              </div>
+
+              {/* IMAGE (FIXED HEIGHT) */}
+              <div className="relative w-full h-[160px] overflow-hidden rounded-xl">
                 <img
                   src={posts[0].image}
-                  alt={posts[0].title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                  alt=""
+                  className="w-full h-full object-cover"
                 />
               </div>
-            ) : (
-              <div className="w-full h-[320px] bg-gray-200 flex items-center justify-center">
-                No Image
-              </div>
-            )}
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-
-            <div className="absolute bottom-0 p-6 text-white">
-              <span className="text-xs bg-white/20 px-2 py-1 rounded">
-                {posts[0]?.category || "General"}
-              </span>
-
-              <h2 className="text-2xl md:text-3xl font-bold mt-2 leading-tight">
-                {posts[0]?.title}
-              </h2>
-
-              <p className="text-sm mt-2 text-gray-200 line-clamp-2">
-                {posts[0]?.description}
-              </p>
             </div>
-
           </div>
+        </Link>
 
-          {/* SIDE POSTS */}
-          <div className="flex flex-col gap-4">
-            {posts.slice(1, 3).map((post, i) => (
-              <div
-                key={post.slug || i}
-                className="relative rounded-xl overflow-hidden group"
-              >
-                {post?.image ? (
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className="w-full h-[180px] object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-[180px] bg-gray-200 flex items-center justify-center">
-                    No Image
+        {/* RIGHT SMALL CARDS */}
+        <div className="flex flex-col gap-6">
+
+          {posts.slice(1, 3).map((post) => (
+            <Link key={post.slug} href={`/blog/${post.slug}`}>
+              <div className="bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition">
+
+                <span className="text-xs bg-gray-100 px-3 py-1 rounded-full">
+                  {post.category}
+                </span>
+
+                <div className="mt-3 flex gap-4">
+
+                  <div className="flex-1">
+                    <h3 className="text-sm font-semibold line-clamp-2">
+                      {post.title}
+                    </h3>
                   </div>
-                )}
 
-                <div className="absolute inset-0 bg-black/40" />
+                  <div className="w-[90px] h-[70px] overflow-hidden rounded-lg">
+                    <img
+                      src={post.image}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
 
-                <div className="absolute bottom-0 p-4 text-white">
-                  <h3 className="font-semibold text-sm line-clamp-2">
-                    {post.title}
-                  </h3>
                 </div>
               </div>
-            ))}
-          </div>
+            </Link>
+          ))}
 
         </div>
 
-        {/* ================= CATEGORY SECTIONS ================= */}
-        {Object.keys(grouped).map((cat) => (
-          <div key={cat} className="mb-16">
+        {/* SIDE TEXT LIST */}
+        <div className="flex flex-col gap-6">
 
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-bold">{cat}</h2>
-            </div>
+          {posts.slice(3, 6).map((post) => (
+            <Link key={post.slug} href={`/blog/${post.slug}`}>
+              <div className="flex gap-3 items-start">
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {grouped[cat].slice(0, 6).map((post, i) => (
-                <BlogCard key={post.slug || i} post={post} />
-              ))}
-            </div>
+                <div className="w-[50px] h-[50px] rounded-full overflow-hidden">
+                  <img src={post.image} className="w-full h-full object-cover" />
+                </div>
 
-          </div>
-        ))}
+                <div>
+                  <h4 className="text-sm font-medium line-clamp-2">
+                    {post.title}
+                  </h4>
+                  <p className="text-xs text-gray-400 mt-1">
+                    2 min read
+                  </p>
+                </div>
 
-        {/* ================= ALL POSTS ================= */}
-        <div className="mt-20">
-          <h2 className="text-2xl font-bold mb-6">All Articles</h2>
+              </div>
+            </Link>
+          ))}
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {posts.map((post, i) => (
-              <BlogCard key={post.slug || i} post={post} />
-            ))}
-          </div>
         </div>
 
       </div>
 
-      {/* ================= SIDEBAR ================= */}
-      <Sidebar posts={posts} />
+      {/* ================= SECTION ================= */}
+      <div className="mt-16">
+
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-lg font-semibold">▶ PERFORMANCE</h2>
+          <span className="text-sm text-gray-500 cursor-pointer">
+            View More →
+          </span>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6">
+
+          {posts.slice(0, 6).map((post) => (
+            <Link key={post.slug} href={`/blog/${post.slug}`}>
+              <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
+
+                <div className="h-[180px] overflow-hidden">
+                  <img
+                    src={post.image}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                <div className="p-4">
+                  <h3 className="text-sm font-semibold line-clamp-2">
+                    {post.title}
+                  </h3>
+                </div>
+
+              </div>
+            </Link>
+          ))}
+
+        </div>
+
+      </div>
 
     </div>
   );
