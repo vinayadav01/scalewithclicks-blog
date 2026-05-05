@@ -1,8 +1,8 @@
 import BlogCard from "@/components/BlogCard";
-import { getAllPosts } from "@/lib/getPosts";
+import { getPosts } from "@/lib/getPosts";
 
 export default function Home() {
-  const posts = getAllPosts(); // your existing function
+  const posts = getPosts(); // your existing function
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
