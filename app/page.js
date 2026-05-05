@@ -1,6 +1,7 @@
 import { getPosts } from "@/lib/getPosts";
 import BlogCard from "@/components/BlogCard";
 import CategorySection from "@/components/CategorySection";
+import Image from "next/image";
 
 export default function Home() {
   const posts = getPosts();
@@ -20,13 +21,23 @@ export default function Home() {
         <div className="grid md:grid-cols-3 gap-6">
 
           {/* Big */}
-          <div className="md:col-span-2 bg-gray-100 rounded-2xl overflow-hidden">
-            <img src={posts[0].image} className="w-full h-72 object-cover" />
-            <div className="p-6">
-              <h2 className="text-2xl font-bold">{posts[0].title}</h2>
-              <p className="text-gray-600 mt-2">{posts[0].description}</p>
-            </div>
-          </div>
+          <div className="md:col-span-2 rounded-2xl overflow-hidden bg-gray-100">
+
+  <div className="relative h-[350px] w-full">
+  <Image
+    src={posts[0].image}
+    alt={posts[0].title}
+    fill
+    className="object-cover"
+  />
+</div>
+
+  <div className="p-6">
+    <h2 className="text-2xl font-bold">{posts[0].title}</h2>
+    <p className="text-gray-600 mt-2">{posts[0].description}</p>
+  </div>
+
+</div>
 
           {/* Side */}
           <div className="flex flex-col gap-4">
