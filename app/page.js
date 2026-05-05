@@ -11,11 +11,10 @@ export default function Home() {
     const data = getPosts();
     posts = Array.isArray(data) ? data : [];
   } catch (err) {
-    console.error(err);
+    console.error("Error loading posts:", err);
     posts = [];
   }
 
-  // GROUPING
   const grouped = {};
   posts.forEach((post) => {
     const cat = post?.category || "Other";
@@ -23,93 +22,60 @@ export default function Home() {
     grouped[cat].push(post);
   });
 
-  const featured = posts[0];
-  const secondary = posts.slice(1, 4);
-
   return (
     <div className="max-w-7xl mx-auto px-4 py-10 grid lg:grid-cols-4 gap-10">
 
-      {/* MAIN */}
+      {/* ================= MAIN CONTENT ================= */}
       <div className="lg:col-span-3">
 
-        {/* HERO SECTION */}
-        {featured && (
-          <div className="mb-16 grid md:grid-cols-3 gap-6">
+        {/* 🔥 HERO SECTION */}
+        {posts.length > 0 && (
+          <div className="mb-16">
+            <div className="relative rounded-3xl overflow-hidden group">
 
-            {/* BIG FEATURE */}
-            <Link href={`/blog/${featured.slug}`}>
-              <div className="md:col-span-2 relative rounded-2xl overflow-hidden group cursor-pointer">
+              <img
+                src={posts[0]?.image}
+                alt={posts[0]?.title}
+                className="w-full h-[420px] object-cover group-hover:scale-105 transition duration-500"
+              />
 
-                <div className="w-full h-[350px] overflow-hidden">
-                  {featured.image ? (
-                    <img
-                      src={featured.image}
-                      alt={featured.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                      No Image
-                    </div>
-                  )}
-                </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+              <div className="absolute bottom-0 p-8 text-white max-w-2xl">
+                <span className="text-xs bg-white/20 px-3 py-1 rounded-full">
+                  {posts[0]?.category}
+                </span>
 
-                <div className="absolute bottom-0 p-6 text-white">
-                  <span className="text-xs bg-white/20 px-2 py-1 rounded">
-                    {featured.category}
+                <h1 className="text-3xl md:text-4xl font-bold mt-3 leading-tight">
+                  {posts[0]?.title}
+                </h1>
+
+                <p className="text-gray-200 mt-3 line-clamp-2">
+                  {posts[0]?.description}
+                </p>
+
+                <Link href={`/blog/${posts[0]?.slug}`}>
+                  <span className="inline-block mt-5 bg-white text-black px-6 py-2 rounded-full text-sm font-semibold hover:scale-105 transition">
+                    Read Full Article →
                   </span>
-
-                  <h2 className="text-2xl font-bold mt-2">
-                    {featured.title}
-                  </h2>
-
-                  <p className="text-sm mt-2 text-gray-200 line-clamp-2">
-                    {featured.description}
-                  </p>
-                </div>
-
-              </div>
-            </Link>
-
-            {/* SIDE POSTS */}
-            <div className="flex flex-col gap-4">
-              {secondary.map((post) => (
-                <Link key={post.slug} href={`/blog/${post.slug}`}>
-                  <div className="flex gap-4 items-center group cursor-pointer">
-
-                    <div className="w-24 h-20 overflow-hidden rounded-lg">
-                      {post.image ? (
-                        <img
-                          src={post.image}
-                          alt={post.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition"
-                        />
-                      ) : (
-                        <div className="w-full h-full bg-gray-200" />
-                      )}
-                    </div>
-
-                    <div>
-                      <h3 className="text-sm font-semibold group-hover:text-purple-600 transition line-clamp-2">
-                        {post.title}
-                      </h3>
-
-                      <p className="text-xs text-gray-500 mt-1">
-                        {post.category}
-                      </p>
-                    </div>
-
-                  </div>
                 </Link>
-              ))}
+              </div>
             </div>
-
           </div>
         )}
 
-        {/* CATEGORY SECTIONS */}
+        {/* 🔥 TRENDING POSTS */}
+        <div className="mb-16">
+          <h2 className="text-2xl font-bold mb-6">🔥 Trending Articles</h2>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {posts.slice(1, 4).map((post, i) => (
+              <BlogCard key={post?.slug || i} post={post} />
+            ))}
+          </div>
+        </div>
+
+        {/* 🔥 CATEGORY AUTHORITY SECTIONS */}
         {Object.keys(grouped).map((cat) => (
           <CategorySection
             key={cat}
@@ -118,40 +84,39 @@ export default function Home() {
           />
         ))}
 
-        {/* ALL POSTS */}
+        {/* 🔥 ALL POSTS */}
         <div className="mt-20">
-          <h2 className="text-2xl font-bold mb-6">All Articles</h2>
+          <h2 className="text-2xl font-bold mb-6">📚 All Articles</h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {posts.map((post) => (
-              <BlogCard key={post.slug} post={post} />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {posts.map((post, i) => (
+              <BlogCard key={post?.slug || i} post={post} />
             ))}
           </div>
         </div>
 
-        {/* CTA */}
-        <div className="mt-20 bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-10 rounded-3xl text-center">
+        {/* 🔥 CTA (CONVERSION BOOST) */}
+        <div className="mt-20 rounded-3xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-12 text-center shadow-lg">
 
           <h2 className="text-3xl font-bold">
-            Want More Leads from Google Ads?
+            Want More Leads From Google Ads?
           </h2>
 
           <p className="mt-3 text-white/80">
-            Stop wasting budget. Get high-converting campaigns built for growth.
+            Get proven strategies that actually convert — no wasted budget.
           </p>
 
           <a
             href="https://scalewithclicks.com"
-            className="inline-block mt-6 bg-white text-purple-600 px-6 py-3 rounded-full font-semibold hover:scale-105 transition"
+            className="inline-block mt-6 bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:scale-105 transition"
           >
-            Get Free Strategy →
+            Get Free Strategy Call →
           </a>
-
         </div>
 
       </div>
 
-      {/* SIDEBAR */}
+      {/* ================= SIDEBAR ================= */}
       <Sidebar posts={posts} />
 
     </div>
