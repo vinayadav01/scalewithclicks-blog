@@ -49,7 +49,7 @@ export default function RootLayout({
 </main>
 
 {/* ================= MOBILE STICKY CTA ================= */}
-<div className="fixed bottom-0 left-0 w-full z-50 md:hidden">
+<div className="fixed bottom-0 left-0 w-full z-50 md:hidden pb-[env(safe-area-inset-bottom)]">
 
   <div className="flex items-center justify-between px-4 py-3 bg-white border-t shadow-lg">
 
@@ -61,11 +61,11 @@ export default function RootLayout({
 
     {/* CTA BUTTON */}
     <a
-      href="https://wa.me/919589188668"
-      className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow hover:scale-105 transition"
-    >
-      Book Call →
-    </a>
+  href="https://wa.me/919589188668?text=Hi%20I%20want%20help%20with%20Google%20Ads"
+  className="flex items-center gap-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow hover:scale-105 transition"
+>
+  💬 Book Call
+</a>
 
   </div>
 
