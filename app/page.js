@@ -6,7 +6,7 @@ import Sidebar from "@/components/Sidebar";
 export default function Home() {
   let posts = [];
 
-  // ✅ SAFE DATA FETCH
+  // ✅ SAFE FETCH
   try {
     const data = getPosts();
     posts = Array.isArray(data) ? data : [];
@@ -15,7 +15,7 @@ export default function Home() {
     posts = [];
   }
 
-  // ✅ SAFE GROUPING
+  // ✅ GROUPING
   const grouped = {};
   posts.forEach((post) => {
     const cat = post?.category || "Other";
@@ -29,24 +29,22 @@ export default function Home() {
       {/* MAIN CONTENT */}
       <div className="lg:col-span-3">
 
-        {/* FEATURED SECTION */}
-        {posts.length > 0 && posts[0] && (
+        {/* FEATURED */}
+        {posts.length > 0 && (
           <div className="mb-16">
             <div className="grid md:grid-cols-3 gap-6">
 
               {/* BIG POST */}
               <div className="md:col-span-2 relative rounded-2xl overflow-hidden group">
-                
+
                 {posts[0]?.image ? (
-                  <div className="relative w-full h-[380px] overflow-hidden rounded-2xl">
-  <img
-    src={posts[0].image}
-    alt={posts[0].title}
-    className="w-full h-full object-cover"
-  />
-</div>
-      ) : (
-                  <div className="w-full h-[380px] bg-gray-200 flex items-center justify-center">
+                  <img
+                    src={posts[0].image}
+                    alt={posts[0]?.title || "blog image"}
+                    className="w-full h-[320px] object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-[320px] bg-gray-200 flex items-center justify-center">
                     No Image
                   </div>
                 )}
@@ -79,10 +77,10 @@ export default function Home() {
                       <img
                         src={post.image}
                         alt={post?.title || "blog image"}
-                        className="w-full h-[180px] object-cover"
+                        className="w-full h-[150px] object-cover"
                       />
                     ) : (
-                      <div className="w-full h-[180px] bg-gray-200 flex items-center justify-center">
+                      <div className="w-full h-[150px] bg-gray-200 flex items-center justify-center">
                         No Image
                       </div>
                     )}
@@ -102,7 +100,7 @@ export default function Home() {
           </div>
         )}
 
-        {/* CATEGORY SECTIONS */}
+        {/* CATEGORY */}
         {Object.keys(grouped).map((cat) => (
           <CategorySection
             key={cat}
@@ -124,8 +122,8 @@ export default function Home() {
 
       </div>
 
-      {/* SIDEBAR (SAFE PASS) */}
-      <Sidebar posts={posts || []} />
+      {/* SIDEBAR */}
+      <Sidebar posts={posts} />
 
     </div>
   );
