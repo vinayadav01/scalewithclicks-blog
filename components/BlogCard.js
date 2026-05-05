@@ -11,12 +11,13 @@ export default function BlogCard({ post }) {
     <div className="group bg-white/70 backdrop-blur-lg border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 ease-in-out hover:-translate-y-1">
 
       {/* Image */}
-      <div className="relative h-52 overflow-hidden">
-        <img
-          src={post.image}
-          alt={post.title}
-          className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-        />
+      <div className="relative w-full h-[220px] overflow-hidden rounded-xl">
+  <img
+    src={post.image}
+    alt={post.title}
+    className="w-full h-full object-cover"
+  />
+</div>
 
         {/* Gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
