@@ -16,11 +16,14 @@ const readingTime = Math.ceil(words / 200);
       {/* IMAGE */}
     <div className="relative w-full h-[200px] overflow-hidden">
   {post.image ? (
-    <img
-      src={post.image}
-      alt={post.title}
-      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-    />
+    <div className="relative w-full h-[220px] overflow-hidden rounded-xl">
+  <img
+    src={post.image}
+    alt={post.title}
+    className="w-full h-full object-cover"
+  />
+</div>
+
   ) : (
     <div className="w-full h-full bg-gray-200 flex items-center justify-center text-sm">
       No Image
