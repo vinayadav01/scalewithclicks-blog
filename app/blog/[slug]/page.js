@@ -10,7 +10,7 @@ import BlogCard from "@/components/BlogCard";
 import { getPosts } from "@/lib/getPosts";
 import Image from "next/image";
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 
 // ================= STATIC PATHS =================
 export async function generateStaticParams() {
