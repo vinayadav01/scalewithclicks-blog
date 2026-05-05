@@ -8,56 +8,72 @@ export default function BlogCard({ post }) {
     : "other";
 
   return (
-    <div className="group bg-white/70 backdrop-blur-lg border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+    <article className="group bg-white/60 backdrop-blur-xl border border-gray-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
 
       {/* IMAGE */}
-      <div className="relative w-full h-[200px] overflow-hidden">
+      <Link href={`/blog/${post.slug}`}>
+        <div className="relative w-full h-[200px] overflow-hidden">
 
-        {post.image ? (
-          <img
-            src={post.image}
-            alt={post.title || "blog image"}
-            className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-          />
-        ) : (
-          <div className="w-full h-full bg-gray-200 flex items-center justify-center text-sm">
-            No Image
+          {post.image ? (
+            <img
+              src={post.image}
+              alt={post.title || "blog image"}
+              className="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out"
+            />
+          ) : (
+            <div className="w-full h-full bg-gray-200 flex items-center justify-center text-sm">
+              No Image
+            </div>
+          )}
+
+          {/* DARK OVERLAY */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-80 group-hover:opacity-100 transition" />
+
+          {/* CATEGORY BADGE (ON IMAGE) */}
+          <div className="absolute top-3 left-3">
+            <span className="text-[11px] bg-white/90 text-purple-600 px-3 py-1 rounded-full font-medium shadow-sm">
+              {post.category || "General"}
+            </span>
           </div>
-        )}
 
-        {/* GRADIENT OVERLAY */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-
-      </div>
+        </div>
+      </Link>
 
       {/* CONTENT */}
       <div className="p-5">
 
-        {/* CATEGORY */}
-        <Link href={`/category/${categorySlug}`}>
-          <span className="text-xs bg-purple-100 text-purple-600 px-2 py-1 rounded cursor-pointer hover:bg-purple-200">
-            {post.category || "General"}
-          </span>
-        </Link>
-
         {/* TITLE */}
-        <h2 className="text-lg font-semibold mt-3 leading-snug group-hover:text-purple-600 transition">
-          {post.title || "Untitled"}
-        </h2>
+        <Link href={`/blog/${post.slug}`}>
+          <h2 className="text-lg font-semibold leading-snug group-hover:text-purple-600 transition line-clamp-2">
+            {post.title || "Untitled"}
+          </h2>
+        </Link>
 
         {/* DESCRIPTION */}
         <p className="text-sm text-gray-500 mt-2 line-clamp-2">
           {post.description || ""}
         </p>
 
-        {/* READ MORE */}
-        <Link href={`/blog/${post.slug}`}>
-          <span className="inline-block mt-4 text-sm text-purple-600 font-medium hover:underline">
-            Read Article →
-          </span>
-        </Link>
+        {/* FOOTER */}
+        <div className="flex items-center justify-between mt-4">
 
+          {/* CATEGORY LINK */}
+          <Link href={`/category/${categorySlug}`}>
+            <span className="text-xs text-purple-600 font-medium hover:underline">
+              {post.category || "General"}
+            </span>
+          </Link>
+
+          {/* CTA */}
+          <Link href={`/blog/${post.slug}`}>
+            <span className="text-sm font-medium text-gray-700 group-hover:text-purple-600 transition flex items-center gap-1">
+              Read
+              <span className="group-hover:translate-x-1 transition">→</span>
+            </span>
+          </Link>
+
+        </div>
       </div>
-    </div>
+    </article>
   );
 }
