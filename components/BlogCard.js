@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function BlogCard({ post }) {
   return (
-    <div className="group bg-white/70 backdrop-blur-lg border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl transition duration-300">
+    <div className="group bg-white/70 backdrop-blur-lg border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 ease-in-out hover:-translate-y-1">
 
       {/* Image */}
       <div className="relative h-52 overflow-hidden">
