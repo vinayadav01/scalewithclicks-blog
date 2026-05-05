@@ -8,17 +8,17 @@ export default function BlogCard({ post }) {
     : "other";
 
   return (
-    <article className="group bg-white/60 backdrop-blur-xl border border-gray-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+    <article className="group bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300">
 
       {/* IMAGE */}
       <Link href={`/blog/${post.slug}`}>
-        <div className="relative w-full h-[200px] overflow-hidden">
+        <div className="relative w-full h-[180px] overflow-hidden">
 
           {post.image ? (
             <img
               src={post.image}
               alt={post.title || "blog image"}
-              className="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out"
+              className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
             />
           ) : (
             <div className="w-full h-full bg-gray-200 flex items-center justify-center text-sm">
@@ -26,21 +26,20 @@ export default function BlogCard({ post }) {
             </div>
           )}
 
-          {/* DARK OVERLAY */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-80 group-hover:opacity-100 transition" />
-
-          {/* CATEGORY BADGE (ON IMAGE) */}
+          {/* CATEGORY BADGE */}
           <div className="absolute top-3 left-3">
-            <span className="text-[11px] bg-white/90 text-purple-600 px-3 py-1 rounded-full font-medium shadow-sm">
+            <span className="text-[11px] bg-white text-purple-600 px-3 py-1 rounded-full font-medium shadow">
               {post.category || "General"}
             </span>
           </div>
 
+          {/* GRADIENT */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
         </div>
       </Link>
 
       {/* CONTENT */}
-      <div className="p-5">
+      <div className="p-4">
 
         {/* TITLE */}
         <Link href={`/blog/${post.slug}`}>
@@ -66,9 +65,8 @@ export default function BlogCard({ post }) {
 
           {/* CTA */}
           <Link href={`/blog/${post.slug}`}>
-            <span className="text-sm font-medium text-gray-700 group-hover:text-purple-600 transition flex items-center gap-1">
-              Read
-              <span className="group-hover:translate-x-1 transition">→</span>
+            <span className="text-sm font-medium text-gray-700 group-hover:text-purple-600 transition">
+              Read →
             </span>
           </Link>
 
