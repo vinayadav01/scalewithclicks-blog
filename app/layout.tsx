@@ -44,8 +44,33 @@ export default function RootLayout({
         <Header />
 
         {/* MAIN */}
-        <main className="min-h-[80vh]">{children}</main>
+       <main className="min-h-[80vh] pb-20 md:pb-0">
+  {children}
+</main>
 
+{/* ================= MOBILE STICKY CTA ================= */}
+<div className="fixed bottom-0 left-0 w-full z-50 md:hidden">
+
+  <div className="flex items-center justify-between px-4 py-3 bg-white border-t shadow-lg">
+
+    {/* TEXT */}
+    <div className="text-xs">
+      <p className="font-semibold text-gray-800">Need More Leads?</p>
+      <p className="text-gray-500">Free Google Ads Strategy</p>
+    </div>
+
+    {/* CTA BUTTON */}
+    <a
+      href="https://wa.me/919589188668"
+      className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow hover:scale-105 transition"
+    >
+      Book Call →
+    </a>
+
+  </div>
+
+</div>
+        
         {/* FOOTER */}
         <footer className="bg-[#020617] text-[#cbd5f5] px-6 py-12 mt-16">
           <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-10">
