@@ -1,9 +1,9 @@
-import { getAllPosts } from "@/lib/getPosts";
+import { getPosts } from "@/lib/getPosts";
 import BlogCard from "@/components/BlogCard";
 import CategorySection from "@/components/CategorySection";
 
 export default function Home() {
-  const posts = getAllPosts();
+  const posts = getPosts();
 
   const grouped = posts.reduce((acc, post) => {
     const cat = post.category || "Other";
