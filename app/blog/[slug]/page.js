@@ -8,6 +8,7 @@ import rehypeStringify from "rehype-stringify";
 import { notFound } from "next/navigation";
 import BlogCard from "@/components/BlogCard";
 import { getPosts } from "@/lib/getPosts"; // or getAllPosts (match your export)
+import * as cheerio from "cheerio";
 
 // ✅ generate static paths
 export async function generateStaticParams() {
@@ -48,6 +49,33 @@ export default async function BlogPost({ params }) {
 
   const contentHtml = processedContent.toString();
 
+  const $ = cheerio.load(contentHtml);
+
+const headings = [];
+
+$("h2, h3").each((i, el) => {
+  const text = $(el).text();
+  const id = $(el).attr("id");
+
+  if (text && id) {
+    headings.push({ text, id });
+  }
+});
+
+  const faqs = [];
+
+$("h3").each((i, el) => {
+  const question = $(el).text();
+  const answer = $(el).next("p").text();
+
+  if (question && answer) {
+    faqs.push({
+      question,
+      answer,
+    });
+  }
+});
+
   // ✅ get all posts for related section
   const posts = getPosts(); // or getAllPosts()
   const currentPost = {
@@ -65,6 +93,33 @@ export default async function BlogPost({ params }) {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-10">
+
+    <div className="grid lg:grid-cols-4 gap-10">
+
+  {/* MAIN CONTENT */}
+  <div className="lg:col-span-3">
+
+    {/* TOC */}
+   {headings.length > 0 && (
+  <div className="sticky top-24 mb-10 p-5 bg-gray-50 rounded-xl border">
+        <h3 className="font-bold mb-3">Table of Contents</h3>
+
+        <ul className="space-y-2 text-sm">
+          {headings.map((h, i) => (
+            <li key={i}>
+              <a
+                href={`#${h.id}`}
+                className="text-purple-600 hover:underline"
+              >
+                {h.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    {/* YOUR EXISTING BLOG CONTENT BELOW */}
 
       {/* Blog Title */}
       <h1 className="text-3xl font-bold mb-6">{data.title}</h1>
@@ -121,6 +176,26 @@ export default async function BlogPost({ params }) {
           }),
         }}
       />
+
+        {faqs.length > 0 && (
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: faq.answer,
+          },
+        })),
+      }),
+    }}
+  />
+)}
 
     </div>
   );
