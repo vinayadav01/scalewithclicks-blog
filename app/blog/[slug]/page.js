@@ -142,6 +142,27 @@ export default async function BlogPost({ params }) {
           dangerouslySetInnerHTML={{ __html: contentHtml }}
         />
 
+{/* INLINE CTA */}
+<div className="mt-10 p-6 border rounded-xl bg-purple-50 flex flex-col md:flex-row items-center justify-between gap-4">
+
+  <div>
+    <h4 className="font-semibold text-lg">
+      Want better results from your ads?
+    </h4>
+    <p className="text-sm text-gray-600">
+      Get a free strategy tailored to your business.
+    </p>
+  </div>
+
+  <a
+    href="https://scalewithclicks.com"
+    className="bg-purple-600 text-white px-5 py-2 rounded-full font-medium hover:scale-105 transition"
+  >
+    Book Free Call →
+  </a>
+
+</div>
+
         {/* INLINE CTA */}
         <div className="mt-16 p-8 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-2xl text-center">
           <h3 className="text-2xl font-bold">
@@ -173,6 +194,26 @@ export default async function BlogPost({ params }) {
           </>
         )}
 
+{/* MID CTA */}
+<div className="mt-16 p-8 bg-gray-900 text-white rounded-2xl text-center">
+
+  <h3 className="text-2xl font-bold">
+    Ready to Scale Your Leads?
+  </h3>
+
+  <p className="mt-2 text-white/70">
+    We build high-converting Google Ads campaigns that drive real ROI.
+  </p>
+
+  <a
+    href="https://scalewithclicks.com"
+    className="inline-block mt-4 bg-purple-600 px-6 py-3 rounded-full font-semibold"
+  >
+    Get Started →
+  </a>
+
+</div>
+
 {/* FAQ UI SECTION */}
 {faqs.length > 0 && (
   <div className="mt-16">
@@ -200,7 +241,27 @@ export default async function BlogPost({ params }) {
   </div>
 )}
 
-        {/* AUTHOR */}
+{/* EXIT CTA */}
+<div className="mt-20 p-10 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-3xl text-center">
+
+  <h2 className="text-3xl font-bold">
+    Still Not Getting Results?
+  </h2>
+
+  <p className="mt-3 text-white/80">
+    Let’s fix your Google Ads and turn them into a profit machine.
+  </p>
+
+  <a
+    href="https://scalewithclicks.com"
+    className="inline-block mt-6 bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:scale-105 transition"
+  >
+    Get Free Strategy Call →
+  </a>
+
+</div>      
+
+{/* AUTHOR */}
         <div className="mt-16 p-6 border rounded-xl bg-gray-50">
           <h4 className="font-bold text-lg">About the Author</h4>
           <p className="text-sm text-gray-600 mt-2">
@@ -255,27 +316,47 @@ export default async function BlogPost({ params }) {
       </article>
 
       {/* ================= SIDEBAR ================= */}
-      <aside className="hidden lg:block">
+      <aside className="hidden lg:block space-y-6">
 
-        {/* TOC */}
-        {headings.length > 0 && (
-          <div className="sticky top-24 mb-6 p-5 border rounded-xl bg-gray-50">
-            <h4 className="font-semibold mb-3">Table of Contents</h4>
+  {/* STICKY CTA */}
+  <div className="sticky top-24 p-6 rounded-2xl bg-gradient-to-br from-purple-600 to-indigo-600 text-white shadow-lg">
 
-            <ul className="text-sm space-y-2">
-              {headings.map((h, i) => (
-                <li key={i}>
-                  <a
-                    href={`#${h.id}`}
-                    className="text-gray-600 hover:text-purple-600"
-                  >
-                    {h.text}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+    <h4 className="text-lg font-bold leading-snug">
+      Struggling with Google Ads?
+    </h4>
+
+    <p className="text-sm mt-2 text-white/80">
+      Stop wasting budget. Get a proven strategy that actually converts.
+    </p>
+
+    <a
+      href="https://scalewithclicks.com"
+      className="block mt-4 bg-white text-purple-600 text-center px-4 py-2 rounded-full font-semibold hover:scale-105 transition"
+    >
+      Get Free Audit →
+    </a>
+
+  </div>
+
+       {/* TOC BELOW CTA */}
+  {headings.length > 0 && (
+    <div className="p-5 border rounded-xl bg-gray-50">
+      <h4 className="font-semibold mb-3">Table of Contents</h4>
+
+      <ul className="text-sm space-y-2">
+        {headings.map((h, i) => (
+          <li key={i}>
+            <a
+              href={`#${h.id}`}
+              className="text-gray-600 hover:text-purple-600"
+            >
+              {h.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
 
         {/* SIDEBAR CTA */}
         <div className="p-5 bg-purple-600 text-white rounded-xl">
