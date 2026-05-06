@@ -1,29 +1,37 @@
-import Link from "next/link";
-
 export default function BlogCard({ post }) {
   return (
-    <Link href={`/blog/${post.slug}`}>
-      <div className="group bg-[#0b1220] border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition">
-
+    <a
+      href={`/blog/${post.slug}`}
+      className="group block rounded-2xl border border-gray-200 bg-white p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-transparent"
+    >
+      {/* IMAGE */}
+      <div className="overflow-hidden rounded-xl">
         <img
           src={post.image}
           alt={post.title}
-          className="w-full h-48 object-cover group-hover:scale-105 transition duration-500"
+          className="w-full h-48 object-cover transition duration-500 group-hover:scale-105"
         />
-
-        <div className="p-5">
-          <p className="text-xs text-gray-400 mb-2">{post.category}</p>
-
-          <h3 className="text-white font-semibold text-lg group-hover:text-indigo-400 transition">
-            {post.title}
-          </h3>
-
-          <p className="text-gray-400 text-sm mt-2 line-clamp-2">
-            {post.description}
-          </p>
-        </div>
-
       </div>
-    </Link>
+
+      {/* CONTENT */}
+      <div className="mt-4">
+        <p className="text-xs text-gray-500">
+          {post.category || "Marketing"}
+        </p>
+
+        <h3 className="font-semibold text-lg mt-1 group-hover:text-indigo-600 transition">
+          {post.title}
+        </h3>
+
+        <p className="text-gray-600 text-sm mt-2 line-clamp-2">
+          {post.description}
+        </p>
+
+        {/* CTA */}
+        <span className="inline-block mt-3 text-sm font-medium text-indigo-600 transition group-hover:translate-x-1">
+          Read article →
+        </span>
+      </div>
+    </a>
   );
 }
