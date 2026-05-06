@@ -78,18 +78,18 @@ export default function Home() {
             </a>
 
             {/* Side */}
-            <div className="flex flex-col gap-6">
-              {posts.slice(1, 3).map((post) => (
-                <a
-                  key={post.slug}
-                  href={`/blog/${post.slug}`}
-                  className="border rounded-xl p-5 hover:shadow-md transition"
-                >
-                  <h3 className="font-semibold">{post.title}</h3>
-                  <p className="text-gray-600 text-sm mt-2">{post.description}</p>
-                </a>
-              ))}
-            </div>
+<div className="flex flex-col gap-6">
+  {posts.slice(1, 3).map((post) => (
+    <a
+      key={post.slug}
+      href={`/blog/${post.slug}`}
+      className="glass rounded-xl p-5 card-hover"
+    >
+      <h3 className="font-semibold">{post.title}</h3>
+      <p className="text-gray-600 text-sm mt-2">{post.description}</p>
+    </a>
+  ))}
+</div>
 
           </div>
         </section>
