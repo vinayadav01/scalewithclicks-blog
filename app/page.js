@@ -1,6 +1,7 @@
 import { getPosts } from "@/lib/getPosts";
 import BlogCard from "@/components/BlogCard";
 import CategorySection from "@/components/CategorySection";
+import FadeIn from "@/components/FadeIn";
 
 export default function Home() {
   const posts = getPosts();
@@ -15,6 +16,7 @@ export default function Home() {
   return (
     <div className="bg-white text-gray-900">
 
+    <FadeIn>
       {/* ===== HERO ===== */}
       <section className="relative max-w-6xl mx-auto px-4 pt-20 pb-16 text-center">
 
@@ -49,7 +51,9 @@ export default function Home() {
         </div>
 
       </section>
+              </FadeIn>
 
+  <FadeIn>
       {/* ===== FEATURED ===== */}
       <section className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid md:grid-cols-3 gap-6">
@@ -88,7 +92,9 @@ export default function Home() {
 
         </div>
       </section>
+              </FadeIn>
 
+<FadeIn>
       {/* ===== CATEGORY ===== */}
       <section className="max-w-6xl mx-auto px-4 py-16 space-y-16">
         {Object.keys(grouped).map((cat) => (
@@ -128,6 +134,7 @@ export default function Home() {
 
         </div>
       </section>
+              </FadeIn>
 
     </div>
   );
