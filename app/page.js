@@ -19,21 +19,17 @@ export default function Home() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
 
-      {/* TEST BLOCK */}
-      <div className="grid grid-cols-4 gap-4 bg-red-500 text-white p-4">
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-      </div>
-
       {/* HERO FEATURED */}
       <div className="mb-16">
 
         <div className="grid md:grid-cols-3 gap-6">
 
           {/* Big */}
-          <div className="md:col-span-2 bg-gray-100 rounded-2xl overflow-hidden">
+         <a
+  href={`/blog/${posts[0].slug}`}
+  className="md:col-span-2 bg-gray-100 rounded-2xl overflow-hidden block hover:shadow-lg transition"
+>
+    </a>
             <img
               src={posts[0].image}
               className="w-full h-72 object-cover"
@@ -53,14 +49,13 @@ export default function Home() {
           {/* Side */}
           <div className="flex flex-col gap-4">
             {posts.slice(1, 3).map(post => (
-              <div
-                key={post.slug}
-                className="bg-gray-100 rounded-xl p-4"
-              >
-                <h3 className="font-semibold">
-                  {post.title}
-                </h3>
-              </div>
+              <a
+  key={post.slug}
+  href={`/blog/${post.slug}`}
+  className="bg-gray-100 rounded-xl p-4 block hover:shadow-md transition"
+>
+  <h3 className="font-semibold">{post.title}</h3>
+</a>
             ))}
           </div>
 
