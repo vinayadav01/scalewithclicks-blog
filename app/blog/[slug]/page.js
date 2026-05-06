@@ -56,34 +56,33 @@ export default function BlogPost({ params }) {
 
       {/* ===== HERO IMAGE ===== */}
       <div className="relative overflow-hidden">
-        <img
-          src={post.image}
-          className="w-full h-[420px] object-cover transition-transform duration-300"
-          style={{ transform: `scale(${scale})` }}
+  <img
+    src={post.image}
+    className="w-full h-[420px] object-cover transition-transform duration-300"
+    style={{ transform: `scale(${scale})` }}
+  />
 
-<p className="text-sm opacity-80 mt-2">
-  {post.category} • {post.readingTime}
-</p>
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
-        />
+  {/* TEXT CONTENT */}
+  <div className="absolute bottom-0 left-0 right-0 max-w-6xl mx-auto px-6 pb-10 text-white">
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+    {/* ✅ FIXED LINE (PUT HERE) */}
+    <p className="text-sm opacity-80">
+      {post.category} • {post.readingTime}
+    </p>
 
-        <div className="absolute bottom-0 left-0 right-0 max-w-6xl mx-auto px-6 pb-10 text-white">
-          <p className="text-sm opacity-80">
-            {post.category}
-          </p>
+    <h1 className="text-3xl md:text-5xl font-semibold leading-tight mt-2">
+      {post.title}
+    </h1>
 
-          <h1 className="text-3xl md:text-5xl font-semibold leading-tight mt-2">
-            {post.title}
-          </h1>
+    <p className="mt-3 text-gray-200 max-w-2xl">
+      {post.description}
+    </p>
 
-          <p className="mt-3 text-gray-200 max-w-2xl">
-            {post.description}
-          </p>
-        </div>
-      </div>
+  </div>
+</div>
 
       {/* ===== MAIN CONTENT ===== */}
       <div className="max-w-6xl mx-auto px-6 py-16 grid lg:grid-cols-4 gap-12">
