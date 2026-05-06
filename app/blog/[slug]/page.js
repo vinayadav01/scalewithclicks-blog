@@ -1,39 +1,25 @@
-import { useEffect, useState } from "react";
 import { getPosts } from "@/lib/getPosts";
 import { notFound } from "next/navigation";
 import TableOfContents from "@/components/TableOfContents";
+import ReadingProgress from "@/components/ReadingProgress";
 
 export default function BlogPost({ params }) {
   const posts = getPosts();
   const post = posts.find((p) => p.slug === params.slug);
 
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const totalHeight =
-        document.documentElement.scrollHeight -
-        document.documentElement.clientHeight;
-      const scroll = window.scrollY;
-      setProgress((scroll / totalHeight) * 100);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   if (!post) return notFound();
 
-  const related = posts.filter(p => p.category === post.category && p.slug !== post.slug).slice(0,3);
+  const related = posts
+    .filter(
+      (p) => p.category === post.category && p.slug !== post.slug
+    )
+    .slice(0, 3);
 
   return (
     <div className="bg-[#020617] text-white">
 
-      {/* 🔥 Progress Bar */}
-      <div
-        className="fixed top-0 left-0 h-[3px] bg-indigo-500 z-50"
-        style={{ width: `${progress}%` }}
-      />
+      {/* ✅ Progress Bar (Client Component) */}
+      <ReadingProgress />
 
       <div className="max-w-6xl mx-auto px-6 py-16 grid lg:grid-cols-4 gap-12">
 
@@ -50,6 +36,7 @@ export default function BlogPost({ params }) {
           {/* Image */}
           <img
             src={post.image}
+            alt={post.title}
             className="w-full rounded-xl mt-8"
           />
 
@@ -68,9 +55,9 @@ export default function BlogPost({ params }) {
 
         {/* SIDEBAR */}
         <aside className="hidden lg:block">
+          <div className="sticky top-24 space-y-6">
 
-          <div className="sticky top-24">
-
+            {/* ✅ Advanced TOC */}
             <TableOfContents toc={post.toc} />
 
             {/* CTA */}
@@ -91,13 +78,23 @@ export default function BlogPost({ params }) {
 
       {/* RELATED POSTS */}
       <div className="max-w-6xl mx-auto px-6 pb-20">
-        <h2 className="text-xl font-semibold mb-6">Related Articles</h2>
+        <h2 className="text-xl font-semibold mb-6">
+          Related Articles
+        </h2>
 
         <div className="grid md:grid-cols-3 gap-6">
-          {related.map(post => (
-            <a key={post.slug} href={`/blog/${post.slug}`} className="bg-[#0b1220] border border-white/10 rounded-xl p-4 hover:border-white/20 transition">
-              <h3 className="text-white font-medium">{post.title}</h3>
-              <p className="text-gray-400 text-sm mt-2">{post.description}</p>
+          {related.map((post) => (
+            <a
+              key={post.slug}
+              href={`/blog/${post.slug}`}
+              className="bg-[#0b1220] border border-white/10 rounded-xl p-4 hover:border-white/20 transition"
+            >
+              <h3 className="text-white font-medium">
+                {post.title}
+              </h3>
+              <p className="text-gray-400 text-sm mt-2">
+                {post.description}
+              </p>
             </a>
           ))}
         </div>
