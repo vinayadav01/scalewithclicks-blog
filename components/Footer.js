@@ -1,46 +1,58 @@
 "use client";
 
-import { motion } from "framer-motion";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  show: (i = 1) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.08,
-      duration: 0.5,
-      ease: "easeOut",
-    },
-  }),
-};
+import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useRef } from "react";
 
 export default function Footer() {
-  return (
-    <footer className="relative bg-[#020617] text-gray-400 border-t border-white/10 overflow-hidden">
+  const ref = useRef(null);
 
-      {/* subtle background glow */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(99,102,241,0.12),transparent_60%)]" />
+  // 🔥 cursor glow
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springX = useSpring(mouseX, { stiffness: 100, damping: 20 });
+  const springY = useSpring(mouseY, { stiffness: 100, damping: 20 });
+
+  function handleMouseMove(e) {
+    const rect = ref.current.getBoundingClientRect();
+    mouseX.set(e.clientX - rect.left);
+    mouseY.set(e.clientY - rect.top);
+  }
+
+  return (
+    <footer
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      className="relative bg-[#020617] text-gray-400 border-t border-white/10 overflow-hidden"
+    >
+
+      {/* 🔥 Cursor glow */}
+      <motion.div
+        className="pointer-events-none absolute w-[400px] h-[400px] rounded-full bg-indigo-500/20 blur-[120px]"
+        style={{
+          x: springX,
+          y: springY,
+          translateX: "-50%",
+          translateY: "-50%",
+        }}
+      />
 
       <div className="relative max-w-7xl mx-auto px-6 py-24">
 
-        {/* GRID */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-12">
 
           {/* BRAND */}
           <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            custom={1}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
             className="md:col-span-2"
           >
             <h2 className="text-white text-xl font-semibold tracking-tight">
               ScaleWithClicks
             </h2>
 
-            <p className="mt-4 text-sm text-gray-400 max-w-sm leading-relaxed">
+            <p className="mt-4 text-sm max-w-sm leading-relaxed">
               Helping businesses generate consistent leads through performance marketing, SEO, and advanced tracking systems.
             </p>
 
@@ -51,7 +63,7 @@ export default function Footer() {
             </div>
           </motion.div>
 
-          {/* COLUMN FUNCTION */}
+          {/* COLUMN */}
           {[
             {
               title: "Services",
@@ -83,11 +95,9 @@ export default function Footer() {
           ].map((col, i) => (
             <motion.div
               key={i}
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              custom={i + 2}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1 }}
             >
               <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
                 {col.title}
@@ -95,21 +105,9 @@ export default function Footer() {
 
               <ul className="mt-4 space-y-3 text-sm">
                 {col.links.map(([name, link], idx) => (
-                  <motion.li
-                    key={idx}
-                    whileHover={{ x: 4 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <a
-                      href={link}
-                      className="group relative inline-block text-gray-400 hover:text-white transition"
-                    >
-                      {name}
-
-                      {/* animated underline */}
-                      <span className="absolute left-0 -bottom-1 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                  </motion.li>
+                  <MagneticLink key={idx} href={link}>
+                    {name}
+                  </MagneticLink>
                 ))}
               </ul>
             </motion.div>
@@ -117,13 +115,8 @@ export default function Footer() {
 
         </div>
 
-        {/* DIVIDER */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="mt-16 border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500"
-        >
+        {/* BOTTOM */}
+        <div className="mt-16 border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
           <p>© 2026 ScaleWithClicks</p>
 
           <div className="flex gap-6">
@@ -131,9 +124,48 @@ export default function Footer() {
             <a href="/terms" className="hover:text-white transition">Terms</a>
             <a href="/disclaimer" className="hover:text-white transition">Disclaimer</a>
           </div>
-        </motion.div>
+        </div>
 
       </div>
     </footer>
+  );
+}
+
+// 🧲 Magnetic Link Component
+function MagneticLink({ children, href }) {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const springX = useSpring(x, { stiffness: 150, damping: 10 });
+  const springY = useSpring(y, { stiffness: 150, damping: 10 });
+
+  function handleMouse(e) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const offsetX = e.clientX - (rect.left + rect.width / 2);
+    const offsetY = e.clientY - (rect.top + rect.height / 2);
+
+    x.set(offsetX * 0.2);
+    y.set(offsetY * 0.2);
+  }
+
+  function reset() {
+    x.set(0);
+    y.set(0);
+  }
+
+  return (
+    <motion.li
+      style={{ x: springX, y: springY }}
+      onMouseMove={handleMouse}
+      onMouseLeave={reset}
+    >
+      <a
+        href={href}
+        className="relative inline-block text-gray-400 hover:text-white transition"
+      >
+        {children}
+        <span className="absolute left-0 -bottom-1 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+      </a>
+    </motion.li>
   );
 }
