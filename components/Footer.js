@@ -5,7 +5,7 @@ import { useRef } from "react";
 
 export default function Footer() {
   const ref = useRef(null);
-
+  
   // 🔥 cursor glow
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
