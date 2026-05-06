@@ -25,7 +25,7 @@ export default function BlogPost({ params }) {
         />
 
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-
+            
         <div className="absolute bottom-0 max-w-6xl mx-auto px-6 pb-10 text-white">
           <p className="text-sm opacity-80">
             {post.category} • {post.readingTime}
