@@ -1,11 +1,8 @@
-import Link from "next/link";
 import Script from "next/script";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { AnimatePresence, motion } from "framer-motion";
-import { usePathname } from "next/navigation";
 import PageWrapper from "@/components/PageWrapper";
 
 const inter = Inter({
@@ -13,13 +10,11 @@ const inter = Inter({
   display: "swap",
 });
 
-// ✅ REQUIRED for TS
 export const metadata = {
   title: "ScaleWithClicks Blog",
   description: "Performance Marketing Blog",
 };
 
-// ✅ TYPE FIX HERE
 export default function RootLayout({
   children,
 }: {
@@ -47,43 +42,37 @@ export default function RootLayout({
         {/* HEADER */}
         <Header />
 
-        {/* MAIN */}
-       <main className="min-h-[80vh] pb-20 md:pb-0">
-  {children}
-</main>
-
+        {/* MAIN (ONLY ONCE) */}
         <main className="min-h-[80vh] pb-20 md:pb-0">
-  <PageWrapper>
-    {children}
-  </PageWrapper>
-</main>
+          <PageWrapper>
+            {children}
+          </PageWrapper>
+        </main>
 
-{/* ================= MOBILE STICKY CTA ================= */}
-<div className="fixed bottom-0 left-0 w-full z-50 md:hidden pb-[env(safe-area-inset-bottom)]">
+        {/* ================= MOBILE STICKY CTA ================= */}
+        <div className="fixed bottom-0 left-0 w-full z-50 md:hidden pb-[env(safe-area-inset-bottom)]">
+          <div className="flex items-center justify-between px-4 py-3 bg-white border-t shadow-lg">
 
-  <div className="flex items-center justify-between px-4 py-3 bg-white border-t shadow-lg">
+            {/* TEXT */}
+            <div className="text-xs">
+              <p className="font-semibold text-gray-800">Need More Leads?</p>
+              <p className="text-gray-500">Free Google Ads Strategy</p>
+            </div>
 
-    {/* TEXT */}
-    <div className="text-xs">
-      <p className="font-semibold text-gray-800">Need More Leads?</p>
-      <p className="text-gray-500">Free Google Ads Strategy</p>
-    </div>
+            {/* CTA BUTTON */}
+            <a
+              href="https://wa.me/919589188668?text=Hi%20I%20want%20help%20with%20Google%20Ads"
+              className="flex items-center gap-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow hover:scale-105 transition"
+            >
+              💬 Book Call
+            </a>
 
-    {/* CTA BUTTON */}
-    <a
-  href="https://wa.me/919589188668?text=Hi%20I%20want%20help%20with%20Google%20Ads"
-  className="flex items-center gap-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow hover:scale-105 transition"
->
-  💬 Book Call
-</a>
+          </div>
+        </div>
 
-  </div>
-
-</div>
-        
         {/* FOOTER */}
-        <Footer/>
-        
+        <Footer />
+
       </body>
     </html>
   );
