@@ -6,11 +6,18 @@ import TableOfContents from "@/components/TableOfContents";
 import FloatingShare from "@/components/FloatingShare";
 import Reveal from "@/components/Reveal";
 
-export default function BlogPost({ params }) {
+export default async function BlogPost({ params }) {
   // ✅ DEBUG (now inside function)
   console.log("PARAM SLUG:", params.slug);
 
-  const posts = getPosts();
+  let posts = [];
+
+try {
+  posts = getPosts();
+} catch (e) {
+  console.error("GET POSTS ERROR:", e);
+  return notFound();
+}  
 
   console.log("ALL SLUGS:", posts.map(p => p.slug));
 
