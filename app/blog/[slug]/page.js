@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useState } from "react";
 import { getPosts } from "@/lib/getPosts";
 import { notFound } from "next/navigation";
