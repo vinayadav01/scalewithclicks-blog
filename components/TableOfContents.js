@@ -6,46 +6,36 @@ export default function TableOfContents({ toc }) {
   const [active, setActive] = useState("");
 
   useEffect(() => {
-    const handleScroll = () => {
+    const headings = document.querySelectorAll("h2, h3");
+
+    const onScroll = () => {
       let current = "";
 
-      toc.forEach((item) => {
-        const el = document.getElementById(item.id);
-        if (el) {
-          const top = el.getBoundingClientRect().top;
-
-          if (top < 120) {
-            current = item.id;
-          }
+      headings.forEach((h) => {
+        if (window.scrollY >= h.offsetTop - 120) {
+          current = h.id;
         }
       });
 
       setActive(current);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [toc]);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <div className="bg-[#0b1220] border border-white/10 rounded-xl p-5">
-      <h3 className="text-xs text-gray-400 uppercase mb-4 tracking-wider">
-        On this page
-      </h3>
+    <div>
+      <h3 className="text-sm font-semibold mb-3">On this page</h3>
 
       <ul className="space-y-2 text-sm">
-        {toc.map((item, i) => (
-          <li
-            key={i}
-            className={`transition ${
-              item.level === 3 ? "ml-4" : ""
-            }`}
-          >
+        {toc.map((item) => (
+          <li key={item.id}>
             <a
               href={`#${item.id}`}
               className={`block transition ${
                 active === item.id
-                  ? "text-white font-medium"
+                  ? "text-indigo-600 font-medium"
                   : "text-gray-400 hover:text-white"
               }`}
             >
