@@ -2,6 +2,7 @@ import { getPosts } from "@/lib/getPosts";
 import BlogCard from "@/components/BlogCard";
 import CategorySection from "@/components/CategorySection";
 import FadeIn from "@/components/FadeIn";
+import MagneticButton from "@/components/MagneticButton";
 
 export default function Home() {
   const posts = getPosts();
@@ -125,12 +126,12 @@ export default function Home() {
             Get a free strategy tailored to your business.
           </p>
 
-          <a
-            href="https://wa.me/919589188668"
-            className="inline-block mt-6 bg-white text-black px-6 py-3 rounded-full font-medium hover:scale-105 transition"
-          >
-            Book Free Call →
-          </a>
+         <MagneticButton
+  href="https://wa.me/919589188668"
+  className="bg-black text-white px-6 py-3 rounded-full"
+>
+  Book Free Call →
+</MagneticButton>
 
         </div>
       </section>
