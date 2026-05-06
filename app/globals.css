@@ -521,3 +521,37 @@ a {
 html {
   scroll-behavior: smooth;
 }
+
+/* ===== PREMIUM BASE ===== */
+
+body {
+  background: linear-gradient(to bottom, #ffffff, #f8fafc);
+}
+
+/* smooth links */
+a {
+  transition: all 0.2s ease;
+}
+
+/* hover lift (reusable) */
+.card-hover {
+  transition: all 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+/* soft glass effect */
+.glass {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+/* gradient text */
+.gradient-text {
+  background: linear-gradient(to right, #6366f1, #9333ea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
