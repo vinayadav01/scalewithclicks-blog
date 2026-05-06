@@ -34,7 +34,7 @@ export default function Home() {
 
         <div className="mt-8 flex justify-center gap-4">
           <a
-            href="/blog"
+            href="/"
             className="bg-black text-white px-6 py-3 rounded-full text-sm hover:scale-105 transition"
           >
             Explore Blog
