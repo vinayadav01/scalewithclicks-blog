@@ -1,22 +1,24 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function PageWrapper({ children }) {
   const pathname = usePathname();
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    setShow(false);
+    setTimeout(() => setShow(true), 50);
+  }, [pathname]);
 
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={pathname}
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
-        transition={{ duration: 0.3 }}
-      >
-        {children}
-      </motion.div>
-    </AnimatePresence>
+    <div
+      className={`transition-all duration-300 ${
+        show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+      }`}
+    >
+      {children}
+    </div>
   );
 }
