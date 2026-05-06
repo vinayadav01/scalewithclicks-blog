@@ -4,28 +4,23 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-xl bg-[#020617]/70 border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/70 border-b border-black/5">
+      <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
 
-        {/* Logo */}
-        <Link href="/" className="text-white font-semibold text-lg">
+        <Link href="/" className="font-semibold text-lg">
           ScaleWithClicks
         </Link>
 
-        {/* Nav */}
-        <nav className="hidden md:flex items-center gap-8 text-sm text-gray-400">
-          <Link href="/" className="hover:text-white transition">Home</Link>
-          <Link href="/" className="hover:text-white transition">Blog</Link>
-          <Link href="/about" className="hover:text-white transition">About</Link>
-          <Link href="/contact" className="hover:text-white transition">Contact</Link>
+        <nav className="hidden md:flex gap-8 text-sm text-gray-600">
+          <Link href="https://scalewithclicks.com/" className="hover:text-black transition">Home</Link>
+          <Link href="/" className="hover:text-black transition">Blog</Link>
         </nav>
 
-        {/* CTA */}
         <a
           href="https://wa.me/919589188668"
-          className="bg-white text-black text-sm px-4 py-2 rounded-md font-medium hover:opacity-90 transition"
+          className="bg-black text-white px-4 py-2 rounded-full text-sm hover:opacity-80 transition"
         >
-          Get Help
+          Book Call
         </a>
 
       </div>
