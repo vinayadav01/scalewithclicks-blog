@@ -1,78 +1,62 @@
 export default function Footer() {
   return (
-    <footer className="bg-[#020817] text-gray-300 border-t border-gray-800">
+    <footer className="bg-white text-gray-700 border-t border-gray-200">
 
       {/* TOP */}
       <div className="max-w-7xl mx-auto px-6 py-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
 
         {/* Brand */}
         <div>
-          <h2 className="text-white text-2xl font-semibold tracking-tight mb-4">
+          <h2 className="text-gray-900 text-2xl font-semibold mb-4">
             ScaleWithClicks
           </h2>
-
-          <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
+          <p className="text-gray-500 text-sm leading-relaxed">
             Actionable marketing insights, Google Ads strategies, and SEO tips to help you grow faster.
           </p>
-
-          {/* Social Icons */}
-          <div className="flex gap-4 mt-6">
-            <a href="#" className="p-2 bg-gray-900 rounded-lg hover:bg-gray-800 transition">
-              🌐
-            </a>
-            <a href="#" className="p-2 bg-gray-900 rounded-lg hover:bg-gray-800 transition">
-              💼
-            </a>
-            <a href="#" className="p-2 bg-gray-900 rounded-lg hover:bg-gray-800 transition">
-              📘
-            </a>
-          </div>
         </div>
 
         {/* Blog */}
         <div>
-          <h3 className="text-white font-semibold mb-4 text-sm tracking-wide">
+          <h3 className="text-gray-900 font-semibold mb-4 text-sm">
             Blog
           </h3>
-          <ul className="space-y-3 text-sm text-gray-400">
-            <li><a href="/blog" className="hover:text-white transition">All Posts</a></li>
-            <li><a href="/category/google-ads" className="hover:text-white transition">Google Ads</a></li>
-            <li><a href="/category/seo" className="hover:text-white transition">SEO</a></li>
-            <li><a href="/category/marketing" className="hover:text-white transition">Marketing</a></li>
+          <ul className="space-y-3 text-sm">
+            <li><a href="/blog" className="hover:text-black">All Posts</a></li>
+            <li><a href="/category/google-ads" className="hover:text-black">Google Ads</a></li>
+            <li><a href="/category/seo" className="hover:text-black">SEO</a></li>
+            <li><a href="/category/marketing" className="hover:text-black">Marketing</a></li>
           </ul>
         </div>
 
         {/* Resources */}
         <div>
-          <h3 className="text-white font-semibold mb-4 text-sm tracking-wide">
+          <h3 className="text-gray-900 font-semibold mb-4 text-sm">
             Resources
           </h3>
-          <ul className="space-y-3 text-sm text-gray-400">
-            <li><a href="/about" className="hover:text-white transition">About</a></li>
-            <li><a href="/contact" className="hover:text-white transition">Contact</a></li>
-            <li><a href="/case-studies" className="hover:text-white transition">Case Studies</a></li>
-            <li><a href="/newsletter" className="hover:text-white transition">Newsletter</a></li>
+          <ul className="space-y-3 text-sm">
+            <li><a href="/about" className="hover:text-black">About</a></li>
+            <li><a href="/contact" className="hover:text-black">Contact</a></li>
+            <li><a href="/newsletter" className="hover:text-black">Newsletter</a></li>
           </ul>
         </div>
 
         {/* Newsletter */}
         <div>
-          <h3 className="text-white font-semibold mb-4 text-sm tracking-wide">
+          <h3 className="text-gray-900 font-semibold mb-4 text-sm">
             Stay Updated
           </h3>
 
-          <p className="text-gray-400 text-sm mb-4">
-            Get marketing tips straight to your inbox.
+          <p className="text-gray-500 text-sm mb-4">
+            Get marketing tips in your inbox.
           </p>
 
           <form className="flex flex-col gap-3">
             <input
               type="email"
               placeholder="Enter your email"
-              className="px-4 py-2.5 rounded-lg bg-gray-900 border border-gray-700 text-sm focus:outline-none focus:border-indigo-500 transition"
+              className="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-black"
             />
-
-            <button className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-2.5 rounded-lg text-sm font-medium hover:opacity-90 transition shadow-md">
+            <button className="bg-black text-white py-2 rounded-lg text-sm hover:opacity-90 transition">
               Subscribe
             </button>
           </form>
@@ -80,21 +64,19 @@ export default function Footer() {
 
       </div>
 
-      {/* DIVIDER */}
-      <div className="border-t border-gray-800" />
-
       {/* BOTTOM */}
-      <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-gray-500 text-sm">
+      <div className="border-t border-gray-200">
+        <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 gap-4">
+          <p>© 2026 ScaleWithClicks</p>
 
-        <p>© 2026 ScaleWithClicks. All rights reserved.</p>
-
-        <div className="flex gap-6">
-          <a href="/privacy-policy" className="hover:text-white transition">Privacy</a>
-          <a href="/terms" className="hover:text-white transition">Terms</a>
-          <a href="/disclaimer" className="hover:text-white transition">Disclaimer</a>
+          <div className="flex gap-6">
+            <a href="/privacy-policy" className="hover:text-black">Privacy</a>
+            <a href="/terms" className="hover:text-black">Terms</a>
+            <a href="/disclaimer" className="hover:text-black">Disclaimer</a>
+          </div>
         </div>
-
       </div>
+
     </footer>
   );
 }
