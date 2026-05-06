@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { getPosts } from "@/lib/getPosts";
 import { notFound } from "next/navigation";
+import TableOfContents from "@/components/TableOfContents";
 
 export default function BlogPost({ params }) {
   const posts = getPosts();
@@ -72,15 +73,7 @@ export default function BlogPost({ params }) {
 
           <div className="sticky top-24">
 
-            {/* TOC */}
-            <div className="bg-[#0b1220] border border-white/10 rounded-xl p-5 mb-6">
-              <h3 className="text-sm text-gray-400 uppercase mb-3">On this page</h3>
-
-              <div
-                className="text-sm space-y-2 text-gray-400"
-                dangerouslySetInnerHTML={{ __html: post.toc || "" }}
-              />
-            </div>
+            <TableOfContents toc={post.toc} />
 
             {/* CTA */}
             <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl p-5 text-center">
