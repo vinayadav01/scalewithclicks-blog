@@ -15,6 +15,16 @@ export default function Home() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
 
+ {/* TEST BLOCK */}
+      <div className="grid grid-cols-4 gap-4 bg-red-500 text-white p-4">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+      </div>
+
+    </div>
+    
       {/* HERO FEATURED */}
       <div className="mb-16">
         <div className="grid md:grid-cols-3 gap-6">
