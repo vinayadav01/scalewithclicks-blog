@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { getPosts } from "@/lib/getPosts";
 import { notFound } from "next/navigation";
 import TableOfContents from "@/components/TableOfContents";
+import FloatingShare from "@/components/FloatingShare";
+import Reveal from "@/components/Reveal";
 
 export default function BlogPost({ params }) {
   const posts = getPosts();
@@ -42,6 +44,7 @@ export default function BlogPost({ params }) {
 
   return (
     <div className="bg-white text-gray-900">
+    <FloatingShare />
 
       {/* 🔥 PREMIUM PROGRESS BAR */}
       <div className="fixed top-0 left-0 w-full h-[4px] bg-gray-200 z-50">
@@ -57,6 +60,11 @@ export default function BlogPost({ params }) {
           src={post.image}
           className="w-full h-[420px] object-cover transition-transform duration-300"
           style={{ transform: `scale(${scale})` }}
+
+<p className="text-sm opacity-80 mt-2">
+  {post.category} • {post.readingTime}
+</p>
+
         />
 
         {/* Overlay */}
@@ -96,6 +104,11 @@ export default function BlogPost({ params }) {
               prose-img:shadow-md
               prose-blockquote:border-l-indigo-500
               prose-strong:text-gray-900
+              prose-headings:border-b
+prose-headings:pb-2
+prose-blockquote:bg-gray-50
+prose-blockquote:p-4
+prose-blockquote:rounded-lg
             "
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
