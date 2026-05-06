@@ -517,3 +517,7 @@ a {
 a {
   transition: all 0.2s ease;
 }
+
+html {
+  scroll-behavior: smooth;
+}
