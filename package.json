@@ -17,7 +17,6 @@
     "rehype-stringify": "^10.0.1",
     "remark": "^15.0.1",
     "remark-rehype": "^11.1.2",
-    "framer-motion": "^10.16.4"
     "remark-toc": "^9.0.0"
   },
   "devDependencies": {
