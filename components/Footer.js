@@ -26,9 +26,22 @@ export default function Footer() {
 
           {/* Social */}
           <div className="flex gap-4 text-lg">
-            <a href="#" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition">🌐</a>
-            <a href="#" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition">💼</a>
-            <a href="#" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition">📱</a>
+            <a href="https://scalewithclicks.com/" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition">🌐</a>
+           <a 
+  href="tel:+919876543210" 
+  className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition"
+>
+  📞
+</a>
+
+<a 
+  href="https://wa.me/919876543210" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition"
+>
+  💬
+</a>
           </div>
         </div>
 
