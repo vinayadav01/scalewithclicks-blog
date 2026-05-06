@@ -1,3 +1,4 @@
+export const runtime = "nodejs";
 import BlogEnhancements from "@/components/BlogEnhancements";
 import { getPosts } from "@/lib/getPosts";
 import { notFound } from "next/navigation";
