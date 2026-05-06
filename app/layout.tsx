@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
+import PageWrapper from "@/components/PageWrapper";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -49,6 +50,12 @@ export default function RootLayout({
         {/* MAIN */}
        <main className="min-h-[80vh] pb-20 md:pb-0">
   {children}
+</main>
+
+        <main className="min-h-[80vh] pb-20 md:pb-0">
+  <PageWrapper>
+    {children}
+  </PageWrapper>
 </main>
 
 {/* ================= MOBILE STICKY CTA ================= */}
