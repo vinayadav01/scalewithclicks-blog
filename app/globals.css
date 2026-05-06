@@ -513,3 +513,7 @@ a {
   --muted: #9ca3af;
   --accent: #6366f1;
 }
+
+a {
+  transition: all 0.2s ease;
+}
