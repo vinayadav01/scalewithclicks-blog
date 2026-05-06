@@ -23,8 +23,6 @@ export default function Home() {
         <div>4</div>
       </div>
 
-    </div>
-    
       {/* HERO FEATURED */}
       <div className="mb-16">
         <div className="grid md:grid-cols-3 gap-6">
