@@ -504,3 +504,12 @@ a {
   border-radius: 12px;
   margin: 20px 0;
 }
+
+:root {
+  --bg: #020617;
+  --card: #0b1220;
+  --border: rgba(255,255,255,0.08);
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --accent: #6366f1;
+}
