@@ -6,8 +6,17 @@ import FloatingShare from "@/components/FloatingShare";
 import Reveal from "@/components/Reveal";
 
 export default function BlogPost({ params }) {
+  // ✅ DEBUG (now inside function)
+  console.log("PARAM SLUG:", params.slug);
+
   const posts = getPosts();
-  const post = posts.find((p) => p.slug === params.slug);
+
+  console.log("ALL SLUGS:", posts.map(p => p.slug));
+
+  // ✅ safer matching
+  const post = posts.find(
+    (p) => p.slug.toLowerCase() === params.slug.toLowerCase()
+  );
 
   if (!post) return notFound();
 
@@ -31,10 +40,8 @@ export default function BlogPost({ params }) {
             className="w-full h-[420px] object-cover"
           />
 
-          {/* Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
-          {/* TEXT CONTENT */}
           <div className="absolute bottom-0 left-0 right-0 max-w-6xl mx-auto px-6 pb-10 text-white">
 
             <p className="text-sm opacity-80">
@@ -58,7 +65,6 @@ export default function BlogPost({ params }) {
           {/* ARTICLE */}
           <Reveal>
             <article className="lg:col-span-3">
-
               <div
                 className="
                   prose max-w-none
@@ -80,7 +86,6 @@ export default function BlogPost({ params }) {
                 "
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
-
             </article>
           </Reveal>
 
@@ -90,7 +95,6 @@ export default function BlogPost({ params }) {
 
               <TableOfContents toc={post.toc} />
 
-              {/* CTA */}
               <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl p-5 text-white text-center">
                 <p className="text-sm">Need help with Ads?</p>
 
