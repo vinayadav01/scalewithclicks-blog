@@ -21,7 +21,7 @@ export default function Footer() {
               Helping businesses generate consistent leads through performance marketing, SEO, and advanced tracking systems.
             </p>
 
-            <div className="flex items-center gap-4 text-xl">
+            <div className="flex items-center gap-4 text-xl mt-5">
 
   <a
     href="https://x.com/scalewithclicks"
