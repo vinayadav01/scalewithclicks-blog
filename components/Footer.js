@@ -1,3 +1,5 @@
+import { FaXTwitter, FaLinkedinIn, FaFacebookF } from "react-icons/fa6";
+
 export default function Footer() {
   return (
     <footer className="relative bg-[#020617] text-gray-400 border-t border-white/10 overflow-hidden">
@@ -19,12 +21,37 @@ export default function Footer() {
               Helping businesses generate consistent leads through performance marketing, SEO, and advanced tracking systems.
             </p>
 
-            <div className="flex gap-4 mt-6 text-sm">
-              <a href="#" className="hover:text-white transition">Twitter</a>
-              <a href="#" className="hover:text-white transition">LinkedIn</a>
-              <a href="#" className="hover:text-white transition">Contact</a>
-            </div>
-          </div>
+            <div className="flex items-center gap-4 text-xl">
+
+  <a
+    href="https://x.com/scalewithclicks"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-white transition"
+  >
+    <FaXTwitter />
+  </a>
+
+  <a
+    href="https://www.linkedin.com/company/scale-with-clicks/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-white transition"
+  >
+    <FaLinkedinIn />
+  </a>
+
+  <a
+    href="https://www.facebook.com/scalewithclicks/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-white transition"
+  >
+    <FaFacebookF />
+  </a>
+
+</div>
+      </div>
 
           {/* SERVICES */}
           <div>
