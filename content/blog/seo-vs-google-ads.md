@@ -86,7 +86,7 @@ People trust organic results more than ads.
 Ranking #1 builds credibility.
 
 👉 This is why building a content engine on your  
-**[Home Page](/)** and blog is critical for long-term growth.
+**[Home Page](https://scalewithclicks.com/)** and blog is critical for long-term growth.
 
 ---
 
@@ -113,7 +113,7 @@ Before investing in SEO, ads help validate:
 - Conversion rates  
 
 👉 Want help setting up high-converting campaigns? Explore our  
-**[Google Ads Services](/services/google-ads)**
+**[Google Ads Services](https://scalewithclicks.com/services/google-ads-agency.html)**
 
 ---
 
