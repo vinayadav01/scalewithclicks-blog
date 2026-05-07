@@ -54,69 +54,75 @@ export default function Home() {
       </FadeIn>
 
       {/* ===== FEATURED ===== */}
-      <FadeIn>
-        <section className="max-w-6xl mx-auto px-4 py-12">
-          <div className="grid md:grid-cols-3 gap-6">
+      {posts.length > 0 && (
+        <FadeIn>
+          <section className="max-w-6xl mx-auto px-4 py-12">
+            <div className="grid md:grid-cols-3 gap-6">
 
-            {/* Main Featured */}
-            <a
-              href={`/blog/${posts[0].slug}`}
-              className="md:col-span-2 group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition"
-            >
-              <img
-                src={posts[0].image}
-                className="w-full h-[420px] object-cover group-hover:scale-105 transition duration-700"
-                alt={posts[0].title}
-              />
+              {/* Main Featured */}
+              <a
+                href={`/blog/${posts[0].slug}`}
+                className="md:col-span-2 group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition"
+              >
+                <img
+                  src={posts[0].image}
+                  className="w-full h-[420px] object-cover group-hover:scale-105 transition duration-700"
+                  alt={posts[0].title}
+                />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
-              <div className="absolute bottom-0 p-6 text-white">
-                <h2 className="text-2xl font-semibold">{posts[0].title}</h2>
-                <p className="text-gray-200 text-sm mt-2">{posts[0].description}</p>
+                <div className="absolute bottom-0 p-6 text-white">
+                  <h2 className="text-2xl font-semibold">{posts[0].title}</h2>
+                  <p className="text-gray-200 text-sm mt-2">
+                    {posts[0].description}
+                  </p>
+                </div>
+              </a>
+
+              {/* Side Blogs */}
+              <div className="flex flex-col gap-6">
+
+                {posts.slice(1, 3).map((post) => (
+                  <a
+                    key={post.slug}
+                    href={`/blog/${post.slug}`}
+                    className="group flex gap-5 items-center border border-gray-200 rounded-2xl p-5 h-[200px] hover:shadow-lg transition duration-300"
+                  >
+
+                    {/* IMAGE */}
+                    {post.image ? (
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        className="w-28 h-28 object-cover rounded-xl flex-shrink-0 group-hover:scale-105 transition duration-300"
+                      />
+                    ) : (
+                      <div className="w-28 h-28 bg-gray-200 rounded-xl flex-shrink-0" />
+                    )}
+
+                    {/* TEXT */}
+                    <div className="flex-1">
+
+                      <h3 className="font-semibold text-gray-900 text-lg leading-snug group-hover:text-indigo-600 transition">
+                        {post.title}
+                      </h3>
+
+                      <p className="text-gray-600 text-sm mt-2 leading-6 max-h-[4.5rem] overflow-hidden">
+                        {post.description}
+                      </p>
+
+                    </div>
+
+                  </a>
+                ))}
+
               </div>
-            </a>
-
-            {/* Side Blogs WITH IMAGES */}
-            <div className="flex flex-col gap-6">
-
-              {posts.slice(1, 3).map((post) => (
-                <a
-                  key={post.slug}
-                  href={`/blog/${post.slug}`}
-                  className="group flex gap-4 items-start border border-gray-200 rounded-xl p-4 hover:shadow-md transition duration-300"
-                >
-
-                  {/* THUMBNAIL */}
-                  {post.image ? (
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      className="w-20 h-20 object-cover rounded-lg flex-shrink-0 group-hover:scale-105 transition duration-300"
-                    />
-                  ) : (
-                    <div className="w-20 h-20 bg-gray-200 rounded-lg flex-shrink-0" />
-                  )}
-
-                  {/* TEXT */}
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-gray-900 leading-snug group-hover:text-indigo-600 transition">
-                      {post.title}
-                    </h3>
-
-                    <p className="text-gray-600 text-sm mt-2 leading-6">
-                      {post.description}
-                    </p>
-                  </div>
-
-                </a>
-              ))}
 
             </div>
-
-          </div>
-        </section>
-      </FadeIn>
+          </section>
+        </FadeIn>
+      )}
 
       {/* ===== CATEGORY ===== */}
       <FadeIn>
