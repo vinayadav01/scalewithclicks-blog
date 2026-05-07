@@ -32,7 +32,6 @@ export async function generateStaticParams() {
 // ✅ MAIN BLOG PAGE
 export default async function BlogPost({ params }) {
 
-  // ✅ NEXT 16 FIX
   const { slug } = await params;
 
   if (!slug) return notFound();
@@ -53,6 +52,17 @@ export default async function BlogPost({ params }) {
   const fileContent = fs.readFileSync(filePath, "utf8");
 
   const { data, content } = matter(fileContent);
+
+  // ✅ FIX DATE (IMPORTANT)
+  const formattedDate = data.date
+    ? typeof data.date === "string"
+      ? data.date
+      : new Date(data.date).toLocaleDateString("en-IN", {
+          day: "numeric",
+          month: "short",
+          year: "numeric",
+        })
+    : null;
 
   // ✅ Extract headings for TOC
   const headings =
@@ -176,9 +186,7 @@ export default async function BlogPost({ params }) {
               {data.title}
             </h1>
 
-            {/* ========================= */}
-            {/* AUTHOR + SOCIAL SHARE */}
-            {/* ========================= */}
+            {/* AUTHOR + SOCIAL */}
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 border-b border-gray-200 pb-8 mb-10">
 
               {/* AUTHOR */}
@@ -198,9 +206,10 @@ export default async function BlogPost({ params }) {
                     </p>
                   )}
 
-                  {data.date && (
+                  {/* ✅ FIXED DATE */}
+                  {formattedDate && (
                     <p className="text-sm text-gray-500 mt-1">
-                      {data.date}
+                      {formattedDate}
                     </p>
                   )}
 
@@ -210,7 +219,6 @@ export default async function BlogPost({ params }) {
               {/* SOCIAL SHARE */}
               <div className="flex items-center gap-5 text-2xl text-gray-700">
 
-                {/* FACEBOOK */}
                 <a
                   href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(blogUrl)}`}
                   target="_blank"
@@ -220,7 +228,6 @@ export default async function BlogPost({ params }) {
                   <FaFacebookF />
                 </a>
 
-                {/* X / TWITTER */}
                 <a
                   href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(blogUrl)}`}
                   target="_blank"
@@ -230,7 +237,6 @@ export default async function BlogPost({ params }) {
                   <FaXTwitter />
                 </a>
 
-                {/* LINKEDIN */}
                 <a
                   href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(blogUrl)}`}
                   target="_blank"
@@ -294,29 +300,13 @@ export default async function BlogPost({ params }) {
                 managed by experts.
               </p>
 
-              {/* CTA BUTTON */}
               <Link
                 href="/contact"
-                className="
-                  inline-flex
-                  items-center
-                  justify-center
-                  w-full
-                  bg-orange-500
-                  hover:bg-orange-600
-                  text-white
-                  font-semibold
-                  py-4
-                  px-6
-                  rounded-full
-                  transition-all
-                  duration-300
-                "
+                className="inline-flex items-center justify-center w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-4 px-6 rounded-full transition-all duration-300"
               >
                 Contact Us
               </Link>
 
-              {/* FEATURES */}
               <div className="mt-8 space-y-3 text-sm text-gray-600">
                 <div>✔ Conversion Focused Campaigns</div>
                 <div>✔ Better ROAS</div>
@@ -327,12 +317,11 @@ export default async function BlogPost({ params }) {
 
             </div>
           </aside>
+
         </div>
       </div>
 
-      {/* ========================= */}
-      {/* READING PROGRESS SCRIPT */}
-      {/* ========================= */}
+      {/* PROGRESS SCRIPT */}
       <script
         dangerouslySetInnerHTML={{
           __html: `
