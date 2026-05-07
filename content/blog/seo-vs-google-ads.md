@@ -1,5 +1,5 @@
 ---
-title: SEO vs Google Ads: Which One Should You Choose?
+title: "SEO vs Google Ads: Which One Should You Choose?"
 date: 2026-05-07
 description: Confused between SEO and Google Ads? Learn the key differences, pros, cons, and how to choose the right strategy to grow your business.
 image: /images/seo-vs-google-ads.jpg
