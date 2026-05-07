@@ -6,6 +6,6 @@ export default function robots() {
         allow: "/",
       },
     ],
-    sitemap: "https://blog.scalewithclicks.com/sitemap.xml",
+    Sitemap: "https://blog.scalewithclicks.com/sitemap.xml",
   };
 }
