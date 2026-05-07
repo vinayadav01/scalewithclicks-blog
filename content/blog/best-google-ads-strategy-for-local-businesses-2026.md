@@ -3,7 +3,7 @@ title: Best Google Ads Strategy for Local Businesses in 2026
 date: 2026-05-07
 description: Discover the most effective Google Ads strategies for local businesses in 2026 to generate high-quality leads and maximize ROI.
 image: /images/google-ads-local-2026.jpg
-category: Google Ads
+category: google-ads
 author: Vinay Yadav
 ---
 
