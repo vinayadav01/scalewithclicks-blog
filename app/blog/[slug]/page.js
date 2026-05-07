@@ -21,7 +21,9 @@ export async function generateStaticParams() {
   }));
 }
 
+// ✅ MAIN BLOG PAGE
 export default async function BlogPost({ params }) {
+  // ✅ NEXT 16 FIX
   const { slug } = await params;
 
   if (!slug) return notFound();
@@ -57,6 +59,7 @@ export default async function BlogPost({ params }) {
       };
     }) || [];
 
+  // ✅ Convert Markdown to HTML
   const processedContent = await remark()
     .use(remarkRehype)
     .use(rehypeSlug)
@@ -67,11 +70,13 @@ export default async function BlogPost({ params }) {
 
   return (
     <div className="bg-white">
-      {/* TOP PROGRESS BAR */}
-      <div className="sticky top-0 z-50 bg-white border-b border-gray-100">
+      {/* ========================= */}
+      {/* STICKY TOP PROGRESS BAR */}
+      {/* ========================= */}
+      <div className="sticky top-[76px] z-40 bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           <div className="flex items-center gap-4 py-3">
-            
+
             {/* FEATURED IMAGE */}
             {data.image && (
               <img
@@ -81,14 +86,14 @@ export default async function BlogPost({ params }) {
               />
             )}
 
-            {/* TITLE */}
+            {/* TITLE + PROGRESS */}
             <div className="flex-1 overflow-hidden">
               <p className="text-sm font-semibold text-gray-800 truncate">
                 {data.title}
               </p>
 
               {/* PROGRESS BAR */}
-              <div className="w-full h-1 bg-gray-200 rounded-full mt-2 overflow-hidden">
+              <div className="w-full h-1.5 bg-gray-200 rounded-full mt-2 overflow-hidden">
                 <div
                   id="reading-progress"
                   className="h-full bg-orange-500 w-0 transition-all duration-150"
@@ -99,13 +104,18 @@ export default async function BlogPost({ params }) {
         </div>
       </div>
 
-      {/* MAIN CONTENT */}
+      {/* ========================= */}
+      {/* MAIN LAYOUT */}
+      {/* ========================= */}
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-10">
         <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr_320px] gap-10">
-          
+
+          {/* ========================= */}
           {/* TABLE OF CONTENTS */}
-          <aside className="hidden lg:block sticky top-28 h-fit">
+          {/* ========================= */}
+          <aside className="hidden lg:block sticky top-[150px] h-fit">
             <div className="border-l-2 border-orange-500 pl-5">
+
               <h3 className="font-bold text-lg mb-5 text-gray-900">
                 Table of Contents
               </h3>
@@ -125,9 +135,11 @@ export default async function BlogPost({ params }) {
             </div>
           </aside>
 
+          {/* ========================= */}
           {/* BLOG CONTENT */}
+          {/* ========================= */}
           <article className="max-w-4xl">
-            
+
             {/* CATEGORY */}
             {data.category && (
               <p className="text-orange-500 font-semibold uppercase tracking-wide mb-4">
@@ -152,7 +164,7 @@ export default async function BlogPost({ params }) {
                 <img
                   src={data.image}
                   alt={data.title}
-                  className="w-full object-cover"
+                  className="w-full object-cover rounded-3xl"
                 />
               </div>
             )}
@@ -165,29 +177,36 @@ export default async function BlogPost({ params }) {
                 max-w-none
                 prose-headings:font-bold
                 prose-headings:text-gray-900
+                prose-headings:scroll-mt-40
                 prose-p:text-gray-700
                 prose-p:leading-8
                 prose-a:text-orange-500
+                prose-a:no-underline
+                hover:prose-a:text-orange-600
                 prose-img:rounded-2xl
                 prose-li:text-gray-700
+                prose-strong:text-gray-900
               "
               dangerouslySetInnerHTML={{ __html: contentHtml }}
             />
           </article>
 
-          {/* SIDEBAR CTA */}
-          <aside className="lg:sticky lg:top-28 h-fit">
+          {/* ========================= */}
+          {/* RIGHT SIDEBAR CTA */}
+          {/* ========================= */}
+          <aside className="lg:sticky lg:top-[150px] h-fit">
             <div className="bg-[#f5f7ff] rounded-3xl p-8 shadow-sm border border-gray-100">
-              
+
               <h3 className="text-3xl font-bold text-gray-900 leading-tight mb-4">
                 Need More Leads?
               </h3>
 
               <p className="text-gray-600 leading-7 mb-8">
-                Grow your business with high-converting Google Ads campaigns
+                Scale your business with high-converting Google Ads campaigns
                 managed by experts.
               </p>
 
+              {/* CTA BUTTON */}
               <Link
                 href="/contact"
                 className="
@@ -209,18 +228,22 @@ export default async function BlogPost({ params }) {
                 Contact Us
               </Link>
 
+              {/* FEATURES */}
               <div className="mt-8 space-y-3 text-sm text-gray-600">
                 <div>✔ Conversion Focused Campaigns</div>
                 <div>✔ Better ROAS</div>
                 <div>✔ Keyword Research</div>
-                <div>✔ Landing Page Guidance</div>
+                <div>✔ Landing Page Optimization</div>
+                <div>✔ Performance Tracking</div>
               </div>
             </div>
           </aside>
         </div>
       </div>
 
-      {/* PROGRESS BAR SCRIPT */}
+      {/* ========================= */}
+      {/* READING PROGRESS SCRIPT */}
+      {/* ========================= */}
       <script
         dangerouslySetInnerHTML={{
           __html: `
@@ -231,7 +254,7 @@ export default async function BlogPost({ params }) {
 
               const progressBar = document.getElementById("reading-progress");
 
-              if(progressBar){
+              if (progressBar) {
                 progressBar.style.width = progress + "%";
               }
             });
