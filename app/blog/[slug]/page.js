@@ -142,32 +142,30 @@ export default async function BlogPost({ params }) {
           {/* ========================= */}
           {/* TABLE OF CONTENTS */}
           {/* ========================= */}
-          <aside className="hidden lg:block sticky top-[150px] h-fit">
+          <aside className="hidden lg:block sticky top-[150px] h-[calc(100vh-180px)]">
 
-            <div className="border-l-2 border-orange-500 pl-5">
+  <div className="border-l-2 border-orange-500 pl-5 h-full overflow-y-auto pr-2">
 
-              <h3 className="font-bold text-lg mb-5 text-gray-900">
-                Table of Contents
-              </h3>
+    <h3 className="font-bold text-lg mb-5 text-gray-900">
+      Table of Contents
+    </h3>
 
-              <ul className="space-y-4">
+    <ul className="space-y-4">
 
-                {headings.map((heading) => (
-                  <li key={heading.id}>
+      {headings.map((heading) => (
+        <li key={heading.id}>
+          <a
+            href={`#${heading.id}`}
+            className="text-gray-600 hover:text-orange-500 transition text-sm leading-6 block"
+          >
+            {heading.text}
+          </a>
+        </li>
+      ))}
 
-                    <a
-                      href={`#${heading.id}`}
-                      className="text-gray-600 hover:text-orange-500 transition text-sm leading-6"
-                    >
-                      {heading.text}
-                    </a>
-
-                  </li>
-                ))}
-
-              </ul>
-            </div>
-          </aside>
+    </ul>
+  </div>
+</aside>
 
           {/* ========================= */}
           {/* BLOG CONTENT */}
