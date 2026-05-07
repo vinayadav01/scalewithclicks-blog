@@ -7,7 +7,7 @@ category: google-ads
 author: Vinay Yadav
 ---
 
-![Google Ads Local Strategy](../images/google-ads-local-2026.jpg)
+![Google Ads Local Strategy](/images/google-ads-local-2026.jpg)
 
 If you're running a local business in 2026 and still relying on outdated marketing tactics, you're leaving serious money on the table.
 
@@ -65,7 +65,7 @@ Let’s break it down into a simple, high-converting system.
 
 ## 1. Focus on High-Intent Keywords (Not Broad Traffic)
 
-![Keyword Research](../images/local-keyword-research.jpg)
+![Keyword Research](/images/local-keyword-research.jpg)
 
 Stop targeting generic keywords like:
 
@@ -129,7 +129,7 @@ Your ad must include:
 
 ## 4. Never Send Traffic to Homepage
 
-![Landing Page](../images/high-converting-landing-page.jpg)
+![Landing Page](/images/high-converting-landing-page.jpg)
 
 This is where most businesses lose money.
 
@@ -181,7 +181,7 @@ This increases:
 
 ## 7. Track Everything (No Guesswork)
 
-![Analytics Dashboard](../images/google-ads-analytics.jpg)
+![Analytics Dashboard](/images/google-ads-analytics.jpg)
 
 If you’re not tracking, you’re gambling.
 
