@@ -1,4 +1,4 @@
-import { FaXTwitter, FaLinkedinIn, FaFacebookF } from "react-icons/fa6";
+import { FaXTwitter, FaLinkedinIn, FaFacebookF, FaEnvelope } from "react-icons/fa6";
 
 export default function Footer() {
   return (
@@ -49,6 +49,13 @@ export default function Footer() {
   >
     <FaFacebookF />
   </a>
+
+ <a
+  href="mailto:info@scalewithclicks.com"
+  className="hover:text-white transition"
+>
+  <FaEnvelope />
+</a>     
 
 </div>
       </div>
