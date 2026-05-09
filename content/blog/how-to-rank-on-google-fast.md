@@ -63,6 +63,8 @@ The better your website performs in these areas, the higher your chances of rank
 
 ## Step 1: Target Keywords You Can Actually Rank For
 
+![SEO Keyword Research](/images/seo-keyword-research.jpg)
+
 One of the biggest SEO mistakes beginners make is targeting impossible keywords.
 
 For example:
@@ -114,6 +116,8 @@ Google rewards content that is:
 - genuinely helpful
 
 ### What Makes Content Rank Faster?
+
+![SEO Content Optimization](/images/seo-content-optimization.jpg)
 
 Your content should:
 
@@ -295,6 +299,8 @@ Make sure your site:
 
 ## Step 8: Build Backlinks the Right Way
 
+![Backlink Strategy](/images/backlink-strategy.jpg)
+
 Backlinks are still one of the strongest ranking signals.
 
 When other websites link to your content, Google sees it as a trust signal.
@@ -445,6 +451,8 @@ The best strategy is often combining both.
 SEO helps reduce long-term acquisition costs.
 
 Google Ads helps generate instant leads while SEO grows.
+
+![Google Ranking Growth](/images/google-ranking-growth.jpg)
 
 If you're struggling with ad performance, read our guide on [7 Costly Google Ads Mistakes That Are Wasting Your Budget](https://blog.scalewithclicks.com/blog/7-costly-google-ads-mistakes-that-are-wasting-your-budget).
 
