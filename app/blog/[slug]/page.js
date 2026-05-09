@@ -80,11 +80,12 @@ export default async function BlogPost({ params }) {
     }) || [];
 
   // ✅ Convert Markdown to HTML
-  const processedContent = await remark()
-    .use(remarkRehype)
-    .use(rehypeSlug)
-    .use(rehypeStringify)
-    .process(content);
+const processedContent = await remark()
+  .use(remarkGfm)
+  .use(remarkRehype)
+  .use(rehypeSlug)
+  .use(rehypeStringify)
+  .process(content);
 
   const contentHtml = processedContent.toString();
 
