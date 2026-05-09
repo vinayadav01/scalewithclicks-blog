@@ -24,7 +24,7 @@ export default function Contact() {
       </a>
 
       <div style={{ marginTop: "30px" }}>
-        <p><strong>Email:</strong> scalewithclicks@gmail.com</p>
+        <p><strong>Email:</strong> info@scalewithclicks.com</p>
         <p><strong>Phone:</strong> +91 9589188668</p>
       </div>
 
