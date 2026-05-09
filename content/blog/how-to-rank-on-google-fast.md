@@ -246,7 +246,7 @@ Internal links help Google understand your website structure.
 
 For example:
 
-If you want to avoid wasting ad spend, check our guide on [Google Ads mistakes that waste budget](https://blog.scalewithclicks.com/blog/google-ads-mistakes-wasting-budget).
+If you want to avoid wasting ad spend, check our guide on [Google Ads mistakes that waste budget](https://blog.scalewithclicks.com/blog/7-costly-google-ads-mistakes-that-are-wasting-your-budget).
 
 You can also explore our [performance marketing services](https://scalewithclicks.com/) to grow your business faster.
 
@@ -446,7 +446,7 @@ SEO helps reduce long-term acquisition costs.
 
 Google Ads helps generate instant leads while SEO grows.
 
-If you're struggling with ad performance, read our guide on [7 Costly Google Ads Mistakes That Are Wasting Your Budget](https://blog.scalewithclicks.com/blog/google-ads-mistakes-wasting-budget).
+If you're struggling with ad performance, read our guide on [7 Costly Google Ads Mistakes That Are Wasting Your Budget](https://blog.scalewithclicks.com/blog/7-costly-google-ads-mistakes-that-are-wasting-your-budget).
 
 ---
 
