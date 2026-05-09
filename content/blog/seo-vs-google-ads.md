@@ -51,13 +51,13 @@ It’s fast, scalable, and ideal for:
 
 ## SEO vs Google Ads: The Core Difference
 
-| Factor         | SEO                         | Google Ads               |
-|----------------|-----------------------------|---------------------------|
-| Cost           | Free traffic (long-term)   | Pay per click            |
-| Speed          | Slow (3–6 months)          | Instant                  |
-| Sustainability | High                        | Stops when budget stops  |
-| Trust          | Higher                      | Lower (ads fatigue)      |
-| Scalability    | Medium                      | High                     |
+| Factor | SEO | Google Ads |
+| --- | --- | --- |
+| Cost | Free traffic (long-term) | Pay per click |
+| Speed | Slow (3–6 months) | Instant |
+| Sustainability | High | Stops when budget stops |
+| Trust | Higher | Lower (ads fatigue) |
+| Scalability | Medium | High |
 
 ---
 
