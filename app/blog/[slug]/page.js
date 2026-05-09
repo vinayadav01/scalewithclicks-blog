@@ -261,25 +261,56 @@ export default async function BlogPost({ params }) {
             )}
 
             {/* BLOG CONTENT */}
-            <div
-              className="
-                prose
-                prose-lg
-                max-w-none
-                prose-headings:font-bold
-                prose-headings:text-gray-900
-                prose-headings:scroll-mt-40
-                prose-p:text-gray-700
-                prose-p:leading-8
-                prose-a:text-orange-500
-                prose-a:no-underline
-                hover:prose-a:text-orange-600
-                prose-img:rounded-2xl
-                prose-li:text-gray-700
-                prose-strong:text-gray-900
-              "
-              dangerouslySetInnerHTML={{ __html: contentHtml }}
-            />
+           <div
+  className="
+    prose
+    prose-lg
+    max-w-none
+
+    prose-headings:font-bold
+    prose-headings:text-gray-900
+    prose-headings:scroll-mt-40
+
+    prose-p:text-gray-700
+    prose-p:leading-8
+
+    prose-a:text-orange-500
+    prose-a:no-underline
+    hover:prose-a:text-orange-600
+
+    prose-img:rounded-2xl
+
+    prose-li:text-gray-700
+    prose-strong:text-gray-900
+
+    /* TABLE STYLING */
+    prose-table:w-full
+    prose-table:border-collapse
+    prose-table:overflow-hidden
+    prose-table:rounded-2xl
+    prose-table:border
+    prose-table:border-gray-200
+
+    prose-thead:bg-gray-100
+
+    prose-th:p-4
+    prose-th:text-left
+    prose-th:font-semibold
+    prose-th:text-gray-900
+    prose-th:border
+    prose-th:border-gray-200
+
+    prose-td:p-4
+    prose-td:border
+    prose-td:border-gray-200
+    prose-td:text-gray-700
+
+    prose-tr:even:bg-gray-50
+
+    overflow-x-auto
+  "
+  dangerouslySetInnerHTML={{ __html: contentHtml }}
+/>
           </article>
 
           {/* ========================= */}
