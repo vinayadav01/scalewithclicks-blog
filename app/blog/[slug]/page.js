@@ -290,7 +290,7 @@ const processedContent = await remark()
     dangerouslySetInnerHTML={{ __html: contentHtml }}
   />
 
-  <style jsx global>{`
+<style>{`
     .blog-content table {
       width: 100%;
       border-collapse: collapse;
