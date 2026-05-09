@@ -3,6 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import remarkRehype from "remark-rehype";
+import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
 import { notFound } from "next/navigation";
