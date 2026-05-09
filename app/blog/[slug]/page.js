@@ -265,56 +265,60 @@ const processedContent = await remark()
             )}
 
             {/* BLOG CONTENT */}
-           <div
-  className="
-    prose
-    prose-lg
-    max-w-none
+           <div className="blog-content">
+  <div
+    className="
+      prose
+      prose-lg
+      max-w-none
 
-    prose-headings:font-bold
-    prose-headings:text-gray-900
-    prose-headings:scroll-mt-40
+      prose-headings:font-bold
+      prose-headings:text-gray-900
+      prose-headings:scroll-mt-40
 
-    prose-p:text-gray-700
-    prose-p:leading-8
+      prose-p:text-gray-700
+      prose-p:leading-8
 
-    prose-a:text-orange-500
-    prose-a:no-underline
-    hover:prose-a:text-orange-600
+      prose-a:text-orange-500
+      prose-a:no-underline
+      hover:prose-a:text-orange-600
 
-    prose-img:rounded-2xl
+      prose-img:rounded-2xl
+      prose-li:text-gray-700
+      prose-strong:text-gray-900
+    "
+    dangerouslySetInnerHTML={{ __html: contentHtml }}
+  />
 
-    prose-li:text-gray-700
-    prose-strong:text-gray-900
+  <style jsx global>{`
+    .blog-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+    }
 
-    prose-table:block
-    prose-table:w-full
-    prose-table:overflow-x-auto
-    prose-table:border-collapse
-    prose-table:border
-    prose-table:border-gray-300
-    prose-table:rounded-xl
+    .blog-content thead {
+      background: #f3f4f6;
+    }
 
-    prose-thead:bg-gray-100
+    .blog-content th,
+    .blog-content td {
+      border: 1px solid #e5e7eb;
+      padding: 16px 20px;
+      text-align: left;
+      min-width: 180px;
+    }
 
-    prose-th:px-6
-    prose-th:py-4
-    prose-th:text-left
-    prose-th:font-semibold
-    prose-th:border
-    prose-th:border-gray-300
-    prose-th:min-w-[180px]
-
-    prose-td:px-6
-    prose-td:py-4
-    prose-td:border
-    prose-td:border-gray-300
-    prose-td:min-w-[180px]
-
-    prose-tr:even:bg-gray-50
-  "
-  dangerouslySetInnerHTML={{ __html: contentHtml }}
-/>
+    .blog-content tr:nth-child(even) {
+      background: #f9fafb;
+    }
+  `}</style>
+</div>
           </article>
 
           {/* ========================= */}
