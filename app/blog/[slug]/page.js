@@ -8,6 +8,8 @@ import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Navbar from "@/components/Navbar";
+import FloatingShare from "@/components/FloatingShare";
 
 // ✅ SOCIAL ICONS
 import {
