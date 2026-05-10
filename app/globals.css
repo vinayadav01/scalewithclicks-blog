@@ -346,17 +346,20 @@ body {
 
 @media (max-width: 900px) {
   .blog-layout {
-    display: block;
+    display: flex;
+    flex-direction: column;
   }
 
   .sidebar {
-    display: none;
+    display: block;
+    order: 2;
   }
 
   .content {
-    max-width: 100%;
+    order: 1;
   }
 }
+
 /* CATEGORY LAYOUT */
 .category-layout {
   display: grid;
