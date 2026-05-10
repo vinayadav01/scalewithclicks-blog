@@ -207,7 +207,7 @@ export default function Home() {
             </h2>
 
             <Link
-              href="/"
+              href="/blog"
               className="text-sm text-indigo-600 hover:text-indigo-700 font-medium"
             >
               View All →
