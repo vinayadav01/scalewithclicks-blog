@@ -32,58 +32,10 @@ export async function generateStaticParams() {
   }));
 }
 
-// ✅ SEO METADATA
-export async function generateMetadata({ params }) {
-
-  const slug = params?.slug || "";
-
-  const mdPath = path.join(
-    process.cwd(),
-    "content/blog",
-    `${slug}.md`
-  );
-
-  const mdxPath = path.join(
-    process.cwd(),
-    "content/blog",
-    `${slug}.mdx`
-  );
-
-  let filePath = "";
-
-  if (fs.existsSync(mdPath)) {
-    filePath = mdPath;
-  } else if (fs.existsSync(mdxPath)) {
-    filePath = mdxPath;
-  }
-
-  if (!filePath) {
-    return {
-      title: "Blog | ScaleWithClicks",
-    };
-  }
-
-  const fileContent = fs.readFileSync(filePath, "utf8");
-
-  const { data } = matter(fileContent);
-
-  return {
-    title: `${data.title} | ScaleWithClicks`,
-    description:
-      data.description ||
-      "Performance marketing insights and growth strategies.",
-    openGraph: {
-      title: data.title,
-      description: data.description,
-      images: data.image ? [data.image] : [],
-    },
-  };
-}
-
 // ✅ MAIN BLOG PAGE
 export default async function BlogPost({ params }) {
 
-  const slug = params?.slug;
+  const { slug } = await params;
 
   if (!slug) return notFound();
 
@@ -104,7 +56,7 @@ export default async function BlogPost({ params }) {
 
   const { data, content } = matter(fileContent);
 
-  // ✅ FIX DATE
+  // ✅ FIX DATE (IMPORTANT)
   const formattedDate = data.date
     ? typeof data.date === "string"
       ? data.date
@@ -115,16 +67,9 @@ export default async function BlogPost({ params }) {
         })
     : null;
 
-  // ✅ CATEGORY SLUG
-  const categorySlug = (data.category || "general")
-    .trim()
-    .toLowerCase()
-    .replace(/\s+/g, "-");
-
-  // ✅ EXTRACT HEADINGS
+  // ✅ Extract headings for TOC
   const headings =
     content.match(/^##\s+(.*)$/gm)?.map((heading) => {
-
       const text = heading.replace(/^##\s+/, "");
 
       return {
@@ -134,63 +79,28 @@ export default async function BlogPost({ params }) {
           .replace(/[^\w\s]/g, "")
           .replace(/\s+/g, "-"),
       };
-
     }) || [];
 
-  // ✅ MARKDOWN → HTML
-  const processedContent = await remark()
-    .use(remarkGfm)
-    .use(remarkRehype)
-    .use(rehypeSlug)
-    .use(rehypeStringify)
-    .process(content);
+  // ✅ Convert Markdown to HTML
+const processedContent = await remark()
+  .use(remarkGfm)
+  .use(remarkRehype)
+  .use(rehypeSlug)
+  .use(rehypeStringify)
+  .process(content);
 
   const contentHtml = processedContent.toString();
 
   // ✅ BLOG URL
-  const blogUrl = `https://blog.scalewithclicks.com/blog/${slug}`;
-
-  // ✅ SCHEMA
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: data.title,
-    description: data.description,
-    image: data.image,
-    author: {
-      "@type": "Person",
-      name: data.author || "Vinay Yadav",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "ScaleWithClicks",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://blog.scalewithclicks.com/logo.png",
-      },
-    },
-    datePublished: data.date,
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": blogUrl,
-    },
-  };
+  const blogUrl = `https://blog.scalewithclicks.com/${slug}`;
 
   return (
-    <div className="bg-white text-gray-900 overflow-x-hidden">
-
-      {/* ✅ SCHEMA */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schema),
-        }}
-      />
+    <div className="bg-white">
 
       {/* ========================= */}
       {/* STICKY TOP PROGRESS BAR */}
       {/* ========================= */}
-      <div className="sticky top-[76px] z-40 bg-white/90 backdrop-blur-md border-b border-gray-100">
+      <div className="sticky top-[76px] z-40 bg-white border-b border-gray-100">
 
         <div className="max-w-7xl mx-auto px-4 md:px-6">
 
@@ -231,75 +141,46 @@ export default async function BlogPost({ params }) {
       {/* ========================= */}
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-10">
 
-        {/* ✅ BREADCRUMBS */}
-        <div className="mb-10 text-sm text-gray-500 flex items-center flex-wrap gap-2">
-
-          <Link href="/" className="hover:text-orange-500 transition">
-            Home
-          </Link>
-
-          <span>/</span>
-
-          <Link
-            href={`/category/${categorySlug}`}
-            className="hover:text-orange-500 transition"
-          >
-            {data.category || "General"}
-          </Link>
-
-          <span>/</span>
-
-          <span className="text-gray-900 font-medium">
-            {data.title}
-          </span>
-
-        </div>
-
         <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr_320px] gap-10">
 
           {/* ========================= */}
-          {/* TOC */}
+          {/* TABLE OF CONTENTS */}
           {/* ========================= */}
           <aside className="hidden lg:block sticky top-[150px] h-[calc(100vh-180px)]">
 
-            <div className="border-l-2 border-orange-500 pl-5 h-full overflow-y-auto pr-2">
+  <div className="border-l-2 border-orange-500 pl-5 h-full overflow-y-auto pr-2">
 
-              <h3 className="font-bold text-lg mb-5 text-gray-900">
-                Table of Contents
-              </h3>
+    <h3 className="font-bold text-lg mb-5 text-gray-900">
+      Table of Contents
+    </h3>
 
-              <ul className="space-y-4">
+    <ul className="space-y-4">
 
-                {headings.map((heading) => (
-                  <li key={heading.id}>
-                    <a
-                      href={`#${heading.id}`}
-                      className="text-gray-600 hover:text-orange-500 transition text-sm leading-6 block"
-                    >
-                      {heading.text}
-                    </a>
-                  </li>
-                ))}
+      {headings.map((heading) => (
+        <li key={heading.id}>
+          <a
+            href={`#${heading.id}`}
+            className="text-gray-600 hover:text-orange-500 transition text-sm leading-6 block"
+          >
+            {heading.text}
+          </a>
+        </li>
+      ))}
 
-              </ul>
-            </div>
-          </aside>
+    </ul>
+  </div>
+</aside>
 
           {/* ========================= */}
-          {/* BLOG */}
+          {/* BLOG CONTENT */}
           {/* ========================= */}
-          <article className="max-w-4xl min-w-0">
+          <article className="max-w-4xl">
 
             {/* CATEGORY */}
             {data.category && (
-              <Link
-                href={`/category/${categorySlug}`}
-                className="inline-block mb-5"
-              >
-                <span className="bg-orange-100 text-orange-600 px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wide hover:bg-orange-200 transition">
-                  {data.category}
-                </span>
-              </Link>
+              <p className="text-orange-500 font-semibold uppercase tracking-wide mb-4">
+                {data.category}
+              </p>
             )}
 
             {/* TITLE */}
@@ -307,7 +188,7 @@ export default async function BlogPost({ params }) {
               {data.title}
             </h1>
 
-            {/* META */}
+            {/* AUTHOR + SOCIAL */}
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 border-b border-gray-200 pb-8 mb-10">
 
               {/* AUTHOR */}
@@ -327,6 +208,7 @@ export default async function BlogPost({ params }) {
                     </p>
                   )}
 
+                  {/* ✅ FIXED DATE */}
                   {formattedDate && (
                     <p className="text-sm text-gray-500 mt-1">
                       {formattedDate}
@@ -336,7 +218,7 @@ export default async function BlogPost({ params }) {
                 </div>
               </div>
 
-              {/* SOCIAL */}
+              {/* SOCIAL SHARE */}
               <div className="flex items-center gap-5 text-2xl text-gray-700">
 
                 <a
@@ -371,7 +253,7 @@ export default async function BlogPost({ params }) {
 
             {/* FEATURED IMAGE */}
             {data.image && (
-              <div className="mb-10 overflow-hidden rounded-3xl shadow-sm">
+              <div className="mb-10 overflow-hidden rounded-3xl">
 
                 <img
                   src={data.image}
@@ -383,66 +265,64 @@ export default async function BlogPost({ params }) {
             )}
 
             {/* BLOG CONTENT */}
-            <div className="blog-content">
+           <div className="blog-content">
+  <div
+    className="
+      prose
+      prose-lg
+      max-w-none
 
-              <div
-                className="
-                  prose
-                  prose-lg
-                  max-w-none
+      prose-headings:font-bold
+      prose-headings:text-gray-900
+      prose-headings:scroll-mt-40
 
-                  prose-headings:font-bold
-                  prose-headings:text-gray-900
-                  prose-headings:scroll-mt-40
+      prose-p:text-gray-700
+      prose-p:leading-8
 
-                  prose-p:text-gray-700
-                  prose-p:leading-8
+      prose-a:text-orange-500
+      prose-a:no-underline
+      hover:prose-a:text-orange-600
 
-                  prose-a:text-orange-500
-                  prose-a:no-underline
-                  hover:prose-a:text-orange-600
+      prose-img:rounded-2xl
+      prose-li:text-gray-700
+      prose-strong:text-gray-900
+    "
+    dangerouslySetInnerHTML={{ __html: contentHtml }}
+  />
 
-                  prose-img:rounded-2xl
-                  prose-li:text-gray-700
-                  prose-strong:text-gray-900
-                "
-                dangerouslySetInnerHTML={{ __html: contentHtml }}
-              />
+<style>{`
+    .blog-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+    }
 
-              <style>{`
-                .blog-content table {
-                  width: 100%;
-                  border-collapse: collapse;
-                  margin: 2rem 0;
-                  display: block;
-                  overflow-x: auto;
-                  white-space: nowrap;
-                  border: 1px solid #e5e7eb;
-                  border-radius: 12px;
-                }
+    .blog-content thead {
+      background: #f3f4f6;
+    }
 
-                .blog-content thead {
-                  background: #f3f4f6;
-                }
+    .blog-content th,
+    .blog-content td {
+      border: 1px solid #e5e7eb;
+      padding: 16px 20px;
+      text-align: left;
+      min-width: 180px;
+    }
 
-                .blog-content th,
-                .blog-content td {
-                  border: 1px solid #e5e7eb;
-                  padding: 16px 20px;
-                  text-align: left;
-                  min-width: 180px;
-                }
-
-                .blog-content tr:nth-child(even) {
-                  background: #f9fafb;
-                }
-              `}</style>
-
-            </div>
+    .blog-content tr:nth-child(even) {
+      background: #f9fafb;
+    }
+  `}</style>
+</div>
           </article>
 
           {/* ========================= */}
-          {/* SIDEBAR */}
+          {/* RIGHT SIDEBAR CTA */}
           {/* ========================= */}
           <aside className="lg:sticky lg:top-[150px] h-fit">
 
@@ -478,9 +358,6 @@ export default async function BlogPost({ params }) {
         </div>
       </div>
 
-      {/* ✅ FLOATING SHARE */}
-      <FloatingShare url={blogUrl} title={data.title} />
-
       {/* PROGRESS SCRIPT */}
       <script
         dangerouslySetInnerHTML={{
@@ -501,7 +378,6 @@ export default async function BlogPost({ params }) {
           `,
         }}
       />
-
     </div>
   );
 }
