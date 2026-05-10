@@ -357,17 +357,19 @@ body {
 
 @media (max-width: 900px) {
   .blog-layout {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 30px;
-    margin: 30px auto;
-  }
-
-  .sidebar {
-    order: 2;
   }
 
   .content {
     order: 1;
+    width: 100%;
+  }
+
+  .sidebar {
+    order: 2;
+    width: 100%;
   }
 
   .sidebar-inner {
