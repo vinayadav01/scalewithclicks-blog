@@ -34,10 +34,12 @@ export default function BlogPage() {
        {/* GRID */}
 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
   {posts.map((post) => (
-    <BlogCard key={post.slug} post={post} />
-  ))}
-
+  <div key={post.slug} className="animate-fade-in">
+    <BlogCard post={post} />
+  </div>
+))}
           </div>
+  </div>
         </FadeIn>
 
       </section>
