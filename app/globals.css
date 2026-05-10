@@ -267,22 +267,26 @@ body {
   position: fixed;
   top: 70px;
   left: 0;
-  width: 100%;
+  right: 0; /* ✅ FIX */
   height: 4px;
-  background: #eee; /* light track */ 
+
   z-index: 9999;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
-  padding: 0 20px; /* 👈 adds side spacing like screenshot */ 
-  backdrop-filter: blur(10px);        /* 🔥 blur background */
-  background: rgba(255,255,255,0.95); /* glass effect */ 
+
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+
+  overflow: hidden; /* ✅ IMPORTANT */
 }
 
 /* 🔥 Gradient Bar */
 .progress-bar {
-  height: 3px;
+  height: 100%;
   width: 0%;
-  z-index: 1; /* 👈 below image */ 
-  border-radius: 999px; /* 👈 makes it rounded like design */ 
+
+  border-radius: 999px;
+
   background: linear-gradient(
     90deg,
     #ff6a00,
@@ -290,7 +294,9 @@ body {
     #ff0080,
     #7928ca
   );
+
   box-shadow: 0 0 10px rgba(255, 106, 0, 0.6);
+
   transition: width 0.1s ease-out;
 }
 
@@ -585,20 +591,6 @@ a {
   -webkit-text-fill-color: transparent;
 }
 
-.glass {
-  background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(0,0,0,0.05);
-}
-
-.card-hover {
-  transition: all 0.3s ease;
-}
-.card-hover:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-}
-
 /* ✅ HORIZONTAL SCROLL FIX */
 
 html,
@@ -616,4 +608,11 @@ video,
 iframe {
   max-width: 100%;
   height: auto;
+}
+
+/* FINAL OVERFLOW FIX */
+
+html,
+body {
+  overflow-x: clip;
 }
