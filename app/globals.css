@@ -356,10 +356,20 @@ body {
 ========================= */
 
 @media (max-width: 900px) {
-  .blog-layout {
+
+  /* force layout stability */
+  .blog-layout,
+  .category-layout {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 24px;
+  }
+
+  /* NEVER hide sidebar completely */
+  .sidebar {
+    display: block;
+    order: 2;
+    width: 100%;
   }
 
   .content {
@@ -367,11 +377,16 @@ body {
     width: 100%;
   }
 
-  .sidebar {
-    order: 2;
+  /* fix grid collapse issue */
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .category-card {
     width: 100%;
   }
 
+  /* kill sticky issues */
   .sidebar-inner {
     position: relative;
     top: auto;
