@@ -31,15 +31,11 @@ export default function BlogPage() {
           Explore all articles on performance marketing, SEO, and growth strategies.
         </p>
 
-        {/* GRID */}
-        <FadeIn>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-
-            {posts.map((post) => (
-  <div key={post.slug} className="min-w-0 w-full">
-    <BlogCard post={post} />
-  </div>
-))}
+       {/* GRID */}
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  {posts.map((post) => (
+    <BlogCard key={post.slug} post={post} />
+  ))}
 
           </div>
         </FadeIn>
