@@ -1,17 +1,57 @@
-import Link from "next/link";
 import { getPosts } from "@/lib/getPosts";
-import Navbar from "@/components/Navbar";
+import BlogCard from "@/components/BlogCard";
+import Link from "next/link";
 
-export default function CategoryPage({ params }) {
+// ✅ Generate SEO pages
+export async function generateStaticParams() {
 
-  // ✅ GET CATEGORY SLUG
-  const categorySlug = params?.slug;
+  const posts = getPosts();
 
-  // ✅ GET ALL POSTS
-  const allPosts = getPosts();
+  const categories = [
+    ...new Set(
+      posts.map((post) =>
+        (post.category || "general")
+          .trim()
+          .toLowerCase()
+          .replace(/\s+/g, "-")
+      )
+    ),
+  ];
 
-  // ✅ FILTER POSTS SAFELY
-  const posts = allPosts.filter((post) => {
+  return categories.map((slug) => ({
+    slug,
+  }));
+}
+
+// ✅ Dynamic SEO
+export async function generateMetadata(props) {
+
+  const params = await props.params;
+
+  const slug = params?.slug || "category";
+
+  const title = slug
+    .replace(/-/g, " ")
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+
+  return {
+    title: `${title} Blogs | ScaleWithClicks`,
+    description: `Read the latest ${title} articles and growth strategies.`,
+  };
+}
+
+// ✅ PAGE
+export default async function CategoryPage(props) {
+
+  // ✅ FIX PARAMS
+  const params = await props.params;
+
+  const categorySlug = params?.slug || "";
+
+  const posts = getPosts();
+
+  // ✅ FILTER POSTS
+  const filteredPosts = posts.filter((post) => {
 
     const normalizedCategory = (post.category || "general")
       .trim()
@@ -19,133 +59,81 @@ export default function CategoryPage({ params }) {
       .replace(/\s+/g, "-");
 
     return normalizedCategory === categorySlug;
-
   });
 
-  // ✅ FORMAT TITLE
-  const formattedCategory = categorySlug
-    ?.replace(/-/g, " ")
-    .replace(/\b\w/g, (char) => char.toUpperCase());
+  // ✅ SORT LATEST FIRST
+  filteredPosts.sort(
+    (a, b) => new Date(b.date) - new Date(a.date)
+  );
+
+  // ✅ PAGE TITLE
+  const categoryTitle = categorySlug
+    .replace(/-/g, " ")
+    .replace(/\b\w/g, (c) => c.toUpperCase());
 
   return (
-    <div style={{ padding: "40px" }}>
+    <div className="max-w-6xl mx-auto px-4 py-16">
 
-      <Navbar />
+      {/* BREADCRUMB */}
+      <div className="flex items-center gap-2 text-sm text-gray-500 mb-6">
 
-      {/* PAGE TITLE */}
-      <h1
-        style={{
-          fontSize: "36px",
-          marginBottom: "30px",
-          fontWeight: "700",
-        }}
-      >
-        Category: {formattedCategory}
-      </h1>
+        <Link href="/" className="hover:text-indigo-600">
+          Home
+        </Link>
 
-      {/* NO POSTS */}
-      {posts.length === 0 && (
-        <p style={{ color: "#666" }}>
-          No articles found in this category.
+        <span>/</span>
+
+        <span className="text-gray-900">
+          {categoryTitle}
+        </span>
+
+      </div>
+
+      {/* HEADING */}
+      <div className="mb-12">
+
+        <h1 className="text-4xl font-bold text-gray-900">
+          {categoryTitle}
+        </h1>
+
+        <p className="text-gray-600 mt-3">
+          Explore the latest articles in {categoryTitle}.
         </p>
-      )}
+
+      </div>
 
       {/* POSTS */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-          gap: "25px",
-        }}
-      >
-        {posts.map((post) => (
+      {filteredPosts.length > 0 ? (
 
-          <div
-            key={post.slug}
-            style={{
-              border: "1px solid #eee",
-              borderRadius: "14px",
-              overflow: "hidden",
-              background: "#fff",
-            }}
-          >
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            {/* IMAGE */}
-            {post.image && (
-              <img
-                src={post.image}
-                alt={post.title}
-                style={{
-                  width: "100%",
-                  height: "180px",
-                  objectFit: "cover",
-                }}
-              />
-            )}
+          {filteredPosts.map((post) => (
 
-            <div style={{ padding: "18px" }}>
+            <BlogCard
+              key={post.slug}
+              post={post}
+            />
 
-              {/* CATEGORY */}
-              <p
-                style={{
-                  color: "#f97316",
-                  fontSize: "12px",
-                  fontWeight: "600",
-                  marginBottom: "10px",
-                  textTransform: "uppercase",
-                }}
-              >
-                {post.category}
-              </p>
+          ))}
 
-              {/* TITLE */}
-              <Link
-                href={`/blog/${post.slug}`}
-                style={{
-                  textDecoration: "none",
-                  color: "inherit",
-                }}
-              >
-                <h2
-                  style={{
-                    fontSize: "22px",
-                    lineHeight: "1.4",
-                    marginBottom: "12px",
-                    cursor: "pointer",
-                  }}
-                >
-                  {post.title}
-                </h2>
-              </Link>
+        </div>
 
-              {/* DESCRIPTION */}
-              {post.description && (
-                <p
-                  style={{
-                    color: "#666",
-                    lineHeight: "1.7",
-                    marginBottom: "15px",
-                  }}
-                >
-                  {post.description}
-                </p>
-              )}
+      ) : (
 
-              {/* DATE */}
-              <p
-                style={{
-                  fontSize: "14px",
-                  color: "#999",
-                }}
-              >
-                {post.date}
-              </p>
+        <div className="text-center py-20 border border-dashed border-gray-300 rounded-2xl">
 
-            </div>
-          </div>
+          <h2 className="text-2xl font-semibold text-gray-800">
+            No articles found
+          </h2>
 
-        ))}
-      </div>
+          <p className="text-gray-500 mt-3">
+            No blog posts available in this category yet.
+          </p>
+
+        </div>
+
+      )}
+
     </div>
   );
 }
