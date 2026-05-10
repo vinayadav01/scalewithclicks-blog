@@ -380,11 +380,6 @@ body {
     display: block;
   }
 
-  /* safety fix */
-  .grid {
-    min-height: 1px;
-  }
-
 }
 
 /* =========================
@@ -617,4 +612,12 @@ video {
 .category-layout {
   width: 100%;
   max-width: 100%;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+main, section, div {
+  min-height: auto;
 }
