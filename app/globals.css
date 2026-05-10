@@ -186,16 +186,6 @@ body {
   margin-bottom: 10px;
 }
 
-.blog-content ul,
-.blog-content ol {
-  margin-left: 20px;
-  margin-bottom: 16px;
-}
-
-.blog-content li {
-  margin-bottom: 8px;
-}
-
 .blog-content img {
   width: 100%;
   max-width: 600px;
@@ -229,8 +219,6 @@ body {
   font-style: italic;
   margin: 20px 0;
 }
-
-/* ✅ BULLET POINTS FIX */
 
 /* ✅ BULLETS FIX — CLEAN */
 
@@ -310,10 +298,10 @@ body {
 .progress-thumb {
   position: fixed;
   top: 60px;
-  transform: translateX(-50%);
   transition: left 0.1s ease-out;
-  z-index: 10000; /* 👈 ABOVE EVERYTHING */ 
+  z-index: 10000;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .progress-thumb img {
@@ -601,8 +589,9 @@ a {
 
 html,
 body {
-  overflow-x: hidden;
   width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 * {
@@ -614,11 +603,4 @@ video,
 iframe {
   max-width: 100%;
   height: auto;
-}
-
-/* FINAL OVERFLOW FIX */
-
-html,
-body {
-  overflow-x: clip;
 }
