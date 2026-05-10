@@ -37,7 +37,7 @@ export default function Home() {
 
       {/* HERO */}
       <FadeIn>
-        <section className="relative max-w-6xl mx-auto px-4 pt-20 pb-16 text-center">
+        <section className="relative overflow-hidden max-w-6xl mx-auto px-4 pt-20 pb-16 text-center">
 
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.15),transparent_60%)]" />
 
