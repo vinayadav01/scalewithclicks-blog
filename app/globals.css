@@ -598,36 +598,3 @@ a {
   transform: translateY(-6px);
   box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
-
-/* ✅ FIX HORIZONTAL SCROLL ISSUE */
-
-html {
-  overflow-x: hidden;
-  width: 100%;
-}
-
-body {
-  overflow-x: hidden;
-  width: 100%;
-  max-width: 100vw;
-  position: relative;
-}
-
-/* Prevent all sections/divs from overflowing */
-* {
-  box-sizing: border-box;
-}
-
-/* Fix images/videos causing overflow */
-img,
-video,
-iframe {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Prevent Tailwind animated elements from creating overflow */
-section,
-div {
-  max-width: 100%;
-}
