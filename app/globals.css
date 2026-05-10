@@ -29,12 +29,12 @@ body {
 }
 
 /* =========================
-   🔥 BLOG LAYOUT
+   BLOG LAYOUT (CLEAN SYSTEM)
 ========================= */
 
 .blog-layout {
   display: grid;
-  grid-template-columns: 260px 1fr;
+  grid-template-columns: 260px minmax(0, 1fr);
   gap: 60px;
   max-width: 1100px;
   margin: 60px auto;
@@ -42,9 +42,20 @@ body {
   align-items: start;
 }
 
+/* CONTENT */
 .content {
-  max-width: 720px;
   width: 100%;
+  min-width: 0;
+}
+
+/* SIDEBAR */
+.sidebar {
+  position: relative;
+}
+
+.sidebar-inner {
+  position: sticky;
+  top: 90px;
 }
 
 /* =========================
@@ -341,29 +352,37 @@ body {
 }
 
 /* =========================
-   📱 MOBILE
+   MOBILE FIX (CLEAN STACK)
 ========================= */
 
 @media (max-width: 900px) {
   .blog-layout {
-    display: flex;
-    flex-direction: column;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin: 30px auto;
   }
 
   .sidebar {
-    display: block;
     order: 2;
   }
 
   .content {
     order: 1;
   }
+
+  .sidebar-inner {
+    position: relative;
+    top: auto;
+  }
 }
 
-/* CATEGORY LAYOUT */
-.category-layout {
+/* =========================
+   SHARED TWO COLUMN LAYOUT
+========================= */
+
+.layout-two-column {
   display: grid;
-  grid-template-columns: 260px 1fr;
+  grid-template-columns: 260px minmax(0, 1fr);
   gap: 60px;
   max-width: 1100px;
   margin: 60px auto;
@@ -549,11 +568,6 @@ body {
   background: linear-gradient(to bottom, #ffffff, #f8fafc);
 }
 
-/* smooth links */
-a {
-  transition: all 0.2s ease;
-}
-
 /* hover lift (reusable) */
 .card-hover {
   transition: all 0.3s ease;
@@ -575,18 +589,4 @@ a {
   background: linear-gradient(to right, #6366f1, #9333ea);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-.glass {
-  background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(0,0,0,0.05);
-}
-
-.card-hover {
-  transition: all 0.3s ease;
-}
-.card-hover:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
