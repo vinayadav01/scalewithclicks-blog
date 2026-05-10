@@ -32,19 +32,23 @@ body {
    🔥 BLOG LAYOUT
 ========================= */
 
-.blog-layout {
+.blog-layout,
+.category-layout {
   display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 60px;
-  max-width: 1100px;
-  margin: 60px auto;
-  padding: 0 20px;
-  align-items: start;
-}
+  grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
 
-.content {
-  max-width: 720px;
+  gap: 40px;
+
+  max-width: 1100px;
   width: 100%;
+
+  margin: 60px auto;
+
+  padding-inline: 20px;
+
+  align-items: start;
+
+  overflow-x: hidden;
 }
 
 /* =========================
@@ -220,12 +224,11 @@ body {
   margin: 20px 0;
 }
 
-/* ✅ BULLETS FIX — CLEAN */
-
+/* BULLETS */
 .blog-content ul,
 .blog-content ol {
   margin: 20px 0;
-  padding-left: 22px; /* single spacing source */
+  padding-left: 22px;
 }
 
 .blog-content ul {
@@ -241,84 +244,30 @@ body {
   line-height: 1.8;
 }
 
-/* Nested Lists */
-.blog-content ul ul {
-  list-style-type: circle;
-  margin-top: 10px;
-  padding-left: 20px;
-}
-
-.blog-content ol ol {
-  list-style-type: lower-alpha;
-  padding-left: 20px;
-}
-
 /* =========================
-   🚀 GRADIENT PROGRESS BAR
+   🚀 PROGRESS BAR
 ========================= */
 
 .progress-container {
   position: fixed;
   top: 70px;
   left: 0;
-  right: 0; /* ✅ FIX */
+  right: 0;
   height: 4px;
-
   z-index: 9999;
-
   background: rgba(255,255,255,0.95);
   backdrop-filter: blur(10px);
-
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-
-  overflow: hidden; /* ✅ IMPORTANT */
+  overflow: hidden;
 }
 
-/* 🔥 Gradient Bar */
 .progress-bar {
   height: 100%;
   width: 0%;
-
   border-radius: 999px;
-
-  background: linear-gradient(
-    90deg,
-    #ff6a00,
-    #ff3d00,
-    #ff0080,
-    #7928ca
-  );
-
+  background: linear-gradient(90deg,#ff6a00,#ff3d00,#ff0080,#7928ca);
   box-shadow: 0 0 10px rgba(255, 106, 0, 0.6);
-
   transition: width 0.1s ease-out;
-}
-
-/* 🔥 Floating Image */
-
-.progress-thumb {
-  position: fixed;
-  top: 60px;
-
-  z-index: 10000;
-  pointer-events: none;
-
-  width: 28px;
-  height: 28px;
-
-  margin-left: -14px; /* ✅ centers without overflow */
-}
-
-.progress-thumb img {
-  width: 100%;
-  height: 100%;
-
-  display: block;
-
-  border-radius: 50%;
-  border: 2px solid white;
-
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 /* =========================
@@ -378,6 +327,7 @@ body {
     max-width: 100%;
   }
 }
+
 /* CATEGORY LAYOUT */
 .category-layout {
   display: grid;
@@ -439,8 +389,15 @@ body {
 /* GRID */
 .category-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(100%, 260px), 1fr)
+  );
+
   gap: 20px;
+
+  width: 100%;
 }
 
 .category-card {
@@ -481,9 +438,11 @@ body {
     display: none;
   }
 }
+
 a {
   text-decoration: none;
 }
+
 .footer a {
   text-decoration: none;
   color: inherit;
@@ -567,40 +526,34 @@ body {
   background: linear-gradient(to bottom, #ffffff, #f8fafc);
 }
 
-/* smooth links */
-a {
-  transition: all 0.2s ease;
-}
-
-/* hover lift (reusable) */
 .card-hover {
   transition: all 0.3s ease;
 }
+
 .card-hover:hover {
   transform: translateY(-6px);
   box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
 
-/* soft glass effect */
 .glass {
   background: rgba(255,255,255,0.7);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(0,0,0,0.05);
 }
 
-/* gradient text */
 .gradient-text {
   background: linear-gradient(to right, #6366f1, #9333ea);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* ✅ HORIZONTAL SCROLL FIX */
-
-html,
-body {
-  max-width: 100%;
+html {
   overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  position: relative;
 }
 
 * {
@@ -612,4 +565,33 @@ video,
 iframe {
   max-width: 100%;
   height: auto;
+}
+
+/* =========================
+   🚀 FINAL FIX (ADDED)
+   This fixes:
+   - extra horizontal scrollbar
+   - grid overflow
+   - mobile blank space
+========================= */
+
+html,
+body {
+  overflow-x: hidden !important;
+}
+
+* {
+  min-width: 0;
+}
+
+.blog-layout,
+.category-layout,
+.category-grid {
+  max-width: 100%;
+}
+
+img,
+video,
+iframe {
+  display: block;
 }
