@@ -27,7 +27,7 @@ That’s why having a strong on-page SEO strategy matters more than ever.
 
 Whether you're running a business website, blog, eCommerce store, or local service company, this complete on-page SEO checklist for 2026 will help you improve rankings and increase organic traffic.
 
-If you’re new to SEO, you should also read our guide on [How to Rank on Google Fast](/blog/how-to-rank-on-google-fast-beginner-guide).
+If you’re new to SEO, you should also read our guide on [How to Rank on Google Fast](/blog/how-to-rank-on-google-fast).
 
 ---
 
@@ -68,7 +68,7 @@ Strong on-page SEO helps:
 
 Businesses investing in proper SEO optimization are seeing higher-quality leads without depending entirely on ads.
 
-If you're comparing SEO with paid traffic, check out our detailed guide on [SEO vs Google Ads: Which One Should You Choose?](/blog/seo-vs-google-ads-which-one-should-you-choose).
+If you're comparing SEO with paid traffic, check out our detailed guide on [SEO vs Google Ads: Which One Should You Choose?](/blog/seo-vs-google-ads).
 
 ---
 
@@ -461,7 +461,7 @@ Include calls-to-action like:
 - Explore services  
 - Read related blogs  
 
-If you want help scaling your traffic and leads, visit our [digital marketing services](/services).
+If you want help scaling your traffic and leads, visit our [digital marketing services](https://scalewithclicks.com/services.html).
 
 ---
 
