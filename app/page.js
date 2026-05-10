@@ -3,6 +3,7 @@ import BlogCard from "@/components/BlogCard";
 import CategorySection from "@/components/CategorySection";
 import FadeIn from "@/components/FadeIn";
 import MagneticButton from "@/components/MagneticButton";
+import Link from "next/link";
 
 export const dynamic = "force-dynamic";
 
@@ -18,9 +19,10 @@ export default function Home() {
     );
   }
 
+  // ✅ GROUP POSTS SAFELY
   const grouped = posts.reduce((acc, post) => {
 
-    const cat = post.category || "Other";
+    const cat = (post.category || "Other").trim();
 
     if (!acc[cat]) acc[cat] = [];
 
@@ -31,7 +33,7 @@ export default function Home() {
   }, {});
 
   return (
-    <div className="bg-white text-gray-900">
+    <div className="bg-white text-gray-900 overflow-x-hidden">
 
       {/* HERO */}
       <FadeIn>
@@ -53,17 +55,19 @@ export default function Home() {
             Learn how to scale Google Ads, SEO, and conversion systems with real strategies—not theory.
           </p>
 
-          <div className="mt-8 flex justify-center gap-4">
+          <div className="mt-8 flex justify-center gap-4 flex-wrap">
 
-            <a
+            <Link
               href="/"
               className="bg-black text-white px-6 py-3 rounded-full text-sm hover:scale-105 transition"
             >
               Explore Blog
-            </a>
+            </Link>
 
             <a
               href="https://wa.me/919589188668"
+              target="_blank"
+              rel="noopener noreferrer"
               className="border border-gray-300 px-6 py-3 rounded-full text-sm hover:bg-gray-100 transition"
             >
               Free Strategy
@@ -83,20 +87,37 @@ export default function Home() {
             <div className="grid md:grid-cols-3 gap-6">
 
               {/* MAIN FEATURED */}
-              <a
+              <Link
                 href={`/blog/${posts[0].slug}`}
                 className="md:col-span-2 group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition"
               >
 
-                <img
-                  src={posts[0].image}
-                  className="w-full h-[420px] object-cover group-hover:scale-105 transition duration-700"
-                  alt={posts[0].title}
-                />
+                {posts[0].image ? (
+                  <img
+                    src={posts[0].image}
+                    className="w-full h-[420px] object-cover group-hover:scale-105 transition duration-700"
+                    alt={posts[0].title}
+                  />
+                ) : (
+                  <div className="w-full h-[420px] bg-gray-200" />
+                )}
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
                 <div className="absolute bottom-0 p-6 text-white">
+
+                  {/* ✅ CATEGORY LINK */}
+                  {posts[0].category && (
+                    <Link
+                      href={`/category/${posts[0].category
+                        .trim()
+                        .toLowerCase()
+                        .replace(/\s+/g, "-")}`}
+                      className="inline-block mb-3 text-xs bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm hover:bg-white/30 transition"
+                    >
+                      {posts[0].category}
+                    </Link>
+                  )}
 
                   <h2 className="text-2xl font-semibold">
                     {posts[0].title}
@@ -108,48 +129,62 @@ export default function Home() {
 
                 </div>
 
-              </a>
+              </Link>
 
               {/* SIDE POSTS */}
               <div className="flex flex-col gap-6">
 
-                {posts.slice(1, 3).map((post) => (
+                {posts.slice(1, 3).map((post) => {
 
-                  <a
-                    key={post.slug}
-                    href={`/blog/${post.slug}`}
-                    className="group flex gap-5 items-center border border-gray-200 rounded-2xl p-5 h-[200px] hover:shadow-lg transition duration-300"
-                  >
+                  const categorySlug = (post.category || "other")
+                    .trim()
+                    .toLowerCase()
+                    .replace(/\s+/g, "-");
 
-                    {post.image ? (
+                  return (
+                    <Link
+                      key={post.slug}
+                      href={`/blog/${post.slug}`}
+                      className="group flex gap-5 items-center border border-gray-200 rounded-2xl p-5 h-[200px] hover:shadow-lg transition duration-300"
+                    >
 
-                      <img
-                        src={post.image}
-                        alt={post.title}
-                        className="w-28 h-28 object-cover rounded-xl flex-shrink-0 group-hover:scale-105 transition duration-300"
-                      />
+                      {post.image ? (
 
-                    ) : (
+                        <img
+                          src={post.image}
+                          alt={post.title}
+                          className="w-28 h-28 object-cover rounded-xl flex-shrink-0 group-hover:scale-105 transition duration-300"
+                        />
 
-                      <div className="w-28 h-28 bg-gray-200 rounded-xl flex-shrink-0" />
+                      ) : (
 
-                    )}
+                        <div className="w-28 h-28 bg-gray-200 rounded-xl flex-shrink-0" />
 
-                    <div className="flex-1">
+                      )}
 
-                      <h3 className="font-semibold text-gray-900 text-lg leading-snug group-hover:text-indigo-600 transition">
-                        {post.title}
-                      </h3>
+                      <div className="flex-1 overflow-hidden">
 
-                      <p className="text-gray-600 text-sm mt-2 leading-6 max-h-[4.5rem] overflow-hidden">
-                        {post.description}
-                      </p>
+                        {/* ✅ CATEGORY */}
+                        <div className="mb-2">
+                          <span className="text-xs text-indigo-600 font-medium">
+                            {post.category || "Other"}
+                          </span>
+                        </div>
 
-                    </div>
+                        <h3 className="font-semibold text-gray-900 text-lg leading-snug group-hover:text-indigo-600 transition">
+                          {post.title}
+                        </h3>
 
-                  </a>
+                        <p className="text-gray-600 text-sm mt-2 leading-6 line-clamp-3">
+                          {post.description}
+                        </p>
 
-                ))}
+                      </div>
+
+                    </Link>
+                  );
+
+                })}
 
               </div>
 
@@ -184,9 +219,20 @@ export default function Home() {
 
         <section className="max-w-6xl mx-auto px-4 py-12">
 
-          <h2 className="text-2xl font-semibold mb-8">
-            Latest Articles
-          </h2>
+          <div className="flex items-center justify-between mb-8 flex-wrap gap-4">
+
+            <h2 className="text-2xl font-semibold">
+              Latest Articles
+            </h2>
+
+            <Link
+              href="/"
+              className="text-sm text-indigo-600 hover:text-indigo-700 font-medium"
+            >
+              View All →
+            </Link>
+
+          </div>
 
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
 
@@ -205,21 +251,23 @@ export default function Home() {
 
         <section className="max-w-4xl mx-auto px-4 py-20 text-center">
 
-          <div className="rounded-2xl p-12 bg-black text-white">
+          <div className="rounded-2xl p-12 bg-black text-white relative overflow-hidden">
 
-            <h2 className="text-3xl font-semibold">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.08),transparent_40%)]" />
+
+            <h2 className="text-3xl font-semibold relative z-10">
               Ready to Scale Your Ads?
             </h2>
 
-            <p className="mt-3 text-gray-300">
+            <p className="mt-3 text-gray-300 relative z-10">
               Get a free strategy tailored to your business.
             </p>
 
-            <div className="mt-6">
+            <div className="mt-6 relative z-10">
 
               <MagneticButton
                 href="https://wa.me/919589188668"
-                className="bg-white text-black px-6 py-3 rounded-full"
+                className="bg-white text-black px-6 py-3 rounded-full inline-block"
               >
                 Book Free Call →
               </MagneticButton>
