@@ -1,20 +1,29 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export default function FadeIn({ children }) {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) setVisible(true);
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect(); // important
+        }
       },
-      { threshold: 0.2 }
+      {
+        threshold: 0.1,
+        rootMargin: "100px", // 👈 FIXES mobile trigger issue
+      }
     );
 
-    if (ref.current) observer.observe(ref.current);
+    observer.observe(el);
 
     return () => observer.disconnect();
   }, []);
@@ -23,7 +32,7 @@ export default function FadeIn({ children }) {
     <div
       ref={ref}
       className={`transition-all duration-700 ${
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+        visible ? "opacity-100 translate-y-0" : "opacity-100 translate-y-0"
       }`}
     >
       {children}
