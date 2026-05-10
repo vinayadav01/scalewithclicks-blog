@@ -62,11 +62,6 @@ body {
    📑 SIDEBAR (TOC)
 ========================= */
 
-.sidebar-inner {
-  position: sticky;
-  top: 100px;
-}
-
 .toc {
   font-size: 14px;
 }
@@ -351,23 +346,16 @@ body {
   display: none;
 }
 
-/* =========================
-   MOBILE FIX (CLEAN STACK)
-========================= */
-
 @media (max-width: 900px) {
 
-  /* force layout stability */
-  .blog-layout,
-  .category-layout {
-    display: flex;
-    flex-direction: column;
+  /* BLOG LAYOUT SAFE STACK */
+  .blog-layout {
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 24px;
   }
 
-  /* NEVER hide sidebar completely */
   .sidebar {
-    display: block;
     order: 2;
     width: 100%;
   }
@@ -377,20 +365,26 @@ body {
     width: 100%;
   }
 
-  /* fix grid collapse issue */
+  /* CATEGORY FIX */
+  .category-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
   .category-grid {
     grid-template-columns: 1fr;
   }
 
   .category-card {
     width: 100%;
+    display: block;
   }
 
-  /* kill sticky issues */
-  .sidebar-inner {
-    position: relative;
-    top: auto;
+  /* safety fix */
+  .grid {
+    min-height: 1px;
   }
+
 }
 
 /* =========================
@@ -475,8 +469,9 @@ body {
 
 .category-card img {
   width: 100%;
-  height: 160px;
+  aspect-ratio: 16 / 10;
   object-fit: cover;
+  height: auto;
 }
 
 .card-body {
@@ -606,4 +601,20 @@ body {
   background: linear-gradient(to right, #6366f1, #9333ea);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+.blog-layout,
+.category-layout {
+  width: 100%;
+  max-width: 100%;
 }
