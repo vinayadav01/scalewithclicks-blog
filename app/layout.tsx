@@ -8,6 +8,7 @@ import PageWrapper from "@/components/PageWrapper";
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
+}
 });
 
 export const metadata = {
