@@ -8,7 +8,6 @@ import PageWrapper from "@/components/PageWrapper";
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
-}
 });
 
 export const metadata = {
@@ -17,6 +16,7 @@ export const metadata = {
   icons: {
     icon: "/favicon.ico",
 };
+}
 
 export default function RootLayout({
   children,
