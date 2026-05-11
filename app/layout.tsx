@@ -13,6 +13,8 @@ const inter = Inter({
 export const metadata = {
   title: "ScaleWithClicks Blog",
   description: "Performance Marketing Blog",
+  icons: {
+    icon: "/favicon.ico",
 };
 
 export default function RootLayout({
