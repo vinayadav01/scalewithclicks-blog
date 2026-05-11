@@ -15,8 +15,8 @@ export const metadata = {
   description: "Performance Marketing Blog",
   icons: {
     icon: "/favicon.ico",
-};
-}
+  }
+  };
 
 export default function RootLayout({
   children,
