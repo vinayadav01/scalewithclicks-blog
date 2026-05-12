@@ -3,7 +3,7 @@ title: "How to Set Up Conversion Tracking in Google Ads"
 description: "Learn how to set up Google Ads conversion tracking correctly to measure leads, purchases, calls, and ROI for your campaigns."
 date: "2026-05-12"
 author: "ScaleWithClicks"
-image: "/images/google-ads-conversion-tracking-guide.webp"
+image: "/images/google-ads-conversion-tracking-guide.jpg"
 category: google-ads
 ---
 
@@ -116,7 +116,7 @@ For example:
 ## Image Placeholder
 
 **Image Suggestion:** Google Ads Conversion Dashboard Screenshot  
-**Image File Name:** `google-ads-conversion-dashboard.webp`
+**Image File Name:** `google-ads-conversion-dashboard.jpg`
 
 ---
 
@@ -149,7 +149,7 @@ In your dashboard:
 ## Image Placeholder
 
 **Image Suggestion:** Google Ads Goals and Conversion Menu  
-**Image File Name:** `google-ads-goals-menu.webp`
+**Image File Name:** `google-ads-goals-menu.jpg`
 
 ---
 
@@ -185,7 +185,7 @@ Google will scan your site and recommend possible conversion events.
 ## Image Placeholder
 
 **Image Suggestion:** Website URL Setup in Google Ads  
-**Image File Name:** `google-ads-website-setup.webp`
+**Image File Name:** `google-ads-website-setup.jpg`
 
 ---
 
@@ -284,7 +284,7 @@ Select your container.
 ## Image Placeholder
 
 **Image Suggestion:** Google Tag Manager Conversion Tag Setup  
-**Image File Name:** `gtm-conversion-tag-setup.webp`
+**Image File Name:** `gtm-conversion-tag-setup.jpg`
 
 ---
 
@@ -358,7 +358,7 @@ gtag('config', 'AW-XXXXXXXXX');
 ## Image Placeholder
 
 **Image Suggestion:** Google Ads Tracking Code Example  
-**Image File Name:** `google-ads-tracking-code.webp`
+**Image File Name:** `google-ads-tracking-code.jpg`
 
 ---
 
