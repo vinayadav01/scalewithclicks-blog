@@ -115,8 +115,6 @@ For example:
 
 ![Google Ads Conversion Dashboard](/images/google-ads-conversion-dashboard.jpg)`
 
----
-
 # Step-by-Step Guide to Set Up Conversion Tracking in Google Ads
 
 Let’s go through the complete setup process.
@@ -143,10 +141,7 @@ In your dashboard:
 
 ---
 
-## Image Placeholder
-
-**Image Suggestion:** Google Ads Goals and Conversion Menu  
-**Image File Name:** `google-ads-goals-menu.jpg`
+![Google Ads Goals Menu](/images/google-ads-goals-menu.jpg)`
 
 ---
 
