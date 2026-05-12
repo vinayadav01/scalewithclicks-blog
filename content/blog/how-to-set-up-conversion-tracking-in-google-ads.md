@@ -61,7 +61,7 @@ Conversion tracking allows you to:
 - Improve bidding strategies
 - Scale profitable campaigns faster
 
-If you’re already investing in paid advertising, you should also read our guide on [Performance Marketing Services](https://www.scalewithclicks.com/services/performance-marketing) to understand how data-driven advertising improves business growth.
+If you’re already investing in paid advertising, you should also read our guide on [Performance Marketing Services](https://www.scalewithclicks.com/services/) to understand how data-driven advertising improves business growth.
 
 ---
 
@@ -259,7 +259,7 @@ You can install them manually or through Google Tag Manager.
 
 This is the easiest and most recommended method.
 
-If you haven’t installed GTM yet, read our guide on [Google Tag Manager Setup Services](https://www.scalewithclicks.com/services/google-tag-manager-setup).
+If you haven’t installed GTM yet, read our guide on [Google Tag Manager Setup Services](https://scalewithclicks.com/services/conversion-tracking).
 
 ---
 
@@ -447,7 +447,7 @@ This inflates conversion numbers.
 
 Connecting Google Ads with GA4 improves attribution and audience targeting.
 
-You can also explore our [Google Analytics Services](https://www.scalewithclicks.com/services/google-analytics-services) for proper analytics implementation.
+You can also explore our [Google Analytics Services](https://scalewithclicks.com/services/conversion-tracking) for proper analytics implementation.
 
 ---
 
@@ -541,7 +541,7 @@ Track:
 - Checkout initiated
 - Payment completed
 
-If you run an eCommerce business, you should also explore our [Ecommerce Marketing Services](https://www.scalewithclicks.com/services/ecommerce-marketing).
+If you run an eCommerce business, you should also explore our [Google Ads Marketing Services](https://scalewithclicks.com/services/google-ads-agency).
 
 ---
 
@@ -577,7 +577,7 @@ Whether you're running lead generation campaigns or eCommerce ads, accurate conv
 
 At [ScaleWithClicks](https://www.scalewithclicks.com/), we help businesses implement advanced tracking systems that improve campaign performance, attribution accuracy, and advertising ROI.
 
-If you want professional help with tracking setup, campaign optimization, or performance marketing, explore our [Google Ads Management Services](https://www.scalewithclicks.com/services/google-ads-management).
+If you want professional help with tracking setup, campaign optimization, or performance marketing, explore our [Google Ads Management Services](https://www.scalewithclicks.com/services/google-ads-agency).
 
 ---
 
