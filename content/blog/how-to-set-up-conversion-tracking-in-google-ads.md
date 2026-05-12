@@ -113,10 +113,7 @@ For example:
 
 ---
 
-## Image Placeholder
-
-**Image Suggestion:** Google Ads Conversion Dashboard Screenshot  
-**Image File Name:** `google-ads-conversion-dashboard.jpg`
+![Google Ads Conversion Dashboard](/images/google-ads-conversion-dashboard.jpg)`
 
 ---
 
@@ -182,10 +179,7 @@ Google will scan your site and recommend possible conversion events.
 
 ---
 
-## Image Placeholder
-
-**Image Suggestion:** Website URL Setup in Google Ads  
-**Image File Name:** `google-ads-website-setup.jpg`
+![Google Ads Website Setup](/images/google-ads-website-setup.jpg)`
 
 ---
 
@@ -281,10 +275,7 @@ Select your container.
 
 ---
 
-## Image Placeholder
-
-**Image Suggestion:** Google Tag Manager Conversion Tag Setup  
-**Image File Name:** `gtm-conversion-tag-setup.jpg`
+![GTM Conversion Tag Setup](/images/gtm-conversion-tag-setup.jpg)`
 
 ---
 
@@ -355,10 +346,7 @@ gtag('config', 'AW-XXXXXXXXX');
 
 ---
 
-## Image Placeholder
-
-**Image Suggestion:** Google Ads Tracking Code Example  
-**Image File Name:** `google-ads-tracking-code.jpg`
+![Google Ads Tracking Code](/images/google-ads-tracking-code.jpg)`
 
 ---
 
