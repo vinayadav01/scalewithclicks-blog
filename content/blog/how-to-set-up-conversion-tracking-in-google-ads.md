@@ -4,7 +4,7 @@ description: "Learn how to set up Google Ads conversion tracking correctly to me
 date: "2026-05-12"
 author: "ScaleWithClicks"
 image: "/images/google-ads-conversion-tracking-guide.webp"
-category: google-ads, conversion-tracking
+category: google-ads
 ---
 
 # How to Set Up Conversion Tracking in Google Ads
