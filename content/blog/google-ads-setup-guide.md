@@ -3,9 +3,11 @@ title: Google Ads Setup Guide for Beginners (Step-by-Step 2026)
 date: "2026-04-27"
 description: Learn how to set up Google Ads step-by-step. Complete beginner guide to launch profitable campaigns and generate leads in 2026.
 image: /images/google-ads-setup.jpg
-category: google-ads
+category: Google Ads
 author: Vinay Yadav
 ---
+
+**Category:** [Google Ads](/category/google-ads)
 
 Running Google Ads can be one of the fastest ways to generate leads and sales — but only if it’s set up correctly.
 
