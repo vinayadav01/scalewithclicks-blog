@@ -7,6 +7,8 @@ category: Digital Marketing
 author: Vinay Yadav
 ---
 
+**Category:** [Digital Marketing](/category/digital-marketing)
+
 If you're trying to grow your business online, you've probably asked this question at least once:
 
 **Should I invest in SEO or Google Ads?**
