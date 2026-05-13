@@ -123,9 +123,7 @@ Let’s go through the complete setup process.
 
 ## Step 1: Log Into Your Google Ads Account
 
-Go to:
-
-https://ads.google.com
+Go to [Google Ads](https://ads.google.com)
 
 Sign in to your Google Ads account.
 
@@ -250,9 +248,7 @@ If you haven’t installed GTM yet, read our guide on [Google Tag Manager Setup 
 
 ## Step 1: Open Google Tag Manager
 
-Visit:
-
-https://tagmanager.google.com
+Visit [Google Tag Manager](https://tagmanager.google.com)
 
 Select your container.
 
