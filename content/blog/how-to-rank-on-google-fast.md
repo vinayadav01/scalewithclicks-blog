@@ -7,6 +7,8 @@ category: "SEO"
 author: "Vinay Yadav"
 ---
 
+**Category:** [SEO](/category/seo)
+
 # How to Rank on Google Fast (Beginner Guide)
 
 Getting your website on the first page of Google can completely change your business.
