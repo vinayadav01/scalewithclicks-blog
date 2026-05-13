@@ -113,7 +113,7 @@ For example:
 
 ---
 
-![Google Ads Conversion Dashboard](/images/google-ads-conversion-dashboard.jpg)`
+![Google Ads Conversion Dashboard](/images/google-ads-conversion-dashboard.jpg)
 
 # Step-by-Step Guide to Set Up Conversion Tracking in Google Ads
 
@@ -139,7 +139,7 @@ In your dashboard:
 - Select **Conversions**
 - Click **New Conversion Action**
 
-![Google Ads Goals Menu](/images/google-ads-goals-menu.jpg)`
+![Google Ads Goals Menu](/images/google-ads-goals-menu.jpg)
 
 ---
 
@@ -172,7 +172,7 @@ Google will scan your site and recommend possible conversion events.
 
 ---
 
-![Google Ads Website Setup](/images/google-ads-website-setup.jpg)`
+![Google Ads Website Setup](/images/google-ads-website-setup.jpg)
 
 ## Step 5: Create Conversion Action
 
@@ -264,7 +264,7 @@ Select your container.
 - Click **New**
 - Select **Google Ads Conversion Tracking**
 
-![GTM Conversion Tag Setup](/images/gtm-conversion-tag-setup.jpg)`
+![GTM Conversion Tag Setup](/images/gtm-conversion-tag-setup.jpg)
 
 ---
 
@@ -333,7 +333,7 @@ gtag('config', 'AW-XXXXXXXXX');
 </script>
 ```
 
-![Google Ads Tracking Code](/images/google-ads-tracking-code.jpg)`
+![Google Ads Tracking Code](/images/google-ads-tracking-code.jpg)
 
 ---
 
