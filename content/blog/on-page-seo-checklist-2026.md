@@ -7,6 +7,8 @@ category: SEO
 author: Vinay Yadav
 ---
 
+**Category:** [SEO](/category/seo)
+
 # On-Page SEO Checklist for 2026
 
 Ranking on Google in 2026 is no longer about stuffing keywords into pages and hoping for the best.
