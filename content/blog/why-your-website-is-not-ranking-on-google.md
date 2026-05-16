@@ -13,6 +13,8 @@ tags:
   - Organic Traffic
 ---
 
+**Category:** [SEO](/category/seo)
+
 # Why Your Website Is Not Ranking on Google
 
 Launching a website is easy. Getting it to rank on Google is where the real challenge begins.
