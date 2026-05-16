@@ -66,10 +66,10 @@ export default function Footer() {
               Services
             </h3>
             <ul className="mt-4 space-y-3 text-sm">
-              <li><a href="https://scalewithclicks.com/services/google-ads-agency.html" className="hover:text-white transition hover:translate-x-1 inline-block">Google Ads</a></li>
-              <li><a href="https://scalewithclicks.com/services/meta-ads-agency.html" className="hover:text-white transition hover:translate-x-1 inline-block">Meta Ads</a></li>
-              <li><a href="https://scalewithclicks.com/services/seo-services.html" className="hover:text-white transition hover:translate-x-1 inline-block">SEO</a></li>
-              <li><a href="https://scalewithclicks.com/services/conversion-tracking.html" className="hover:text-white transition hover:translate-x-1 inline-block">Conversion Tracking</a></li>
+              <li><a href="https://scalewithclicks.com/services/google-ads-agency" className="hover:text-white transition hover:translate-x-1 inline-block">Google Ads</a></li>
+              <li><a href="https://scalewithclicks.com/services/meta-ads-agency" className="hover:text-white transition hover:translate-x-1 inline-block">Meta Ads</a></li>
+              <li><a href="https://scalewithclicks.com/services/seo-services" className="hover:text-white transition hover:translate-x-1 inline-block">SEO</a></li>
+              <li><a href="https://scalewithclicks.com/services/conversion-tracking" className="hover:text-white transition hover:translate-x-1 inline-block">Conversion Tracking</a></li>
             </ul>
           </div>
 
@@ -80,10 +80,10 @@ export default function Footer() {
             </h3>
             <ul className="mt-4 space-y-3 text-sm">
               <li><a href="https://scalewithclicks.com/" className="hover:text-white transition hover:translate-x-1 inline-block">Home</a></li>
-              <li><a href="https://scalewithclicks.com/aboutus.html" className="hover:text-white transition hover:translate-x-1 inline-block">About Us</a></li>
+              <li><a href="https://scalewithclicks.com/aboutus" className="hover:text-white transition hover:translate-x-1 inline-block">About Us</a></li>
               <li><a href="/" className="hover:text-white transition hover:translate-x-1 inline-block">Blog</a></li>
-              <li><a href="https://scalewithclicks.com/casestudy.html" className="hover:text-white transition hover:translate-x-1 inline-block">Case Studies</a></li>
-              <li><a href="https://scalewithclicks.com/contactus.html" className="hover:text-white transition hover:translate-x-1 inline-block">Contact Us</a></li>
+              <li><a href="https://scalewithclicks.com/casestudy" className="hover:text-white transition hover:translate-x-1 inline-block">Case Studies</a></li>
+              <li><a href="https://scalewithclicks.com/contactus" className="hover:text-white transition hover:translate-x-1 inline-block">Contact Us</a></li>
             </ul>
           </div>
 
