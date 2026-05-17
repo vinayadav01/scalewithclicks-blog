@@ -7,6 +7,8 @@ category: "Google Ads"
 author: "Vinay Yadav"
 ---
 
+**Category:** [Google Ads](/category/google-ads)
+
 # Google Ads Strategy for Small Businesses (Step-by-Step)
 
 Running a small business is already challenging. Managing inventory, customer support, sales, and marketing together can quickly become overwhelming. That’s why many business owners turn to Google Ads to generate leads and sales faster.
