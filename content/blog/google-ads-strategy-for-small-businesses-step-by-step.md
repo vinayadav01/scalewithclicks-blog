@@ -19,7 +19,7 @@ Many small businesses waste money because they target the wrong keywords, use po
 
 In this guide, you’ll learn a complete step-by-step Google Ads strategy for small businesses that focuses on generating quality leads, improving ROI, and scaling profitably.
 
-If you're completely new to paid advertising, you can also explore our detailed guide on [how to track conversions in Google Ads](https://blog.scalewithclicks.com/blog/how-to-track-conversions-in-google-ads) before launching campaigns.
+If you're completely new to paid advertising, you can also explore our detailed guide on [how to setup and track conversions in Google Ads](https://blog.scalewithclicks.com/blog/how-to-set-up-conversion-tracking-in-google-ads) before launching campaigns.
 
 ---
 
@@ -95,7 +95,7 @@ We strongly recommend integrating:
 - Google Analytics 4 (GA4)
 - Google Tag Manager (GTM)
 
-You can learn the full setup process in our detailed article on [Google Ads conversion tracking setup](https://blog.scalewithclicks.com/blog/how-to-track-conversions-in-google-ads)
+You can learn the full setup process in our detailed article on [Google Ads conversion tracking setup](https://blog.scalewithclicks.com/blog/how-to-set-up-conversion-tracking-in-google-ads)
 
 ---
 
