@@ -28,6 +28,8 @@ tags:
 canonical: "https://blog.scalewithclicks.com/ga4-setup-guide-for-beginners-step-by-step"
 ---
 
+**Category:** [Analytics & Tracking](/category/analytics-&-tracking)
+
 # GA4 Setup Guide for Beginners (Step-by-Step)
 
 If you're running a website, ecommerce store, or lead generation business, understanding your visitors is one of the most important things you can do. That’s where Google Analytics 4 (GA4) comes in.
