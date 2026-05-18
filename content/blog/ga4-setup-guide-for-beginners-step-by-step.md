@@ -16,7 +16,7 @@ keywords:
   - GA4 event tracking
 author: "Scale With Clicks"
 date: "2026-05-18"
-image: ![GA4 Setup Guide Banner](/images/ga4-setup-guide-banner.jpg)
+image: "/images/ga4-setup-guide-banner.jpg"
 category: "Tracking"
 ---
 
