@@ -16,7 +16,7 @@ keywords:
   - GA4 event tracking
 author: "Scale With Clicks"
 date: "2026-05-18"
-image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71"
+image: ![GA4 Setup Guide Banner](/images/ga4-setup-guide-banner.jpg)
 category: "Analytics & Tracking"
 tags:
   - GA4
@@ -73,7 +73,7 @@ Some major benefits include:
 
 If you’re planning to run paid campaigns, make sure your analytics setup is correct before spending money on ads.
 
-You can also read our guide on [How to Set Up Conversion Tracking in Google Ads](https://blog.scalewithclicks.com/blog/how-to-set-up-conversion-tracking-in-google-ads.md) to understand how GA4 and Google Ads work together.
+You can also read our guide on [How to Set Up Conversion Tracking in Google Ads](https://blog.scalewithclicks.com/blog/how-to-set-up-conversion-tracking-in-google-ads) to understand how GA4 and Google Ads work together.
 
 ---
 
@@ -112,11 +112,7 @@ Your GA4 property is now created.
 
 ## Suggested Image
 
-Image Link:  
-https://images.unsplash.com/photo-1551288049-bebda4e38f71
-
-Alt Text:  
-GA4 property setup dashboard
+![GA4 Property Setup](/images/ga4-property-setup.jpg)
 
 ---
 
@@ -160,11 +156,7 @@ This saves time because you don’t need to configure basic events manually.
 
 ## Suggested Image
 
-Image Link:  
-https://images.unsplash.com/photo-1460925895917-afdab827c52f
-
-Alt Text:  
-Google Analytics data stream setup
+![GA4 Data Stream Setup](/images/blog/ga4-data-stream-setup.jpg)
 
 ---
 
@@ -199,11 +191,7 @@ Now publish the container.
 
 ## Suggested Image
 
-Image Link:  
-https://images.unsplash.com/photo-1552664730-d307ca884978
-
-Alt Text:  
-Google Tag Manager setup for GA4
+![Google Tag Manager GA4 Setup](/images/blog/gtm-ga4-installation.jpg)
 
 ---
 
@@ -245,11 +233,7 @@ You should see events like:
 
 ## Suggested Image
 
-Image Link:  
-https://images.unsplash.com/photo-1516321318423-f06f85e504b3
-
-Alt Text:  
-GA4 realtime analytics dashboard
+![GA4 Realtime Report](/images/blog/ga4-realtime-report.jpg)
 
 ---
 
@@ -295,11 +279,7 @@ That’s it.
 
 ## Suggested Image
 
-Image Link:  
-https://images.unsplash.com/photo-1454165804606-c3d57bc86b40
-
-Alt Text:  
-GA4 conversion tracking events
+![GA4 Conversion Tracking](/images/blog/ga4-conversion-tracking.jpg)
 
 ---
 
@@ -317,6 +297,8 @@ You can also explore our [Google Ads Agency Services](https://scalewithclicks.co
 ---
 
 ## Steps to Link GA4 with Google Ads
+
+![GA4 Google Ads Linking](/images/ga4-google-ads-linking.jpg)
 
 1. Open GA4
 2. Go to **Admin**
@@ -388,6 +370,8 @@ Platforms like Shopify and WooCommerce support GA4 integration.
 
 For advanced ecommerce tracking setup, our [Conversion Tracking Services](https://scalewithclicks.com/services/conversion-tracking) can help ensure accurate data collection.
 
+![GA4 Ecommerce Tracking](/images/blog/ga4-ecommerce-tracking.jpg)
+
 ---
 
 ## Common GA4 Setup Mistakes to Avoid
@@ -437,6 +421,8 @@ However:
 - Standard reports may take 24–48 hours
 - Conversion data may take some time
 - Attribution reports need more data collection
+
+![GA4 Analytics Growth](/images/ga4-analytics-growth.jpg)
 
 ---
 
