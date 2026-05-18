@@ -18,14 +18,6 @@ author: "Scale With Clicks"
 date: "2026-05-18"
 image: ![GA4 Setup Guide Banner](/images/ga4-setup-guide-banner.jpg)
 category: "Tracking"
-tags:
-  - GA4
-  - Google Analytics
-  - Conversion Tracking
-  - Google Tag Manager
-  - Google Ads
-  - Ecommerce Tracking
-canonical: "https://blog.scalewithclicks.com/ga4-setup-guide-for-beginners-step-by-step"
 ---
 
 **Category:** [Tracking](/category/tracking)
