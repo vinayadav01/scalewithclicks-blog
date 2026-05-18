@@ -73,7 +73,7 @@ Some major benefits include:
 
 If you’re planning to run paid campaigns, make sure your analytics setup is correct before spending money on ads.
 
-You can also read our guide on [How to Set Up Conversion Tracking in Google Ads](https://blog.scalewithclicks.com/how-to-set-up-conversion-tracking-in-google-ads.md) to understand how GA4 and Google Ads work together.
+You can also read our guide on [How to Set Up Conversion Tracking in Google Ads](https://blog.scalewithclicks.com/blog/how-to-set-up-conversion-tracking-in-google-ads.md) to understand how GA4 and Google Ads work together.
 
 ---
 
@@ -86,7 +86,7 @@ Before starting, make sure you have:
 - Google Tag Manager access (recommended)
 - Admin access to Google Analytics
 
-If you don’t have GTM installed yet, check our [Google Ads Conversion Tracking Service](https://scalewithclicks.com/services/conversion-tracking.md) for professional setup support.
+If you don’t have GTM installed yet, check our [Google Ads Conversion Tracking Service](https://scalewithclicks.com/services/conversion-tracking) for professional setup support.
 
 ---
 
@@ -175,7 +175,7 @@ The best way to install GA4 is through Google Tag Manager (GTM).
 If you don’t have GTM installed yet, first add GTM to your website.
 
 You can learn more from our homepage:
-[Scale With Clicks](https://scalewithclicks.com/index.md)
+[Scale With Clicks](https://scalewithclicks.com/)
 
 ---
 
@@ -312,7 +312,7 @@ Connecting GA4 with Google Ads allows you to:
 - Track campaign performance
 - Optimize ads using real data
 
-You can also explore our [Google Ads Agency Services](https://scalewithclicks.com/services/google-ads-agency.md) if you need expert campaign management.
+You can also explore our [Google Ads Agency Services](https://scalewithclicks.com/services/google-ads-agency) if you need expert campaign management.
 
 ---
 
@@ -367,7 +367,7 @@ Proper tracking helps you:
 - Scale profitable campaigns
 
 You can also read:
-[Why Conversion Tracking is Important for Google Ads](https://blog.scalewithclicks.com/why-conversion-tracking-matters.md)
+[Why Conversion Tracking is Important for Google Ads](https://blog.scalewithclicks.com/blog/how-to-set-up-conversion-tracking-in-google-ads)
 
 ---
 
@@ -386,7 +386,7 @@ GA4 can track:
 
 Platforms like Shopify and WooCommerce support GA4 integration.
 
-For advanced ecommerce tracking setup, our [Conversion Tracking Services](https://scalewithclicks.com/services/conversion-tracking.md) can help ensure accurate data collection.
+For advanced ecommerce tracking setup, our [Conversion Tracking Services](https://scalewithclicks.com/services/conversion-tracking) can help ensure accurate data collection.
 
 ---
 
@@ -449,7 +449,7 @@ A proper GA4 setup helps you make data-driven decisions, improve marketing campa
 If you’re running Google Ads, ecommerce campaigns, or lead generation campaigns, accurate analytics setup is not optional anymore — it’s necessary.
 
 If you need professional help with analytics, GTM, or conversion tracking, visit:
-[Scale With Clicks](https://scalewithclicks.com/index.md)
+[Scale With Clicks](https://scalewithclicks.com/)
 
 ---
 
@@ -509,7 +509,7 @@ Possible reasons:
 - Wrong event setup
 
 You can troubleshoot using:
-[How to Set Up Conversion Tracking in Google Ads](https://blog.scalewithclicks.com/how-to-set-up-conversion-tracking-in-google-ads.md)
+[How to Set Up Conversion Tracking in Google Ads](https://blog.scalewithclicks.com/blog/how-to-set-up-conversion-tracking-in-google-ads)
 
 ---
 
