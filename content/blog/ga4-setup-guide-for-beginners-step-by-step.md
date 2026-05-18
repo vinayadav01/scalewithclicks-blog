@@ -17,7 +17,7 @@ keywords:
 author: "Scale With Clicks"
 date: "2026-05-18"
 image: ![GA4 Setup Guide Banner](/images/ga4-setup-guide-banner.jpg)
-category: "Analytics & Tracking"
+category: "Tracking"
 tags:
   - GA4
   - Google Analytics
@@ -28,7 +28,7 @@ tags:
 canonical: "https://blog.scalewithclicks.com/ga4-setup-guide-for-beginners-step-by-step"
 ---
 
-**Category:** [Analytics & Tracking](/category/analytics-&-tracking)
+**Category:** [Tracking](/category/tracking)
 
 # GA4 Setup Guide for Beginners (Step-by-Step)
 
