@@ -8,6 +8,7 @@ import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Script from "next/script";
 import Navbar from "@/components/Navbar";
 import FloatingShare from "@/components/FloatingShare";
 
@@ -94,7 +95,119 @@ const processedContent = await remark()
   // ✅ BLOG URL
   const blogUrl = `https://blog.scalewithclicks.com/${slug}`;
 
+  /* ================= ARTICLE SCHEMA ================= */
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: data.title,
+  description: data.description || "",
+  image: data.image || "",
+  author: {
+    "@type": "Person",
+    name: data.author || "Scale With Clicks",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Scale With Clicks",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://blog.scalewithclicks.com/logo.png",
+    },
+  },
+  datePublished: data.date || "",
+  dateModified: data.date || "",
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": blogUrl,
+  },
+};
+
+/* ================= FAQ SCHEMA ================= */
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What services does Scale With Clicks provide?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Scale With Clicks provides Google Ads, Meta Ads, SEO, GA4, and conversion tracking services.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do you provide conversion tracking setup?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, Scale With Clicks provides GA4, GTM, Meta Pixel, and ecommerce conversion tracking setup services.",
+      },
+    },
+  ],
+};
+
+/* ================= BREADCRUMB SCHEMA ================= */
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://scalewithclicks.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Blog",
+      item: "https://blog.scalewithclicks.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: data.title,
+      item: blogUrl,
+    },
+  ],
+};
+
   return (
+
+<>
+  {/* ARTICLE SCHEMA */}
+  <Script
+    id="article-schema"
+    type="application/ld+json"
+    strategy="afterInteractive"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify(articleSchema),
+    }}
+  />
+
+  {/* FAQ SCHEMA */}
+  <Script
+    id="faq-schema"
+    type="application/ld+json"
+    strategy="afterInteractive"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify(faqSchema),
+    }}
+  />
+
+  {/* BREADCRUMB SCHEMA */}
+  <Script
+    id="breadcrumb-schema"
+    type="application/ld+json"
+    strategy="afterInteractive"
+    dangerouslySetInnerHTML={{
+      __html: JSON.stringify(breadcrumbSchema),
+    }}
+  />
+    
     <div className="bg-white">
 
       {/* ========================= */}
@@ -378,6 +491,7 @@ const processedContent = await remark()
           `,
         }}
       />
-    </div>
+      </div>
+    </>
   );
 }
