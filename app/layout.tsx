@@ -42,6 +42,63 @@ export default function RootLayout({
           `}
         </Script>
 
+        {/* ORGANIZATION SCHEMA */}
+<Script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "Scale With Clicks",
+      url: "https://blog.scalewithclicks.com",
+      logo: "https://scalewithclicks.com/logo.png",
+      sameAs: [
+        "https://www.instagram.com/scalewithclick",
+        "https://www.linkedin.com/company/scale-with-clicks/",
+        "https://www.facebook.com/scalewithclicks/"
+      ]
+    }),
+  }}
+/>
+
+{/* WEBSITE SCHEMA */}
+<Script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "ScaleWithClicks Blog",
+      url: "https://blog.scalewithclicks.com",
+      potentialAction: {
+        "@type": "SearchAction",
+        target:
+          "https://blog.scalewithclicks.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string",
+      },
+    }),
+  }}
+/>
+
+{/* BLOG SCHEMA */}
+<Script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      name: "ScaleWithClicks Blog",
+      url: "https://blog.scalewithclicks.com",
+      description:
+        "Digital marketing, Google Ads, SEO, GA4, Meta Ads, and conversion tracking tutorials.",
+      publisher: {
+        "@type": "Organization",
+        name: "Scale With Clicks",
+      },
+    }),
+  }}
+/>
+
         {/* HEADER */}
         <Header />
 
