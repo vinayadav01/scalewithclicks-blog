@@ -51,7 +51,7 @@ export default function RootLayout({
       "@type": "Organization",
       name: "Scale With Clicks",
       url: "https://blog.scalewithclicks.com",
-      logo: "https://scalewithclicks.com/logo.png",
+      logo: "https://blog.scalewithclicks.com/logo.png",
       sameAs: [
         "https://www.instagram.com/scalewithclick",
         "https://www.linkedin.com/company/scale-with-clicks/",
