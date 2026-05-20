@@ -34,7 +34,7 @@ They are ready to take action.
 That’s why businesses that master **local Google Ads strategy** outperform competitors consistently.
 
 If you're new to ads, you might want to first understand how campaigns actually work in this detailed guide:  
-👉 [/blog/google-ads-setup-guide](/blog/google-ads-setup-guide)
+👉 [Google Ads Setup Guide](/blog/google-ads-setup-guide)
 
 ---
 
@@ -82,7 +82,7 @@ Instead, go hyper-specific:
 These are called **high-intent keywords**, and they convert much better.
 
 👉 If your ads aren’t converting, this could be one of the reasons explained here:  
-👉 [/blog/why-google-ads-not-converting](/blog/google-ads-not-converting)
+👉 [Why Google Ads Not Converting](/blog/google-ads-not-converting)
 
 ---
 
@@ -142,7 +142,7 @@ Instead, use:
 - Single goal (call or form)  
 
 If you want better results, focus on building a proper system like explained here:  
-👉 [/blog/lead-generation-system](/blog/why-lead-generation-fails-and-how-to-fix-it)
+👉 [Lead Generation System](/blog/why-lead-generation-fails-and-how-to-fix-it)
 
 ---
 
@@ -297,7 +297,7 @@ If you’re serious about scaling your business with Google Ads, don’t rely on
 👉 [/](https://scalewithclicks.com)
 
 👉 Explore our services:  
-👉 [/services/google-ads-management](/services/google-ads-agency.html)
+👉 [Services](https://scalewithclicks.com/services)
 
 Or read more strategies here:  
 👉 [/blog](/blog)
