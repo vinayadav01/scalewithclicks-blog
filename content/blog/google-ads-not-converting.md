@@ -12,7 +12,7 @@ author: Vinay Yadav
 Spending money on Google Ads but not getting leads or sales? You’re not alone. Many businesses struggle with campaigns that generate clicks but fail to convert.
 
 The problem isn’t Google Ads — it’s usually the strategy behind it. If you're struggling, working with a  
-[Google Ads agency](https://scalewithclicks.com/services/google-ads-agency.html) can help fix campaign issues and improve ROI faster.
+[Google Ads agency](https://scalewithclicks.com/services/google-ads-agency) can help fix campaign issues and improve ROI faster.
 
 ---
 
@@ -72,7 +72,7 @@ If you’re not tracking correctly, you don’t know what’s working.
 - Verify data  
 
 👉 Need help?  
-[Conversion Tracking Services](https://scalewithclicks.com/services/conversion-tracking.html)
+[Conversion Tracking Services](https://scalewithclicks.com/services/conversion-tracking)
 
 ---
 
@@ -106,17 +106,17 @@ Google Ads requires constant optimization.
 
 ## Improve Your Marketing Performance
 
-👉 [Google Ads Management](https://scalewithclicks.com/services/google-ads-agency.html)  
-👉 [Meta Ads Services](https://scalewithclicks.com/services/meta-ads-agency.html)  
-👉 [SEO Services](https://scalewithclicks.com/services/seo-services.html)  
-👉 [Conversion Tracking](https://scalewithclicks.com/services/conversion-tracking.html)  
+👉 [Google Ads Management](https://scalewithclicks.com/services/google-ads-agency)  
+👉 [Meta Ads Services](https://scalewithclicks.com/services/meta-ads-agency)  
+👉 [SEO Services](https://scalewithclicks.com/services/seo-services)  
+👉 [Conversion Tracking](https://scalewithclicks.com/services/conversion-tracking)  
 👉 [Visit Homepage](https://scalewithclicks.com/)
 
 ---
 
 ## 🔗 Related Articles
 
-👉 [Why Lead Generation Fails](/blog/why-lead-generation-fails)  
+👉 [Why Lead Generation Fails](https://blog.scalewithclicks.com/blog/why-lead-generation-fails-and-how-to-fix-it)  
 👉 [How to Reduce CPC in Google Ads](/blog/how-to-reduce-cpc-google-ads)
 
 ---
