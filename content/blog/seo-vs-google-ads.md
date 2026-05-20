@@ -115,7 +115,7 @@ Before investing in SEO, ads help validate:
 - Conversion rates  
 
 👉 Want help setting up high-converting campaigns? Explore our  
-**[Google Ads Services](https://scalewithclicks.com/services/google-ads-agency.html)**
+**[Google Ads Services](https://scalewithclicks.com/services/google-ads-agency)**
 
 ---
 
