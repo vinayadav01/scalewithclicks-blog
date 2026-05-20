@@ -16,7 +16,7 @@ High CPC can quickly drain your budget and reduce your ROI.
 The good news — you don’t need to spend more to get better results. You just need to optimize smarter.
 
 If you want expert help, working with a professional  
-[Google Ads agency](https://scalewithclicks.com/services/google-ads-agency.html)  
+[Google Ads agency](https://scalewithclicks.com/services/google-ads-agency)  
 can significantly reduce wasted ad spend and improve performance.
 
 ---
@@ -120,7 +120,7 @@ Without tracking, you’re guessing.
 - Sales  
 
 👉 Get help here:  
-[Conversion Tracking Setup](https://scalewithclicks.com/services/conversion-tracking.html)
+[Conversion Tracking Setup](https://scalewithclicks.com/services/conversion-tracking)
 
 ---
 
@@ -176,11 +176,11 @@ Google Ads is not one-time setup.
 
 ## 🚀 Improve Your Marketing Performance
 
-- [Google Ads Management](https://scalewithclicks.com/services/google-ads-agency.html)  
-- [Meta Ads Services](https://scalewithclicks.com/services/meta-ads-agency.html)  
-- [SEO Services](https://scalewithclicks.com/services/seo-services.html)  
-- [Conversion Tracking](https://scalewithclicks.com/services/conversion-tracking.html)  
-- [All Services](https://scalewithclicks.com/services.html)  
+- [Google Ads Management](https://scalewithclicks.com/services/google-ads-agency)  
+- [Meta Ads Services](https://scalewithclicks.com/services/meta-ads-agency)  
+- [SEO Services](https://scalewithclicks.com/services/seo-services)  
+- [Conversion Tracking](https://scalewithclicks.com/services/conversion-tracking)  
+- [All Services](https://scalewithclicks.com/services)  
 - [Visit Homepage](https://scalewithclicks.com/)  
 
 ---
