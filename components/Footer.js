@@ -13,11 +13,9 @@ export default function Footer() {
 
           {/* BRAND */}
           <div className="md:col-span-2">
-            <img
-  src="/logo.png"
-  alt="ScaleWithClicks"
-  className="h-10 w-auto"
-/>
+            <h2 className="text-white text-xl font-semibold tracking-tight">
+  ScaleWithClicks
+</h2>
 
             <p className="mt-4 text-sm max-w-sm leading-relaxed">
               Helping businesses generate consistent leads through performance marketing, SEO, and advanced tracking systems.
