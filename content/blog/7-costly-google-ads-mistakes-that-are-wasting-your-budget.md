@@ -90,7 +90,7 @@ Match your ads with **user intent**:
 | Commercial | Comparison pages |
 | Transactional | Service pages |
 
-👉 Check our service page: [Google Ads Services](/services)
+👉 Check our service page: [Google Ads Services](https://scalewithclicks.com/services/)
 
 ---
 
@@ -252,7 +252,7 @@ If you're struggling to get results, it's not your budget—it’s your strategy
 
 If you want a done-for-you system that generates consistent leads:
 
-👉 Check out our services: [Scale With Clicks](/services)
+👉 Check out our services: [Scale With Clicks](https://scalewithclicks.com/services/)
 
 Or explore more insights here: [Growth Insights Blog](/)
 
