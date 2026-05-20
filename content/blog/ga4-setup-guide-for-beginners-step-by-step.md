@@ -104,8 +104,6 @@ Your GA4 property is now created.
 
 ---
 
-## Suggested Image
-
 ![GA4 Property Setup](/images/ga4-property-setup.jpg)
 
 ---
@@ -148,9 +146,7 @@ This saves time because you don’t need to configure basic events manually.
 
 ---
 
-## Suggested Image
-
-![GA4 Data Stream Setup](/images/blog/ga4-data-stream-setup.jpg)
+![GA4 Data Stream Setup](/images/ga4-data-stream-setup.jpg)
 
 ---
 
@@ -183,9 +179,7 @@ Now publish the container.
 
 ---
 
-## Suggested Image
-
-![Google Tag Manager GA4 Setup](/images/blog/gtm-ga4-installation.jpg)
+![Google Tag Manager GA4 Setup](/images/gtm-ga4-installation.jpg)
 
 ---
 
@@ -225,9 +219,7 @@ You should see events like:
 
 ---
 
-## Suggested Image
-
-![GA4 Realtime Report](/images/blog/ga4-realtime-report.jpg)
+![GA4 Realtime Report](/images/ga4-realtime-report.jpg)
 
 ---
 
@@ -271,9 +263,7 @@ That’s it.
 
 ---
 
-## Suggested Image
-
-![GA4 Conversion Tracking](/images/blog/ga4-conversion-tracking.jpg)
+![GA4 Conversion Tracking](/images/ga4-conversion-tracking.jpg)
 
 ---
 
@@ -364,7 +354,7 @@ Platforms like Shopify and WooCommerce support GA4 integration.
 
 For advanced ecommerce tracking setup, our [Conversion Tracking Services](https://scalewithclicks.com/services/conversion-tracking) can help ensure accurate data collection.
 
-![GA4 Ecommerce Tracking](/images/blog/ga4-ecommerce-tracking.jpg)
+![GA4 Ecommerce Tracking](/images/ga4-ecommerce-tracking.jpg)
 
 ---
 
