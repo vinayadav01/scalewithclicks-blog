@@ -13,9 +13,11 @@ export default function Footer() {
 
           {/* BRAND */}
           <div className="md:col-span-2">
-            <h2 className="text-white text-xl font-semibold tracking-tight">
-              ScaleWithClicks
-            </h2>
+            <img
+  src="/logo.png"
+  alt="ScaleWithClicks"
+  className="h-10 w-auto"
+/>
 
             <p className="mt-4 text-sm max-w-sm leading-relaxed">
               Helping businesses generate consistent leads through performance marketing, SEO, and advanced tracking systems.
@@ -94,7 +96,7 @@ export default function Footer() {
             </h3>
             <ul className="mt-4 space-y-3 text-sm">
               <li><a href="/privacy-policy" className="hover:text-white transition hover:translate-x-1 inline-block">Privacy Policy</a></li>
-              <li><a href="/terms" className="hover:text-white transition hover:translate-x-1 inline-block">Terms</a></li>
+              <li><a href="/terms-and-conditions" className="hover:text-white transition hover:translate-x-1 inline-block">Terms</a></li>
               <li><a href="/disclaimer" className="hover:text-white transition hover:translate-x-1 inline-block">Disclaimer</a></li>
             </ul>
           </div>
@@ -107,7 +109,7 @@ export default function Footer() {
 
           <div className="flex gap-6">
             <a href="/privacy-policy" className="hover:text-white transition">Privacy</a>
-            <a href="/terms" className="hover:text-white transition">Terms</a>
+            <a href="/terms-and-conditions" className="hover:text-white transition">Terms</a>
             <a href="/disclaimer" className="hover:text-white transition">Disclaimer</a>
           </div>
         </div>
