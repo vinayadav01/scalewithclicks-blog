@@ -16,7 +16,7 @@ Most beginners waste money because they skip the fundamentals.
 In this step-by-step guide, you’ll learn exactly how to set up Google Ads the right way.
 
 If you want faster results, working with a professional  
-[Google Ads agency](https://scalewithclicks.com/services/google-ads-agency.html)  
+[Google Ads agency](https://scalewithclicks.com/services/google-ads-agency)  
 can help you avoid costly mistakes and scale faster.
 
 <br />
@@ -130,7 +130,7 @@ If you don’t track conversions:
 - Purchases  
 
 👉 Get it done properly here:  
-[Conversion Tracking Setup](https://scalewithclicks.com/services/conversion-tracking.html)
+[Conversion Tracking Setup](https://scalewithclicks.com/services/conversion-tracking)
 
 <br />
 
@@ -175,17 +175,17 @@ Google Ads is NOT set-and-forget.
 - Poor ad copy  
 
 👉 Read full breakdown:  
-[Google Ads Mistakes Guide](/blog/google-ads-mistakes)
+[Google Ads Mistakes Guide](https://blog.scalewithclicks.com/blog/7-costly-google-ads-mistakes-that-are-wasting-your-budget)
 
 <br />
 
 ## 🔗 Improve Your Results Faster
 
-👉 [Google Ads Management](https://scalewithclicks.com/services/google-ads-agency.html)  
-👉 [Meta Ads Services](https://scalewithclicks.com/services/meta-ads-agency.html)  
-👉 [SEO Services](https://scalewithclicks.com/services/seo-services.html)  
-👉 [Conversion Tracking](https://scalewithclicks.com/services/conversion-tracking.html)  
-👉 [All Services](https://scalewithclicks.com/services.html)  
+👉 [Google Ads Management](https://scalewithclicks.com/services/google-ads-agency)  
+👉 [Meta Ads Services](https://scalewithclicks.com/services/meta-ads-agency)  
+👉 [SEO Services](https://scalewithclicks.com/services/seo-services)  
+👉 [Conversion Tracking](https://scalewithclicks.com/services/conversion-tracking)  
+👉 [All Services](https://scalewithclicks.com/services)  
 👉 [Visit Homepage](https://scalewithclicks.com/)
 
 <br />
