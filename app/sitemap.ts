@@ -11,6 +11,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
   let posts: MetadataRoute.Sitemap = [];
   const categories = new Set<string>();
 
+  // ✅ Helper function to create safe URLs
+  const createSafeSlug = (text: string) => {
+    return text
+      .toString()
+      .toLowerCase()
+      .replace(/&/g, "and")
+      .replace(/[^a-z0-9\s-]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-")
+      .trim();
+  };
+
   // ✅ Read blog posts safely
   if (fs.existsSync(blogDir)) {
     const files = fs.readdirSync(blogDir);
@@ -21,9 +33,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
       const { data } = matter(fileContent);
 
-      const slug = file.replace(".md", "");
+      // ✅ Safe blog slug
+      const slug = createSafeSlug(
+        file.replace(".md", "")
+      );
 
-      // ✅ SAFE category handling
+      // ✅ Safe category handling
       const category = (data?.category || "general").toString();
 
       categories.add(category);
@@ -40,12 +55,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // ✅ Category URLs (SAFE)
   const categoryUrls: MetadataRoute.Sitemap = Array.from(categories).map(
     (cat) => {
-      const safeCategory = (cat || "general").toString();
+      const safeCategory = createSafeSlug(cat || "general");
 
       return {
-        url: `${baseUrl}/category/${safeCategory
-          .toLowerCase()
-          .replace(/\s+/g, "-")}`,
+        url: `${baseUrl}/category/${safeCategory}`,
         lastModified: new Date(),
       };
     }
