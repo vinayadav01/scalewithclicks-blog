@@ -7,7 +7,7 @@ category: "Google Ads"
 author: "Vinay Yadav"
 ---
 
-**Category:** [Digital Marketing](/category/digital-marketing)
+**Category:** [Google Ads](/category/google-ads)
 
 # Google Ads vs Facebook Ads: Which Is Better for Your Business?
 
