@@ -174,8 +174,6 @@ For example:
 
 This creates a full-funnel strategy.
 
-Learn more about building a complete marketing funnel in our guide on [Full Funnel Marketing Strategy](/blog/full-funnel-marketing-strategy.md).
-
 ### Winner: Google Ads
 
 For immediate leads and conversions.
@@ -375,7 +373,7 @@ The better ROI depends on:
 
 Many businesses fail because they ignore tracking and optimization.
 
-If your campaigns are not converting, check out our homepage at [Scale With Clicks](https://scalewithclicks.com/)) to learn how data-driven marketing improves ad performance.
+If your campaigns are not converting, check out our homepage at [Scale With Clicks](https://scalewithclicks.com/) to learn how data-driven marketing improves ad performance.
 
 ---
 
