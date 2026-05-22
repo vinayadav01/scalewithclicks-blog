@@ -50,7 +50,7 @@ Your business appears exactly when people are searching for your services.
 
 Businesses focused on lead generation, local services, or high-intent sales often see excellent results with Google Ads.
 
-If you're struggling with poor campaign performance, you should also read [7 Costly Google Ads Mistakes That Are Wasting Your Budget (And How to Fix Them)](/blog/google-ads-mistakes.md).
+If you're struggling with poor campaign performance, you should also read [7 Costly Google Ads Mistakes That Are Wasting Your Budget (And How to Fix Them)](https://blog.scalewithclicks.com/blog/7-costly-google-ads-mistakes-that-are-wasting-your-budget)
 
 ---
 
