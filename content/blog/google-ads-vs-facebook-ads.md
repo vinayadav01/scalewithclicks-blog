@@ -1,10 +1,10 @@
 ---
-title: Google Ads vs Facebook Ads: Which Is Better for Your Business?
+title: "Google Ads vs Facebook Ads: Which Is Better for Your Business?"
 date: "2026-05-25"
-description: Compare Google Ads vs Facebook Ads to understand which platform delivers better ROI, leads, sales, and brand awareness for your business goals.
-image: /images/google-ads-vs-facebook-ads.jpg
-category: Digital Marketing
-author: Vinay Yadav
+description: "Compare Google Ads vs Facebook Ads to understand which platform delivers better ROI, leads, sales, and brand awareness for your business goals."
+image: "/images/google-ads-vs-facebook-ads.jpg"
+category: "Digital Marketing"
+author: "Vinay Yadav"
 ---
 
 **Category:** [Digital Marketing](/category/digital-marketing)
