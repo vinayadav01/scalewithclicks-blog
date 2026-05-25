@@ -1,5 +1,3 @@
-Save File Name: google-ads-vs-facebook-ads.md
-
 ---
 title: Google Ads vs Facebook Ads: Which Is Better for Your Business?
 date: "2026-05-25"
