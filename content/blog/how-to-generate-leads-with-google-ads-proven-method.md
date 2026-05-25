@@ -19,7 +19,7 @@ When set up correctly, Google Ads can help businesses generate highly targeted l
 
 In this guide, you'll learn the proven method to generate leads with Google Ads, reduce wasted spend, and improve conversions.
 
-![Google Ads Lead Generation Strategy](https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop)
+![How to Generate Leads with Google Ads](/images/how-to-generate-leads-with-google-ads.jpg)
 
 ---
 
@@ -66,7 +66,7 @@ Your campaigns should be optimized for conversions, not clicks.
 
 Before launching campaigns, make sure proper tracking is implemented. Here’s a complete guide on [How to Set Up Conversion Tracking in Google Ads](/blog/how-to-set-up-conversion-tracking-in-google-ads).
 
-![Google Ads Conversion Tracking](https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop)
+![Google Ads Conversion Tracking](/images/google-ads-conversion-tracking.jpg)
 
 ---
 
@@ -152,9 +152,9 @@ Add:
 
 Slow websites kill conversions.
 
-You can improve landing page performance by following our [Website Audit Checklist Before Running Google Ads](https://scalewithclicks.com/services).
+You can improve landing page performance by following our [Website Audit Checklist Before Running Google Ads](https://blog.scalewithclicks.com/blog/why-lead-generation-fails-and-how-to-fix-it).
 
-![Landing Page Optimization](https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop)
+![Landing Page Optimization for Google Ads](/images/landing-page-optimization-google-ads.jpg)
 
 ---
 
@@ -278,7 +278,7 @@ Remarketing campaigns often generate cheaper conversions because users already k
 
 This strategy works especially well alongside [Facebook Ads Services](https://scalewithclicks.com/services/meta-ads-agency).
 
-![Google Ads Remarketing](https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop)
+![Google Ads Remarketing Strategy](/images/google-ads-remarketing-strategy.jpg)
 
 ---
 
