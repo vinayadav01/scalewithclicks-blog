@@ -140,7 +140,7 @@ This becomes even more important for businesses focused on [performance marketin
 
 # 3. Easier Conversion Tracking
 
-![Conversion Tracking Setup](/images/conversion-tracking-setup.jpg)
+![Conversion Tracking Setup](/images/conversion-tracking.jpg)
 
 One of the biggest reasons businesses use GTM is conversion tracking.
 
