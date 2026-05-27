@@ -326,7 +326,7 @@ GA4 Ecommerce Tracking helps identify:
 - Cart abandonment issues
 - Funnel drop-offs
 
-![Ecommerce Sales Analytics](/images/ecommerce-sales-analytics.jpg)
+![Ecommerce Sales Analytics](/images/ecommerce-conversion-tracking.jpg)
 
 ---
 
