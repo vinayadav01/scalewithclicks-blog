@@ -3,11 +3,11 @@ title: How to Track Leads and Sales on Your Website
 date: "2026-05-27"
 description: Learn how to track leads and sales on your website using Google Analytics, conversion tracking, Meta Pixel, CRM integration, and call tracking to improve ROI and marketing performance.
 image: /images/website-lead-tracking-guide.jpg
-category: "Digital Marketing"
+category: "Tracking"
 author: "Vinay Yadav"
 ---
 
-**Category:** [Digital Marketing](/category/digital-marketing)
+**Category:** [Tracking](/category/tracking)
 
 # How to Track Leads and Sales on Your Website
 
