@@ -160,7 +160,7 @@ This makes implementation faster and more scalable.
 
 For businesses actively investing in marketing campaigns, GTM becomes essential.
 
-![Google Tag Manager Setup](/images/google-tag-manager-setup.jpg)
+![Google Tag Manager Setup](/images/gtm-setup.jpg)
 
 ---
 
