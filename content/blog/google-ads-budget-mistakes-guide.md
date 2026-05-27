@@ -19,7 +19,7 @@ If your campaigns are underperforming, these common Google Ads mistakes could be
 
 ![Google Ads Budget Mistakes](/images/google-ads-mistakes.jpg)
 
-Before launching or scaling campaigns, make sure your website and tracking systems are properly configured. Businesses often ignore the importance of [conversion tracking setup](/services/conversion-tracking), which makes it impossible to measure actual ROI from ads.
+Before launching or scaling campaigns, make sure your website and tracking systems are properly configured. Businesses often ignore the importance of [conversion tracking setup](https://scalewithclicks.com/services/conversion-tracking), which makes it impossible to measure actual ROI from ads.
 
 ---
 
