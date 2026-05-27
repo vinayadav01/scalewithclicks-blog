@@ -120,7 +120,7 @@ With GA4, you can see:
 - Which page converts best
 - How users navigate your website
 
-![Google Analytics Dashboard](/images/google-analytics-dashboard.jpg)
+![Google Analytics Dashboard](/images/google-analytics-reporting.jpg)
 
 ## Important GA4 Events to Track
 
