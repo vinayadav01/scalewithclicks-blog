@@ -2,12 +2,12 @@
 title: "How to Set Up Conversion Tracking in Google Ads"
 description: "Learn how to set up Google Ads conversion tracking correctly to measure leads, purchases, calls, and ROI for your campaigns."
 date: "2026-05-12"
-author: "ScaleWithClicks"
+author: "Vinay Yadav"
 image: "/images/google-ads-conversion-tracking-guide.jpg"
-category: Google Ads
+category: "Tracking"
 ---
 
-**Category:** [Google Ads](/category/google-ads)
+**Category:** [Tracking](/category/tracking)
 
 # How to Set Up Conversion Tracking in Google Ads
 
