@@ -17,10 +17,10 @@ keywords:
 author: "Scale With Clicks"
 date: "2026-05-18"
 image: "/images/ga4-setup-guide-banner.jpg"
-category: "Analytics & Tracking"
+category: "Tracking"
 ---
 
-**Category:** [Analytics & Tracking](/category/analytics-&-tracking)
+**Category:** [Tracking](/category/tracking)
 
 # GA4 Setup Guide for Beginners (Step-by-Step)
 
