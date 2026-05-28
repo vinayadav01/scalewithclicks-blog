@@ -484,7 +484,7 @@ Professional agencies usually focus on:
 
 This is why many businesses outsource campaigns to specialized [PPC Management Agencies](https://scalewithclicks.com/services/google-ads-agency).
 
-![Google Ads Optimization](/images/google-ads-optimization-report.jpg)
+![Google Ads Optimization](/images/google-ads-optimization.jpg)
 
 ---
 
