@@ -1,4 +1,3 @@
-```md
 ---
 title: Best Google Ads Campaign Structure for High ROI
 date: "2026-05-28"
