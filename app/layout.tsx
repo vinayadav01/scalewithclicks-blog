@@ -13,11 +13,15 @@ const inter = Inter({
 export const metadata = {
   title: "ScaleWithClicks Blog",
   description: "Performance Marketing Blog",
+
+  verification: {
+    google: "UG50HhrybK9nw-uBE1UJYvuHAsvGdj44bMJajcWMxgU",
+  },
+
   icons: {
     icon: "/favicon.ico",
-  }
-  };
-
+  },
+};
 export default function RootLayout({
   children,
 }: {
