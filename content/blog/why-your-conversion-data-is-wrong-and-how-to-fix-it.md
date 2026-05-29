@@ -3,11 +3,11 @@ title: Why Your Conversion Data Is Wrong (And How to Fix It)
 date: "2026-05-29"
 description: Discover why your conversion tracking data may be inaccurate, the most common attribution and tracking mistakes, and how to fix them to improve marketing performance and ROI.
 image: /images/conversion-tracking-errors.jpg
-category: Analytics
+category: Tracking
 author: Vinay Yadav
 ---
 
-**Category:** [Analytics](/category/analytics)
+**Category:** [Tracking](/category/tracking)
 
 # Why Your Conversion Data Is Wrong (And How to Fix It)
 
@@ -122,7 +122,7 @@ Track:
 
 Modern event tracking through GA4 provides far more accurate measurement.
 
-You can learn more about website optimization best practices on the [Scale With Clicks Homepage](https://scalewithclicks.com/).
+You can learn more about website optimization best practices on [Scale With Clicks](https://scalewithclicks.com/).
 
 ---
 
