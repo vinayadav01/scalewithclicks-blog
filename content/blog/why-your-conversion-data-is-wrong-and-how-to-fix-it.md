@@ -80,7 +80,7 @@ When reporting is not aligned, marketers often assume they generated four conver
 - Test every conversion path manually.
 - Use Google Tag Manager Preview Mode regularly.
 
-![Google Tag Manager audit for accurate conversion tracking](/images/google-tag-manager-audit.jpg)
+![Google Tag Manager audit for accurate conversion tracking](/images/google-tag-manager-dashboard.jpg)
 
 ---
 
