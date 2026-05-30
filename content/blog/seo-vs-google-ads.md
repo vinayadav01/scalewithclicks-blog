@@ -88,7 +88,7 @@ People trust organic results more than ads.
 Ranking #1 builds credibility.
 
 👉 This is why building a content engine on your  
-**[Home Page](https://scalewithclicks.com/)** and blog is critical for long-term growth.
+**[Scale With Clicks](https://scalewithclicks.com/)** and blog is critical for long-term growth.
 
 ---
 
