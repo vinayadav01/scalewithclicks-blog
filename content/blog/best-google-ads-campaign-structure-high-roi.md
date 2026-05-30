@@ -194,7 +194,7 @@ Never mix brand keywords with generic keywords.
 
 Keywords:
 
-- [scale with clicks] (https://scalewithclicks.com/)
+- [scale with clicks](https://scalewithclicks.com/)
 - scale with clicks agency
 - scale with clicks google ads
 
