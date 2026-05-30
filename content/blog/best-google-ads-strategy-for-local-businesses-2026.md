@@ -294,7 +294,7 @@ You won’t just get leads—you’ll build a **predictable growth system**.
 If you’re serious about scaling your business with Google Ads, don’t rely on guesswork.
 
 👉 Visit our homepage:  
-👉 [/](https://scalewithclicks.com)
+👉 [Scale With Clicks](https://scalewithclicks.com)
 
 👉 Explore our services:  
 👉 [Services](https://scalewithclicks.com/services)
