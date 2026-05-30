@@ -167,6 +167,8 @@ A slow-loading website creates a poor user experience, increases bounce rates, a
 
 Google prefers websites that load quickly on both desktop and mobile devices.
 
+To know more you can visit [Scale With Clicks](https://scalewithclicks.com/)
+
 ---
 
 ## 6. Your Website Is Not Mobile-Friendly
@@ -367,7 +369,7 @@ Publish:
 
 Regular publishing signals activity and authority to search engines.
 
-You can also explore more SEO and digital marketing insights on the [Scale With Clicks blog](https://blog.scalewithclicks.com).
+You can also explore more SEO and digital marketing insights on the [Scale With Clicks Blog](https://blog.scalewithclicks.com).
 
 ---
 
