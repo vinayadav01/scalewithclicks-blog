@@ -14,7 +14,7 @@ Lead generation is the lifeblood of any business. Without a consistent flow of q
 If you're struggling to generate leads, working with a professional  
 [Google Ads](https://scalewithclicks.com/services/google-ads-agency)
  
-[Meta Ads](https://scalewithclicks.com/services/meta-ads-agency) 
+[Meta Ads](https://clicks.com/services/meta-ads-agency) 
 can help you build a predictable lead generation system.
 
 ---
@@ -192,7 +192,7 @@ Lead generation is not one-time.
 👉 [Meta Ads Management](https://scalewithclicks.com/services/meta-ads-agency)  
 👉 [Conversion Tracking](https://scalewithclicks.com/services/conversion-tracking)  
 👉 [All Services](https://scalewithclicks.com/services/)  
-👉 [Home Page](https://scalewithclicks.com/) 
+👉 [Scale With Clicks](https://scalewithclicks.com/) 
 
 ---
 
