@@ -622,7 +622,7 @@ Start with:
 
 Then gradually implement advanced tracking methods like enhanced conversions and server-side tracking.
 
-If you need professional help setting up conversion tracking, explore our [Google Ads Services](https://scalewithclicks.com/services/google-ads-agency) or visit the [ScaleWithClicks Home Page](https://scalewithclicks.com/)).
+If you need professional help setting up conversion tracking, explore our [Google Ads Services](https://scalewithclicks.com/services/google-ads-agency) or visit the [Scale With Clicks](https://scalewithclicks.com/).
 
 ---
 
