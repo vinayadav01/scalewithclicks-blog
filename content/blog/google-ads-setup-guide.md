@@ -186,7 +186,7 @@ Google Ads is NOT set-and-forget.
 👉 [SEO Services](https://scalewithclicks.com/services/seo-services)  
 👉 [Conversion Tracking](https://scalewithclicks.com/services/conversion-tracking)  
 👉 [All Services](https://scalewithclicks.com/services)  
-👉 [Visit Homepage](https://scalewithclicks.com/)
+👉 [Scale With Clicks](https://scalewithclicks.com/)
 
 <br />
 
