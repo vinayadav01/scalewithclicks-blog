@@ -110,7 +110,7 @@ Google Ads requires constant optimization.
 👉 [Meta Ads Services](https://scalewithclicks.com/services/meta-ads-agency)  
 👉 [SEO Services](https://scalewithclicks.com/services/seo-services)  
 👉 [Conversion Tracking](https://scalewithclicks.com/services/conversion-tracking)  
-👉 [Visit Homepage](https://scalewithclicks.com/)
+👉 [Visit Scale With Clicks](https://scalewithclicks.com/)
 
 ---
 
