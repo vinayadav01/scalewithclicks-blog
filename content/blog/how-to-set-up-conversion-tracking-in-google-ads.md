@@ -548,7 +548,7 @@ Without proper tracking:
 
 Whether you're running lead generation campaigns or eCommerce ads, accurate conversion tracking helps you make smarter marketing decisions.
 
-At [ScaleWithClicks](https://www.scalewithclicks.com/), we help businesses implement advanced tracking systems that improve campaign performance, attribution accuracy, and advertising ROI.
+At [Scale With Clicks](https://www.scalewithclicks.com/), we help businesses implement advanced tracking systems that improve campaign performance, attribution accuracy, and advertising ROI.
 
 If you want professional help with tracking setup, campaign optimization, or performance marketing, explore our [Google Ads Management Services](https://www.scalewithclicks.com/services/google-ads-agency).
 
