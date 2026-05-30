@@ -253,7 +253,7 @@ For example:
 
 If you're learning SEO fundamentals, you should also read our article on [7 Costly Google Ads Mistakes That Are Wasting Your Budget](/blog/7-costly-google-ads-mistakes-that-are-wasting-your-budget).
 
-You can also explore our homepage at [ScaleWithClicks](/) for more growth strategies.
+You can also explore our homepage at [Scale With Clicks](https://scalewithclicks.com/) for more growth strategies.
 
 ---
 
@@ -463,7 +463,7 @@ Include calls-to-action like:
 - Explore services  
 - Read related blogs  
 
-If you want help scaling your traffic and leads, visit our [digital marketing services](https://scalewithclicks.com/services.html).
+If you want help scaling your traffic and leads, visit our [Digital Marketing Services](https://scalewithclicks.com/services.html).
 
 ---
 
@@ -538,5 +538,5 @@ Yes. Internal links improve crawlability, authority flow, and user engagement.
 ## ✍️ About the Author
 
 **Vinay Yadav**  
-Founder of ScaleWithClicks  
+Founder of Scale With Clicks  
 Helping businesses grow with SEO, Google Ads, and performance marketing systems.
