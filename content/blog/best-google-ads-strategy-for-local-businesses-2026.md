@@ -300,7 +300,7 @@ If you’re serious about scaling your business with Google Ads, don’t rely on
 👉 [Services](https://scalewithclicks.com/services)
 
 Or read more strategies here:  
-👉 [/blog](/blog)
+👉 [Scale With Clicks Blog](/blog)
 
 ---
 
