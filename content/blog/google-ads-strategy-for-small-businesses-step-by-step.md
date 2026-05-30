@@ -156,7 +156,7 @@ Examples:
 Protect your brand name from competitors.
 
 Examples:
-- Scale With Clicks
+- [Scale With Clicks](https://scalewithclicks.com/)
 - Garhwal Sweets
 
 ---
