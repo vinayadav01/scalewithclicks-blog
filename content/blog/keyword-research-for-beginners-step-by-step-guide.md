@@ -128,7 +128,7 @@ For example, if you run a digital marketing agency, your topic list might includ
 
 Each topic can generate dozens or even hundreds of keyword opportunities.
 
-If you're offering multiple marketing solutions, reviewing your core offerings on the [Home Page](https://scalewithclicks.com/) can help you identify relevant content clusters.
+If you're offering multiple marketing solutions, reviewing your core offerings on the [Scale With Clicks](https://scalewithclicks.com/) can help you identify relevant content clusters.
 
 ---
 
@@ -304,7 +304,7 @@ Look for:
 
 This strategy can reveal opportunities that keyword tools might miss.
 
-You can also review how established agencies structure service pages such as [google Ads Management Services](https://scalewithclicks.com/services/google-ads-agency) and [Local SEO Services](https://scalewithclicks.com/services/seo-services).
+You can also review how established agencies structure service pages such as [Google Ads Management Services](https://scalewithclicks.com/services/google-ads-agency) and [Local SEO Services](https://scalewithclicks.com/services/seo-services).
 
 ---
 
