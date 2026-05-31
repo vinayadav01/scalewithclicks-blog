@@ -172,6 +172,8 @@ Google Keyword Planner is free and provides:
 * Competition levels
 * Keyword suggestions
 
+![Keyword Planner](/images/google-keyword-planner.jpg)
+
 ### Google Autocomplete
 
 Type a keyword into Google and review the suggestions.
@@ -205,6 +207,8 @@ SEMrush helps identify:
 * Competitor keywords
 * Content gaps
 * Ranking opportunities
+
+![SEMRush](/images/semrush.jpg)
 
 If you're interested in improving visibility beyond SEO, you may also want to explore insights from our guide on [Google Ads Mistakes That Waste Budget](https://blog.scalewithclicks.com/blog/7-costly-google-ads-mistakes-that-are-wasting-your-budget).
 
@@ -324,6 +328,8 @@ Related Keywords:
 These can all be targeted within one comprehensive article.
 
 This approach helps build topical authority.
+
+![Keyword Cluster](/images/keyword-cluster.jpg)
 
 ---
 
