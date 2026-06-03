@@ -26,7 +26,7 @@ Whether you're running campaigns for an eCommerce store, local business, SaaS co
 
 If you're new to paid advertising, you should first understand the basics of [Google Ads Management Services](https://scalewithclicks.com/services/google-ads-agency) before launching campaigns.
 
-![Google Ads Campaign Structure Diagram](/public/images/google-ads-campaign-structure.jpg)
+![Google Ads Campaign Structure Diagram](/images/google-ads-campaign-structure.jpg)
 
 ---
 
