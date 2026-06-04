@@ -79,9 +79,10 @@ function extractFaqs(markdown) {
     faqs.push({
       question: match[1].trim(),
       answer: match[2]
-        .replace(/\*/g, "")
-        .replace(/\n/g, " ")
-        .trim(),
+  .replace(/[*_`#>-]/g, "")
+  .replace(/\n+/g, " ")
+  .replace(/\s+/g, " ")
+  .trim(),
     });
   }
 
@@ -166,8 +167,6 @@ const articleSchema = {
 
 /* ================= FAQ SCHEMA ================= */
 
-console.log("FAQ Count:", data.faq?.length);
-
 const faqSchema =
   extractedFaqs.length > 0
     ? {
@@ -179,20 +178,6 @@ const faqSchema =
           acceptedAnswer: {
             "@type": "Answer",
             text: faq.answer,
-          },
-        })),
-      }
-    : null;
-  
-      ? {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        mainEntity: data.faq.map((item) => ({
-          "@type": "Question",
-          name: item.question,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: item.answer,
           },
         })),
       }
@@ -483,31 +468,6 @@ const breadcrumbSchema = {
     }
   `}</style>
 </div>
-
-    {data.faq?.length > 0 && (
- <section
-  id="frequently-asked-questions"
-  className="mt-16 border-t pt-12"
->
-    <h2 className="text-3xl font-bold mb-8">
-      Frequently Asked Questions
-    </h2>
-
-    <div className="space-y-8">
-      {data.faq.map((item, index) => (
-        <div key={index}>
-          <h3 className="text-xl font-semibold mb-3">
-            {item.question}
-          </h3>
-
-          <p className="text-gray-700 leading-7">
-            {item.answer}
-          </p>
-        </div>
-      ))}
-    </div>
-  </section>
-)}
     
           </article>
 
