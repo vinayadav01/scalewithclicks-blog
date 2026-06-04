@@ -133,8 +133,23 @@ const articleSchema = {
 
 /* ================= FAQ SCHEMA ================= */
 
+console.log("FAQ Count:", data.faq?.length);
+
 const faqSchema =
-  data.faq?.length > 0
+  Array.isArray(data.faq) && data.faq.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: data.faq.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: item.answer,
+          },
+        })),
+      }
+    : null;
     ? {
         "@context": "https://schema.org",
         "@type": "FAQPage",
