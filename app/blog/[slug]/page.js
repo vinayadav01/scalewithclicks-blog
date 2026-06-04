@@ -82,6 +82,14 @@ export default async function BlogPost({ params }) {
       };
     }) || [];
 
+  // ✅ Add FAQ section to TOC automatically
+if (data.faq?.length > 0) {
+  headings.push({
+    text: "Frequently Asked Questions",
+    id: "frequently-asked-questions",
+  });
+}
+
   // ✅ Convert Markdown to HTML
 const processedContent = await remark()
   .use(remarkGfm)
@@ -429,7 +437,10 @@ const breadcrumbSchema = {
 </div>
 
     {data.faq?.length > 0 && (
-  <section className="mt-16 border-t pt-12">
+ <section
+  id="frequently-asked-questions"
+  className="mt-16 border-t pt-12"
+>
     <h2 className="text-3xl font-bold mb-8">
       Frequently Asked Questions
     </h2>
