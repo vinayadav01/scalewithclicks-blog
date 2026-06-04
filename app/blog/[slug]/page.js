@@ -57,6 +57,39 @@ export default async function BlogPost({ params }) {
 
   const { data, content } = matter(fileContent);
 
+  /* ================= FAQ EXTRACTOR ================= */
+
+function extractFaqs(markdown) {
+  const faqs = [];
+
+  const faqSectionMatch = markdown.match(
+    /## Frequently Asked Questions[\s\S]*$/i
+  );
+
+  if (!faqSectionMatch) return [];
+
+  const faqSection = faqSectionMatch[0];
+
+  const regex =
+    /###\s+(.*?)\n+([\s\S]*?)(?=\n###\s+|\n##\s+|$)/g;
+
+  let match;
+
+  while ((match = regex.exec(faqSection)) !== null) {
+    faqs.push({
+      question: match[1].trim(),
+      answer: match[2]
+        .replace(/\*/g, "")
+        .replace(/\n/g, " ")
+        .trim(),
+    });
+  }
+
+  return faqs;
+}
+
+const extractedFaqs = extractFaqs(content);
+
   // ✅ FIX DATE (IMPORTANT)
   const formattedDate = data.date
     ? typeof data.date === "string"
@@ -83,10 +116,10 @@ export default async function BlogPost({ params }) {
     }) || [];
 
   // ✅ Add FAQ section to TOC automatically
-if (data.faq?.length > 0) {
+if (extractedFaqs.length > 0) {
   headings.push({
     text: "Frequently Asked Questions",
-    id: "frequently-asked-questions",
+    id: "frequently-asked-questions-faqs",
   });
 }
 
@@ -136,21 +169,22 @@ const articleSchema = {
 console.log("FAQ Count:", data.faq?.length);
 
 const faqSchema =
-  Array.isArray(data.faq) && data.faq.length > 0
+  extractedFaqs.length > 0
     ? {
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        mainEntity: data.faq.map((item) => ({
+        mainEntity: extractedFaqs.map((faq) => ({
           "@type": "Question",
-          name: item.question,
+          name: faq.question,
           acceptedAnswer: {
             "@type": "Answer",
-            text: item.answer,
+            text: faq.answer,
           },
         })),
       }
     : null;
-    ? {
+  
+      ? {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         mainEntity: data.faq.map((item) => ({
@@ -205,11 +239,10 @@ const breadcrumbSchema = {
   />
 
   {/* FAQ SCHEMA */}
- {faqSchema && (
+{faqSchema && (
   <Script
     id="faq-schema"
     type="application/ld+json"
-    strategy="afterInteractive"
     dangerouslySetInnerHTML={{
       __html: JSON.stringify(faqSchema),
     }}
