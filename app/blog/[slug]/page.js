@@ -116,14 +116,6 @@ const extractedFaqs = extractFaqs(content);
       };
     }) || [];
 
-  // ✅ Add FAQ section to TOC automatically
-if (extractedFaqs.length > 0) {
-  headings.push({
-    text: "Frequently Asked Questions",
-    id: "frequently-asked-questions-faqs",
-  });
-}
-
   // ✅ Convert Markdown to HTML
 const processedContent = await remark()
   .use(remarkGfm)
