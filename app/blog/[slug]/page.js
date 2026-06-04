@@ -125,29 +125,22 @@ const articleSchema = {
 
 /* ================= FAQ SCHEMA ================= */
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "What services does Scale With Clicks provide?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Scale With Clicks provides Google Ads, Meta Ads, SEO, GA4, and conversion tracking services.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Do you provide conversion tracking setup?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes, Scale With Clicks provides GA4, GTM, Meta Pixel, and ecommerce conversion tracking setup services.",
-      },
-    },
-  ],
-};
-
+const faqSchema =
+  data.faq?.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: data.faq.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: item.answer,
+          },
+        })),
+      }
+    : null;
+  
 /* ================= BREADCRUMB SCHEMA ================= */
 
 const breadcrumbSchema = {
@@ -189,6 +182,7 @@ const breadcrumbSchema = {
   />
 
   {/* FAQ SCHEMA */}
+ {faqSchema && (
   <Script
     id="faq-schema"
     type="application/ld+json"
@@ -197,6 +191,7 @@ const breadcrumbSchema = {
       __html: JSON.stringify(faqSchema),
     }}
   />
+)}
 
   {/* BREADCRUMB SCHEMA */}
   <Script
@@ -432,6 +427,29 @@ const breadcrumbSchema = {
     }
   `}</style>
 </div>
+
+    {data.faq?.length > 0 && (
+  <section className="mt-16 border-t pt-12">
+    <h2 className="text-3xl font-bold mb-8">
+      Frequently Asked Questions
+    </h2>
+
+    <div className="space-y-8">
+      {data.faq.map((item, index) => (
+        <div key={index}>
+          <h3 className="text-xl font-semibold mb-3">
+            {item.question}
+          </h3>
+
+          <p className="text-gray-700 leading-7">
+            {item.answer}
+          </p>
+        </div>
+      ))}
+    </div>
+  </section>
+)}
+    
           </article>
 
           {/* ========================= */}
