@@ -93,13 +93,13 @@ const processedContent = await remark()
   const contentHtml = processedContent.toString();
 
   // ✅ BLOG URL
-  const blogUrl = `https://blog.scalewithclicks.com/${slug}`;
+  const blogUrl = `https://blog.scalewithclicks.com/blog/${slug}`;
 
   /* ================= ARTICLE SCHEMA ================= */
 
 const articleSchema = {
   "@context": "https://schema.org",
-  "@type": "Article",
+  "@type": "BlogPosting",
   headline: data.title,
   description: data.description || "",
   image: data.image || "",
