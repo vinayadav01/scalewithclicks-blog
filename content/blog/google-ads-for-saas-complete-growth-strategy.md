@@ -41,8 +41,6 @@ If your SaaS website isn't yet optimized for paid traffic, consider conducting a
 
 ---
 
-## Image Suggestion
-
 ![Google Ads dashboard showing SaaS marketing performance metrics](/images/google-ads-for-saas-growth-strategy.jpg)
 
 ---
@@ -200,8 +198,6 @@ Focus on commercial intent rather than traffic volume.
 These users are typically much closer to conversion.
 
 ---
-
-## Image Suggestion
 
 ![Keyword research and campaign planning for SaaS advertising](/images/saas-keyword-research-google-ads.jpg)
 
@@ -431,7 +427,7 @@ Success comes from more than simply generating clicks. It requires aligning camp
 
 Companies that combine strategic keyword targeting, smart bidding, strong landing pages, and accurate conversion tracking can create a predictable customer acquisition engine that scales alongside business growth.
 
-If you're looking to accelerate SaaS growth through paid advertising, explore our [Google Ads Management Services](https://scalewithclicks.com/services/google-ads-agency) or visit the [Scale With Clicks Home Page](https://scalewithclicks.com/) to learn how we help businesses generate qualified leads and maximize return on ad spend.
+If you're looking to accelerate SaaS growth through paid advertising, explore our [Google Ads Management Services](https://scalewithclicks.com/services/google-ads-agency) or visit the [Scale With Clicks](https://scalewithclicks.com/) to learn how we help businesses generate qualified leads and maximize return on ad spend.
 
 ## Frequently Asked Questions
 
