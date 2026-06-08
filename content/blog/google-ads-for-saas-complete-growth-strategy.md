@@ -1,10 +1,10 @@
 ---
 title: Google Ads for SaaS: Complete Growth Strategy for Scalable Customer Acquisition
 date: "2026-06-04"
-description: Learn how to build a profitable Google Ads strategy for SaaS companies. Discover campaign structures, keyword targeting, bidding strategies, landing pages, and optimization techniques that drive sustainable growth.
+description: Learn how to build a profitable Google Ads strategy for SaaS companies.
 image: /images/google-ads-for-saas-growth-strategy.jpg
-category: "Google Ads"
-author: "Vinay Yadav"
+category: Google Ads
+author: Vinay Yadav
 ---
 
 **Category:** [Google Ads](/category/google-ads)
