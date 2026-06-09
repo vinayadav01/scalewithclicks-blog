@@ -1,5 +1,5 @@
 ---
-title: Instagram Ads vs Facebook Ads: What Works Better in 2026?
+title: Instagram Ads vs Facebook Ads - What Works Better in 2026?
 date: "2026-06-09"
 description: Compare Instagram Ads vs Facebook Ads to discover which platform delivers better ROI, engagement, leads, and sales for your business in 2026.
 image: /images/instagram-vs-facebook-ads-guide-2026.jpg
@@ -176,7 +176,7 @@ This is particularly useful for:
 * Property listings
 * Home improvement companies
 
-![Meta Ads Dashboard](/images/meta-ads-campaign-dashboard.jpg)
+![Meta Ads Dashboard](/images/facebook-ads-dashboard.jpg)
 
 ---
 
