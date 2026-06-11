@@ -149,7 +149,7 @@ Provide signals such as:
 
 Performance Max performs significantly better when supplied with quality audience data.
 
-Learn more about audience segmentation in our guide on [Google Adsd Saas Growth Strategy](https://blog.scalewithclicks.com/blog/google-ads-for-saas-complete-growth-strategy).
+Learn more about audience segmentation in our guide on [Google Ads Saas Growth Strategy](https://blog.scalewithclicks.com/blog/google-ads-for-saas-complete-growth-strategy).
 
 ![Performance Max Campaign Structure](/images/performance-max-ecommerce.jpg)
 
