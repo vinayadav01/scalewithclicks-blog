@@ -94,7 +94,7 @@ Consider excluding:
 
 Regular audience refinement helps improve ad relevance, increase conversion rates, and reduce your overall CPL.
 
-![Meta Ads audience targeting strategies to reduce cost per lead and improve lead quality](/images/facebook-ads-audience-targeting.jpg)
+![Meta Ads audience targeting strategies to reduce cost per lead and improve lead quality](/images/facebook-ads-audience-targeting-2026.jpg)
 
 ---
 
