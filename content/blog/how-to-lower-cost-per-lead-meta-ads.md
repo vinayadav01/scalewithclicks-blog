@@ -3,11 +3,11 @@ title: How to Lower Cost Per Lead in Meta Ads - 15 Proven Strategies to Get More
 date: "2026-06-12"
 description: Learn how to lower your Meta Ads cost per lead with proven strategies including better targeting, high-converting creatives, landing page optimization, and smart campaign scaling.
 image: /images/how-to-lower-cost-per-lead-meta-ads.jpg
-category: Meta Ads
+category: Facebook Ads
 author: Vinay Yadav
 -------------------
 
-**Category:** [Meta Ads](/category/meta-ads)
+**Category:** [Facebook Ads](/category/facebook-ads)
 
 # How to Lower Cost Per Lead in Meta Ads: 15 Proven Strategies to Generate More Leads Without Increasing Your Budget
 
