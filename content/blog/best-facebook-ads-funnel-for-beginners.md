@@ -453,7 +453,7 @@ Instead of expecting immediate sales from cold traffic, nurture prospects at eve
 
 A well-built funnel can significantly reduce acquisition costs, improve lead quality, and create predictable growth for your business.
 
-If you're looking to scale paid advertising profitably, explore our [Facebook Ads Management Services](https://scalewithclicks.com/services/meta-ads-agency) or visit the [Scale With Clicks Home Page](https://scalewithclicks.com/) to learn how we help businesses generate more leads and sales through data-driven marketing strategies.
+If you're looking to scale paid advertising profitably, explore our [Facebook Ads Management Services](https://scalewithclicks.com/services/meta-ads-agency) or visit the [Scale With Clicks](https://scalewithclicks.com/) to learn how we help businesses generate more leads and sales through data-driven marketing strategies.
 
 ---
 
