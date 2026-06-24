@@ -292,7 +292,7 @@ Every lead generation campaign should track:
 * Lead form extensions
 * CRM-qualified leads
 
-![Conversion Tracking Setup](/images/google-ads-conversion-tracking-setup.jpg)
+![Conversion Tracking Setup](/images/google-ads-conversion-tracking.jpg)
 
 Recommended tools:
 
