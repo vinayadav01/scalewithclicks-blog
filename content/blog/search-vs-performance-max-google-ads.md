@@ -29,6 +29,8 @@ Need expert help? Explore our **[Google Ads Management Services](https://scalewi
 
 Search Campaigns are the most traditional and widely used Google Ads campaign type. These ads appear when users actively search for products or services using keywords on Google.
 
+![Google Search Campaign Example](/images/google-search-campaign-example.jpg)
+
 For example, if someone searches:
 
 - Google Ads agency
@@ -56,6 +58,8 @@ This level of control makes Search campaigns one of the best options for busines
 ## Why Businesses Still Prefer Search Campaigns
 
 Even with Google's increasing focus on automation, Search campaigns remain one of the highest-converting campaign types because they target users with existing purchase intent.
+
+![Google Search Keyword Targeting](/images/google-search-keyword-targeting.jpg)
 
 Someone searching for:
 
@@ -177,6 +181,8 @@ Our guide on **[7 Costly Google Ads Mistakes That Are Wasting Your Budget](/blog
 
 Performance Max (PMax) is Google's fully automated campaign type that uses artificial intelligence to display ads across Google's entire advertising ecosystem.
 
+![Performance Max Google Network](/images/performance-max-google-network.jpg)
+
 Instead of targeting only Search, Performance Max can deliver ads across multiple Google properties, including:
 
 - Google Search
@@ -207,6 +213,8 @@ Instead, advertisers upload:
 - Videos (recommended)
 - Audience Signals
 - Conversion Goals
+
+![Performance Max AI Optimization](/images/performance-max-ai-optimization.jpg)
 
 Google automatically combines these assets into different ad formats and serves them across its networks based on predicted conversion likelihood.
 
@@ -355,6 +363,8 @@ If you're unsure whether your account is properly configured, our **[Google Ads 
 
 # Search vs Performance Max: Feature Comparison
 
+![Search vs Performance Max Comparison](/images/search-vs-performance-max-comparison.jpg)
+
 | Feature | Search Campaign | Performance Max |
 |----------|----------------|-----------------|
 | Keyword Targeting | ✅ Full Control | ❌ AI Driven |
@@ -380,6 +390,8 @@ For most service-based businesses such as:
 - Consultants
 - Home services
 - B2B companies
+
+![Google Ads Lead Generation](/images/google-ads-lead-generation.jpg)
 
 **Search campaigns usually deliver higher-quality leads.**
 
@@ -408,6 +420,8 @@ It can showcase products across:
 - YouTube
 - Gmail
 - Discover
+
+![Performance Max for eCommerce](/images/performance-max-ecommerce.jpg)
 
 For retailers with a well-optimized product feed, Performance Max often delivers greater reach and more conversion opportunities than Search campaigns alone.
 
@@ -485,6 +499,8 @@ This hybrid approach allows businesses to benefit from the precision of Search c
 # Best Practices for Running Search & Performance Max Together
 
 One of the biggest misconceptions about Google Ads is that advertisers must choose **either** Search **or** Performance Max. In reality, the highest-performing Google Ads accounts often use both campaign types strategically.
+
+![Search and Performance Max Strategy](/images/search-performance-max-strategy.jpg)
 
 Search campaigns capture users with high purchase intent, while Performance Max helps expand your reach by identifying new customers across Google's ecosystem.
 
@@ -586,6 +602,8 @@ If you're seeing clicks but no enquiries, our guide **[Why Your Google Ads Are N
 
 Many advertisers assume that simply launching a campaign is enough to generate consistent leads. Unfortunately, that's rarely the case.
 
+![Google Ads Optimization Checklist](/images/google-ads-optimization-checklist.jpg)
+
 Avoid these common mistakes to improve campaign performance.
 
 ---
@@ -614,6 +632,8 @@ Examples include:
 - Internship
 
 Adding appropriate negative keywords keeps your budget focused on users who are more likely to convert.
+
+![Professional Google Ads Management Services](/images/google-ads-expert-help.jpg)
 
 ---
 
