@@ -29,7 +29,7 @@ Need expert help? Explore our **[Google Ads Management Services](https://scalewi
 
 Search Campaigns are the most traditional and widely used Google Ads campaign type. These ads appear when users actively search for products or services using keywords on Google.
 
-![Google Search Campaign Example](/images/google-search-campaign-example.jpg)
+![Google Search Campaign Example](/images/google-search-ads.jpg)
 
 For example, if someone searches:
 
