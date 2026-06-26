@@ -391,7 +391,7 @@ For most service-based businesses such as:
 - Home services
 - B2B companies
 
-![Google Ads Lead Generation](/images/google-ads-lead-generation.jpg)
+![Google Ads Lead Generation](/images/lead-generation-main.jpg)
 
 **Search campaigns usually deliver higher-quality leads.**
 
