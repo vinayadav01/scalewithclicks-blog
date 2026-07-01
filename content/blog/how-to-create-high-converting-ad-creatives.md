@@ -378,7 +378,7 @@ Creative examples:
 - Client success stories
 - Product demonstrations
 
-For inspiration on improving campaign performance, explore our guide on **[How to Reduce Cost Per Click in Google Ads](/blog/how-to-reduce-cost-per-click-google-ads-2026)**.
+For inspiration on improving campaign performance, explore our guide on **[How to Reduce Cost Per Click in Google Ads](/blog/how-to-reduce-cost-per-click-in-google-ads-2026-guide)**.
 
 ---
 
@@ -488,7 +488,7 @@ For Google Display campaigns:
 - Include a visible CTA.
 - Design responsive assets for different placements.
 
-If you're planning Display campaigns, don't miss our guide on **[How Much Should You Spend on Google Ads in 2026?](/blog/how-much-should-you-spend-on-google-ads-2026)** to allocate your budget effectively.
+If you're planning Display campaigns, don't miss our guide on **[How Much Should You Spend on Google Ads in 2026?](/blog/how-much-should-you-spend-on-google-ads-in-2026)** to allocate your budget effectively.
 
 ---
 
