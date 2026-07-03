@@ -513,7 +513,7 @@ Monitor:
 - Landing Page Views
 - Purchase Value
 
-![Meta Ads Performance Dashboard](/images/meta-retargeting-dashboard.jpg)
+![Meta Ads Performance Dashboard](/images/facebook-ads-dashboard.jpg)
 
 *Alt Text: Dashboard showing Meta Ads KPIs including ROAS, CPA, CTR and Frequency.*
 
