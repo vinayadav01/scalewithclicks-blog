@@ -21,6 +21,8 @@ Whether you're a local business, an eCommerce brand, a SaaS company, or a servic
 
 If you're just getting started with Meta advertising, you may also want to explore our comprehensive guide on [Instagram Ads vs Facebook Ads: What Works Better?](/blog/instagram-ads-vs-facebook-ads-what-works-better) to understand which platform fits your business goals.
 
+![Facebook Ads Campaign Structure for 2026](/images/meta-campaign-structure-ecommerce.jpg)
+
 If you're looking for expert campaign management, explore our **[Meta Ads Management Services](https://scalewithclicks.com/services/meta-ads-agency)** to maximize your return on ad spend.
 
 ---
@@ -255,7 +257,7 @@ However, if you're launching a completely new account with no conversion history
 
 Most businesses focus only on acquiring new customers and ignore the people who have already interacted with their brand.
 
-![Facebook Ads Retargeting Funnel](/images/facebook-retargeting-funnel.jpg)
+![Facebook Ads Retargeting Funnel](/images/meta-ads-retargeting-funnel.jpg)
 
 Retargeting campaigns usually generate the highest Return on Ad Spend because you're advertising to people who already know your business.
 
@@ -317,7 +319,7 @@ When scaling, increase budgets gradually rather than making sudden jumps. Signif
 
 Even the best campaign structure won't perform well if your creatives become repetitive.
 
-![Facebook Ads Creative Testing Examples](/images/facebook-ad-creative-testing.jpg)
+![Facebook Ads Creative Testing Examples](/images/meta-ad-creative-testing.jpg)
 
 Rather than replacing all ads at once, test new creatives systematically.
 
