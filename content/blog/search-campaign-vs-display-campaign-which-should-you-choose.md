@@ -25,7 +25,7 @@ If you're new to Google Ads, consider reading our complete **[Google Ads Setup G
 
 ## What Is a Google Search Campaign?
 
-![Google Search Ads Example](/images/google-search-ad.jpg)
+![Google Search Ads Example](/images/google-search-ads.jpg)
 
 A Search Campaign displays text advertisements on Google's search results page when someone searches for keywords related to your business.
 
