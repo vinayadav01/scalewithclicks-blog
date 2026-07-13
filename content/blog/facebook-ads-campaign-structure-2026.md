@@ -131,7 +131,7 @@ This allows Meta to identify winning combinations while maintaining learning sta
 
 ---
 
-![Campaign Hierarchy](/images/facebook-ads-campaign-hierarchy.jpg)
+![Campaign Hierarchy](/images/facebook-campaign-structure-diagram.jpg)
 
 ---
 
