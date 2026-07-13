@@ -489,7 +489,7 @@ Keeping all other variables the same while changing just one element gives you c
 
 ---
 
-![Creative Testing Examples](/images/facebook-creative-testing.jpg)
+![Creative Testing Examples](/images/meta-ad-creative-testing.jpg)
 
 ---
 
