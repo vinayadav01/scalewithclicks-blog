@@ -23,7 +23,7 @@ In this guide, you'll learn how to fully optimize your Google Business Profile, 
 
 ---
 
-![Google Business Profile Dashboard]/images/google-business-profile-dashboard.jpg)
+![Google Business Profile Dashboard](/images/google-business-profile-dashboard.jpg)
 
 ---
 
