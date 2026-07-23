@@ -1,5 +1,5 @@
 ---
-title: Negative Keywords Guide: Stop Wasting Ad Spend & Improve Google Ads ROI
+title: Negative Keywords Guide - Stop Wasting Ad Spend & Improve Google Ads ROI
 date: "2026-07-23"
 description: Learn how to use negative keywords in Google Ads to eliminate irrelevant clicks, reduce wasted ad spend, improve CTR, and increase conversions with this complete guide.
 image: /images/negative-keywords-guide.jpg
