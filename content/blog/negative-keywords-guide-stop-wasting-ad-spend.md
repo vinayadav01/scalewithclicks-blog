@@ -228,9 +228,6 @@ While every account is different, these keywords frequently waste budget.
 
 ---
 
-![Negative Keyword List](/images/common-negative-keywords.jpg)
-
-
 ### Support Queries
 
 - customer care
