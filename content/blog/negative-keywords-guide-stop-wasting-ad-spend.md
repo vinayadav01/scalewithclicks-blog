@@ -468,7 +468,7 @@ The result is cleaner traffic, lower acquisition costs, and stronger ROI.
 
 ---
 
-![Google Ads Campaign Optimization](/images/google-ads-campaign-optimization.jpg)
+![Google Ads Campaign Optimization](/images/google-ads-optimization.jpg)
 
 
 ## Final Thoughts
