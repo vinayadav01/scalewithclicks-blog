@@ -105,7 +105,7 @@ Understanding intent helps you create content that Google wants to rank.
 
 Keyword research helps identify what your audience is searching for.
 
-![Keyword Research for SEO Content](/images/keyword-research-seo.jpg)
+![Keyword Research for SEO Content](/images/local-keyword-research.jpg)
 
 
 Instead of targeting only high-volume keywords, focus on a combination of:
