@@ -493,7 +493,6 @@ It's a good practice to review this section regularly, especially after making w
 
 ## Understanding Meta Events Manager
 
-
 Meta Events Manager serves as the central hub for monitoring all your website tracking.
 
 Some of the most important metrics include:
