@@ -68,7 +68,7 @@ Although CAPI doesn't bypass privacy laws, it provides a more stable and privacy
 
 ## How Meta Conversion API Works
 
-![How Meta Conversion API Works](/images/how-meta-conversion-api-works.jpg)
+![How Meta Conversion API Works](/images/meta-pixel-conversions-api.jpg)
 
 
 Here's a simplified overview of the tracking process:
@@ -87,7 +87,7 @@ When Meta Pixel and Conversion API work together, Meta can deduplicate events us
 
 ---
 
-![Meta Pixel vs Conversion API](/images/meta-pixel-vs-conversion-api.jpg)
+![Meta Pixel vs Conversion API](/images/meta-pixel-vs-conversions-api.jpg)
 
 
 ## Meta Pixel vs Conversion API
