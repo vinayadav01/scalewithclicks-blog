@@ -27,7 +27,7 @@ If you're looking for professional campaign management, our **[Google Ads Manage
 
 Many advertisers make the mistake of checking their campaigns only once a month. Unfortunately, by the time they notice problems, hundreds or even thousands of dollars may already have been wasted.
 
-![Google Ads weekly optimization dashboard](/images/google-ads-dashboard-performance-review.jpg)
+![Google Ads weekly optimization dashboard](/images/google-ads-conversion-dashboard.jpg)
 
 
 Weekly optimization allows you to:
@@ -211,7 +211,7 @@ Review the following columns:
 
 If any keyword shows below-average ratings, investigate why.
 
-![Google Ads Quality Score](/images/google-ads-quality-score.jpg)
+![Google Ads Quality Score](/images/google-ads-quality-score-components.jpg)
 
 
 Common improvements include:
@@ -261,7 +261,7 @@ Review metrics such as:
 - Conversions
 - Asset Performance
 
-![Responsive Search Ads Performance](/images/google-ads-responsive-search-ads.jpg)
+![Responsive Search Ads Performance](/images/google-search-ads.jpg)
 
 
 Pay close attention to Google's asset ratings:
@@ -346,7 +346,7 @@ Each week, review:
 - Mobile Experience
 - Page Load Speed
 
-![Landing Page Optimization](/images/google-ads-landing-page-optimization.jpg)
+![Landing Page Optimization](/images/landing-page-optimization-google-ads.jpg)
 
 
 Ask yourself:
@@ -787,7 +787,7 @@ Use this quick checklist every week to stay on top of your account.
 
 Following this checklist consistently will help you identify issues early, improve campaign efficiency, and make informed optimization decisions over time.
 
-![Weekly Google Ads Optimization Checklist](/images/google-ads-weekly-checklist-infographic.jpg)
+![Weekly Google Ads Optimization Checklist](/images/google-ads-optimization-checklist.jpg)
 
 
 ---
