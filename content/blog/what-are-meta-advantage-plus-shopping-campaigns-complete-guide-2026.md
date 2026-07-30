@@ -84,7 +84,7 @@ This allows Meta to adapt much faster than manual campaign optimization.
 
 At the core of Advantage+ Shopping Campaigns is Meta's machine learning engine.
 
-![How Meta Advantage+ Shopping Campaigns Work](/images/meta-advantage-shopping-workflow.png)
+![How Meta Advantage+ Shopping Campaigns Work](/images/meta-advantage-shopping-workflow.jpg)
 
 
 Instead of advertisers making every optimization decision, Meta automates much of the campaign using historical and real-time performance data.
@@ -266,7 +266,7 @@ One of the most common questions advertisers ask is whether they should continue
 
 The answer depends on your business goals, available conversion data, and how much control you want over campaign optimization.
 
-![Meta Advantage+ Shopping Campaign vs Traditional Sales Campaign](/images/advantage-shopping-vs-sales-campaign.png)
+![Meta Advantage+ Shopping Campaign vs Traditional Sales Campaign](/images/advantage-shopping-vs-sales-campaign.jpg)
 
 
 | Feature | Advantage+ Shopping Campaigns | Traditional Sales Campaigns |
@@ -320,7 +320,7 @@ Accurate tracking is the foundation of every successful Meta campaign.
 
 Setting up an Advantage+ Shopping Campaign is much simpler than creating a traditional Meta Sales campaign.
 
-![Meta Ads Manager Advantage+ Shopping Campaign Setup](/images/meta-ads-manager-advantage-shopping.png)
+![Meta Ads Manager Advantage+ Shopping Campaign Setup](/images/meta-ads-manager-advantage-shopping.jpg)
 
 
 ## Step 1: Open Ads Manager
@@ -397,7 +397,7 @@ Before scaling any campaign, verify that your Pixel and events are firing correc
 
 If you sell multiple products online, connect your Commerce Catalog.
 
-![Meta Advantage+ Shopping Campaign Setup Process](/images/meta-advantage-shopping-setup-steps.png)
+![Meta Advantage+ Shopping Campaign Setup Process](/images/meta-advantage-shopping-setup-steps.jpg)
 
 
 Benefits include:
@@ -481,7 +481,7 @@ For most campaigns, upload a combination of:
 - 1 UGC-style video
 - 1 carousel showcasing multiple products
 
-![How Meta AI Optimizes Shopping Campaigns](/images/meta-ai-optimization.png)
+![How Meta AI Optimizes Shopping Campaigns](/images/meta-ai-optimization.jpg)
 
 
 The more high-quality creative assets you provide, the better Meta can optimize delivery across placements.
@@ -686,7 +686,7 @@ If you're using a product catalog, gradually introduce complementary products ra
 
 Don't rely on a single performance indicator.
 
-![Meta Ads Performance Dashboard](/images/meta-ads-performance-dashboard.png)
+![Meta Ads Performance Dashboard](/images/meta-ads-performance-dashboard.jpg)
 
 
 Monitor a combination of metrics to gain a complete picture of campaign health.
