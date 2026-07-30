@@ -686,7 +686,7 @@ If you're using a product catalog, gradually introduce complementary products ra
 
 Don't rely on a single performance indicator.
 
-![Meta Ads Performance Dashboard](/images/meta-ads-performance-dashboard.jpg)
+![Meta Ads Performance Dashboard](/images/facebook-ads-dashboard-metrics.jpg)
 
 
 Monitor a combination of metrics to gain a complete picture of campaign health.
