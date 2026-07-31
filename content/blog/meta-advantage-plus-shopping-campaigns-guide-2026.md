@@ -439,7 +439,7 @@ While automation doesn't replace strategy, it can dramatically improve efficienc
 
 If you're looking to maximize your eCommerce advertising performance in 2026, Advantage+ Shopping Campaigns should be a core part of your Meta Ads strategy.
 
-Need expert help setting up or scaling your campaigns? Visit our **[Meta Ads Management Services](/services/meta-ads-agency)** or explore **[Scale With Clicks](https://scalewithclicks.com/)** to learn how we help businesses generate more sales with data-driven advertising.
+Need expert help setting up or scaling your campaigns? Visit our **[Meta Ads Management Services](https://scalewithclicks.com/services/meta-ads-agency)** or explore **[Scale With Clicks](https://scalewithclicks.com/)** to learn how we help businesses generate more sales with data-driven advertising.
 
 ---
 
