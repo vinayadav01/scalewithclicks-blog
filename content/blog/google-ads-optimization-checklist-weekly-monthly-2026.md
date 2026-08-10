@@ -80,7 +80,7 @@ This is especially important for lead generation campaigns because a recorded fo
 
 For a detailed setup guide, see [How to Set Up Conversion Tracking in Google Ads](/blog/how-to-track-conversions-in-google-ads-complete-setup-guide).
 
-![Google Ads Conversion Tracking Dashboard](/images/google-ads-conversion-tracking-dashboard-2026.jpg)
+![Google Ads Conversion Tracking Dashboard](/images/google-ads-conversion-dashboard.jpg)
 
 ---
 
@@ -132,7 +132,7 @@ The exact negatives depend on the business.
 
 Don't blindly add every low-converting search as a negative. Check whether the search has genuine commercial potential first.
 
-![Google Ads Search Terms Report and Negative Keywords](/images/google-ads-search-terms-negative-keywords-2026.jpg)
+![Google Ads Search Terms Report and Negative Keywords](/images/google-ads-negative-keywords.jpg)
 
 ---
 
@@ -217,7 +217,7 @@ Instead, focus on important keywords with poor scores that are receiving signifi
 
 Our guide on [Google Ads Quality Score and how to improve it](/blog/google-ads-quality-score-explained-how-to-improve-it) covers this in more detail.
 
-![Google Ads Quality Score Optimization](/images/google-ads-quality-score-optimization-2026.jpg)
+![Google Ads Quality Score Optimization](/images/google-ads-quality-score-improvement-checklist.jpg)
 
 ---
 
