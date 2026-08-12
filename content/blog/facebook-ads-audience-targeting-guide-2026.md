@@ -1,5 +1,5 @@
 ---
-title: Facebook Ads Audience Targeting: Complete Guide (2026)
+title: Facebook Ads Audience Targeting - Complete Guide (2026)
 date: "2026-08-12"
 description: Learn Facebook Ads audience targeting in 2026, including interests, Custom Audiences, Lookalike Audiences, broad targeting, exclusions, retargeting, and practical strategies to improve leads and ROAS.
 image: /images/facebook-ads-audience-targeting-guide-2026.jpg
