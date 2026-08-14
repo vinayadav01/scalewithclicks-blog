@@ -1,5 +1,5 @@
 ---
-title: Meta Conversion API (CAPI) Complete Guide - Setup, Benefits & Best Practices (2026)
+title: Meta Conversion API (CAPI) - Setup & Best Practices (2026)
 date: "2026-07-27"
 description: Learn everything about Meta Conversion API (CAPI), including how it works, setup methods, benefits, Pixel vs CAPI, best practices, and how to improve Facebook & Instagram ad tracking accuracy.
 image: /images/meta-conversion-api-complete-guide.jpg
