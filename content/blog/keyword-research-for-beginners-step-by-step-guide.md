@@ -1,5 +1,5 @@
 ---
-title: Keyword Research for Beginners (Step-by-Step Guide to Finding Keywords That Drive Traffic)
+title: Keyword Research for Beginners - Step-by-Step Guide (2026)
 date: "2026-05-30"
 description: Learn keyword research step by step with this beginner-friendly guide. Discover how to find profitable keywords, analyze search intent, and improve your SEO rankings.
 image: /images/keyword-research-beginners.jpg
