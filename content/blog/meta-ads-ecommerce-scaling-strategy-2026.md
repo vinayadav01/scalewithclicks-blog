@@ -1,5 +1,5 @@
 ---
-title: Meta Ads for eCommerce - Scaling Strategy That Drives Profitable Growth in 2026
+title: Meta Ads for eCommerce - Scale Profitably in 2026
 date: "2026-06-25"
 description: Learn how to scale Meta Ads for eCommerce profitably with proven campaign structures, creative testing frameworks, audience strategies, and budget scaling techniques.
 image: /images/meta-ads-ecommerce-scaling-strategy.jpg
