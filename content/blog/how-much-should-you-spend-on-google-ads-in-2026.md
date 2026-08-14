@@ -1,5 +1,5 @@
 ---
-title: How Much Should You Spend on Google Ads in 2026? A Practical Budget Guide for Businesses
+title: Google Ads Budget - How Much Should You Spend in 2026?
 date: "2026-06-01"
 description: Wondering how much to spend on Google Ads in 2026? Learn how to calculate the right budget based on your goals, industry, competition, and expected ROI.
 image: /images/google-ads-budget-2026.jpg
