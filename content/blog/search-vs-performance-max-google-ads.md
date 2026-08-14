@@ -1,5 +1,5 @@
 ---
-title: Search vs Performance Max - Which Google Ads Campaign Should You Use in 2026?
+title: Search vs Performance Max - Which Should You Use? (2026)
 date: "2026-06-26"
 description: Compare Google Search Ads and Performance Max campaigns to understand which campaign type is best for your business. Learn the differences, advantages, limitations, and when to use each campaign to maximize ROI.
 image: /images/search-vs-performance-max-google-ads.jpg
