@@ -1,5 +1,5 @@
 ---
-title: "Google Ads Optimization Checklist - 30+ Things to Check Weekly & Monthly (2026)"
+title: Google Ads Optimization Checklist - 30+ Things to Check (2026)
 description: "Use this Google Ads optimization checklist to review campaigns, keywords, search terms, ads, bidding, conversions, landing pages, budgets, and performance every week and month in 2026."
 image: /images/google-ads-optimization-checklist-2026.jpg
 author: "Vinay Yadav"
