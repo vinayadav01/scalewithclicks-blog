@@ -1,5 +1,5 @@
 ---
-title: Google Business Profile Optimization Guide (2026) - Rank Higher & Get More Local Customers
+title: How to Optimize Google Business Profile & Rank Higher (2026)
 date: "2026-07-14"
 description: Learn how to optimize your Google Business Profile to rank higher in local search, Google Maps, and attract more calls, leads, and customers with this complete optimization guide.
 image: /images/google-business-profile-optimization-guide.jpg
