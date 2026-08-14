@@ -1,6 +1,5 @@
 ---
-
-title: Best Facebook Ads Funnel for Beginners - A Step-by-Step Guide to Generating More Leads and Sales
+title: Facebook Ads Funnel for Beginners - Step-by-Step Guide
 date: "2026-06-23"
 description: Learn how to build the best Facebook Ads funnel for beginners. Discover campaign structure, audience targeting, retargeting strategies, and optimization techniques to increase leads and sales.
 image: /images/best-facebook-ads-funnel-for-beginners.jpg
