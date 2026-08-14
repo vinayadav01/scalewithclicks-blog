@@ -1,5 +1,5 @@
 ---
-title: Technical SEO Basics Every Website Needs - The Foundation of Better Rankings
+title: Technical SEO Basics - 15 Essentials for Better Rankings
 date: "2026-06-10"
 description: Learn the essential technical SEO basics every website needs to improve search visibility, user experience, crawlability, and organic rankings in 2026.
 image: /images/technical-seo-basics-every-website-needs.jpg
