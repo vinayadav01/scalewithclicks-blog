@@ -1,5 +1,5 @@
 ---
-title: 10 Common Google Ads Mistakes That Waste Your Budget and Kill Conversions
+title: 10 Google Ads Mistakes Wasting Your Budget in 2026
 date: "2026-05-20"
 description: Learn the most common Google Ads mistakes businesses make and discover practical strategies to reduce wasted ad spend, improve conversions, and maximize ROI.
 image: /images/google-ads-mistakes.jpg
