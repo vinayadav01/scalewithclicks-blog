@@ -1,5 +1,5 @@
 ---
-title: Local SEO Guide for Small Businesses - Rank Higher & Get More Local Customers in 2026
+title: Local SEO for Small Businesses - Rank Higher in 2026
 date: "2026-07-07"
 description: Learn how Local SEO helps small businesses attract nearby customers, improve Google rankings, optimize Google Business Profile, earn reviews, and increase leads in 2026.
 image: /images/local-seo-guide-small-businesses.jpg
