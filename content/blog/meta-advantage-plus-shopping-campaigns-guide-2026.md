@@ -1,5 +1,5 @@
 ---
-title: "Meta Advantage+ Shopping Campaigns Explained - Complete Guide for Better ROAS (2026)"
+title: Meta Advantage+ Shopping - Complete Guide to Better ROAS (2026)
 date: "2026-07-31"
 description: "Learn how Meta Advantage+ Shopping Campaigns work, when to use them, setup process, optimization tips, and strategies to improve ROAS in 2026."
 image: "/images/meta-advantage-shopping-guide-2026.jpg"
