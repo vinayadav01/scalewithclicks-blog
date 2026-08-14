@@ -1,5 +1,5 @@
 ---
-title: "Image SEO: 15 Best Practices to Optimize Images for Google & Higher Rankings (2026)"
+title: Image SEO: 15 Best Practices to Rank Higher on Google (2026)
 description: "Learn 15 image SEO best practices to optimize images for Google, improve page speed, accessibility, Google Images visibility, and organic rankings in 2026."
 date: "2026-08-11"
 image: "/images/image-seo-best-practices-google-2026.jpg"
