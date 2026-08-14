@@ -1,5 +1,5 @@
 ---
-title: SEO Content Writing Guide - How to Create Content That Ranks and Converts in 2026
+title: SEO Content Writing - How to Create Content That Ranks (2026)
 date: "2026-07-24"
 description: Learn how to write SEO-friendly content that ranks higher on Google, attracts qualified traffic, and converts visitors into customers with this complete SEO content writing guide.
 image: /images/seo-content-writing-guide.jpg
