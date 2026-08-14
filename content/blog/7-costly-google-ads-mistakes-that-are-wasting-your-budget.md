@@ -1,5 +1,5 @@
 ---
-title: 7 Costly Google Ads Mistakes That Are Wasting Your Budget (And How to Fix Them)
+title: 7 Costly Google Ads Mistakes Wasting Your Budget (2026)
 date: "2026-05-02"
 description: Discover the most common Google Ads mistakes that waste your budget and learn how to fix them to improve conversions, ROI, and lead generation.
 image: /images/google-ads-mistakes.jpg
