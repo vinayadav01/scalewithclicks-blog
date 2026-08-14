@@ -1,5 +1,5 @@
 ---
-title: Facebook Ads Campaign Structure for 2026 (Complete Guide to Better ROAS)
+title: Facebook Ads Campaign Structure - Complete Guide for 2026
 date: "2026-07-13"
 description: Learn the best Facebook Ads campaign structure for 2026 to improve ROAS, lower CPA, and scale your business with proven Meta Ads strategies, audience targeting, and optimization tips.
 image: /images/facebook-ads-campaign-structure-2026.jpg
