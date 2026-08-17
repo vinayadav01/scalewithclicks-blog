@@ -566,9 +566,9 @@ A fast website with poor content won't suddenly outrank a highly relevant compet
 
 The strongest SEO strategy combines **useful content, technical SEO, strong internal linking, good website performance, mobile usability, and a smooth user experience**.
 
-If you're looking to improve your website's organic visibility, our [SEO Services](/services/seo-services) can help identify technical and on-page issues while building a long-term search strategy.
+If you're looking to improve your website's organic visibility, our [SEO Services](https://scalewithclicks.com/services/seo-services) can help identify technical and on-page issues while building a long-term search strategy.
 
-And if you're looking for a broader performance marketing strategy across SEO, Google Ads, Meta Ads, and conversion tracking, visit [Scale With Clicks] (https://scalewithclicks.com/).
+And if you're looking for a broader performance marketing strategy across SEO, Google Ads, Meta Ads, and conversion tracking, visit [Scale With Clicks](https://scalewithclicks.com/).
 
 ---
 
