@@ -31,7 +31,7 @@ The answer depends on your campaign objective, conversion volume, product or ser
 
 In this guide, we'll compare **broad vs interest targeting in Meta Ads**, explain the advantages and disadvantages of both, and show you when each approach makes sense.
 
-![Broad vs Interest Targeting in Meta Ads](/images/broad-targeting-meta-ads.jpg)
+![Broad targeting in Meta Ads and audience optimization](/images/facebook-interest-targeting-vs-broad-targeting-2026.jpg)
 
 
 ## What Is Broad Targeting in Meta Ads?
