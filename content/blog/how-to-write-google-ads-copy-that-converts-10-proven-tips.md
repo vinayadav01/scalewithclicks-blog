@@ -230,7 +230,7 @@ A strong combination might communicate:
 
 **What you offer + benefit + reason to trust you + CTA**
 
-![Google Ads headlines and copywriting structure](/images/google-ads-headlines-copywriting.jpg)
+![Google Ads headlines and copywriting structure](/images/ad-creative-hook-example.jpg)
 
 ---
 
@@ -387,7 +387,7 @@ Your landing page should also have:
 
 If you need help with the broader campaign setup, you can explore [Google Ads Management Services](https://scalewithclicks.com/services/google-ads-agency).
 
-![Google Ads ad to landing page conversion funnel](/images/google-ads-ad-to-landing-page-funnel.jpg)
+![Google Ads ad to landing page conversion funnel](/images/google-ads-full-funnel-strategy.jpg)
 
 
 ---
