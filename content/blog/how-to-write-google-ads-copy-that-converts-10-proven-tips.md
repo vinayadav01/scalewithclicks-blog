@@ -48,7 +48,7 @@ This is why **ad relevance and search intent** are so important.
 
 If you're still working on your overall campaign structure, our guide on [Google Ads Strategy for Small Businesses](/blog/google-ads-strategy-for-small-businesses-step-by-step) covers keyword targeting, campaign structure, landing pages, tracking, and ad copy as part of a complete strategy.
 
-![Google Ads copywriting and search advertising](/images/google-ads-ad-copy-example.jpg)
+![Google Ads copywriting and search advertising](/images/google-ads-copy.jpg)
 
 
 ---
