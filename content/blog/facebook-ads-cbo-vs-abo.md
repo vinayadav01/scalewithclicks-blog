@@ -2,7 +2,7 @@
 title: "Facebook Ads CBO vs ABO - Which Budget Strategy Is Better?"
 date: "2026-08-24"
 author: "Vinay Yadav"
-image: /images/
+image: /images/facebook-ads-cbo-vs-abo.jpg
 category: "Facebook Ads"
 description: "Learn the difference between Facebook Ads CBO vs ABO, when to use each budget strategy, and how to choose the right approach for testing, scaling, lead generation, and eCommerce campaigns."
 ---
