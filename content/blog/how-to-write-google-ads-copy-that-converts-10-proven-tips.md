@@ -230,7 +230,7 @@ A strong combination might communicate:
 
 **What you offer + benefit + reason to trust you + CTA**
 
-![Google Ads headlines and copywriting structure](/images/ad-creative-hook-example.jpg)
+![Google Ads headlines and copywriting structure](/images/ad-creative-hook-examples.jpg)
 
 ---
 
