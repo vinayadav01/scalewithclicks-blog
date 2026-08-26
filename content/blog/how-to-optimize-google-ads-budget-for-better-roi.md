@@ -117,7 +117,7 @@ The question should always be:
 
 **"What business result am I getting from this spend?"**
 
-![Google Ads Performance Dashboard](/images/google-ads-performance-dashboard.jpg)
+![Google Ads Performance Dashboard](/images/google-ads-dashboard.jpg)
 
 ---
 
@@ -279,7 +279,7 @@ This creates a stronger connection between:
 
 You can learn more in [Google Ads Quality Score Explained: How to Improve It](/blog/google-ads-quality-score-explained-how-to-improve-it).
 
-![Google Ads Quality Score Optimization](/images/google-ads-quality-score-optimization.jpg)
+![Google Ads Quality Score Optimization](/images/google-ads-quality-score-improvement-checklist.jpg)
 
 ---
 
