@@ -7,6 +7,8 @@ image: /images/google-ads-budget-optimization-guide.jpg
 category: "Google Ads"
 ---
 
+**Category:** [Google Ads](/category/google-ads)
+
 # How to Optimize Your Google Ads Budget for Better ROI
 
 Spending more money on Google Ads doesn't automatically mean you'll generate more leads or sales.
