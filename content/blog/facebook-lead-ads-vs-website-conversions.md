@@ -9,18 +9,6 @@ category: "Facebook Ads"
 
 **Category:** [Facebook Ads](/category/facebook-ads)
 
-# Facebook Lead Ads vs Website Conversions: Which Is Better?
-
-![Facebook Lead Ads vs Website Conversions](./images/facebook-lead-ads-vs-website-conversions.jpg)
-
-[Rest of the article content from the previous version goes here...]
-
-
-# Facebook Lead Ads vs Website Conversions: Which Is Better?
-
-![Facebook Lead Ads vs Website Conversions](./images/facebook-lead-ads-vs-website-conversions.jpg)
-
-
 **Facebook Lead Ads vs Website Conversions** is a common question for businesses running Meta Ads. Should you let people submit their details directly inside Facebook and Instagram, or should you send them to your website and ask them to fill out a form there?
 
 There is no single answer.
@@ -258,7 +246,7 @@ This can make a major difference when customers need more information before mak
 
 # Advantages of Website Conversion Campaigns
 
-![Website conversion funnel from Facebook Ads](./images/facebook-ads-website-conversion-funnel.jpg)
+![Website conversion funnel from Facebook Ads](./images/meta-retargeting-funnel.jpg)
 
 
 ## 1. Better Control Over the Customer Journey
