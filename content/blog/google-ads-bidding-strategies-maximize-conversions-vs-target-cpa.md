@@ -241,7 +241,7 @@ For example, suppose a lead-generation business tracks:
 * Phone calls
 * Qualified leads
 
-![Google Ads conversion tracking and conversion actions](/images/google-ads-conversion-tracking-dashboard.jpg)
+![Google Ads conversion tracking and conversion actions](/images/conversion-tracking.jpg)
 
 
 If every button click is treated as a primary conversion, Google may learn to find people who click buttons rather than people who actually become leads.
