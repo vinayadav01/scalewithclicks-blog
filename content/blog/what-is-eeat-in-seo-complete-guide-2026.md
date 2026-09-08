@@ -80,7 +80,7 @@ For businesses, this is a major opportunity.
 
 Instead of writing generic statements such as "SEO can increase organic traffic," explain **what you actually did, what changed, and what the results were.**
 
-![First-Hand Experience in SEO](/images/blog/first-hand-experience-in-seo.jpg)
+![First-Hand Experience in SEO](/images/first-hand-experience-in-seo.jpg)
 
 
 ### 2. Expertise
@@ -185,7 +185,7 @@ For businesses, your website should answer a simple question:
 
 Don't make visitors search for the answer.
 
-![Website Trust Signals for SEO](/images/blog/website-trust-signals-seo.jpg)
+![Website Trust Signals for SEO](/images/website-trust-signals-seo.jpg)
 
 
 ## Why Is E-E-A-T Important for SEO in 2026?
@@ -386,7 +386,7 @@ But the final content should still contain genuine insight, accurate information
 
 If ten websites publish the same AI-generated explanation, none has created a meaningful competitive advantage.
 
-![E-E-A-T SEO Checklist for 2026](/images/blog/eeat-seo-checklist-2026.jpg)
+![E-E-A-T SEO Checklist for 2026](/images/eeat-seo-checklist-2026.jpg)
 
 
 ## E-E-A-T Checklist for SEO
