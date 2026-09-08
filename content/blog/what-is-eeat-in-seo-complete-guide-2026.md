@@ -2,7 +2,7 @@
 title: "What Is E-E-A-T in SEO? Complete Guide for 2026"
 description: "Learn what E-E-A-T means in SEO, how Experience, Expertise, Authoritativeness, and Trustworthiness influence content quality, and how to improve E-E-A-T for your website in 2026."
 date: "2026-09-08"
-image: /image/eeat-in-seo-complete-guide-2026.jpg
+image: /images/eeat-in-seo-complete-guide-2026.jpg
 author: "Vinay Yadav"
 category: "SEO"
 ---
