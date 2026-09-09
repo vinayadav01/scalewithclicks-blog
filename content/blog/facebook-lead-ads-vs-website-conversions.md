@@ -85,7 +85,7 @@ This can be particularly important for expensive or complicated products and ser
 
 # Facebook Lead Ads vs Website Conversions: Key Differences
 
-![Facebook Lead Ads vs Website Conversions comparison](./images/facebook-lead-ads-website-conversions-comparison.jpg)
+![Facebook Lead Ads vs Website Conversions comparison](/images/facebook-lead-ads-website-conversions-comparison.jpg)
 
 
 | Factor                | Facebook Lead Ads         | Website Conversions                   |
@@ -246,7 +246,7 @@ This can make a major difference when customers need more information before mak
 
 # Advantages of Website Conversion Campaigns
 
-![Website conversion funnel from Facebook Ads](./images/meta-retargeting-funnel.jpg)
+![Website conversion funnel from Facebook Ads](/images/meta-retargeting-funnel.jpg)
 
 
 ## 1. Better Control Over the Customer Journey
@@ -502,7 +502,7 @@ Ultimately, this tells you how much it costs to acquire a paying customer.
 
 # Don't Ignore Conversion Tracking
 
-![Meta Ads conversion tracking and lead quality](./images/meta-ads-conversion-tracking-lead-quality.jpg)
+![Meta Ads conversion tracking and lead quality](/images/meta-ads-conversion-tracking-lead-quality.jpg)
 
 
 Whichever strategy you choose, accurate tracking is essential.
