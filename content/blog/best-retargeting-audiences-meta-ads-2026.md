@@ -47,7 +47,7 @@ Meta Custom Audiences are particularly useful for this because they allow advert
 
 For example, imagine someone visits your website after clicking a Meta ad.
 
-![Meta Ads retargeting audience funnel](/images/meta-ads-retargeting-audience-funnel.jpg)
+![Meta Ads retargeting audience funnel](/images/meta-ads-retargeting-funnel.jpg)
 
 
 They read your service page but don't submit the enquiry form.
@@ -194,7 +194,7 @@ One important point: don't judge an audience only by its size.
 
 A 10,000-person audience with strong buying intent can be more useful than a 500,000-person audience with very weak engagement.
 
-![Best Meta Ads retargeting audiences](/images/best-meta-ads-retargeting-audiences.jpg)
+![Best Meta Ads retargeting audiences](/images/facebook-ads-audience-targeting-guide-2026.jpg)
 
 
 ## 5. Video Viewers
@@ -382,9 +382,6 @@ A practical starting point is:
 
 These aren't rules.
 
-![Meta Ads retargeting audience time windows](/images/meta-ads-retargeting-time-windows.jpg)
-
-
 Use your actual customer journey and performance data to adjust them.
 
 A person shopping for a ₹1,000 product may decide within a few days.
@@ -569,9 +566,6 @@ For example, once someone purchases, remove them from acquisition and abandoned-
 If your business has enough traffic and conversion volume, you can gradually create more specific segments.
 
 If your audience is small, keep the structure simple.
-
-![Meta Ads retargeting funnel from visitor to customer](/images/meta-ads-retargeting-funnel-2026.jpg)
-
 
 # Final Thoughts
 
