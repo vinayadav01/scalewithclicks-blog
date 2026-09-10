@@ -2,7 +2,7 @@
 title: "Google Ads Auction Insights - Complete Guide for 2026"
 date: "2026-09-10"
 description: "Learn how to use Google Ads Auction Insights to analyze competitors, understand impression share, improve ad visibility, and make smarter bidding and budget decisions in 2026."
-image: /images/google-ads-auction-insights-2026.jpg
+image: /images/google-ads-auction-insights-2026
 category: Google Ads
 author: Vinay Yadav
 ---
