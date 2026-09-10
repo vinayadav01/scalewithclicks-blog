@@ -3,7 +3,7 @@ title: "Best Retargeting Audiences in Meta Ads - 2026 Guide"
 description: "Discover the best retargeting audiences in Meta Ads in 2026, including website visitors, Instagram engagers, video viewers, Add to Cart users, previous leads, and existing customers."
 author: "Vinay Yadav"
 date: "2026-09-09"
-category: "Meta Ads"
+category: "Facebook Ads"
 image: "/images/best-retargeting-audiences-meta-ads-2026.jpg"
 ---
 
