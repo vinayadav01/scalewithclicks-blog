@@ -527,7 +527,7 @@ With proper tracking, you can start connecting:
 
 **Ad → Landing Page → User Action → Lead → Business Outcome**
 
-![Google Tag Manager conversion tracking workflow](/images/gtm-conversion-tracking-workflow.jpg)
+![Google Tag Manager conversion tracking workflow](/images/how-google-tag-manager-works.jpg)
 
 
 That makes optimization much more meaningful.
