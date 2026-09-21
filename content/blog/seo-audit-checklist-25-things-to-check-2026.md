@@ -85,7 +85,7 @@ Your robots.txt should support your SEO strategy rather than accidentally preven
 
 ## 3. Check Your XML Sitemap
 
-![Technical SEO Audit Checklist](/images/technical-seo-audit-2026.jpg)
+![Technical SEO Audit Checklist](/images/technical-seo-audit.jpg)
 
 
 Your XML sitemap should contain the URLs you actually want search engines to discover and index.
@@ -202,7 +202,7 @@ This makes the page easier to scan and gives search engines additional context a
 
 ## 9. Audit Keyword Targeting
 
-![On-Page SEO Audit Checklist](/images/on-page-seo-audit-checklist.jpg)
+![On-Page SEO Audit Checklist](/images/on-page-seo-checklist-2026-banner.jpg)
 
 
 Every important landing page should have a clear search intent.
