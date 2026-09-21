@@ -1,10 +1,10 @@
 ---
 title: "SEO Audit Checklist - 25+ Things to Check in 2026"
-description: "Use this 2026 SEO audit checklist to find and fix technical SEO, on-page, content, indexing, internal linking, performance, and conversion issues."
 date: "2026-09-18"
-author: "Vinay Yadav
-category: "SEO"
+description: "Use this 2026 SEO audit checklist to find and fix technical SEO, on-page, content, indexing, internal linking, performance, and conversion issues."
 image: /images/seo-audit-checklist-2026.jpg
+category: "SEO Services"
+author: "Vinay Yadav"
 ---
 
 **Category:** [SEO](/category/seo)
