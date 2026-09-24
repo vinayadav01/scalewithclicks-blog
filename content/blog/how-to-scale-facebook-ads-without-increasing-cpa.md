@@ -83,7 +83,7 @@ This is why scaling should be treated as a process rather than a single action.
 
 ## 1. Make Sure Your Tracking Is Reliable Before Scaling
 
-![Facebook Ads Conversion Tracking](/images/facebook-ads-conversion-tracking.jpg)
+![Facebook Ads Conversion Tracking](/images/meta-pixel-setup-guide.jpg)
 
 
 Before increasing your Facebook Ads budget, make sure the data you're using to make decisions is trustworthy.
