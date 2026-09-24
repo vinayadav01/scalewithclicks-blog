@@ -175,7 +175,7 @@ This principle is useful for Facebook Ads as well: don't change everything simul
 
 ## 4. Build a Creative Testing System
 
-![Facebook Ads Creative Testing Strategy](/images/facebook-ads-creative-testing.jpg)
+![Facebook Ads Creative Testing Strategy](/images/meta-ad-creative-testing.jpg)
 
 
 Don't wait until your existing ads stop working before producing new creatives.
@@ -277,7 +277,7 @@ This distinction can make your advertising more relevant at different stages of 
 
 You can also read our guide on [the best retargeting audiences for Meta Ads](/blog/best-retargeting-audiences-meta-ads-2026) for a deeper look at audience segmentation.
 
-![Facebook Ads Retargeting Funnel](/images/facebook-ads-retargeting-funnel.jpg)
+![Facebook Ads Retargeting Funnel](/images/meta-ads-retargeting-funnel.jpg)
 
 
 ---
@@ -485,7 +485,7 @@ Optimize your landing page, form, checkout process, or sales process.
 
 Continue putting budget behind combinations of audience, creative, offer, and conversion experience that produce sustainable business results.
 
-![Facebook Ads Scaling Framework](/images/facebook-ads-scaling-framework.jpg)
+![Facebook Ads Scaling Framework](/images/facebook-ads-testing-to-scaling.jpg)
 
 
 ---
