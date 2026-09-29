@@ -27,9 +27,6 @@ The right choice depends on your traffic source, campaign objective, customer jo
 
 In this guide, we'll look at the difference between a landing page and a website, when each works better, and how you can use both to improve your conversion rate.
 
-![Landing Page vs Website for Conversions](/images/landing-page-vs-website-conversions.jpg)
-
-
 ## What Is a Landing Page?
 
 A landing page is a dedicated webpage created around a specific marketing objective.
