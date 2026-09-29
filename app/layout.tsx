@@ -22,6 +22,7 @@ export const metadata = {
     icon: "/favicon.ico",
   },
 };
+
 export default function RootLayout({
   children,
 }: {
@@ -32,111 +33,126 @@ export default function RootLayout({
       <body
         className={`${inter.className} bg-gradient-to-br from-gray-50 to-gray-100`}
       >
-        {/* Google Analytics */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-PG5ZS7WVRJ"
-          strategy="afterInteractive"
-        />
-        <Script id="ga" strategy="afterInteractive">
+        {/* ================= GOOGLE TAG MANAGER ================= */}
+
+        <Script id="gtm-script" strategy="afterInteractive">
           {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-PG5ZS7WVRJ');
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-M4K2DXZK');
           `}
         </Script>
 
-        {/* ORGANIZATION SCHEMA */}
-<Script
-  type="application/ld+json"
-  dangerouslySetInnerHTML={{
-    __html: JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      name: "Scale With Clicks",
-      url: "https://blog.scalewithclicks.com",
-      logo: "https://blog.scalewithclicks.com/logo.png",
-      sameAs: [
-        "https://www.instagram.com/scalewithclick",
-        "https://www.linkedin.com/company/scale-with-clicks/",
-        "https://www.facebook.com/scalewithclicks/"
-      ]
-    }),
-  }}
-/>
+     
+        {/* ================= GTM NOSCRIPT ================= */}
 
-{/* WEBSITE SCHEMA */}
-<Script
-  type="application/ld+json"
-  dangerouslySetInnerHTML={{
-    __html: JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      name: "ScaleWithClicks Blog",
-      url: "https://blog.scalewithclicks.com",
-      potentialAction: {
-        "@type": "SearchAction",
-        target:
-          "https://blog.scalewithclicks.com/search?q={search_term_string}",
-        "query-input": "required name=search_term_string",
-      },
-    }),
-  }}
-/>
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-M4K2DXZK"
+            height="0"
+            width="0"
+            style={{
+              display: "none",
+              visibility: "hidden",
+            }}
+          />
+        </noscript>
 
-{/* BLOG SCHEMA */}
-<Script
-  type="application/ld+json"
-  dangerouslySetInnerHTML={{
-    __html: JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Blog",
-      name: "ScaleWithClicks Blog",
-      url: "https://blog.scalewithclicks.com",
-      description:
-        "Digital marketing, Google Ads, SEO, GA4, Meta Ads, and conversion tracking tutorials.",
-      publisher: {
-        "@type": "Organization",
-        name: "Scale With Clicks",
-      },
-    }),
-  }}
-/>
+        {/* ================= ORGANIZATION SCHEMA ================= */}
 
-        {/* HEADER */}
+        <Script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Scale With Clicks",
+              url: "https://blog.scalewithclicks.com",
+              logo: "https://blog.scalewithclicks.com/logo.png",
+              sameAs: [
+                "https://www.instagram.com/scalewithclick",
+                "https://www.linkedin.com/company/scale-with-clicks/",
+                "https://www.facebook.com/scalewithclicks/",
+              ],
+            }),
+          }}
+        />
+
+        {/* ================= WEBSITE SCHEMA ================= */}
+
+        <Script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "ScaleWithClicks Blog",
+              url: "https://blog.scalewithclicks.com",
+              potentialAction: {
+                "@type": "SearchAction",
+                target:
+                  "https://blog.scalewithclicks.com/search?q={search_term_string}",
+                "query-input": "required name=search_term_string",
+              },
+            }),
+          }}
+        />
+
+        {/* ================= BLOG SCHEMA ================= */}
+
+        <Script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Blog",
+              name: "ScaleWithClicks Blog",
+              url: "https://blog.scalewithclicks.com",
+              description:
+                "Digital marketing, Google Ads, SEO, GA4, Meta Ads, and conversion tracking tutorials.",
+              publisher: {
+                "@type": "Organization",
+                name: "Scale With Clicks",
+              },
+            }),
+          }}
+        />
+
+        {/* ================= HEADER ================= */}
+
         <Header />
 
-        {/* MAIN (ONLY ONCE) */}
+        {/* ================= MAIN ================= */}
+
         <main className="min-h-[80vh] pb-20 md:pb-0">
-          <PageWrapper>
-            {children}
-          </PageWrapper>
+          <PageWrapper>{children}</PageWrapper>
         </main>
 
         {/* ================= MOBILE STICKY CTA ================= */}
+
         <div className="fixed bottom-0 left-0 w-full z-50 md:hidden pb-[env(safe-area-inset-bottom)]">
           <div className="flex items-center justify-between px-4 py-3 bg-white border-t shadow-lg">
-
-            {/* TEXT */}
             <div className="text-xs">
-              <p className="font-semibold text-gray-800">Need More Leads?</p>
+              <p className="font-semibold text-gray-800">
+                Need More Leads?
+              </p>
               <p className="text-gray-500">Free Google Ads Strategy</p>
             </div>
 
-            {/* CTA BUTTON */}
             <a
               href="https://wa.me/919589188668?text=Hi%20I%20want%20help%20with%20Google%20Ads"
               className="flex items-center gap-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow hover:scale-105 transition"
             >
               💬 Book Call
             </a>
-
           </div>
         </div>
 
-        {/* FOOTER */}
-        <Footer />
+        {/* ================= FOOTER ================= */}
 
+        <Footer />
       </body>
     </html>
   );
