@@ -219,7 +219,7 @@ That journey can happen over several sessions.
 
 This is one reason why SEO and content marketing work best as part of a broader website strategy.
 
-For example, publishing useful content around [Landing Page Optimization](/blog/landing-page-optimization) can attract visitors who are still researching their problem.
+For example, publishing useful content around [Landing Page Optimization](/category/landing-page-optimization) can attract visitors who are still researching their problem.
 
 ### Brand searches
 
