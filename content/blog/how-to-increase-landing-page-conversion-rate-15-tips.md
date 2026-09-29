@@ -3,9 +3,11 @@ title: "How to Increase Landing Page Conversion Rate - 15 Tips"
 date: "2026-09-28"
 description: "Learn how to increase landing page conversion rate with 15 practical landing page optimization tips covering CTAs, forms, page speed, mobile UX, social proof, tracking, and conversion rate optimization."
 image: "/images/landing-page-conversion-rate-optimization.jpg"
-category: "Conversion Rate Optimization"
+category: "Landing Page Optimization"
 author: "Vinay Yadav"
 ---
+
+**Category:** [Landing Page Optimization](/category/landing-page-optimization)
 
 # How to Increase Landing Page Conversion Rate: 15 Tips
 
