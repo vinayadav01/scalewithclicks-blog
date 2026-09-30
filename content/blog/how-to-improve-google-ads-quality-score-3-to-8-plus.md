@@ -218,7 +218,7 @@ The important concept is **message match**.
 
 The keyword, advertisement, and landing page should feel like parts of the same conversation.
 
-![Google Ads landing page experience](/images/google-ads-landing-page-quality-score.jpg)
+![Google Ads landing page experience](/images/google-ads-quality-score-improvement-checklist.jpg)
 
 
 ---
