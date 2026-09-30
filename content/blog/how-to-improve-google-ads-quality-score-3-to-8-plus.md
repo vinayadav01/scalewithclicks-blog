@@ -7,6 +7,8 @@ category: "Google Ads"
 author: "Vinay Yadav"
 ---------------------
 
+**Category:** [Google Ads](/category/google-ads)
+
 # How to Improve Google Ads Quality Score: 3 to 8+
 
 If your Google Ads keywords are stuck at a Quality Score of 3, 4, or 5, simply increasing your bids usually isn't the answer.
