@@ -32,6 +32,9 @@ You need to know which metrics matter and what each one is telling you.
 
 In this guide, we'll look at **15 key Facebook Ads metrics** you should track and explain when each metric becomes useful.
 
+![Facebook Ads Metrics Dashboard](/images/facebook-ads-dashboard-metrics.jpg)
+
+
 ## 1. Amount Spent
 
 **Amount Spent** is one of the simplest Facebook Ads metrics, but it provides important context for everything else.
@@ -384,7 +387,7 @@ A campaign producing 100 low-value conversions isn't necessarily more valuable t
 
 When reliable revenue data is available, optimize toward **business value rather than conversion volume alone**.
 
-![Facebook Ads KPI Dashboard](/images/facebook-ads-kpi-dashboard.jpg)
+![Facebook Ads KPI Dashboard](/images/facebook-ads-dashboard.jpg)
 
 
 # Which Facebook Ads Metrics Should You Prioritize?
