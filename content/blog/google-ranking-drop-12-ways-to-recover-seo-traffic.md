@@ -329,7 +329,7 @@ The link should make sense even if the reader hasn't seen the surrounding paragr
 
 Internal linking also helps Google discover relationships between your pages and helps users move deeper into your website.
 
-![Internal Linking SEO Strategy](/images/internal-linking-seo.jpg)
+![Internal Linking SEO Strategy](/images/seo-internal-linking-strategy.jpg)
 
 
 ---
