@@ -7,6 +7,8 @@ category: "SEO"
 author: "Vinay Yadav"
 ---------------------
 
+**Category:** [SEO](/category/seo)
+
 # Google Ranking Drop: 12 Ways to Recover Your SEO Traffic
 
 A sudden **Google ranking drop** can be frustrating, especially when your website was generating consistent organic traffic just a few weeks ago.
