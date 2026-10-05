@@ -54,6 +54,9 @@ That makes diagnosis the first step.
 
 Before changing your content, open **Google Search Console**.
 
+![Google Search Console Performance Report](/images/google-search-console-ranking-drop.jpg)
+
+
 Go to:
 
 **Performance → Search Results**
@@ -286,6 +289,9 @@ Also check whether recent website changes accidentally removed important pages f
 
 For businesses serious about organic growth, a proper [SEO Services](https://scalewithclicks.com/services/seo-services) strategy should cover technical SEO alongside content and authority building rather than focusing only on keywords.
 
+![Technical SEO Audit Checklist](/images/technical-seo-audit.jpg)
+
+
 ---
 
 # 8. Strengthen Your Internal Linking
@@ -322,6 +328,9 @@ write:
 The link should make sense even if the reader hasn't seen the surrounding paragraph.
 
 Internal linking also helps Google discover relationships between your pages and helps users move deeper into your website.
+
+![Internal Linking SEO Strategy](/images/internal-linking-seo.jpg)
+
 
 ---
 
@@ -461,6 +470,9 @@ Give your improvements enough time to be evaluated, then monitor:
 * Organic conversions
 
 Recovery is usually a process rather than a single SEO fix.
+
+![SEO Traffic Recovery Strategy](/images/seo-traffic-recovery.jpg)
+
 
 ---
 
