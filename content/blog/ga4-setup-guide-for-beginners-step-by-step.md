@@ -3,17 +3,6 @@ title: "GA4 Setup Guide for Beginners (Step-by-Step)"
 meta-title: "GA4 Setup Guide for Beginners (Step-by-Step) | Complete GA4 Tutorial"
 meta-description: "Learn how to set up Google Analytics 4 (GA4) step-by-step. Complete beginner-friendly GA4 setup guide with GTM installation, conversion tracking, ecommerce setup, FAQs, and Google Ads integration."
 description: "Complete GA4 setup guide for beginners with step-by-step instructions for Google Analytics 4, GTM integration, event tracking, conversions, and ecommerce tracking."
-keywords:
-  - GA4 setup guide
-  - Google Analytics 4 tutorial
-  - how to setup GA4
-  - GA4 for beginners
-  - Google Analytics setup
-  - GA4 conversion tracking
-  - GTM GA4 setup
-  - Google Analytics 4 ecommerce tracking
-  - GA4 Google Ads integration
-  - GA4 event tracking
 author: "Scale With Clicks"
 date: "2026-05-18"
 image: "/images/ga4-setup-guide-banner.jpg"
