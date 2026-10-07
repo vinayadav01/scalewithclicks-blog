@@ -270,7 +270,7 @@ For example, a picture of a random person smiling at a laptop doesn't necessaril
 
 A screenshot showing campaign performance or a simple visual explaining your process may be much more useful.
 
-![High converting landing page imagery](/images/high-converting-landing-page-images.jpg)
+![High converting landing page imagery](/images/high-converting-landing-page.jpg)
 
 
 ---
