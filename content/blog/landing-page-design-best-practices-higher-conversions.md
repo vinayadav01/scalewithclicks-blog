@@ -24,9 +24,6 @@ Google also recommends making landing pages relevant to the ad and keywords, mob
 
 In this guide, we'll look at **15 landing page design best practices** that can help improve your conversion rate and get more value from the traffic you're already generating.
 
-![Landing page design best practices](/images/landing-page-design-best-practices.jpg)
-
-
 ## What Is a Landing Page?
 
 A landing page is a dedicated webpage designed around a specific marketing goal.
@@ -602,7 +599,7 @@ Your **ad targeting, ad copy, landing page, conversion tracking, follow-up proce
 
 If you're investing in paid traffic, improving the page that receives that traffic can be one of the most practical ways to get more value from your existing advertising budget.
 
-If you want to improve your overall performance marketing strategy, explore the [Scale With Clicks home page](https://scalewithclicks.com/) or learn more about our [Google Ads services](https://scalewithclicks.com/services/google-ads-agency), [Meta Ads services](https://scalewithclicks.com/services/meta-ads-agency), and [SEO services](https://scalewithclicks.com/services/seo-services).
+If you want to improve your overall performance marketing strategy, explore [Scale With Clicks](https://scalewithclicks.com/) or learn more about our [Google Ads services](https://scalewithclicks.com/services/google-ads-agency), [Meta Ads services](https://scalewithclicks.com/services/meta-ads-agency), and [SEO services](https://scalewithclicks.com/services/seo-services).
 
 ---
 
