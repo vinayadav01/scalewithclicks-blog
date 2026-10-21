@@ -40,7 +40,7 @@ This creates a much clearer journey:
 
 Your landing page should continue the conversation that started with your advertisement or marketing message.
 
-If you're interested in how landing pages fit into the wider paid advertising funnel, our guide on [how to generate leads with Google Ads](https://blog.scalewithclicks.com/blog/how-to-generate-leads-with-google-ads-complete-funnel-guide) covers the process in more detail.
+If you're interested in how landing pages fit into the wider paid advertising funnel, our guide on [how to generate leads with Google Ads](/blog/how-to-generate-leads-with-google-ads-complete-funnel-guide) covers the process in more detail.
 
 ---
 
@@ -464,7 +464,7 @@ Start with the biggest potential problem.
 
 Then measure the results.
 
-For more practical conversion ideas, you can also read our guide on [how to increase landing page conversion rates](https://blog.scalewithclicks.com/blog/increase-landing-page-conversion-rate-15-tips).
+For more practical conversion ideas, you can also read our guide on [how to increase landing page conversion rates](/blog/how-to-increase-landing-page-conversion-rate-15-tips).
 
 ![Landing page A/B testing](/images/landing-page-ab-testing.jpg)
 
