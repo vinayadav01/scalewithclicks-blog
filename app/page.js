@@ -5,7 +5,7 @@ import FadeIn from "@/components/FadeIn";
 import MagneticButton from "@/components/MagneticButton";
 import Link from "next/link";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
 
 export default function Home() {
 
