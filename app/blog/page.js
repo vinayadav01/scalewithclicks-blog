@@ -1,7 +1,7 @@
 import { getPosts } from "@/lib/getPosts";
 import BlogCard from "@/components/BlogCard";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
 
 export default function BlogPage() {
   const posts = getPosts();
